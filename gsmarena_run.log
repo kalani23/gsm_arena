@@ -1,0 +1,97 @@
+2026-06-01 08:26:43,772 [INFO] === GSMArena Scraper v5 | workers=10 | direct connection ===
+2026-06-01 08:26:43,773 [INFO] Already scraped: 3510 | full_refresh=False
+2026-06-01 08:26:44,068 [INFO] Loaded 3510 existing rows
+2026-06-01 08:26:44,069 [INFO] Started 10 workers
+2026-06-01 08:26:44,079 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 08:26:44,081 [INFO] Using cached device list
+2026-06-01 08:26:44,100 [INFO] Total: 14603 | New: 11093
+2026-06-01 08:26:44,100 [INFO] Scraping 11093 devices with 10 workers...
+2026-06-01 08:26:45,343 [INFO] [1/11093] OK  HP - iPAQ hw6510
+2026-06-01 08:26:45,401 [INFO] [2/11093] OK  HP - 10 Plus
+2026-06-01 08:26:45,405 [INFO] [3/11093] OK  HTC - Wildfire E5 Plus
+2026-06-01 08:26:45,460 [INFO] [4/11093] OK  HTC - U Play
+2026-06-01 08:26:45,472 [INFO] [5/11093] OK  HTC - Wildfire E4 Plus
+2026-06-01 08:26:45,572 [INFO] [6/11093] OK  HTC - U24 Pro
+2026-06-01 08:26:45,583 [INFO] [7/11093] OK  HP - iPAQ Data Messenger
+2026-06-01 08:26:45,611 [INFO] [8/11093] OK  HTC - A101 Plus
+2026-06-01 08:26:45,666 [INFO] [9/11093] OK  HTC - Wildfire E5
+2026-06-01 08:26:45,669 [INFO] [10/11093] OK  HTC - A104
+2026-06-01 08:26:46,688 [INFO] [11/11093] OK  HTC - Flyer Wi-Fi
+2026-06-01 08:26:46,755 [INFO] [12/11093] OK  HTC - EVO View 4G
+2026-06-01 08:26:47,709 [INFO] [13/11093] OK  HTC - Prime
+2026-06-01 08:26:47,791 [INFO] [14/11093] OK  HTC - Wildfire S
+2026-06-01 08:26:47,915 [INFO] [15/11093] OK  HTC - Desire S
+2026-06-01 08:26:48,804 [INFO] [16/11093] OK  HTC - Sensation
+2026-06-01 08:26:48,999 [INFO] [17/11093] OK  HTC - Inspire 4G
+2026-06-01 08:26:49,765 [INFO] [18/11093] OK  HTC - HD7S
+2026-06-01 08:26:49,836 [INFO] [19/11093] OK  HTC - EVO Shift 4G
+2026-06-01 08:26:50,857 [INFO] [20/11093] OK  HTC - 7 Mozart
+2026-06-01 08:26:50,886 [INFO] [21/11093] OK  HTC - 7 Surround
+2026-06-01 08:26:51,715 [INFO] [22/11093] OK  HTC - Arrive
+2026-06-01 08:26:51,927 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:52,576 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:52,935 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:53,433 [WARNING] [W3] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:53,794 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:54,631 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:54,819 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:55,653 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:55,767 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:56,381 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:56,382 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:26:57,096 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:57,674 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:57,809 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:59,101 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:26:59,217 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:00,378 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:00,397 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:01,280 [WARNING] [W7] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_flyer-3829.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7fdaa8907ad0>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:27:01,281 [WARNING] [W1] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_windows_phone_8x_cdma-5104.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7fdaa8af9b90>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:27:03,018 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:03,022 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:04,435 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:04,440 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:04,440 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:09,545 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:09,550 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:10,898 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:15,978 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:15,983 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:17,085 [WARNING] [W3] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:22,494 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:22,499 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:23,378 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:28,879 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:28,883 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:29,893 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:35,366 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:35,370 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:36,458 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:41,831 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:41,836 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:43,109 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:48,290 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:48,294 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:49,253 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:27:54,775 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:27:54,779 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:27:55,699 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:28:01,306 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:28:01,310 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:28:02,425 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:28:07,764 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:28:07,768 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:28:08,680 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:28:14,248 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:28:14,253 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:28:15,170 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:28:20,702 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:28:20,706 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:28:21,775 [WARNING] [W3] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:28:27,211 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:28:27,215 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:28:28,120 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:28:33,692 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:28:33,696 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
+2026-06-01 08:28:34,921 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
