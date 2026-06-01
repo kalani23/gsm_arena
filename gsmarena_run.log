@@ -1611,3 +1611,41 @@
 2026-06-01 10:08:57,036 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:09:01,115 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:09:02,731 [INFO] Saved 4472 rows
+2026-06-01 10:09:33,783 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:09:33,784 [INFO] Already scraped: 4472
+2026-06-01 10:09:34,148 [INFO] Loaded 4472 existing rows
+2026-06-01 10:09:34,158 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:09:34,160 [INFO] Using cached device list
+2026-06-01 10:09:34,181 [INFO] Total: 14603 | New: 10131
+2026-06-01 10:09:35,041 [INFO] [1/10131] OK  Infinix - Note 40S
+2026-06-01 10:09:35,096 [INFO] [2/10131] OK  Infinix - Note 50s
+2026-06-01 10:09:35,141 [INFO] [3/10131] OK  Infinix - GT 30 Pro
+2026-06-01 10:09:35,146 [INFO] [4/10131] OK  Infinix - Zero 40 4G
+2026-06-01 10:09:35,152 [INFO] [5/10131] OK  Infinix - Hot 50
+2026-06-01 10:09:35,698 [INFO] [6/10131] OK  Infinix - Xpad
+2026-06-01 10:09:35,752 [INFO] [7/10131] OK  Infinix - Note 40 5G
+2026-06-01 10:09:35,860 [INFO] [8/10131] OK  Infinix - Note 40X 5G
+2026-06-01 10:09:35,864 [INFO] [9/10131] OK  Infinix - GT 20 Pro
+2026-06-01 10:09:35,869 [INFO] [10/10131] OK  Infinix - Note 40 Pro+
+2026-06-01 10:09:36,410 [INFO] [11/10131] OK  Infinix - Smart 8 Plus
+2026-06-01 10:09:36,424 [INFO] [12/10131] OK  Infinix - Note 40 Pro 4G
+2026-06-01 10:09:37,029 [INFO] [13/10131] OK  Infinix - Smart 8 (India)
+2026-06-01 10:09:37,101 [INFO] [14/10131] OK  Infinix - Smart 8 HD
+2026-06-01 10:09:37,733 [INFO] [15/10131] OK  Infinix - Hot 40 Pro
+2026-06-01 10:09:38,560 [INFO] [16/10131] OK  Infinix - Note 40 Pro
+2026-06-01 10:09:38,671 [INFO] [17/10131] OK  Infinix - Hot 40
+2026-06-01 10:09:39,158 [INFO] [18/10131] OK  Infinix - Zero 30 4G
+2026-06-01 10:09:39,435 [INFO] [19/10131] OK  Infinix - Hot 40i
+2026-06-01 10:09:40,191 [INFO] [20/10131] OK  Infinix - GT 10 Pro
+2026-06-01 10:09:40,742 [INFO] [21/10131] OK  Infinix - Hot 30 5G
+2026-06-01 10:09:41,189 [INFO] [22/10131] OK  Infinix - Note 30 VIP
+2026-06-01 10:09:41,872 [INFO] [23/10131] OK  Infinix - Hot 30 Play NFC
+2026-06-01 10:09:42,269 [INFO] [24/10131] OK  Infinix - Smart 8
+2026-06-01 10:09:42,433 [INFO] [25/10131] OK  Infinix - Note 30 Pro
+2026-06-01 10:09:42,939 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:09:42,940 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:09:43,519 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:09:44,742 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:09:44,887 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:09:47,906 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:09:51,284 [INFO] Saved 4497 rows
