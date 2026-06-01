@@ -1362,3 +1362,59 @@
 2026-06-01 10:04:19,641 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:04:20,626 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:04:25,701 [INFO] Saved 4291 rows
+2026-06-01 10:04:57,651 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:04:57,653 [INFO] Already scraped: 4291
+2026-06-01 10:04:58,005 [INFO] Loaded 4291 existing rows
+2026-06-01 10:04:58,015 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:04:58,017 [INFO] Using cached device list
+2026-06-01 10:04:58,034 [INFO] Total: 14603 | New: 10312
+2026-06-01 10:04:58,705 [INFO] [1/10312] OK  Huawei - U1000
+2026-06-01 10:04:58,770 [INFO] [2/10312] OK  Huawei - U1310
+2026-06-01 10:04:58,784 [INFO] [3/10312] OK  Huawei - G6150
+2026-06-01 10:04:58,805 [INFO] [4/10312] OK  Huawei - U1100
+2026-06-01 10:04:58,819 [INFO] [5/10312] OK  Huawei - U120
+2026-06-01 10:04:59,234 [INFO] [6/10312] OK  Huawei - T208
+2026-06-01 10:04:59,268 [INFO] [7/10312] OK  Huawei - T156
+2026-06-01 10:04:59,296 [INFO] [8/10312] OK  Huawei - T261L
+2026-06-01 10:04:59,362 [INFO] [9/10312] OK  Huawei - T211
+2026-06-01 10:04:59,379 [INFO] [10/10312] OK  Huawei - T158
+2026-06-01 10:04:59,893 [INFO] [11/10312] OK  Huawei - T330
+2026-06-01 10:04:59,919 [INFO] [12/10312] OK  Huawei - T201
+2026-06-01 10:05:00,489 [INFO] [13/10312] OK  Huawei - G10
+2026-06-01 10:05:00,904 [INFO] [14/10312] OK  Huawei - T552
+2026-06-01 10:05:01,440 [INFO] [15/10312] OK  i-mate - 810-F
+2026-06-01 10:05:01,885 [INFO] [16/10312] OK  i-mate - Ultimate 9502
+2026-06-01 10:05:02,552 [INFO] [17/10312] OK  i-mate - Ultimate 8502
+2026-06-01 10:05:02,957 [INFO] [18/10312] OK  Huawei - Mate 30 Lite
+2026-06-01 10:05:03,147 [INFO] [19/10312] OK  i-mate - JAMA 201
+2026-06-01 10:05:03,912 [INFO] [20/10312] OK  i-mate - JAMA
+2026-06-01 10:05:04,370 [INFO] [21/10312] OK  i-mate - JAMA 101
+2026-06-01 10:05:04,957 [INFO] [22/10312] OK  i-mate - Ultimate 8150
+2026-06-01 10:05:05,408 [INFO] [23/10312] OK  i-mate - Ultimate 7150
+2026-06-01 10:05:06,133 [INFO] [24/10312] OK  i-mate - Ultimate 6150
+2026-06-01 10:05:06,530 [INFO] [25/10312] OK  i-mate - Ultimate 9150
+2026-06-01 10:05:06,683 [INFO] [26/10312] OK  i-mate - Ultimate 5150
+2026-06-01 10:05:07,629 [INFO] [27/10312] OK  Huawei - Mulan
+2026-06-01 10:05:08,020 [INFO] [28/10312] OK  i-mate - JAQ4
+2026-06-01 10:05:08,196 [INFO] [29/10312] OK  Huawei - Ascend W3
+2026-06-01 10:05:09,106 [INFO] [30/10312] OK  i-mate - JAQ3
+2026-06-01 10:05:09,552 [INFO] [31/10312] OK  i-mate - JASJAM
+2026-06-01 10:05:09,709 [INFO] [32/10312] OK  i-mate - JAQ
+2026-06-01 10:05:10,156 [INFO] [33/10312] OK  i-mate - SPJAS
+2026-06-01 10:05:10,768 [INFO] [34/10312] OK  i-mate - SPL
+2026-06-01 10:05:11,202 [INFO] [35/10312] OK  i-mate - Smartflip
+2026-06-01 10:05:12,160 [INFO] [36/10312] OK  i-mate - PDAL
+2026-06-01 10:05:12,352 [INFO] [37/10312] OK  i-mate - JASJAR
+2026-06-01 10:05:12,879 [INFO] [38/10312] OK  i-mate - SP5m
+2026-06-01 10:05:13,407 [INFO] [39/10312] OK  i-mate - SP4m
+2026-06-01 10:05:13,970 [INFO] [40/10312] OK  i-mate - SP5
+2026-06-01 10:05:14,299 [INFO] [41/10312] OK  i-mate - JAM
+2026-06-01 10:05:14,534 [WARNING] [W0] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /huawei_t161l-2627.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7fc12cc21690>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:05:14,534 [WARNING] [42/10312] FAIL https://www.gsmarena.com/huawei_t161l-2627.php
+2026-06-01 10:05:14,619 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:05:14,620 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:05:15,660 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:05:15,752 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:05:16,963 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:05:17,039 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:05:22,688 [INFO] Saved 4332 rows
