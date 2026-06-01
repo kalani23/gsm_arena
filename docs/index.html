@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSMArena Data Updater</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; padding: 2rem 1rem; }
+  .container { max-width: 680px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; margin-bottom: 0.25rem; }
+  .subtitle { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
+  .card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+  .section-title { font-size: 11px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .metric { background: #f8f8f8; border-radius: 8px; padding: 1rem; text-align: center; }
+  .metric-val { font-size: 24px; font-weight: 500; }
+  .metric-lbl { font-size: 12px; color: #888; margin-top: 4px; }
+  label { font-size: 13px; color: #666; display: block; margin-top: 12px; }
+  input[type=text], input[type=password] { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; margin-top: 4px; outline: none; }
+  input:focus { border-color: #999; }
+  .btn { width: 100%; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; border: none; transition: opacity 0.2s; }
+  .btn-dark { background: #1a1a1a; color: #fff; }
+  .btn-dark:hover { opacity: 0.85; }
+  .btn-outline { background: transparent; color: #1a1a1a; border: 1px solid #ddd; }
+  .btn-outline:hover { background: #f5f5f5; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .status { font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-top: 10px; display: none; }
+  .status.info { background: #e8f4fd; color: #1a6fa8; display: block; }
+  .status.success { background: #e8f5e9; color: #2e7d32; display: block; }
+  .status.error { background: #fdecea; color: #b71c1c; display: block; }
+  .status.warning { background: #fff8e1; color: #e65100; display: block; }
+  .spinner { width: 14px; height: 14px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; flex-shrink: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .dl-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+  .dl-row:last-child { border-bottom: none; }
+  .dl-name { font-size: 14px; }
+  .dl-meta { font-size: 12px; color: #888; margin-top: 2px; }
+  .dl-btn { background: transparent; border: 1px solid #ddd; border-radius: 8px; padding: 5px 12px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .dl-btn:hover { background: #f5f5f5; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+  .tag-new { background: #e8f5e9; color: #2e7d32; }
+  .tag-master { background: #fff3e0; color: #e65100; }
+  .notice { font-size: 13px; color: #888; background: #f8f8f8; border-radius: 8px; padding: 10px 12px; margin-top: 8px; line-height: 1.5; }
+  .action-desc { font-size: 13px; color: #666; margin: 4px 0 8px; line-height: 1.4; }
+  .run-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+  .run-item:last-child { border-bottom: none; }
+  .run-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-running { background: #fb8c00; animation: pulse 1s ease-in-out infinite; }
+  .dot-success { background: #43a047; }
+  .dot-failed  { background: #e53935; }
+  .dot-queued  { background: #90a4ae; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .run-name { font-weight: 500; flex: 1; }
+  .run-time { color: #888; font-size: 12px; white-space: nowrap; }
+  .progress-bar-wrap { background: #f0f0f0; border-radius: 999px; height: 6px; margin: 8px 0 4px; overflow: hidden; }
+  .progress-bar { background: #1a1a1a; height: 6px; border-radius: 999px; transition: width 0.5s; }
+  .progress-label { font-size: 12px; color: #666; display: flex; justify-content: space-between; }
+  .poll-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: #888; margin-left: 8px; }
+  #poll-toggle { background: none; border: none; font-size: 12px; color: #1a6fa8; cursor: pointer; padding: 0; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>GSMArena Data Updater</h1>
+  <p class="subtitle">Click a button to update your device data. Files download automatically when ready.</p>
+
+  <div class="card" id="setup-card">
+    <p class="section-title">Setup — one time only</p>
+    <label>GitHub token</label>
+    <input type="password" id="pat" placeholder="ghp_xxxxxxxxxxxx" />
+    <label>Repository</label>
+    <input type="text" id="repo" placeholder="kalani23/gsm_arena" />
+    <button class="btn btn-dark" onclick="saveConfig()" style="margin-top:14px;">
+      <i class="ti ti-check"></i> Save settings
+    </button>
+    <p class="notice">Your token is saved in your browser only. Never sent anywhere except GitHub.</p>
+    <div id="setup-msg" class="status"></div>
+  </div>
+
+  <div class="card">
+    <p class="section-title">
+      Status
+      <span class="poll-badge" id="poll-badge" style="display:none;">
+        <div class="spinner" style="width:10px;height:10px;border-width:1.5px;"></div>
+        live
+        <button id="poll-toggle" onclick="stopPolling()">stop</button>
+      </span>
+    </p>
+    <div class="grid3">
+      <div class="metric"><p class="metric-val" id="stat-total">—</p><p class="metric-lbl">total devices</p></div>
+      <div class="metric"><p class="metric-val" id="stat-scraped">—</p><p class="metric-lbl">scraped</p></div>
+      <div class="metric"><p class="metric-val" id="stat-runs">—</p><p class="metric-lbl">workflow runs</p></div>
+    </div>
+
+    <div id="progress-wrap" style="display:none; margin-top:12px;">
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+      <div class="progress-label"><span id="progress-text">0 / 14,603</span><span id="progress-pct">0%</span></div>
+    </div>
+
+    <button class="btn btn-outline" onclick="refreshStatus()" style="margin-top:12px;">
+      <i class="ti ti-refresh"></i> Refresh status
+    </button>
+    <div id="status-msg" class="status"></div>
+  </div>
+
+  <div class="card">
+    <p class="section-title">Live workflow runs</p>
+    <div id="runs-list"><p style="font-size:13px;color:#888;">Save settings to load.</p></div>
+  </div>
+
+  <div class="card">
+    <p class="section-title">Actions</p>
+    <div class="grid2">
+      <div>
+        <p style="font-size:14px;font-weight:500;">Get new devices</p>
+        <p class="action-desc">Scans GSMArena for newly added phones and scrapes only those. Creates a dated file.</p>
+        <button class="btn btn-dark" id="btn-check-new" onclick="triggerCheckNew()">
+          <i class="ti ti-search"></i> Get new devices
+        </button>
+      </div>
+      <div>
+        <p style="font-size:14px;font-weight:500;">Full rescrape</p>
+        <p class="action-desc">Scrapes all missing devices using 20 parallel jobs on different IPs.</p>
+        <button class="btn btn-outline" id="btn-launch" onclick="triggerLaunch()">
+          <i class="ti ti-player-play"></i> Launch all chunks
+        </button>
+      </div>
+    </div>
+    <div id="action-msg" class="status"></div>
+  </div>
+
+  <div class="card">
+    <p class="section-title">Download files</p>
+    <div id="file-list"><p style="font-size:13px;color:#888;">Save settings above to load files.</p></div>
+  </div>
+</div>
+
+<script>
+const API = 'https://api.github.com';
+let pollTimer = null;
+let isPolling = false;
+
+function cfg() {
+  return { pat: localStorage.getItem('gsm_pat')||'', repo: localStorage.getItem('gsm_repo')||'' };
+}
+
+function saveConfig() {
+  const pat  = document.getElementById('pat').value.trim();
+  const repo = document.getElementById('repo').value.trim();
+  if (!pat || !repo) { showMsg('setup-msg','Enter both token and repo.','error'); return; }
+  localStorage.setItem('gsm_pat', pat);
+  localStorage.setItem('gsm_repo', repo);
+  showMsg('setup-msg','Settings saved!','success');
+  refreshStatus(); loadFiles();
+}
+
+function showMsg(id, text, type) {
+  const el = document.getElementById(id);
+  el.className = 'status ' + type;
+  el.textContent = text;
+}
+
+async function ghFetch(path, opts={}) {
+  const {pat, repo} = cfg();
+  if (!pat) return null;
+  try {
+    const r = await fetch(`${API}/repos/${repo}${path}`, {
+      ...opts,
+      headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json', ...(opts.headers||{}) }
+    });
+    if (!r.ok) return null;
+    return r.json();
+  } catch(e) { return null; }
+}
+
+function timeAgo(dateStr) {
+  const diff = (Date.now() - new Date(dateStr)) / 1000;
+  if (diff < 60) return Math.round(diff) + 's ago';
+  if (diff < 3600) return Math.round(diff/60) + 'm ago';
+  return Math.round(diff/3600) + 'h ago';
+}
+
+function runDot(status, conclusion) {
+  if (status === 'in_progress' || status === 'queued') return 'dot-running';
+  if (conclusion === 'success') return 'dot-success';
+  if (conclusion === 'failure') return 'dot-failed';
+  return 'dot-queued';
+}
+
+function runLabel(status, conclusion) {
+  if (status === 'in_progress') return 'running';
+  if (status === 'queued') return 'queued';
+  return conclusion || status;
+}
+
+async function loadRuns() {
+  const data = await ghFetch('/actions/runs?per_page=8');
+  if (!data) return false;
+
+  const hasActive = data.workflow_runs.some(r => r.status === 'in_progress' || r.status === 'queued');
+
+  const list = document.getElementById('runs-list');
+  if (!data.workflow_runs.length) {
+    list.innerHTML = '<p style="font-size:13px;color:#888;">No runs yet.</p>';
+    return false;
+  }
+
+  list.innerHTML = data.workflow_runs.map(r => `
+    <div class="run-item">
+      <div class="run-dot ${runDot(r.status, r.conclusion)}"></div>
+      <div class="run-name">${r.name} <span style="font-weight:400;color:#888;font-size:12px;">#${r.run_number}</span></div>
+      <div style="font-size:12px;color:#888;text-align:right;">
+        <div>${runLabel(r.status, r.conclusion)}</div>
+        <div>${timeAgo(r.updated_at)}</div>
+      </div>
+    </div>
+  `).join('');
+
+  return hasActive;
+}
+
+async function refreshStatus() {
+  showMsg('status-msg','Loading...','info');
+  const {pat} = cfg();
+  if (!pat) { showMsg('status-msg','Save settings first.','error'); return; }
+
+  const [commits, runs] = await Promise.all([
+    ghFetch('/commits?per_page=1'),
+    ghFetch('/actions/runs?per_page=1')
+  ]);
+
+  if (!commits) { showMsg('status-msg','Could not load — check token and repo.','error'); return; }
+
+  const msg = commits[0]?.commit?.message || '';
+  const rowMatch = msg.match(/([\d,]+)\s*rows/);
+  const scraped = rowMatch ? parseInt(rowMatch[1].replace(',','')) : 0;
+  const total = 14603;
+
+  document.getElementById('stat-scraped').textContent = scraped ? scraped.toLocaleString() : '—';
+  document.getElementById('stat-total').textContent = total.toLocaleString();
+  document.getElementById('stat-runs').textContent = runs?.total_count?.toLocaleString() || '—';
+
+  if (scraped) {
+    const pct = Math.min(100, Math.round(scraped / total * 100));
+    document.getElementById('progress-wrap').style.display = 'block';
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = scraped.toLocaleString() + ' / ' + total.toLocaleString();
+    document.getElementById('progress-pct').textContent = pct + '%';
+  }
+
+  const lastMsg = commits[0]?.commit?.message || '—';
+  const timeStr = commits[0]?.commit?.committer?.date ? timeAgo(commits[0].commit.committer.date) : '';
+  showMsg('status-msg', `Last update: ${lastMsg.substring(0,60)} (${timeStr})`, 'info');
+
+  await loadRuns();
+  loadFiles();
+}
+
+function startPolling() {
+  if (isPolling) return;
+  isPolling = true;
+  document.getElementById('poll-badge').style.display = 'inline-flex';
+  pollTimer = setInterval(async () => {
+    const hasActive = await loadRuns();
+    await refreshStatus();
+    if (!hasActive) stopPolling();
+  }, 15000);
+}
+
+function stopPolling() {
+  isPolling = false;
+  clearInterval(pollTimer);
+  pollTimer = null;
+  document.getElementById('poll-badge').style.display = 'none';
+}
+
+async function loadFiles() {
+  const {pat, repo} = cfg();
+  if (!pat || !repo) return;
+  const data = await ghFetch('/contents/');
+  if (!data) return;
+  const files = data.filter(f => f.name.endsWith('.xlsx') || f.name.endsWith('.csv')).sort((a,b) => b.name.localeCompare(a.name));
+  const list = document.getElementById('file-list');
+  if (!files.length) { list.innerHTML = '<p style="font-size:13px;color:#888;">No files yet.</p>'; return; }
+  list.innerHTML = files.map(f => {
+    const isNew = f.name.includes('new_');
+    const isMaster = f.name === 'gsmarena_devices.xlsx' || f.name === 'gsmarena_devices.csv';
+    const tag = isNew ? '<span class="tag tag-new">new devices</span>' : isMaster ? '<span class="tag tag-master">master</span>' : '';
+    return `<div class="dl-row">
+      <div><p class="dl-name"><i class="ti ti-file" style="font-size:15px;vertical-align:-2px;margin-right:6px;"></i>${f.name}${tag}</p><p class="dl-meta">${(f.size/1024).toFixed(0)} KB</p></div>
+      <button class="dl-btn" onclick="window.open('${f.download_url}','_blank')"><i class="ti ti-download"></i> Download</button>
+    </div>`;
+  }).join('');
+}
+
+async function triggerWorkflow(workflow, inputs, btnId, msgId) {
+  const {pat, repo} = cfg();
+  if (!pat) { showMsg(msgId,'Save settings first.','error'); return; }
+  const btn = document.getElementById(btnId);
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Triggering...';
+  try {
+    const r = await fetch(`${API}/repos/${repo}/actions/workflows/${workflow}/dispatches`, {
+      method: 'POST',
+      headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ref: 'main', inputs })
+    });
+    if (r.status === 204) {
+      showMsg(msgId, 'Started! Checking progress every 15 seconds...', 'success');
+      setTimeout(() => startPolling(), 3000);
+    } else {
+      showMsg(msgId, 'Failed — check your token has "workflow" permission.', 'error');
+    }
+  } catch(e) {
+    showMsg(msgId, 'Network error — check your connection.', 'error');
+  }
+  setTimeout(() => { btn.disabled = false; btn.innerHTML = orig; }, 5000);
+}
+
+function triggerCheckNew() { triggerWorkflow('check_new.yml', {}, 'btn-check-new', 'action-msg'); }
+function triggerLaunch() { triggerWorkflow('launch.yml', { num_chunks: '20' }, 'btn-launch', 'action-msg'); }
+
+window.addEventListener('load', () => {
+  const {pat, repo} = cfg();
+  if (pat) document.getElementById('pat').value = pat;
+  if (repo) document.getElementById('repo').value = repo;
+  if (pat && repo) { refreshStatus(); loadFiles(); }
+});
+</script>
+</body>
+</html>
