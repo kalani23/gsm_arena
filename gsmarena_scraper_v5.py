@@ -287,7 +287,29 @@ def save_outputs(results, base_name="gsmarena_devices"):
     rest = sorted([c for c in df.columns if c not in fp and c not in dp])
     df   = df[fp + dp + rest]
 
-    # merge with existing CSV
+    # save dated new-devices file — only this batch
+    date_str  = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    new_csv   = f"gsmarena_new_{date_str}.csv"
+    new_xlsx  = f"gsmarena_new_{date_str}.xlsx"
+
+    # if dated file already exists today, append to it
+    if Path(new_csv).exists():
+        try:
+            today = pd.read_csv(new_csv, encoding="utf-8-sig")
+            day_df = pd.concat([today, df], ignore_index=True)
+            day_df = day_df.drop_duplicates(subset=["URL"], keep="last")
+        except:
+            day_df = df
+    else:
+        day_df = df
+
+    day_df.to_csv(new_csv, index=False, encoding="utf-8-sig")
+    try:
+        day_df.to_excel(new_xlsx, index=False, engine="openpyxl")
+    except: pass
+    log.info(f"New devices file: {new_csv} ({len(day_df)} rows)")
+
+    # merge into master file
     csv_path = f"{base_name}.csv"
     if Path(csv_path).exists():
         try:
@@ -300,7 +322,7 @@ def save_outputs(results, base_name="gsmarena_devices"):
     try:
         df.to_excel(f"{base_name}.xlsx", index=False, engine="openpyxl")
     except: pass
-    log.info(f"Saved {len(df)} total rows")
+    log.info(f"Master file: {len(df)} total rows")
 
 
 def main():
@@ -311,16 +333,21 @@ def main():
 
     log.info(f"=== Chunk {chunk_id} | devices {chunk_start}-{chunk_end} ===")
 
-    # Load all devices
-    with open("discovered_devices.json", encoding="utf-8") as f:
-        all_devices = json.load(f)
-
     # Load seen
     seen = load_seen()
 
-    # Get this chunk's devices, filter already seen
+    # Load new_devices.json if exists (pre-filtered missing list from launcher)
+    # Fall back to discovered_devices.json for backwards compatibility
+    device_file = "new_devices.json" if Path("new_devices.json").exists() else "discovered_devices.json"
+    with open(device_file, encoding="utf-8") as f:
+        all_devices = json.load(f)
+
+    log.info(f"Using {device_file} with {len(all_devices)} devices")
+
+    # Get this chunk's slice — already filtered to missing only if using new_devices.json
     my_devices = all_devices[chunk_start:chunk_end]
-    todo       = [d for d in my_devices if d["url"] not in seen]
+    # Double-check against seen_ids in case of any overlap
+    todo = [d for d in my_devices if d["url"] not in seen]
 
     log.info(f"Chunk {chunk_id}: {len(my_devices)} assigned | {len(todo)} remaining")
 

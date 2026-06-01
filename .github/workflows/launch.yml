@@ -7,6 +7,8 @@ on:
         description: 'Number of parallel chunks (max 20 free / 256 paid)'
         required: true
         default: '20'
+  schedule:
+    - cron: '0 0 * * 0'  # every Sunday midnight — check for new devices
 
 jobs:
   launch:
@@ -93,4 +95,122 @@ jobs:
               time.sleep(1)  # small gap between dispatches
 
           print(f"All {len(chunks)} chunks launched!")
+          PYEOF
+
+      - name: Commit new_devices.json so chunk jobs can access it
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add new_devices.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Update new_devices.json for chunk jobs"
+          git push
+
+  # Run this weekly to find newly added devices
+  check_new:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests beautifulsoup4 pandas openpyxl
+
+      - name: Find new devices
+        env:
+          PYTHONUNBUFFERED: "1"
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+        run: |
+          python - << 'PYEOF'
+          import json, requests, re, time, random
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+
+          BASE_URL = "https://www.gsmarena.com"
+          UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+
+          session = requests.Session()
+          session.headers.update({"User-Agent": UA})
+
+          # Load existing device list
+          with open("discovered_devices.json") as f:
+              existing = json.load(f)
+          existing_urls = {d["url"] for d in existing}
+          print(f"Existing devices: {len(existing)}")
+
+          # Re-crawl all brand pages to find new devices
+          def get_brands():
+              r = session.get(f"{BASE_URL}/makers.php3", timeout=15)
+              soup = BeautifulSoup(r.text, "html.parser")
+              brands = []
+              for a in soup.select("div.st-text td a"):
+                  name = a.get_text(strip=True)
+                  name = re.sub(r"\s*\(.*?\)", "", name).strip()
+                  name = re.sub(r"\d+\s*devices?\s*$", "", name, flags=re.IGNORECASE).strip()
+                  brands.append((name, f"{BASE_URL}/{a['href']}"))
+              return brands
+
+          def get_devices(brand_name, brand_url):
+              devices, url = [], brand_url
+              while url:
+                  try:
+                      time.sleep(random.uniform(0.3, 0.8))
+                      r = session.get(url, timeout=15)
+                      if r.status_code != 200: break
+                      soup = BeautifulSoup(r.text, "html.parser")
+                      for li in soup.select("div.makers ul li"):
+                          a = li.find("a")
+                          if a:
+                              title = a.get("title", "") or a.get_text(strip=True)
+                              devices.append({"brand": brand_name, "title": title, "url": f"{BASE_URL}/{a['href']}"})
+                      next_a = soup.select_one("a.prevnextbutton[title='Next page']")
+                      url = f"{BASE_URL}/{next_a['href']}" if next_a else None
+                  except: break
+              return devices
+
+          # Find new devices
+          new_devices = []
+          for brand_name, brand_url in get_brands():
+              for d in get_devices(brand_name, brand_url):
+                  if d["url"] not in existing_urls:
+                      new_devices.append(d)
+                      print(f"NEW: {d['brand']} - {d['title']}")
+
+          print(f"\nFound {len(new_devices)} new devices")
+
+          if new_devices:
+              # Add to discovered_devices.json
+              updated = existing + new_devices
+              with open("discovered_devices.json", "w") as f:
+                  json.dump(updated, f, indent=2)
+
+              # Trigger scrape for new devices only
+              import os
+              pat  = os.environ["PAT_TOKEN"]
+              repo = os.environ["REPO"]
+              requests.post(
+                  f"https://api.github.com/repos/{repo}/dispatches",
+                  headers={"Authorization": f"token {pat}", "Accept": "application/vnd.github.v3+json"},
+                  json={"event_type": "scrape_chunk", "client_payload": {
+                      "chunk_id": "new",
+                      "chunk_start": str(len(existing)),
+                      "chunk_end": str(len(updated))
+                  }}
+              )
+              print("Triggered scrape for new devices")
+
+              # Commit updated discovery cache
+              import subprocess
+              subprocess.run(["git", "config", "user.name", "github-actions[bot]"])
+              subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"])
+              subprocess.run(["git", "add", "discovered_devices.json"])
+              subprocess.run(["git", "commit", "-m", f"Added {len(new_devices)} new devices to discovery cache"])
+              subprocess.run(["git", "push"])
+          else:
+              print("No new devices found")
           PYEOF
