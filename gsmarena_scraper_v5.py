@@ -328,7 +328,7 @@ class Worker:
         for attempt in range(retries):
             try:
                 # randomise delay — longer in no-proxy mode to avoid rate limits
-                delay = random.uniform(3.0, 6.0) if self.no_proxy else random.uniform(1.5, 4.0)
+                delay = random.uniform(0.5, 1.5)
                 time.sleep(delay)
                 # rotate headers on every request
                 self.session.headers.update(get_random_headers())
@@ -684,8 +684,7 @@ def main():
             log.warning(f"Could not load existing CSV: {e}")
 
     if getattr(args, 'no_proxy', False):
-        log.info("NO-PROXY MODE — direct connection, forcing 1 worker, 3-6s delay")
-        args.workers = 1
+        log.info(f"NO-PROXY MODE — direct connection, {args.workers} workers, 1.5-3s delay")
 
     log.info(f"Starting {args.workers} workers...")
     workers = {}
@@ -749,7 +748,7 @@ def main():
     counter_lock   = threading.Lock()
     consec_fails   = [0]          # consecutive 429/fail counter
     consec_lock    = threading.Lock()
-    FAIL_THRESHOLD = 20           # exit and let GH Actions retry with fresh IP
+    FAIL_THRESHOLD = 30           # exit and let GH Actions retry with fresh IP
     total          = len(new_devices)
 
     def scrape_task(worker_id, brand_name, device_title, device_url):
