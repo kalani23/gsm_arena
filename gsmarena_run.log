@@ -1852,3 +1852,40 @@
 2026-06-01 10:14:03,867 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:14:04,989 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:14:11,195 [INFO] Saved 4634 rows
+2026-06-01 10:14:44,816 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:14:44,817 [INFO] Already scraped: 4634
+2026-06-01 10:14:45,202 [INFO] Loaded 4634 existing rows
+2026-06-01 10:14:45,211 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:14:45,214 [INFO] Using cached device list
+2026-06-01 10:14:45,237 [INFO] Total: 14603 | New: 9969
+2026-06-01 10:14:45,736 [INFO] [1/9969] OK  Intex - Aqua Craze
+2026-06-01 10:14:45,770 [INFO] [2/9969] OK  iNQ - Cloud Q
+2026-06-01 10:14:45,782 [INFO] [3/9969] OK  Innostream - INNO 110
+2026-06-01 10:14:45,921 [INFO] [4/9969] OK  Intex - IRist Smartwatch
+2026-06-01 10:14:45,978 [INFO] [5/9969] OK  Intex - Aqua GenX
+2026-06-01 10:14:46,109 [INFO] [6/9969] OK  Intex - Aqua 4G+
+2026-06-01 10:14:46,144 [INFO] [7/9969] OK  Intex - Aqua Xtreme II
+2026-06-01 10:14:46,166 [INFO] [8/9969] OK  Intex - Aqua Y2 Remote
+2026-06-01 10:14:46,268 [INFO] [9/9969] OK  Intex - Aqua Xtreme
+2026-06-01 10:14:46,393 [INFO] [10/9969] OK  Intex - Aqua Star L
+2026-06-01 10:14:46,643 [INFO] [11/9969] OK  Intex - Aqua Power
+2026-06-01 10:14:46,908 [INFO] [12/9969] OK  Intex - Aqua 4.5E
+2026-06-01 10:14:47,417 [INFO] [13/9969] OK  itel - Zeno 100
+2026-06-01 10:14:47,770 [INFO] [14/9969] OK  itel - A200+
+2026-06-01 10:14:48,424 [INFO] [15/9969] OK  itel - A200
+2026-06-01 10:14:48,775 [INFO] [16/9969] OK  itel - City 200
+2026-06-01 10:14:49,741 [INFO] [17/9969] OK  Intex - Aqua Star 2
+2026-06-01 10:14:49,764 [INFO] [18/9969] OK  Intex - Aqua Power +
+2026-06-01 10:14:50,770 [INFO] [19/9969] OK  Intex - Aqua Speed
+2026-06-01 10:14:51,079 [INFO] [20/9969] OK  itel - A100 Pro
+2026-06-01 10:14:51,356 [INFO] [21/9969] OK  itel - VistaTab 30 Pro
+2026-06-01 10:14:52,232 [INFO] [22/9969] OK  itel - Zeno 20 Max
+2026-06-01 10:14:52,256 [INFO] [23/9969] OK  itel - VistaTab 30GT
+2026-06-01 10:14:52,709 [INFO] [24/9969] OK  itel - A100C
+2026-06-01 10:14:53,466 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:14:53,467 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:14:53,796 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:14:54,908 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:14:55,186 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:14:55,295 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:15:02,191 [INFO] Saved 4658 rows
