@@ -1992,3 +1992,37 @@
 2026-06-01 10:17:20,724 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:17:23,349 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:17:26,420 [INFO] Saved 4722 rows
+2026-06-01 10:18:02,152 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:18:02,153 [INFO] Already scraped: 4722
+2026-06-01 10:18:02,547 [INFO] Loaded 4722 existing rows
+2026-06-01 10:18:02,557 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:18:02,559 [INFO] Using cached device list
+2026-06-01 10:18:02,576 [INFO] Total: 14603 | New: 9881
+2026-06-01 10:18:03,448 [INFO] [1/9881] OK  Karbonn - Titanium Octane
+2026-06-01 10:18:03,495 [INFO] [2/9881] OK  Karbonn - Titanium Hexa
+2026-06-01 10:18:03,518 [INFO] [3/9881] OK  Karbonn - Titanium X
+2026-06-01 10:18:03,537 [INFO] [4/9881] OK  Karbonn - Titanium Wind W4
+2026-06-01 10:18:03,588 [INFO] [5/9881] OK  Karbonn - Titanium Mach Two S360
+2026-06-01 10:18:04,302 [INFO] [6/9881] OK  Karbonn - S9 Titanium
+2026-06-01 10:18:04,342 [INFO] [7/9881] OK  Karbonn - S7 Titanium
+2026-06-01 10:18:04,387 [INFO] [8/9881] OK  Karbonn - A12+
+2026-06-01 10:18:04,388 [INFO] [9/9881] OK  Karbonn - A16
+2026-06-01 10:18:04,416 [INFO] [10/9881] OK  Karbonn - Titanium S5 Plus
+2026-06-01 10:18:05,197 [INFO] [11/9881] OK  Karbonn - A34
+2026-06-01 10:18:05,225 [INFO] [12/9881] OK  Karbonn - A10
+2026-06-01 10:18:05,308 [INFO] [13/9881] OK  Karbonn - A37
+2026-06-01 10:18:05,767 [INFO] [14/9881] OK  Karbonn - A7 Star
+2026-06-01 10:18:06,061 [INFO] [15/9881] OK  Karbonn - A2+
+2026-06-01 10:18:06,704 [INFO] [16/9881] OK  Karbonn - A27 Retina
+2026-06-01 10:18:07,204 [INFO] [17/9881] OK  Karbonn - A4+
+2026-06-01 10:18:07,528 [INFO] [18/9881] OK  Karbonn - A6
+2026-06-01 10:18:08,052 [INFO] [19/9881] OK  Karbonn - A3
+2026-06-01 10:18:08,748 [INFO] [20/9881] OK  Karbonn - A4
+2026-06-01 10:18:08,946 [INFO] [21/9881] OK  Karbonn - A2
+2026-06-01 10:18:09,531 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:18:09,532 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:18:10,331 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:18:10,683 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:18:11,854 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:18:12,367 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:18:18,429 [INFO] Saved 4743 rows
