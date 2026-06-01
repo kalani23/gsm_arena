@@ -2,8 +2,21 @@ name: GSMArena Scraper
 
 on:
   workflow_dispatch:
+    inputs:
+      chunk_id:
+        description: 'Chunk ID (0-19)'
+        required: false
+        default: 'all'
+      chunk_start:
+        description: 'Start index for this chunk'
+        required: false
+        default: '0'
+      chunk_end:
+        description: 'End index for this chunk'
+        required: false
+        default: '0'
   repository_dispatch:
-    types: [resume_scrape]
+    types: [scrape_chunk]
 
 jobs:
   scrape:
@@ -21,11 +34,16 @@ jobs:
 
       - run: pip install requests beautifulsoup4 pandas openpyxl
 
-      - name: Run scraper
+      - name: Run scraper chunk
         id: scraper
         env:
           PYTHONUNBUFFERED: "1"
-        run: python gsmarena_scraper_v5.py --workers 5
+          CHUNK_ID:    ${{ github.event.client_payload.chunk_id || github.event.inputs.chunk_id || '0' }}
+          CHUNK_START: ${{ github.event.client_payload.chunk_start || github.event.inputs.chunk_start || '0' }}
+          CHUNK_END:   ${{ github.event.client_payload.chunk_end || github.event.inputs.chunk_end || '0' }}
+          PAT_TOKEN:   ${{ secrets.PAT_TOKEN }}
+          REPO:        ${{ github.repository }}
+        run: python gsmarena_scraper_v5.py
         continue-on-error: true
 
       - name: Commit progress
@@ -33,17 +51,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add gsmarena_devices.csv gsmarena_devices.xlsx seen_ids.json discovered_devices.json gsmarena_run.log 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Progress $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv 2>/dev/null || echo 0) rows"
-          git push
-
-      - name: Fresh IP — trigger new job immediately
-        if: steps.scraper.outcome == 'failure'
-        run: |
-          sleep 10
-          curl -s -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/dispatches \
-            -d '{"event_type":"resume_scrape"}'
-          echo "New job triggered"
+          git pull --rebase origin main || true
+          git add gsmarena_devices.csv gsmarena_devices.xlsx seen_ids.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Chunk ${{ github.event.client_payload.chunk_id || '0' }} progress $(date -u '+%H:%M UTC')"
+          git push || true

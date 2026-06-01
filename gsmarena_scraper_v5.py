@@ -1,11 +1,13 @@
 """
-GSMArena Scraper v5 - Aggressive mode
-- No delays
-- On first 429 -> save progress -> exit code 2
-- GitHub Actions triggers new job = new IP = resume
+GSMArena Scraper v5 - Chunk mode
+- Reads CHUNK_ID, CHUNK_START, CHUNK_END from environment
+- Scrapes only its assigned slice of devices
+- On first 429 -> saves progress -> exits code 2
+- Workflow triggers NEW job for same chunk with fresh IP
+- Resumes from seen_ids.json automatically
 """
 
-import re, sys, os, json, time, random, logging, threading, itertools, io, argparse
+import re, sys, os, json, time, random, logging, threading, io
 from datetime import datetime, timezone
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -22,7 +24,6 @@ USER_AGENTS = [
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
 ]
 
 def random_headers():
@@ -40,11 +41,8 @@ _stream = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace"
           if hasattr(sys.stdout, "buffer") else sys.stdout
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.FileHandler("gsmarena_run.log", encoding="utf-8"),
-        logging.StreamHandler(_stream),
-    ],
+    format="%(asctime)s %(message)s",
+    handlers=[logging.StreamHandler(_stream)],
 )
 log = logging.getLogger(__name__)
 
@@ -62,117 +60,72 @@ DERIVED_COLS = [
     "Price USD", "Price EUR", "Price GBP", "Price INR", "Price Raw",
 ]
 
-# ── Worker ────────────────────────────────────────────────────────────────────
-class Worker:
-    def __init__(self, worker_id):
-        self.worker_id = worker_id
-        self.lock      = threading.Lock()
-        self.session   = self._new_session()
+# ── HTTP ──────────────────────────────────────────────────────────────────────
+def make_session():
+    s = requests.Session()
+    s.headers.update(random_headers())
+    return s
 
-    def _new_session(self):
-        s = requests.Session()
-        s.headers.update(random_headers())
-        return s
-
-    def get(self, url):
-        try:
-            self.session.headers.update(random_headers())
-            r = self.session.get(url, timeout=15)
-            if r.status_code == 429:
-                log.warning(f"[W{self.worker_id}] 429 — triggering fresh IP exit")
-                return "BLOCKED"
-            if r.status_code != 200:
-                log.warning(f"[W{self.worker_id}] HTTP {r.status_code}")
-                return None
-            if any(p in r.text.lower() for p in ["incapsula", "access denied", "check the box"]):
-                log.warning(f"[W{self.worker_id}] Block detected")
-                return "BLOCKED"
-            return r.text
-        except Exception as e:
-            log.warning(f"[W{self.worker_id}] Error: {e}")
+def fetch(session, url):
+    try:
+        session.headers.update(random_headers())
+        r = session.get(url, timeout=15)
+        if r.status_code == 429:
+            return "BLOCKED"
+        if r.status_code != 200:
             return None
+        if any(p in r.text.lower() for p in ["incapsula", "access denied", "check the box"]):
+            return "BLOCKED"
+        return r.text
+    except Exception as e:
+        log.warning(f"Error: {e}")
+        return None
 
+# ── trigger new job for same chunk with fresh IP ──────────────────────────────
+def trigger_resume(chunk_id, chunk_start, chunk_end):
+    pat  = os.environ.get("PAT_TOKEN", "")
+    repo = os.environ.get("REPO", "")
+    if not pat or not repo:
+        log.warning("No PAT_TOKEN/REPO env — cannot trigger resume")
+        return
+    try:
+        import urllib.request
+        payload = json.dumps({
+            "event_type": "scrape_chunk",
+            "client_payload": {
+                "chunk_id":    str(chunk_id),
+                "chunk_start": str(chunk_start),
+                "chunk_end":   str(chunk_end),
+            }
+        }).encode()
+        req = urllib.request.Request(
+            f"https://api.github.com/repos/{repo}/dispatches",
+            data=payload,
+            headers={
+                "Accept":        "application/vnd.github.v3+json",
+                "Authorization": f"token {pat}",
+                "Content-Type":  "application/json",
+            },
+            method="POST"
+        )
+        urllib.request.urlopen(req)
+        log.info(f"Triggered resume for chunk {chunk_id} ({chunk_start}-{chunk_end})")
+    except Exception as e:
+        log.warning(f"Could not trigger resume: {e}")
 
 # ── state ─────────────────────────────────────────────────────────────────────
-_seen_lock      = threading.Lock()
-DISCOVERY_CACHE = "discovered_devices.json"
+_seen_lock = threading.Lock()
 
-def load_seen(path="seen_ids.json"):
-    if Path(path).exists():
-        with open(path, encoding="utf-8") as f:
+def load_seen():
+    if Path("seen_ids.json").exists():
+        with open("seen_ids.json", encoding="utf-8") as f:
             return set(json.load(f))
     return set()
 
-def save_seen(seen, path="seen_ids.json"):
+def save_seen(seen):
     with _seen_lock:
-        with open(path, "w", encoding="utf-8") as f:
+        with open("seen_ids.json", "w", encoding="utf-8") as f:
             json.dump(list(seen), f)
-
-def load_discovery_cache():
-    if Path(DISCOVERY_CACHE).exists():
-        try:
-            with open(DISCOVERY_CACHE, encoding="utf-8") as f:
-                data = json.load(f)
-            log.info(f"Loaded discovery cache: {len(data)} devices")
-            return [(d["brand"], d["title"], d["url"]) for d in data]
-        except: pass
-    return None
-
-def save_discovery_cache(devices):
-    data = [{"brand": b, "title": t, "url": u} for b, t, u in devices]
-    with open(DISCOVERY_CACHE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-
-def save_discovery_progress(completed, devices):
-    with open(DISCOVERY_CACHE + ".partial", "w", encoding="utf-8") as f:
-        json.dump({"completed_brands": list(completed),
-                   "devices": [{"brand": b, "title": t, "url": u} for b, t, u in devices]}, f)
-
-def load_discovery_progress():
-    path = DISCOVERY_CACHE + ".partial"
-    if Path(path).exists():
-        try:
-            with open(path, encoding="utf-8") as f:
-                data = json.load(f)
-            brands  = set(data.get("completed_brands", []))
-            devices = [(d["brand"], d["title"], d["url"]) for d in data.get("devices", [])]
-            log.info(f"Resuming discovery: {len(brands)} brands done")
-            return brands, devices
-        except: pass
-    return set(), []
-
-
-# ── discovery ─────────────────────────────────────────────────────────────────
-def get_all_brands(worker):
-    html = worker.get(f"{BASE_URL}/makers.php3")
-    if not html or html == "BLOCKED": return []
-    soup   = BeautifulSoup(html, "html.parser")
-    brands = []
-    for a in soup.select("div.st-text td a"):
-        name = a.get_text(strip=True)
-        name = re.sub(r"\s*\(.*?\)", "", name).strip()
-        name = re.sub(r"\d+\s*devices?\s*$", "", name, flags=re.IGNORECASE).strip()
-        brands.append((name, f"{BASE_URL}/{a['href']}"))
-    log.info(f"Found {len(brands)} brands")
-    return brands
-
-def get_devices_for_brand(worker, brand_name, brand_url):
-    devices, url, page = [], brand_url, 1
-    while url:
-        html = worker.get(url)
-        if not html or html == "BLOCKED": break
-        soup = BeautifulSoup(html, "html.parser")
-        for li in soup.select("div.makers ul li"):
-            a = li.find("a")
-            if a:
-                title = a.get("title", "") or a.get_text(strip=True)
-                devices.append((brand_name, title, f"{BASE_URL}/{a['href']}"))
-        next_a = soup.select_one("a.prevnextbutton[title='Next page']")
-        url = f"{BASE_URL}/{next_a['href']}" if next_a else None
-        page += 1
-    log.info(f"  {brand_name}: {len(devices)} devices")
-    return devices
-
 
 # ── parsers ───────────────────────────────────────────────────────────────────
 def parse_dimensions(raw):
@@ -224,11 +177,11 @@ def parse_release_year(status, announced):
         if m: return m.group(1)
     return ""
 
-def classify_device(model_name, display_size_str, soup):
+def classify_device(model_name, display_size_str):
     name = model_name.lower()
-    if any(k in name for k in ["watch", "band", "gear s", "galaxy fit", "amazfit", "mi band", "redmi band"]):
+    if any(k in name for k in ["watch", "band", "gear s", "galaxy fit", "amazfit", "mi band"]):
         return "Watch"
-    if any(k in name for k in ["tab ", "tablet", " pad", "mediapad", "matebook", "slate", "fire hd", "iconia"]):
+    if any(k in name for k in ["tab ", "tablet", " pad", "mediapad", "matebook", "iconia"]):
         return "Tablet"
     try:
         size = float(display_size_str)
@@ -237,7 +190,7 @@ def classify_device(model_name, display_size_str, soup):
     except: pass
     return "Phone"
 
-def extract_all_specs(soup):
+def extract_specs(soup):
     specs, section = {}, ""
     for table in soup.select("#specs-list table"):
         for row in table.select("tr"):
@@ -257,20 +210,19 @@ def extract_all_specs(soup):
             specs[col] = value
     return specs
 
-def scrape_device(worker, brand_name, device_title, url):
-    html = worker.get(url)
+def scrape_one(session, brand, title, url):
+    html = fetch(session, url)
+    if html == "BLOCKED": return None, True
     if not html: return None, False
-    if html == "BLOCKED": return None, True  # True = blocked
 
     soup          = BeautifulSoup(html, "html.parser")
     h1            = soup.find("h1", class_="specs-phone-name-title")
-    model_name    = h1.get_text(strip=True) if h1 else device_title
+    model_name    = h1.get_text(strip=True) if h1 else title
     note          = soup.find("p", attrs={"data-spec": "comment"})
     also_known_as = note.get_text(strip=True) if note else ""
-    dynamic       = extract_all_specs(soup)
+    dynamic       = extract_specs(soup)
 
     dim_raw   = dynamic.get("Body_Dimensions", "")
-    wt_raw    = dynamic.get("Body_Weight", "")
     ds_raw    = dynamic.get("Display_Size", "")
     dr_raw    = dynamic.get("Display_Resolution", "")
     mem_raw   = dynamic.get("Memory_Internal", "")
@@ -285,17 +237,15 @@ def scrape_device(worker, brand_name, device_title, url):
     announced = dynamic.get("Launch_Announced", "")
 
     dim_l, dim_w, dim_h   = parse_dimensions(dim_raw)
-    weight_g               = parse_weight(wt_raw)
     display_size_in        = parse_display_size(ds_raw)
     disp_w, disp_h, ppi   = parse_resolution(dr_raw)
     storage_opts, ram_opts = parse_memory(mem_raw)
-    bat_mah                = parse_battery(bat_raw)
 
     fixed = {
-        "Brand":                brand_name,
+        "Brand":                brand,
         "Model":                model_name,
         "Also Known As":        also_known_as,
-        "Device Type":          classify_device(model_name, display_size_in, soup),
+        "Device Type":          classify_device(model_name, display_size_in),
         "URL":                  url,
         "Scraped At":           datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "Announced":            announced,
@@ -304,7 +254,7 @@ def scrape_device(worker, brand_name, device_title, url):
         "Length mm":            dim_l,
         "Width mm":             dim_w,
         "Height mm":            dim_h,
-        "Weight g":             weight_g,
+        "Weight g":             parse_weight(dynamic.get("Body_Weight", "")),
         "Display Size inches":  display_size_in,
         "Resolution Width px":  disp_w,
         "Resolution Height px": disp_h,
@@ -313,7 +263,7 @@ def scrape_device(worker, brand_name, device_title, url):
         "RAM Options":          ram_opts,
         "Main Camera MP":       parse_camera_mp(c1_raw),
         "Selfie Camera MP":     parse_camera_mp(c2_raw),
-        "Battery mAh":          bat_mah,
+        "Battery mAh":          parse_battery(bat_raw),
         "SAR US Head W/kg":     parse_sar(sar_us, "head"),
         "SAR US Body W/kg":     parse_sar(sar_us, "body"),
         "SAR EU Head W/kg":     parse_sar(sar_eu, "head"),
@@ -329,135 +279,96 @@ def scrape_device(worker, brand_name, device_title, url):
         if k not in row: row[k] = v
     return row, False
 
-def save_outputs(results, base_name):
+def save_outputs(results, base_name="gsmarena_devices"):
+    if not results: return
     df   = pd.DataFrame(results)
     fp   = [c for c in FIXED_COLS   if c in df.columns]
     dp   = [c for c in DERIVED_COLS if c in df.columns and c not in fp]
     rest = sorted([c for c in df.columns if c not in fp and c not in dp])
     df   = df[fp + dp + rest]
-    df.to_csv(f"{base_name}.csv", index=False, encoding="utf-8-sig")
+
+    # merge with existing CSV
+    csv_path = f"{base_name}.csv"
+    if Path(csv_path).exists():
+        try:
+            existing = pd.read_csv(csv_path, encoding="utf-8-sig")
+            df = pd.concat([existing, df], ignore_index=True)
+            df = df.drop_duplicates(subset=["URL"], keep="last")
+        except: pass
+
+    df.to_csv(csv_path, index=False, encoding="utf-8-sig")
     try:
         df.to_excel(f"{base_name}.xlsx", index=False, engine="openpyxl")
-    except Exception as e:
-        log.warning(f"Excel save failed: {e}")
-    log.info(f"Saved {len(df)} rows")
+    except: pass
+    log.info(f"Saved {len(df)} total rows")
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--sample",       type=int, default=0)
-    parser.add_argument("--brand",        type=str, default="")
-    parser.add_argument("--output",       type=str, default="gsmarena_devices")
-    parser.add_argument("--workers",      type=int, default=5)
-    parser.add_argument("--full-refresh", action="store_true")
-    args = parser.parse_args()
+    # Read chunk config from environment
+    chunk_id    = int(os.environ.get("CHUNK_ID", "0"))
+    chunk_start = int(os.environ.get("CHUNK_START", "0"))
+    chunk_end   = int(os.environ.get("CHUNK_END", "0"))
 
-    log.info(f"=== GSMArena Scraper v5 | workers={args.workers} ===")
+    log.info(f"=== Chunk {chunk_id} | devices {chunk_start}-{chunk_end} ===")
 
-    seen      = set() if args.full_refresh else load_seen()
-    seen_path = "seen_ids.json"
-    log.info(f"Already scraped: {len(seen)}")
+    # Load all devices
+    with open("discovered_devices.json", encoding="utf-8") as f:
+        all_devices = json.load(f)
 
-    existing = []
-    csv_path = f"{args.output}.csv"
-    if Path(csv_path).exists() and not args.full_refresh:
-        try:
-            existing = pd.read_csv(csv_path, encoding="utf-8-sig").to_dict("records")
-            log.info(f"Loaded {len(existing)} existing rows")
-        except Exception as e:
-            log.warning(f"Could not load CSV: {e}")
+    # Load seen
+    seen = load_seen()
 
-    workers = {i: Worker(i) for i in range(args.workers)}
+    # Get this chunk's devices, filter already seen
+    my_devices = all_devices[chunk_start:chunk_end]
+    todo       = [d for d in my_devices if d["url"] not in seen]
 
-    # discovery
-    all_devices = None
-    if not args.full_refresh and not args.brand and not args.sample:
-        all_devices = load_discovery_cache()
+    log.info(f"Chunk {chunk_id}: {len(my_devices)} assigned | {len(todo)} remaining")
 
-    if all_devices is None:
-        completed, all_devices = (set(), []) if (args.full_refresh or args.brand) else load_discovery_progress()
-        brands = get_all_brands(workers[0])
-        if not brands:
-            log.error("Could not fetch brand list.")
-            sys.exit(1)
-        if args.brand:
-            brands = [(n, u) for n, u in brands if args.brand.lower() in n.lower()]
-        brands_to_do = [(n, u) for n, u in brands if n not in completed]
-        for brand_name, brand_url in brands_to_do:
-            devs = get_devices_for_brand(workers[0], brand_name, brand_url)
-            all_devices.extend(devs)
-            completed.add(brand_name)
-            save_discovery_progress(completed, all_devices)
-            if args.sample and len(all_devices) >= args.sample:
-                all_devices = all_devices[:args.sample]
-                break
-        if not args.brand and not args.sample:
-            save_discovery_cache(all_devices)
-            try: Path(DISCOVERY_CACHE + ".partial").unlink()
-            except: pass
-    else:
-        log.info("Using cached device list")
-
-    new_devices = [(b, t, u) for b, t, u in all_devices if u not in seen]
-    log.info(f"Total: {len(all_devices)} | New: {len(new_devices)}")
-
-    if not new_devices:
-        log.info("Nothing new to scrape.")
+    if not todo:
+        log.info(f"Chunk {chunk_id} already complete!")
         return
 
-    results      = list(existing)
-    results_lock = threading.Lock()
-    counter      = [0]
-    counter_lock = threading.Lock()
-    stop_event   = threading.Event()
-    total        = len(new_devices)
-    worker_cycle = itertools.cycle(range(args.workers))
+    session  = make_session()
+    results  = []
+    seen_new = set()
 
-    def scrape_task(worker_id, brand_name, device_title, device_url):
-        if stop_event.is_set():
-            return
-        worker = workers[worker_id]
-        row, blocked = scrape_device(worker, brand_name, device_title, device_url)
+    for i, device in enumerate(todo, 1):
+        row, blocked = scrape_one(session, device["brand"], device["title"], device["url"])
 
         if blocked:
-            if not stop_event.is_set():
-                stop_event.set()
-                log.warning("BLOCKED — saving progress and exiting for fresh IP")
-                with results_lock:
-                    save_outputs(results, args.output)
-                save_seen(seen, seen_path)
-                os._exit(2)
-            return
-
-        with counter_lock:
-            counter[0] += 1
-            n = counter[0]
+            log.warning(f"Chunk {chunk_id} BLOCKED at device {i}/{len(todo)} — triggering resume with fresh IP")
+            # save what we have
+            if results:
+                save_outputs(results)
+                seen.update(seen_new)
+                save_seen(seen)
+            # trigger new job for this same chunk
+            trigger_resume(chunk_id, chunk_start, chunk_end)
+            os._exit(2)
 
         if row:
-            with results_lock:
-                results.append(row)
-            with _seen_lock:
-                seen.add(device_url)
-            log.info(f"[{n}/{total}] OK  {brand_name} - {device_title}")
-            if n % 100 == 0:
-                with results_lock:
-                    save_outputs(results, args.output)
-                save_seen(seen, seen_path)
-                log.info(f"Checkpoint {n} saved")
+            results.append(row)
+            seen_new.add(device["url"])
+            log.info(f"[Chunk {chunk_id}] [{i}/{len(todo)}] OK  {device['brand']} - {device['title']}")
         else:
-            log.warning(f"[{n}/{total}] FAIL {device_url}")
+            log.warning(f"[Chunk {chunk_id}] [{i}/{len(todo)}] FAIL {device['url']}")
 
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        futures = [
-            executor.submit(scrape_task, next(worker_cycle), b, t, u)
-            for b, t, u in new_devices
-        ]
-        for f in as_completed(futures):
-            pass
+        # checkpoint every 50
+        if i % 50 == 0:
+            save_outputs(results)
+            seen.update(seen_new)
+            save_seen(seen)
+            results  = []
+            seen_new = set()
+            log.info(f"Chunk {chunk_id} checkpoint at {i}")
 
-    save_outputs(results, args.output)
-    save_seen(seen, seen_path)
-    log.info(f"=== Done === New: {len(results) - len(existing)}")
+    # final save
+    if results:
+        save_outputs(results)
+        seen.update(seen_new)
+        save_seen(seen)
+
+    log.info(f"=== Chunk {chunk_id} DONE ===")
 
 
 if __name__ == "__main__":

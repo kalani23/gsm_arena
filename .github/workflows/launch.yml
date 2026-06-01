@@ -1,0 +1,96 @@
+name: Launch All Chunks
+
+on:
+  workflow_dispatch:
+    inputs:
+      num_chunks:
+        description: 'Number of parallel chunks (max 20 free / 256 paid)'
+        required: true
+        default: '20'
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests beautifulsoup4 pandas openpyxl
+
+      - name: Calculate chunks and fire all jobs
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+          NUM_CHUNKS: ${{ github.event.inputs.num_chunks }}
+        run: |
+          python - << 'PYEOF'
+          import json, math, os, time
+          import requests
+
+          pat       = os.environ["PAT_TOKEN"]
+          repo      = os.environ["REPO"]
+          n_chunks  = int(os.environ["NUM_CHUNKS"])
+
+          # Load discovered devices
+          with open("discovered_devices.json") as f:
+              all_devices = json.load(f)
+
+          # Load seen
+          seen = set()
+          try:
+              with open("seen_ids.json") as f:
+                  seen = set(json.load(f))
+          except: pass
+
+          # Filter to new only
+          new_devices = [d for d in all_devices if d["url"] not in seen]
+          print(f"Total remaining: {len(new_devices)}")
+
+          if not new_devices:
+              print("Nothing to scrape!")
+              exit(0)
+
+          # Split into chunks
+          chunk_size = math.ceil(len(new_devices) / n_chunks)
+          chunks = []
+          for i in range(n_chunks):
+              start = i * chunk_size
+              end   = min(start + chunk_size, len(new_devices))
+              if start < len(new_devices):
+                  chunks.append({"id": i, "start": start, "end": end})
+
+          print(f"Launching {len(chunks)} chunks of ~{chunk_size} devices each")
+
+          # Fire each chunk as a separate workflow dispatch
+          headers = {
+              "Accept":        "application/vnd.github.v3+json",
+              "Authorization": f"token {pat}",
+          }
+
+          for chunk in chunks:
+              payload = {
+                  "event_type": "scrape_chunk",
+                  "client_payload": {
+                      "chunk_id":    str(chunk["id"]),
+                      "chunk_start": str(chunk["start"]),
+                      "chunk_end":   str(chunk["end"]),
+                  }
+              }
+              r = requests.post(
+                  f"https://api.github.com/repos/{repo}/dispatches",
+                  headers=headers,
+                  json=payload
+              )
+              if r.status_code == 204:
+                  print(f"Chunk {chunk['id']} launched ({chunk['start']}-{chunk['end']})")
+              else:
+                  print(f"Chunk {chunk['id']} FAILED: {r.status_code} {r.text}")
+              time.sleep(1)  # small gap between dispatches
+
+          print(f"All {len(chunks)} chunks launched!")
+          PYEOF
