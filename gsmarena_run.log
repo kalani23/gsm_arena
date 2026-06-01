@@ -2061,3 +2061,37 @@
 2026-06-01 10:19:02,696 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:19:07,128 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:19:10,680 [INFO] Saved 4765 rows
+2026-06-01 10:19:48,210 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:19:48,211 [INFO] Already scraped: 4765
+2026-06-01 10:19:48,515 [INFO] Loaded 4765 existing rows
+2026-06-01 10:19:48,522 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:19:48,525 [INFO] Using cached device list
+2026-06-01 10:19:48,544 [INFO] Total: 14603 | New: 9838
+2026-06-01 10:19:49,764 [INFO] [1/9838] OK  Karbonn - A1+
+2026-06-01 10:19:49,781 [INFO] [2/9838] OK  Karbonn - A21
+2026-06-01 10:19:49,815 [INFO] [3/9838] OK  Karbonn - KT62
+2026-06-01 10:19:49,816 [INFO] [4/9838] OK  Karbonn - K36+ Jumbo Mini
+2026-06-01 10:19:49,835 [INFO] [5/9838] OK  Karbonn - K102+ Flair
+2026-06-01 10:19:50,550 [INFO] [6/9838] OK  Karbonn - A15
+2026-06-01 10:19:50,585 [INFO] [7/9838] OK  Karbonn - A9+
+2026-06-01 10:19:50,617 [INFO] [8/9838] OK  Karbonn - K101+ Media Champ
+2026-06-01 10:19:50,617 [INFO] [9/9838] OK  Karbonn - K11+
+2026-06-01 10:19:50,620 [INFO] [10/9838] OK  Karbonn - K440
+2026-06-01 10:19:51,389 [INFO] [11/9838] OK  Karbonn - A30
+2026-06-01 10:19:51,408 [INFO] [12/9838] OK  Kyocera - DuraForce Pro 3
+2026-06-01 10:19:51,461 [INFO] [13/9838] OK  Kyocera - DuraForce Ultra
+2026-06-01 10:19:52,158 [INFO] [14/9838] OK  Kyocera - DuraForce XD
+2026-06-01 10:19:52,386 [INFO] [15/9838] OK  Kyocera - DuraSport UW
+2026-06-01 10:19:52,918 [INFO] [16/9838] OK  Kyocera - Hydro Life
+2026-06-01 10:19:53,524 [INFO] [17/9838] OK  Kyocera - Brigadier
+2026-06-01 10:19:53,927 [INFO] [18/9838] OK  Kyocera - DuraForce
+2026-06-01 10:19:54,286 [INFO] [19/9838] OK  Kyocera - Hydro Elite
+2026-06-01 10:19:54,882 [INFO] [20/9838] OK  Kyocera - Torque E6710
+2026-06-01 10:19:55,230 [INFO] [21/9838] OK  Kyocera - DuraForce Pro 2
+2026-06-01 10:19:55,944 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:19:55,945 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:19:56,342 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:19:57,458 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:19:57,765 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:19:58,539 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:20:03,190 [INFO] Saved 4786 rows
