@@ -2095,3 +2095,37 @@
 2026-06-01 10:19:57,765 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:19:58,539 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:20:03,190 [INFO] Saved 4786 rows
+2026-06-01 10:20:35,889 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:20:35,891 [INFO] Already scraped: 4786
+2026-06-01 10:20:36,291 [INFO] Loaded 4786 existing rows
+2026-06-01 10:20:36,300 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:20:36,303 [INFO] Using cached device list
+2026-06-01 10:20:36,322 [INFO] Total: 14603 | New: 9817
+2026-06-01 10:20:37,042 [INFO] [1/9817] OK  Kyocera - DuraSlate
+2026-06-01 10:20:37,069 [INFO] [2/9817] OK  Kyocera - Rise C5155
+2026-06-01 10:20:37,099 [INFO] [3/9817] OK  Kyocera - Hydro C5170
+2026-06-01 10:20:37,144 [INFO] [4/9817] OK  Kyocera - Hydro Xtrm
+2026-06-01 10:20:37,176 [INFO] [5/9817] OK  Kyocera - DuraForce Pro
+2026-06-01 10:20:37,670 [INFO] [6/9817] OK  Kyocera - Milano C5121
+2026-06-01 10:20:37,740 [INFO] [7/9817] OK  Kyocera - Milano C5120
+2026-06-01 10:20:37,747 [INFO] [8/9817] OK  Kyocera - Presto S1350
+2026-06-01 10:20:37,759 [INFO] [9/9817] OK  Kyocera - Echo
+2026-06-01 10:20:37,787 [INFO] [10/9817] OK  Kyocera - Brio
+2026-06-01 10:20:38,327 [INFO] [11/9817] OK  Kyocera - E4600
+2026-06-01 10:20:38,353 [INFO] [12/9817] OK  Kyocera - E3500
+2026-06-01 10:20:38,912 [INFO] [13/9817] OK  Kyocera - S1600
+2026-06-01 10:20:39,318 [INFO] [14/9817] OK  Kyocera - DuraMax
+2026-06-01 10:20:39,511 [INFO] [15/9817] OK  Kyocera - TG 200
+2026-06-01 10:20:39,954 [INFO] [16/9817] OK  Kyocera - E2500
+2026-06-01 10:20:40,593 [INFO] [17/9817] OK  Lava - Bold N2 Pro
+2026-06-01 10:20:41,166 [INFO] [18/9817] OK  Lava - Bold N2 Lite
+2026-06-01 10:20:41,733 [INFO] [19/9817] OK  Lava - Shark 2
+2026-06-01 10:20:42,256 [INFO] [20/9817] OK  Lava - Yuva Star 3
+2026-06-01 10:20:42,723 [INFO] [21/9817] OK  Lava - Blaze Duo 3
+2026-06-01 10:20:43,202 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:20:43,203 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:20:43,961 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:20:44,439 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:20:45,454 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:20:45,472 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:20:52,065 [INFO] Saved 4807 rows
