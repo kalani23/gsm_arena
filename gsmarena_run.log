@@ -2129,3 +2129,38 @@
 2026-06-01 10:20:45,454 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:20:45,472 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:20:52,065 [INFO] Saved 4807 rows
+2026-06-01 10:21:27,143 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:21:27,144 [INFO] Already scraped: 4807
+2026-06-01 10:21:27,546 [INFO] Loaded 4807 existing rows
+2026-06-01 10:21:27,556 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:21:27,558 [INFO] Using cached device list
+2026-06-01 10:21:27,575 [INFO] Total: 14603 | New: 9796
+2026-06-01 10:21:28,161 [INFO] [1/9796] OK  Lava - Play Max
+2026-06-01 10:21:28,213 [INFO] [2/9796] OK  Kyocera - Solo E4000
+2026-06-01 10:21:28,214 [INFO] [3/9796] OK  Kyocera - DuraCore E4210
+2026-06-01 10:21:28,252 [INFO] [4/9796] OK  Lava - Agni 4
+2026-06-01 10:21:28,281 [INFO] [5/9796] OK  Lava - Bold N1
+2026-06-01 10:21:28,781 [INFO] [6/9796] OK  Lava - Blaze Amoled 2
+2026-06-01 10:21:28,813 [INFO] [7/9796] OK  Lava - Storm Lite
+2026-06-01 10:21:28,864 [INFO] [8/9796] OK  Lava - Blaze Dragon
+2026-06-01 10:21:28,895 [INFO] [9/9796] OK  Lava - Play Ultra
+2026-06-01 10:21:28,967 [INFO] [10/9796] OK  Lava - Storm Play
+2026-06-01 10:21:29,211 [INFO] [11/9796] OK  Lava - Bold N1 Pro
+2026-06-01 10:21:29,242 [INFO] [12/9796] OK  Lava - Bold N1 4G
+2026-06-01 10:21:29,883 [INFO] [13/9796] OK  Lava - Prowatch V1
+2026-06-01 10:21:30,495 [INFO] [14/9796] OK  Lava - Yuva Star 2
+2026-06-01 10:21:30,925 [INFO] [15/9796] OK  Lava - Shark 4G
+2026-06-01 10:21:31,124 [INFO] [16/9796] OK  Lava - Blaze Duo
+2026-06-01 10:21:31,706 [INFO] [17/9796] OK  Lava - Yuva 4
+2026-06-01 10:21:32,347 [INFO] [18/9796] OK  Lava - Blaze 3 5G
+2026-06-01 10:21:32,712 [INFO] [19/9796] OK  Lava - Yuva Star
+2026-06-01 10:21:33,214 [INFO] [20/9796] OK  Lava - Blaze X
+2026-06-01 10:21:33,824 [INFO] [21/9796] OK  Lava - Agni 3
+2026-06-01 10:21:34,322 [INFO] [22/9796] OK  Lava - Prowatch ZN
+2026-06-01 10:21:34,647 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:21:34,648 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:21:35,612 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:21:36,036 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:21:36,568 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:21:40,597 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:21:43,602 [INFO] Saved 4829 rows
