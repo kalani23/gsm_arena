@@ -1649,3 +1649,66 @@
 2026-06-01 10:09:44,887 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:09:47,906 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:09:51,284 [INFO] Saved 4497 rows
+2026-06-01 10:10:25,532 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:10:25,534 [INFO] Already scraped: 4497
+2026-06-01 10:10:25,909 [INFO] Loaded 4497 existing rows
+2026-06-01 10:10:25,919 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:10:25,921 [INFO] Using cached device list
+2026-06-01 10:10:25,943 [INFO] Total: 14603 | New: 10106
+2026-06-01 10:10:26,516 [INFO] [1/10106] OK  Infinix - Smart 8 Pro
+2026-06-01 10:10:26,584 [INFO] [2/10106] OK  Infinix - Note 30
+2026-06-01 10:10:26,615 [INFO] [3/10106] OK  Infinix - Note 40
+2026-06-01 10:10:26,636 [INFO] [4/10106] OK  Infinix - Note 30 5G
+2026-06-01 10:10:26,664 [INFO] [5/10106] OK  Infinix - Zero 30
+2026-06-01 10:10:27,211 [INFO] [6/10106] OK  Infinix - Hot 30i (50 MP)
+2026-06-01 10:10:27,229 [INFO] [7/10106] OK  Infinix - Note 30i
+2026-06-01 10:10:27,312 [INFO] [8/10106] OK  Infinix - Hot 30i
+2026-06-01 10:10:27,342 [INFO] [9/10106] OK  Infinix - Smart 7 HD
+2026-06-01 10:10:27,345 [INFO] [10/10106] OK  Infinix - Hot 30
+2026-06-01 10:10:27,652 [INFO] [11/10106] OK  Infinix - Smart 7
+2026-06-01 10:10:27,677 [INFO] [12/10106] OK  Infinix - Smart 7 (India)
+2026-06-01 10:10:28,343 [INFO] [13/10106] OK  Infinix - Note 12 (2023)
+2026-06-01 10:10:28,995 [INFO] [14/10106] OK  Infinix - Hot 20 Play
+2026-06-01 10:10:29,304 [INFO] [15/10106] OK  Infinix - Hot 20
+2026-06-01 10:10:29,630 [INFO] [16/10106] OK  Infinix - Hot 20 5G
+2026-06-01 10:10:30,421 [INFO] [17/10106] OK  Infinix - Zero 20
+2026-06-01 10:10:30,835 [INFO] [18/10106] OK  Infinix - Hot 20i
+2026-06-01 10:10:31,055 [INFO] [19/10106] OK  Infinix - Note 12i 2022
+2026-06-01 10:10:32,074 [INFO] [20/10106] OK  Infinix - Zero Ultra
+2026-06-01 10:10:32,099 [INFO] [21/10106] OK  Infinix - Zero 5G 2023
+2026-06-01 10:10:32,737 [INFO] [22/10106] OK  Infinix - Note 12 Pro 5G
+2026-06-01 10:10:33,019 [INFO] [23/10106] OK  Infinix - Hot 20S
+2026-06-01 10:10:33,661 [INFO] [24/10106] OK  Infinix - Hot 11s NFC
+2026-06-01 10:10:34,100 [INFO] [25/10106] OK  Infinix - Note 12 5G
+2026-06-01 10:10:34,874 [INFO] [26/10106] OK  Infinix - Smart 6 Plus (India)
+2026-06-01 10:10:35,328 [INFO] [27/10106] OK  Infinix - Hot 12 Play
+2026-06-01 10:10:35,644 [INFO] [28/10106] OK  Infinix - Hot 12 Play NFC
+2026-06-01 10:10:36,242 [INFO] [29/10106] OK  Infinix - Note 12i
+2026-06-01 10:10:36,665 [INFO] [30/10106] OK  Infinix - Note 12
+2026-06-01 10:10:37,441 [INFO] [31/10106] OK  Infinix - Hot 12
+2026-06-01 10:10:37,572 [INFO] [32/10106] OK  Infinix - Note 12 VIP
+2026-06-01 10:10:38,391 [INFO] [33/10106] OK  Infinix - Hot 12 Pro
+2026-06-01 10:10:38,809 [INFO] [34/10106] OK  Infinix - Hot 12i
+2026-06-01 10:10:39,238 [INFO] [35/10106] OK  Infinix - Zero 5G
+2026-06-01 10:10:39,663 [INFO] [36/10106] OK  Infinix - Smart 5 Pro
+2026-06-01 10:10:39,981 [INFO] [37/10106] OK  Infinix - Hot 11 2022
+2026-06-01 10:10:40,899 [INFO] [38/10106] OK  Infinix - Note 12 G96
+2026-06-01 10:10:41,024 [INFO] [39/10106] OK  Infinix - Smart 6 HD
+2026-06-01 10:10:41,481 [INFO] [40/10106] OK  Infinix - Note 11s
+2026-06-01 10:10:42,371 [INFO] [41/10106] OK  Infinix - Hot 11 Play
+2026-06-01 10:10:42,555 [INFO] [42/10106] OK  Infinix - Note 11
+2026-06-01 10:10:43,374 [INFO] [43/10106] OK  Infinix - Note 11i
+2026-06-01 10:10:43,840 [INFO] [44/10106] OK  Infinix - Note 11 Pro
+2026-06-01 10:10:44,267 [INFO] [45/10106] OK  Infinix - Zero X Pro
+2026-06-01 10:10:44,799 [INFO] [46/10106] OK  Infinix - Zero X
+2026-06-01 10:10:45,058 [INFO] [47/10106] OK  Infinix - Hot 11s
+2026-06-01 10:10:45,972 [INFO] [48/10106] OK  Infinix - Hot 11
+2026-06-01 10:10:46,011 [INFO] [49/10106] OK  Infinix - Smart 6
+2026-06-01 10:10:47,183 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:10:47,184 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:10:47,320 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:10:47,332 [WARNING] [W4] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /infinix_note_12_pro-11695.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f2b582f4ed0>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:10:47,333 [WARNING] [50/10106] FAIL https://www.gsmarena.com/infinix_note_12_pro-11695.php
+2026-06-01 10:10:47,448 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:10:48,540 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:10:55,912 [INFO] Saved 4546 rows
