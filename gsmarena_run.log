@@ -693,3 +693,57 @@
 2026-06-01 08:41:31,342 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
 2026-06-01 08:41:38,220 [INFO] Saved 3805 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
 2026-06-01 08:41:38,224 [WARNING] Exiting with code 2 — GitHub Actions will trigger new job with fresh IP
+2026-06-01 08:42:16,367 [INFO] === GSMArena Scraper v5 | workers=10 | direct connection ===
+2026-06-01 08:42:16,368 [INFO] Already scraped: 3805 | full_refresh=False
+2026-06-01 08:42:16,709 [INFO] Loaded 3805 existing rows
+2026-06-01 08:42:16,710 [INFO] Started 10 workers
+2026-06-01 08:42:16,721 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 08:42:16,724 [INFO] Using cached device list
+2026-06-01 08:42:16,762 [INFO] Total: 14603 | New: 10798
+2026-06-01 08:42:16,762 [INFO] Scraping 10798 devices with 10 workers...
+2026-06-01 08:42:17,764 [INFO] [1/10798] OK  Huawei - MatePad 5G
+2026-06-01 08:42:17,792 [INFO] [2/10798] OK  Huawei - MatePad T 10s
+2026-06-01 08:42:17,836 [INFO] [3/10798] OK  Huawei - Mate 40 RS Porsche Design
+2026-06-01 08:42:17,866 [INFO] [4/10798] OK  Huawei - Enjoy 20 Plus 5G
+2026-06-01 08:42:18,001 [INFO] [5/10798] OK  Huawei - Y7a
+2026-06-01 08:42:18,127 [INFO] [6/10798] OK  Huawei - Enjoy Tablet 2
+2026-06-01 08:42:18,157 [INFO] [7/10798] OK  Huawei - Watch Fit
+2026-06-01 08:42:18,196 [INFO] [8/10798] OK  Huawei - Enjoy 20 5G
+2026-06-01 08:42:18,216 [INFO] [9/10798] OK  Huawei - nova 8 SE
+2026-06-01 08:42:18,249 [INFO] [10/10798] OK  Huawei - nova 7 SE 5G Youth
+2026-06-01 08:42:19,196 [INFO] [11/10798] OK  Huawei - P Smart S
+2026-06-01 08:42:19,231 [INFO] [12/10798] OK  Huawei - Enjoy Z 5G
+2026-06-01 08:42:19,531 [INFO] [13/10798] OK  Huawei - MatePad T8
+2026-06-01 08:42:20,205 [INFO] [14/10798] OK  Huawei - Y6p
+2026-06-01 08:42:20,237 [INFO] [15/10798] OK  Huawei - Y8p
+2026-06-01 08:42:21,228 [INFO] [16/10798] OK  Huawei - nova 7 5G
+2026-06-01 08:42:21,594 [INFO] [17/10798] OK  Huawei - nova 7 SE
+2026-06-01 08:42:21,965 [INFO] [18/10798] OK  Huawei - MatePad 10.4
+2026-06-01 08:42:22,571 [INFO] [19/10798] OK  Huawei - Y5p
+2026-06-01 08:42:22,735 [INFO] [20/10798] OK  Huawei - Watch GT 2e
+2026-06-01 08:42:23,221 [INFO] [21/10798] OK  Huawei - Children's Watch 4X
+2026-06-01 08:42:23,869 [INFO] [22/10798] OK  Huawei - Enjoy 10e
+2026-06-01 08:42:24,183 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:24,865 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:25,348 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:25,912 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:26,179 [WARNING] [W3] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:27,020 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:27,228 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:27,945 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:28,272 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:28,823 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:28,825 [WARNING] 10 consecutive failures — saving progress, exiting for fresh IP
+2026-06-01 08:42:29,489 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:30,071 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:30,264 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:31,546 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:31,670 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:31,677 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:33,764 [WARNING] [W6] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /huawei_p30_pro_new_edition-10219.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f3e5cb0fa90>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:42:33,764 [WARNING] [W8] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /huawei_y8s-10227.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f3e7850f4d0>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:42:34,680 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:36,428 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:36,788 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:42:46,323 [INFO] Saved 3827 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:42:46,332 [WARNING] Exiting with code 2 — GitHub Actions will trigger new job with fresh IP
