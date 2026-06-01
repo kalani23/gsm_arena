@@ -1540,3 +1540,38 @@
 2026-06-01 10:07:19,085 [WARNING] [W3] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /icemobile_tropical_3-5116.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f9501c6e390>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
 2026-06-01 10:07:19,095 [WARNING] [45/10220] FAIL https://www.gsmarena.com/icemobile_tropical_3-5116.php
 2026-06-01 10:07:24,500 [INFO] Saved 4427 rows
+2026-06-01 10:07:59,695 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:07:59,696 [INFO] Already scraped: 4427
+2026-06-01 10:07:59,986 [INFO] Loaded 4427 existing rows
+2026-06-01 10:07:59,994 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:07:59,996 [INFO] Using cached device list
+2026-06-01 10:08:00,014 [INFO] Total: 14603 | New: 10176
+2026-06-01 10:08:00,845 [INFO] [1/10176] OK  Icemobile - Wave
+2026-06-01 10:08:00,873 [INFO] [2/10176] OK  Icemobile - Shine
+2026-06-01 10:08:00,899 [INFO] [3/10176] OK  Icemobile - Tropical 3
+2026-06-01 10:08:00,905 [INFO] [4/10176] OK  Icemobile - Storm
+2026-06-01 10:08:00,910 [INFO] [5/10176] OK  Icemobile - Tornado II
+2026-06-01 10:08:01,426 [INFO] [6/10176] OK  Icemobile - Viento II
+2026-06-01 10:08:01,439 [INFO] [7/10176] OK  Icemobile - Crystal
+2026-06-01 10:08:01,466 [INFO] [8/10176] OK  Icemobile - Tropical
+2026-06-01 10:08:01,520 [INFO] [9/10176] OK  Icemobile - Rock
+2026-06-01 10:08:01,521 [INFO] [10/10176] OK  Icemobile - Comet II
+2026-06-01 10:08:02,604 [INFO] [11/10176] OK  Icemobile - Rainbow II
+2026-06-01 10:08:02,621 [INFO] [12/10176] OK  Icemobile - Twilight
+2026-06-01 10:08:03,752 [INFO] [13/10176] OK  Icemobile - Rainbow
+2026-06-01 10:08:03,788 [INFO] [14/10176] OK  Infinix - Hot 70
+2026-06-01 10:08:03,792 [INFO] [15/10176] OK  Infinix - Note 60 Ultra
+2026-06-01 10:08:04,470 [INFO] [16/10176] OK  Icemobile - Tropical II
+2026-06-01 10:08:04,717 [INFO] [17/10176] OK  Infinix - GT 50 Pro
+2026-06-01 10:08:05,496 [INFO] [18/10176] OK  Infinix - Note 60 Pro
+2026-06-01 10:08:05,842 [INFO] [19/10176] OK  Infinix - Xpad 20 Pro
+2026-06-01 10:08:06,189 [INFO] [20/10176] OK  Infinix - Hot 60i
+2026-06-01 10:08:06,973 [INFO] [21/10176] OK  Infinix - Note Edge
+2026-06-01 10:08:07,123 [INFO] [22/10176] OK  Infinix - Smart 20
+2026-06-01 10:08:07,708 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:08:07,709 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:08:08,004 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:08:08,813 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:08:09,120 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:08:10,214 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:08:14,383 [INFO] Saved 4449 rows
