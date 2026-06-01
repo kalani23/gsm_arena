@@ -2392,3 +2392,38 @@
 2026-06-01 10:26:39,167 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:26:39,678 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:26:46,801 [INFO] Saved 4977 rows
+2026-06-01 10:27:19,368 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:27:19,370 [INFO] Already scraped: 4977
+2026-06-01 10:27:19,783 [INFO] Loaded 4977 existing rows
+2026-06-01 10:27:19,792 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:27:19,794 [INFO] Using cached device list
+2026-06-01 10:27:19,812 [INFO] Total: 14603 | New: 9626
+2026-06-01 10:27:20,448 [INFO] [1/9626] OK  Lava - Iris 405+
+2026-06-01 10:27:20,513 [INFO] [2/9626] OK  Lava - 3G 402
+2026-06-01 10:27:20,541 [INFO] [3/9626] OK  Lava - Iris 506Q
+2026-06-01 10:27:20,542 [INFO] [4/9626] OK  Lava - 3G 402+
+2026-06-01 10:27:20,561 [INFO] [5/9626] OK  Lava - Iris 352 Flair
+2026-06-01 10:27:21,088 [INFO] [6/9626] OK  LeEco - Le Pro 3 AI Edition
+2026-06-01 10:27:21,116 [INFO] [7/9626] OK  Lava - Iris 503
+2026-06-01 10:27:21,163 [INFO] [8/9626] OK  LeEco - Le Pro3 Elite
+2026-06-01 10:27:21,279 [INFO] [9/9626] OK  LeEco - Le S3
+2026-06-01 10:27:21,312 [INFO] [10/9626] OK  LeEco - Le Pro3
+2026-06-01 10:27:21,831 [INFO] [11/9626] OK  LeEco - Le 2 Pro
+2026-06-01 10:27:21,912 [INFO] [12/9626] OK  LeEco - Le Max 2
+2026-06-01 10:27:22,083 [INFO] [13/9626] OK  LeEco - Le 1s
+2026-06-01 10:27:22,561 [INFO] [14/9626] OK  Lenovo - Idea Tab Pro Gen 2
+2026-06-01 10:27:23,081 [INFO] [15/9626] OK  Lenovo - Legion Y700 (Gen 5)
+2026-06-01 10:27:23,732 [INFO] [16/9626] OK  Lenovo - Idea Tab Plus
+2026-06-01 10:27:24,109 [INFO] [17/9626] OK  LeEco - Le Max
+2026-06-01 10:27:24,544 [INFO] [18/9626] OK  Lenovo - Legion Y70 (2026)
+2026-06-01 10:27:25,201 [INFO] [19/9626] OK  Lenovo - Tab
+2026-06-01 10:27:25,661 [INFO] [20/9626] OK  Lenovo - Yoga Tab
+2026-06-01 10:27:26,306 [INFO] [21/9626] OK  Lenovo - Legion Y700 (Gen 4)
+2026-06-01 10:27:26,805 [INFO] [22/9626] OK  Lenovo - Idea Tab Pro
+2026-06-01 10:27:26,891 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:27:26,892 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:27:27,899 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:27:28,446 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:27:28,951 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:27:29,434 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:27:36,034 [INFO] Saved 4999 rows
