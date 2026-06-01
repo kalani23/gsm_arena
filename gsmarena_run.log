@@ -1482,3 +1482,61 @@
 2026-06-01 10:06:20,208 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:06:20,338 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:06:26,997 [INFO] Saved 4383 rows
+2026-06-01 10:06:57,542 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:06:57,543 [INFO] Already scraped: 4383
+2026-06-01 10:06:57,897 [INFO] Loaded 4383 existing rows
+2026-06-01 10:06:57,907 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:06:57,910 [INFO] Using cached device list
+2026-06-01 10:06:57,931 [INFO] Total: 14603 | New: 10220
+2026-06-01 10:06:58,746 [INFO] [1/10220] OK  Icemobile - Rock 2.4
+2026-06-01 10:06:58,771 [INFO] [2/10220] OK  Icemobile - Prime 5.0 Plus
+2026-06-01 10:06:58,815 [INFO] [3/10220] OK  i-mobile - 101
+2026-06-01 10:06:58,825 [INFO] [4/10220] OK  i-mobile - 315
+2026-06-01 10:06:58,837 [INFO] [5/10220] OK  Icemobile - Gravity 4.0
+2026-06-01 10:06:59,461 [INFO] [6/10220] OK  Icemobile - Apollo 3G
+2026-06-01 10:06:59,494 [INFO] [7/10220] OK  Icemobile - Prime 4.0
+2026-06-01 10:06:59,510 [INFO] [8/10220] OK  Icemobile - Prime 3.5
+2026-06-01 10:06:59,525 [INFO] [9/10220] OK  Icemobile - Apollo Touch 3G
+2026-06-01 10:06:59,584 [INFO] [10/10220] OK  Icemobile - Prime 5.5
+2026-06-01 10:07:00,205 [INFO] [11/10220] OK  Icemobile - G7 Pro
+2026-06-01 10:07:00,241 [INFO] [12/10220] OK  Icemobile - Charm II
+2026-06-01 10:07:00,935 [INFO] [13/10220] OK  Icemobile - Gravity Pro
+2026-06-01 10:07:00,957 [INFO] [14/10220] OK  Icemobile - Sol III
+2026-06-01 10:07:01,264 [INFO] [15/10220] OK  Icemobile - G10
+2026-06-01 10:07:02,292 [INFO] [16/10220] OK  Icemobile - G3
+2026-06-01 10:07:02,311 [INFO] [17/10220] OK  Icemobile - Prime 4.5
+2026-06-01 10:07:03,007 [INFO] [18/10220] OK  Icemobile - G7
+2026-06-01 10:07:03,667 [INFO] [19/10220] OK  Icemobile - G5
+2026-06-01 10:07:03,742 [INFO] [20/10220] OK  Icemobile - Hydro
+2026-06-01 10:07:04,496 [INFO] [21/10220] OK  Icemobile - Quattro
+2026-06-01 10:07:04,758 [INFO] [22/10220] OK  Icemobile - Rock Bold
+2026-06-01 10:07:05,322 [INFO] [23/10220] OK  Icemobile - Submarine
+2026-06-01 10:07:05,795 [INFO] [24/10220] OK  Icemobile - G2
+2026-06-01 10:07:06,376 [INFO] [25/10220] OK  Icemobile - Prime Plus
+2026-06-01 10:07:06,814 [INFO] [26/10220] OK  Icemobile - Charm
+2026-06-01 10:07:07,258 [INFO] [27/10220] OK  Icemobile - Sol II
+2026-06-01 10:07:07,915 [INFO] [28/10220] OK  Icemobile - Apollo
+2026-06-01 10:07:08,363 [INFO] [29/10220] OK  Icemobile - Blizzard
+2026-06-01 10:07:08,746 [INFO] [30/10220] OK  Icemobile - Diamond Dust
+2026-06-01 10:07:09,651 [INFO] [31/10220] OK  Icemobile - Apollo Touch
+2026-06-01 10:07:09,824 [INFO] [32/10220] OK  Icemobile - Rock Lite
+2026-06-01 10:07:10,748 [INFO] [33/10220] OK  Icemobile - Prime
+2026-06-01 10:07:11,104 [INFO] [34/10220] OK  Icemobile - Acqua
+2026-06-01 10:07:11,532 [INFO] [35/10220] OK  Icemobile - Twilight II
+2026-06-01 10:07:11,742 [INFO] [36/10220] OK  Icemobile - Cenior
+2026-06-01 10:07:12,222 [INFO] [37/10220] OK  Icemobile - Fuego
+2026-06-01 10:07:13,236 [INFO] [38/10220] OK  Icemobile - Rock Mini
+2026-06-01 10:07:13,283 [INFO] [39/10220] OK  Icemobile - Hurricane II
+2026-06-01 10:07:13,734 [INFO] [40/10220] OK  Icemobile - Sol
+2026-06-01 10:07:14,246 [INFO] [41/10220] OK  Icemobile - Gprime Extreme
+2026-06-01 10:07:15,071 [INFO] [42/10220] OK  Icemobile - Twister
+2026-06-01 10:07:15,515 [INFO] [43/10220] OK  Icemobile - Clima II
+2026-06-01 10:07:15,940 [INFO] [44/10220] OK  Icemobile - Flurry II
+2026-06-01 10:07:16,349 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:07:16,350 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:07:16,724 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:07:17,301 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:07:18,160 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:07:19,085 [WARNING] [W3] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /icemobile_tropical_3-5116.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f9501c6e390>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:07:19,095 [WARNING] [45/10220] FAIL https://www.gsmarena.com/icemobile_tropical_3-5116.php
+2026-06-01 10:07:24,500 [INFO] Saved 4427 rows
