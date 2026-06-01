@@ -1,76 +1,39 @@
 """
-GSMArena Full Scraper v5 - GitHub Actions Mode
-===============================================
-- No proxies — pure direct connection
-- 10 parallel workers
-- Exits with code 2 when blocked (10 consecutive fails)
-- GitHub Actions triggers new job = new IP = auto resume
-- Incremental via seen_ids.json + discovered_devices.json
-
-Usage:
-    python gsmarena_scraper_v5.py                    # run
-    python gsmarena_scraper_v5.py --workers 10       # 10 parallel workers
-    python gsmarena_scraper_v5.py --full-refresh     # rescrape everything
-    python gsmarena_scraper_v5.py --sample 50        # test 50 devices
-    python gsmarena_scraper_v5.py --brand samsung    # single brand
+GSMArena Scraper v5 - Aggressive mode
+- No delays
+- On first 429 -> save progress -> exit code 2
+- GitHub Actions triggers new job = new IP = resume
 """
 
 import re, sys, os, json, time, random, logging, threading, itertools, io, argparse
 from datetime import datetime, timezone
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
 BASE_URL = "https://www.gsmarena.com"
 
-# Force desktop site — mobile UAs can redirect to m.gsmarena.com with different HTML
-DESKTOP_REFERER = "https://www.gsmarena.com/"
-
-BLOCK_PHRASES = [
-    "check the box if you are human", "request unsuccessful",
-    "incapsula", "access denied", "verify you are", "error 15",
-]
-
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
-    "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-]
-
-REFERERS = [
-    "https://www.gsmarena.com/",
-    "https://www.google.com/",
-    "https://www.google.com/search?q=gsmarena",
-    "https://www.bing.com/",
-    "",  # direct
-    "",  # direct weighted higher
 ]
 
 def random_headers():
-    ua  = random.choice(USER_AGENTS)
-    ref = random.choice(REFERERS)
-    h   = {
-        "User-Agent":                ua,
-        "Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language":           random.choice(["en-US,en;q=0.9", "en-GB,en;q=0.9"]),
-        "Accept-Encoding":           "gzip, deflate, br",
-        "Connection":                "keep-alive",
-        "Upgrade-Insecure-Requests": "1",
-        "Cache-Control":             "max-age=0",
+    return {
+        "User-Agent":      random.choice(USER_AGENTS),
+        "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection":      "keep-alive",
+        "Cache-Control":   "max-age=0",
     }
-    if ref:
-        h["Referer"] = ref
-    return h
 
 # ── logging ───────────────────────────────────────────────────────────────────
 _stream = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace") \
@@ -99,48 +62,35 @@ DERIVED_COLS = [
     "Price USD", "Price EUR", "Price GBP", "Price INR", "Price Raw",
 ]
 
-# ── Worker — pure direct requests, no proxy ───────────────────────────────────
+# ── Worker ────────────────────────────────────────────────────────────────────
 class Worker:
     def __init__(self, worker_id):
-        self.worker_id     = worker_id
-        self.lock          = threading.Lock()
-        self._req_count    = 0
-        self.session       = self._new_session()
+        self.worker_id = worker_id
+        self.lock      = threading.Lock()
+        self.session   = self._new_session()
 
     def _new_session(self):
         s = requests.Session()
         s.headers.update(random_headers())
         return s
 
-    def get(self, url, retries=3):
-        for attempt in range(retries):
-            try:
-                time.sleep(random.uniform(0.3, 0.8))
-                self.session.headers.update(random_headers())
-                r = self.session.get(url, timeout=15)
-
-                if r.status_code == 429:
-                    log.warning(f"[W{self.worker_id}] 429 — returning None immediately for fresh IP trigger")
-                    return None  # immediately signal failure — don't retry, let exit logic handle it
-
-                if r.status_code != 200:
-                    log.warning(f"[W{self.worker_id}] HTTP {r.status_code} attempt {attempt+1}")
-                    time.sleep(3)
-                    continue
-
-                html = r.text
-                if any(p in html.lower() for p in BLOCK_PHRASES):
-                    log.warning(f"[W{self.worker_id}] Block detected — returning None")
-                    return None
-
-                return html
-
-            except Exception as e:
-                log.warning(f"[W{self.worker_id}] Error attempt {attempt+1}: {e}")
-                time.sleep(2)
-
-        log.error(f"[W{self.worker_id}] All retries failed: {url}")
-        return None
+    def get(self, url):
+        try:
+            self.session.headers.update(random_headers())
+            r = self.session.get(url, timeout=15)
+            if r.status_code == 429:
+                log.warning(f"[W{self.worker_id}] 429 — triggering fresh IP exit")
+                return "BLOCKED"
+            if r.status_code != 200:
+                log.warning(f"[W{self.worker_id}] HTTP {r.status_code}")
+                return None
+            if any(p in r.text.lower() for p in ["incapsula", "access denied", "check the box"]):
+                log.warning(f"[W{self.worker_id}] Block detected")
+                return "BLOCKED"
+            return r.text
+        except Exception as e:
+            log.warning(f"[W{self.worker_id}] Error: {e}")
+            return None
 
 
 # ── state ─────────────────────────────────────────────────────────────────────
@@ -172,12 +122,11 @@ def save_discovery_cache(devices):
     data = [{"brand": b, "title": t, "url": u} for b, t, u in devices]
     with open(DISCOVERY_CACHE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
-    log.info(f"Discovery cache saved: {len(devices)} devices")
 
 def save_discovery_progress(completed, devices):
     with open(DISCOVERY_CACHE + ".partial", "w", encoding="utf-8") as f:
         json.dump({"completed_brands": list(completed),
-                   "devices": [{"brand": b, "title": t, "url": u} for b, t, u in devices]}, f, indent=2)
+                   "devices": [{"brand": b, "title": t, "url": u} for b, t, u in devices]}, f)
 
 def load_discovery_progress():
     path = DISCOVERY_CACHE + ".partial"
@@ -185,9 +134,9 @@ def load_discovery_progress():
         try:
             with open(path, encoding="utf-8") as f:
                 data = json.load(f)
-            brands = set(data.get("completed_brands", []))
+            brands  = set(data.get("completed_brands", []))
             devices = [(d["brand"], d["title"], d["url"]) for d in data.get("devices", [])]
-            log.info(f"Resuming discovery: {len(brands)} brands done, {len(devices)} devices")
+            log.info(f"Resuming discovery: {len(brands)} brands done")
             return brands, devices
         except: pass
     return set(), []
@@ -196,7 +145,7 @@ def load_discovery_progress():
 # ── discovery ─────────────────────────────────────────────────────────────────
 def get_all_brands(worker):
     html = worker.get(f"{BASE_URL}/makers.php3")
-    if not html: return []
+    if not html or html == "BLOCKED": return []
     soup   = BeautifulSoup(html, "html.parser")
     brands = []
     for a in soup.select("div.st-text td a"):
@@ -211,7 +160,7 @@ def get_devices_for_brand(worker, brand_name, brand_url):
     devices, url, page = [], brand_url, 1
     while url:
         html = worker.get(url)
-        if not html: break
+        if not html or html == "BLOCKED": break
         soup = BeautifulSoup(html, "html.parser")
         for li in soup.select("div.makers ul li"):
             a = li.find("a")
@@ -219,12 +168,9 @@ def get_devices_for_brand(worker, brand_name, brand_url):
                 title = a.get("title", "") or a.get_text(strip=True)
                 devices.append((brand_name, title, f"{BASE_URL}/{a['href']}"))
         next_a = soup.select_one("a.prevnextbutton[title='Next page']")
-        if next_a:
-            url = f"{BASE_URL}/{next_a['href']}"
-            page += 1
-        else:
-            break
-    log.info(f"  {brand_name}: {len(devices)} devices ({page} pages)")
+        url = f"{BASE_URL}/{next_a['href']}" if next_a else None
+        page += 1
+    log.info(f"  {brand_name}: {len(devices)} devices")
     return devices
 
 
@@ -289,12 +235,6 @@ def classify_device(model_name, display_size_str, soup):
         if size < 2.0: return "Watch"
         if size >= 7.0: return "Tablet"
     except: pass
-    sensors = (soup.find(attrs={"data-spec": "sensors"}) or soup.new_tag("x")).get_text(" ", strip=True).lower()
-    bat_el  = soup.find(attrs={"data-spec": "batdescription1"})
-    bat_raw = bat_el.get_text(" ", strip=True) if bat_el else ""
-    bat_m   = re.search(r"([\d]+)\s*mAh", bat_raw)
-    if ("ecg" in sensors or "heart rate" in sensors) and bat_m and int(bat_m.group(1)) < 500:
-        return "Watch"
     return "Phone"
 
 def extract_all_specs(soup):
@@ -319,7 +259,9 @@ def extract_all_specs(soup):
 
 def scrape_device(worker, brand_name, device_title, url):
     html = worker.get(url)
-    if not html: return None
+    if not html: return None, False
+    if html == "BLOCKED": return None, True  # True = blocked
+
     soup          = BeautifulSoup(html, "html.parser")
     h1            = soup.find("h1", class_="specs-phone-name-title")
     model_name    = h1.get_text(strip=True) if h1 else device_title
@@ -385,7 +327,7 @@ def scrape_device(worker, brand_name, device_title, url):
     row = {**fixed}
     for k, v in dynamic.items():
         if k not in row: row[k] = v
-    return row
+    return row, False
 
 def save_outputs(results, base_name):
     df   = pd.DataFrame(results)
@@ -393,18 +335,12 @@ def save_outputs(results, base_name):
     dp   = [c for c in DERIVED_COLS if c in df.columns and c not in fp]
     rest = sorted([c for c in df.columns if c not in fp and c not in dp])
     df   = df[fp + dp + rest]
-
-    # CSV — always overwrite with full dataset (fast, safe)
     df.to_csv(f"{base_name}.csv", index=False, encoding="utf-8-sig")
-
-    # Excel — only write if under 50k rows (Excel has 1M row limit but large files are slow)
-    xlsx_path = f"{base_name}.xlsx"
     try:
-        df.to_excel(xlsx_path, index=False, engine="openpyxl")
+        df.to_excel(f"{base_name}.xlsx", index=False, engine="openpyxl")
     except Exception as e:
-        log.warning(f"Excel save failed: {e} — CSV is the primary output")
-
-    log.info(f"Saved {len(df)} rows to {base_name}.csv + {base_name}.xlsx")
+        log.warning(f"Excel save failed: {e}")
+    log.info(f"Saved {len(df)} rows")
 
 
 def main():
@@ -416,11 +352,11 @@ def main():
     parser.add_argument("--full-refresh", action="store_true")
     args = parser.parse_args()
 
-    log.info(f"=== GSMArena Scraper v5 | workers={args.workers} | direct connection ===")
+    log.info(f"=== GSMArena Scraper v5 | workers={args.workers} ===")
 
     seen      = set() if args.full_refresh else load_seen()
     seen_path = "seen_ids.json"
-    log.info(f"Already scraped: {len(seen)} | full_refresh={args.full_refresh}")
+    log.info(f"Already scraped: {len(seen)}")
 
     existing = []
     csv_path = f"{args.output}.csv"
@@ -432,10 +368,6 @@ def main():
             log.warning(f"Could not load CSV: {e}")
 
     workers = {i: Worker(i) for i in range(args.workers)}
-    log.info(f"Started {args.workers} workers")
-
-    worker_cycle = itertools.cycle(range(args.workers))
-    w0           = workers[0]
 
     # discovery
     all_devices = None
@@ -444,16 +376,15 @@ def main():
 
     if all_devices is None:
         completed, all_devices = (set(), []) if (args.full_refresh or args.brand) else load_discovery_progress()
-        brands = get_all_brands(w0)
+        brands = get_all_brands(workers[0])
         if not brands:
             log.error("Could not fetch brand list.")
             sys.exit(1)
         if args.brand:
             brands = [(n, u) for n, u in brands if args.brand.lower() in n.lower()]
         brands_to_do = [(n, u) for n, u in brands if n not in completed]
-        log.info(f"Discovery: {len(brands_to_do)} brands remaining")
         for brand_name, brand_url in brands_to_do:
-            devs = get_devices_for_brand(w0, brand_name, brand_url)
+            devs = get_devices_for_brand(workers[0], brand_name, brand_url)
             all_devices.extend(devs)
             completed.add(brand_name)
             save_discovery_progress(completed, all_devices)
@@ -474,59 +405,48 @@ def main():
         log.info("Nothing new to scrape.")
         return
 
-    results        = list(existing)
-    results_lock   = threading.Lock()
-    errors         = []
-    errors_lock    = threading.Lock()
-    counter        = [0]
-    counter_lock   = threading.Lock()
-    consec_fails   = [0]
-    consec_lock    = threading.Lock()
-    FAIL_THRESHOLD = 10
-    total          = len(new_devices)
-    stop_event     = threading.Event()  # signals all threads to stop
+    results      = list(existing)
+    results_lock = threading.Lock()
+    counter      = [0]
+    counter_lock = threading.Lock()
+    stop_event   = threading.Event()
+    total        = len(new_devices)
+    worker_cycle = itertools.cycle(range(args.workers))
 
     def scrape_task(worker_id, brand_name, device_title, device_url):
         if stop_event.is_set():
-            return  # already stopping — skip
+            return
         worker = workers[worker_id]
-        try:
-            row = scrape_device(worker, brand_name, device_title, device_url)
-            with counter_lock:
-                counter[0] += 1
-                n = counter[0]
-            if row:
-                with consec_lock:
-                    consec_fails[0] = 0
-                with results_lock:
-                    results.append(row)
-                with _seen_lock:
-                    seen.add(device_url)
-                log.info(f"[{n}/{total}] OK  {brand_name} - {device_title}")
-                if n % 100 == 0:
-                    with results_lock:
-                        save_outputs(results, args.output)
-                    save_seen(seen, seen_path)
-                    log.info(f"Checkpoint {n} saved")
-            else:
-                with errors_lock:
-                    errors.append(device_url)
-                with consec_lock:
-                    consec_fails[0] += 1
-                    if consec_fails[0] >= FAIL_THRESHOLD and not stop_event.is_set():
-                        stop_event.set()
-                        log.warning(f"{FAIL_THRESHOLD} consecutive failures — saving progress, exiting for fresh IP")
-                        # save immediately then hard kill — don't wait for other threads
-                        with results_lock:
-                            save_outputs(results, args.output)
-                        save_seen(seen, seen_path)
-                        os._exit(2)  # hard kill entire process including all threads
-        except Exception as e:
-            with errors_lock:
-                errors.append(device_url)
-            log.error(f"ERROR {device_url}: {e}")
+        row, blocked = scrape_device(worker, brand_name, device_title, device_url)
 
-    log.info(f"Scraping {total} devices with {args.workers} workers...")
+        if blocked:
+            if not stop_event.is_set():
+                stop_event.set()
+                log.warning("BLOCKED — saving progress and exiting for fresh IP")
+                with results_lock:
+                    save_outputs(results, args.output)
+                save_seen(seen, seen_path)
+                os._exit(2)
+            return
+
+        with counter_lock:
+            counter[0] += 1
+            n = counter[0]
+
+        if row:
+            with results_lock:
+                results.append(row)
+            with _seen_lock:
+                seen.add(device_url)
+            log.info(f"[{n}/{total}] OK  {brand_name} - {device_title}")
+            if n % 100 == 0:
+                with results_lock:
+                    save_outputs(results, args.output)
+                save_seen(seen, seen_path)
+                log.info(f"Checkpoint {n} saved")
+        else:
+            log.warning(f"[{n}/{total}] FAIL {device_url}")
+
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
         futures = [
             executor.submit(scrape_task, next(worker_cycle), b, t, u)
@@ -537,12 +457,7 @@ def main():
 
     save_outputs(results, args.output)
     save_seen(seen, seen_path)
-
-    if stop_event.is_set():
-        log.warning("Exiting with code 2 — GitHub Actions will trigger new job with fresh IP")
-        sys.exit(2)
-
-    log.info(f"=== Done === New: {len(results) - len(existing)} | Errors: {len(errors)}")
+    log.info(f"=== Done === New: {len(results) - len(existing)}")
 
 
 if __name__ == "__main__":
