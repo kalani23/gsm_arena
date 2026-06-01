@@ -150,3 +150,89 @@
 2026-06-01 08:31:22,949 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
 2026-06-01 08:31:29,466 [INFO] Saved 3555 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
 2026-06-01 08:31:29,471 [WARNING] Exiting with code 2 — GitHub Actions will trigger new job with fresh IP
+2026-06-01 08:32:06,555 [INFO] === GSMArena Scraper v5 | workers=10 | direct connection ===
+2026-06-01 08:32:06,556 [INFO] Already scraped: 3555 | full_refresh=False
+2026-06-01 08:32:06,844 [INFO] Loaded 3555 existing rows
+2026-06-01 08:32:06,845 [INFO] Started 10 workers
+2026-06-01 08:32:06,855 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 08:32:06,858 [INFO] Using cached device list
+2026-06-01 08:32:06,878 [INFO] Total: 14603 | New: 11048
+2026-06-01 08:32:06,878 [INFO] Scraping 11048 devices with 10 workers...
+2026-06-01 08:32:07,836 [INFO] [1/11048] OK  HTC - DROID ERIS
+2026-06-01 08:32:07,846 [INFO] [2/11048] OK  HTC - Paradise
+2026-06-01 08:32:07,888 [INFO] [3/11048] OK  HTC - HD2
+2026-06-01 08:32:07,901 [INFO] [4/11048] OK  HTC - Tattoo
+2026-06-01 08:32:07,929 [INFO] [5/11048] OK  HTC - Wildfire
+2026-06-01 08:32:07,992 [INFO] [6/11048] OK  HTC - Schubert
+2026-06-01 08:32:08,028 [INFO] [7/11048] OK  HTC - Hero
+2026-06-01 08:32:08,348 [INFO] [8/11048] OK  HTC - Desire
+2026-06-01 08:32:08,372 [INFO] [9/11048] OK  HTC - Hero CDMA
+2026-06-01 08:32:08,398 [INFO] [10/11048] OK  HTC - Ozone
+2026-06-01 08:32:08,826 [INFO] [11/11048] OK  HTC - Magic
+2026-06-01 08:32:08,850 [INFO] [12/11048] OK  HTC - Touch Pro2
+2026-06-01 08:32:09,512 [INFO] [13/11048] OK  HTC - MAX 4G
+2026-06-01 08:32:09,838 [INFO] [14/11048] OK  HTC - Tilt2
+2026-06-01 08:32:10,374 [INFO] [15/11048] OK  HTC - Touch 3G
+2026-06-01 08:32:10,883 [INFO] [16/11048] OK  HTC - Touch Pro2 CDMA
+2026-06-01 08:32:11,320 [INFO] [17/11048] OK  HTC - S740
+2026-06-01 08:32:11,844 [INFO] [18/11048] OK  HTC - Touch Pro CDMA
+2026-06-01 08:32:12,328 [INFO] [19/11048] OK  HTC - Touch Diamond2 CDMA
+2026-06-01 08:32:12,989 [INFO] [20/11048] OK  HTC - Touch Diamond2
+2026-06-01 08:32:13,313 [INFO] [21/11048] OK  HTC - Snap
+2026-06-01 08:32:13,996 [INFO] [22/11048] OK  HTC - Advantage X7510
+2026-06-01 08:32:14,347 [INFO] [23/11048] OK  HTC - P3470
+2026-06-01 08:32:14,782 [INFO] [24/11048] OK  HTC - Touch Viva
+2026-06-01 08:32:15,353 [INFO] [25/11048] OK  HTC - Touch Dual
+2026-06-01 08:32:16,072 [INFO] [26/11048] OK  HTC - Touch Cruise
+2026-06-01 08:32:16,413 [INFO] [27/11048] OK  HTC - S730
+2026-06-01 08:32:17,130 [INFO] [28/11048] OK  HTC - Touch HD T8285
+2026-06-01 08:32:17,547 [INFO] [29/11048] OK  HTC - Touch Diamond
+2026-06-01 08:32:17,864 [INFO] [30/11048] OK  HTC - P6500
+2026-06-01 08:32:18,361 [INFO] [31/11048] OK  HTC - S630
+2026-06-01 08:32:18,814 [INFO] [32/11048] OK  HTC - P6300
+2026-06-01 08:32:19,689 [INFO] [33/11048] OK  HTC - S710
+2026-06-01 08:32:19,883 [INFO] [34/11048] OK  HTC - Shift
+2026-06-01 08:32:20,325 [INFO] [35/11048] OK  HTC - TyTN II
+2026-06-01 08:32:20,926 [INFO] [36/11048] OK  HTC - Touch
+2026-06-01 08:32:21,355 [INFO] [37/11048] OK  HTC - Advantage X7500
+2026-06-01 08:32:22,005 [INFO] [38/11048] OK  HTC - P3400
+2026-06-01 08:32:22,390 [INFO] [39/11048] OK  HTC - P3600
+2026-06-01 08:32:23,150 [INFO] [40/11048] OK  HTC - P3300
+2026-06-01 08:32:23,671 [INFO] [41/11048] OK  HTC - P3350
+2026-06-01 08:32:23,804 [INFO] [42/11048] OK  HTC - Touch Pro
+2026-06-01 08:32:24,140 [WARNING] [W7] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_dream-2665.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f1b6c4fb690>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:32:24,149 [WARNING] [W8] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_touch_cruise_09-2654.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f1b6c312e50>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:32:24,538 [WARNING] [W1] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_touch_hd-2525.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f1b6c304e90>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:32:24,610 [INFO] [43/11048] OK  HTC - MTeoR
+2026-06-01 08:32:24,876 [INFO] [44/11048] OK  HTC - P3600i
+2026-06-01 08:32:25,628 [INFO] [45/11048] OK  HTC - One (M8i)
+2026-06-01 08:32:25,835 [INFO] [46/11048] OK  HTC - TyTN
+2026-06-01 08:32:26,347 [INFO] [47/11048] OK  HTC - P4350
+2026-06-01 08:32:26,918 [INFO] [48/11048] OK  HTC - Dream
+2026-06-01 08:32:27,245 [WARNING] [W7] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_touch_diamond_cdma-3484.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f1b58b7bc90>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:32:27,296 [INFO] [49/11048] OK  HTC - Touch Cruise 09
+2026-06-01 08:32:27,892 [INFO] [50/11048] OK  HTC - Tiara
+2026-06-01 08:32:28,296 [INFO] [51/11048] OK  HTC - S620
+2026-06-01 08:32:28,871 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:29,440 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:29,741 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:30,336 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:30,727 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:31,223 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:31,737 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:32,249 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:33,078 [WARNING] [W3] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:33,272 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:33,273 [WARNING] 10 consecutive failures — saving progress, exiting for fresh IP
+2026-06-01 08:32:33,717 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:34,361 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:34,741 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:35,451 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:36,153 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:36,537 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:38,524 [WARNING] [W9] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_s310-1695.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f1b6c306550>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:32:38,649 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:38,710 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:41,585 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:32:48,316 [INFO] Saved 3606 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:32:48,320 [WARNING] Exiting with code 2 — GitHub Actions will trigger new job with fresh IP
