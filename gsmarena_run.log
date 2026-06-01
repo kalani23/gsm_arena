@@ -1782,3 +1782,39 @@
 2026-06-01 10:12:30,000 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:12:30,071 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:12:33,436 [INFO] Saved 4590 rows
+2026-06-01 10:13:04,722 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:13:04,723 [INFO] Already scraped: 4590
+2026-06-01 10:13:05,099 [INFO] Loaded 4590 existing rows
+2026-06-01 10:13:05,108 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:13:05,111 [INFO] Using cached device list
+2026-06-01 10:13:05,131 [INFO] Total: 14603 | New: 10013
+2026-06-01 10:13:05,953 [INFO] [1/10013] OK  Infinix - Hot 6X
+2026-06-01 10:13:05,991 [INFO] [2/10013] OK  Infinix - Note 6
+2026-06-01 10:13:06,038 [INFO] [3/10013] OK  Infinix - S4
+2026-06-01 10:13:06,046 [INFO] [4/10013] OK  Infinix - Hot 7 Pro
+2026-06-01 10:13:06,048 [INFO] [5/10013] OK  Infinix - Hot 6 Pro
+2026-06-01 10:13:06,483 [INFO] [6/10013] OK  Infinix - Hot S3
+2026-06-01 10:13:06,537 [INFO] [7/10013] OK  Infinix - Hot 5
+2026-06-01 10:13:06,581 [INFO] [8/10013] OK  Infinix - Hot 5 Lite
+2026-06-01 10:13:06,583 [INFO] [9/10013] OK  Infinix - Zero 5 Pro
+2026-06-01 10:13:06,657 [INFO] [10/10013] OK  Infinix - Zero 5
+2026-06-01 10:13:07,211 [INFO] [11/10013] OK  Infinix - Zero 4
+2026-06-01 10:13:07,215 [INFO] [12/10013] OK  Infinix - Smart
+2026-06-01 10:13:08,040 [INFO] [13/10013] OK  Infinix - Hot 4 Pro
+2026-06-01 10:13:08,134 [INFO] [14/10013] OK  Infinix - S2 Pro
+2026-06-01 10:13:09,062 [INFO] [15/10013] OK  Infinix - Note 3 Pro
+2026-06-01 10:13:09,091 [INFO] [16/10013] OK  Infinix - Hot 4
+2026-06-01 10:13:09,863 [INFO] [17/10013] OK  Infinix - Note 3
+2026-06-01 10:13:10,276 [INFO] [18/10013] OK  Infinix - Note 4
+2026-06-01 10:13:10,665 [INFO] [19/10013] OK  Innostream - INNO A20
+2026-06-01 10:13:11,095 [INFO] [20/10013] OK  Innostream - INNO P10
+2026-06-01 10:13:11,520 [INFO] [21/10013] OK  Innostream - INNO 75
+2026-06-01 10:13:11,936 [INFO] [22/10013] OK  Infinix - Hot S
+2026-06-01 10:13:12,787 [INFO] [23/10013] OK  Innostream - INNO 36
+2026-06-01 10:13:12,988 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:13:12,989 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:13:13,479 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:13:14,188 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:13:18,386 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:13:18,403 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:13:21,584 [INFO] Saved 4613 rows
