@@ -2301,3 +2301,38 @@
 2026-06-01 10:24:50,662 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:24:50,674 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:24:57,762 [INFO] Saved 4914 rows
+2026-06-01 10:25:28,358 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:25:28,359 [INFO] Already scraped: 4914
+2026-06-01 10:25:28,674 [INFO] Loaded 4914 existing rows
+2026-06-01 10:25:28,682 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:25:28,684 [INFO] Using cached device list
+2026-06-01 10:25:28,708 [INFO] Total: 14603 | New: 9689
+2026-06-01 10:25:29,579 [INFO] [1/9689] OK  Lava - A71
+2026-06-01 10:25:29,608 [INFO] [2/9689] OK  Lava - A72
+2026-06-01 10:25:29,614 [INFO] [3/9689] OK  Lava - A88
+2026-06-01 10:25:29,633 [INFO] [4/9689] OK  Lava - X3 (2016)
+2026-06-01 10:25:29,696 [INFO] [5/9689] OK  Lava - V5
+2026-06-01 10:25:30,325 [INFO] [6/9689] OK  Lava - Iris Atom 3
+2026-06-01 10:25:30,349 [INFO] [7/9689] OK  Lava - Iris Atom 2X
+2026-06-01 10:25:30,359 [INFO] [8/9689] OK  Lava - Iris Atom X
+2026-06-01 10:25:30,375 [INFO] [9/9689] OK  Lava - Iris Atom
+2026-06-01 10:25:30,423 [INFO] [10/9689] OK  Lava - X10
+2026-06-01 10:25:31,078 [INFO] [11/9689] OK  Lava - Fuel F1
+2026-06-01 10:25:31,094 [INFO] [12/9689] OK  Lava - Iris Atom 2
+2026-06-01 10:25:31,815 [INFO] [13/9689] OK  Lava - Flair Z1
+2026-06-01 10:25:31,887 [INFO] [14/9689] OK  Lava - Pixel V1
+2026-06-01 10:25:32,093 [INFO] [15/9689] OK  Lava - Flair E2
+2026-06-01 10:25:32,845 [INFO] [16/9689] OK  Lava - Icon
+2026-06-01 10:25:33,118 [INFO] [17/9689] OK  Lava - Pixel V2
+2026-06-01 10:25:33,813 [INFO] [18/9689] OK  Lava - Iris X1 mini
+2026-06-01 10:25:34,135 [INFO] [19/9689] OK  Lava - Iris Fuel F1 Mini
+2026-06-01 10:25:34,572 [INFO] [20/9689] OK  Lava - Flair P1i
+2026-06-01 10:25:35,279 [INFO] [21/9689] OK  Lava - Iris X1 Grand
+2026-06-01 10:25:35,559 [INFO] [22/9689] OK  Lava - Iris Alfa
+2026-06-01 10:25:36,026 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:25:36,027 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:25:36,607 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:25:37,078 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:25:37,712 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:25:39,071 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:25:43,398 [INFO] Saved 4936 rows
