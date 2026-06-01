@@ -336,17 +336,16 @@ def main():
     # Load seen
     seen = load_seen()
 
-    # Load new_devices.json if exists (pre-filtered missing list from launcher)
-    # Fall back to discovered_devices.json for backwards compatibility
-    device_file = "new_devices.json" if Path("new_devices.json").exists() else "discovered_devices.json"
-    with open(device_file, encoding="utf-8") as f:
+    # Load missing_devices.json — pre-filtered list from launcher
+    # This contains ONLY devices not yet scraped
+    with open("missing_devices.json", encoding="utf-8") as f:
         all_devices = json.load(f)
 
-    log.info(f"Using {device_file} with {len(all_devices)} devices")
+    log.info(f"missing_devices.json has {len(all_devices)} devices")
 
-    # Get this chunk's slice — already filtered to missing only if using new_devices.json
+    # Get this chunk's slice
     my_devices = all_devices[chunk_start:chunk_end]
-    # Double-check against seen_ids in case of any overlap
+    # Final safety check against seen_ids
     todo = [d for d in my_devices if d["url"] not in seen]
 
     log.info(f"Chunk {chunk_id}: {len(my_devices)} assigned | {len(todo)} remaining")
