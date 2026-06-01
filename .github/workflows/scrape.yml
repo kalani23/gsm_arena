@@ -1,11 +1,11 @@
 name: GSMArena Scraper
 
 on:
-  schedule:
-    - cron: '0 */2 * * *'   # every 2 hours fallback
   workflow_dispatch:
   repository_dispatch:
     types: [resume_scrape]
+  schedule:
+    - cron: '0 */6 * * *'  # safety fallback only
 
 jobs:
   scrape:
@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4 pandas openpyxl
 
-      - name: Run scraper — 10 workers with proxies
+      - name: Run scraper — direct GitHub IP, 10 workers, aggressive
         id: scraper
         run: python gsmarena_scraper_v5.py --workers 10
         continue-on-error: true
@@ -41,13 +41,14 @@ jobs:
           git diff --staged --quiet || git commit -m "Progress $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv 2>/dev/null || echo 0) rows"
           git push
 
-      - name: Trigger immediate resume with fresh IP if blocked
+      - name: New IP — trigger fresh job immediately if blocked
         if: steps.scraper.outcome == 'failure'
         run: |
-          echo "Blocked — triggering new job with fresh IP in 30s..."
-          sleep 30
-          curl -X POST \
+          echo "Blocked — spinning up new job with fresh GitHub IP..."
+          sleep 15
+          curl -s -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/dispatches \
             -d '{"event_type":"resume_scrape"}'
+          echo "New job triggered"

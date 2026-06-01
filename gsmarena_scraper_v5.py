@@ -286,20 +286,12 @@ class Worker:
 
     def _make_session(self):
         s = requests.Session()
-        if not self.no_proxy:
-            proxy_url = f"http://{WEBSHARE_USER}:{WEBSHARE_PASS}@{self.proxy_host}:{self.proxy_port}"
-            s.proxies = {"http": proxy_url, "https": proxy_url}
         s.headers.update(get_random_headers())
         return s
 
     def _rotate(self):
-        if self.no_proxy:
-            self.proxy_host = "direct"
-            self.proxy_port = "0"
-        else:
-            host, port = PROXY_POOL.get_blocking()
-            self.proxy_host = host
-            self.proxy_port = port
+        self.proxy_host     = "direct"
+        self.proxy_port     = "0"
         self.session        = self._make_session()
         self._request_count = 0
 
@@ -328,7 +320,7 @@ class Worker:
         for attempt in range(retries):
             try:
                 # randomise delay — longer in no-proxy mode to avoid rate limits
-                delay = random.uniform(0.5, 1.5)
+                delay = random.uniform(0.3, 0.8)
                 time.sleep(delay)
                 # rotate headers on every request
                 self.session.headers.update(get_random_headers())
@@ -748,7 +740,7 @@ def main():
     counter_lock   = threading.Lock()
     consec_fails   = [0]          # consecutive 429/fail counter
     consec_lock    = threading.Lock()
-    FAIL_THRESHOLD = 30           # exit and let GH Actions retry with fresh IP
+    FAIL_THRESHOLD = 10           # exit fast — new job = new IP
     total          = len(new_devices)
 
     def scrape_task(worker_id, brand_name, device_title, device_url):
