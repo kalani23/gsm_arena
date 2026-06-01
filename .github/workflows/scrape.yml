@@ -1,54 +1,326 @@
-name: GSMArena Scraper
+name: GSMArena Scraper — Parallel
 
 on:
   workflow_dispatch:
+    inputs:
+      total_chunks:
+        description: 'Number of parallel jobs (each gets own IP)'
+        required: true
+        default: '10'
   repository_dispatch:
-    types: [resume_scrape]
-  schedule:
-    - cron: '0 */6 * * *'  # safety fallback only
+    types: [resume_chunk]
 
 jobs:
-  scrape:
+  # Job 1: Build device list and split into chunks
+  prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
-
+    outputs:
+      chunks: ${{ steps.split.outputs.chunks }}
+      total:  ${{ steps.split.outputs.total }}
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4 pandas openpyxl
+      - run: pip install requests beautifulsoup4 pandas openpyxl
 
-      - name: Run scraper — direct GitHub IP, 10 workers, aggressive
-        id: scraper
-        run: python gsmarena_scraper_v5.py --workers 10
-        continue-on-error: true
-        timeout-minutes: 340
+      - name: Build chunk manifest
+        id: split
+        run: |
+          python - << 'PYEOF'
+          import json, math, os
+          from pathlib import Path
 
-      - name: Commit progress
+          total_chunks = int("${{ github.event.inputs.total_chunks || '10' }}")
+
+          # Load discovered devices
+          with open("discovered_devices.json") as f:
+              devices = json.load(f)
+
+          # Load already seen
+          seen = set()
+          if Path("seen_ids.json").exists():
+              with open("seen_ids.json") as f:
+                  seen = set(json.load(f))
+
+          # Filter to only new devices
+          new_devices = [d for d in devices if d["url"] not in seen]
+          print(f"Total devices: {len(devices)} | Already done: {len(seen)} | Remaining: {len(new_devices)}")
+
+          if not new_devices:
+              print("Nothing to scrape!")
+              chunks = []
+          else:
+              # Split into chunks
+              chunk_size = math.ceil(len(new_devices) / total_chunks)
+              chunks = []
+              for i in range(total_chunks):
+                  chunk = new_devices[i*chunk_size:(i+1)*chunk_size]
+                  if chunk:
+                      chunks.append({"id": i, "devices": chunk})
+                      # save each chunk to file
+                      with open(f"chunk_{i}.json", "w") as f:
+                          json.dump(chunk, f)
+
+          print(f"Created {len(chunks)} chunks")
+
+          # Write chunk IDs for matrix
+          chunk_ids = [str(c["id"]) for c in chunks]
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"chunks={json.dumps(chunk_ids)}\n")
+              f.write(f"total={len(new_devices)}\n")
+          PYEOF
+
+      - name: Upload chunks as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chunks
+          path: chunk_*.json
+          retention-days: 1
+
+  # Job 2: Scrape each chunk in parallel — each gets its own fresh IP
+  scrape:
+    needs: prepare
+    if: needs.prepare.outputs.chunks != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false   # if one chunk fails, others keep running
+      matrix:
+        chunk_id: ${{ fromJson(needs.prepare.outputs.chunks) }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests beautifulsoup4 pandas openpyxl
+
+      - name: Download chunks
+        uses: actions/download-artifact@v4
+        with:
+          name: chunks
+
+      - name: Scrape chunk ${{ matrix.chunk_id }}
+        run: |
+          python - << 'PYEOF'
+          import json, sys, os, time, random, re, logging, io, threading
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+          from bs4 import BeautifulSoup
+          import requests
+          import pandas as pd
+
+          CHUNK_ID   = "${{ matrix.chunk_id }}"
+          OUTPUT_CSV = f"result_chunk_{CHUNK_ID}.csv"
+          BASE_URL   = "https://www.gsmarena.com"
+
+          # Load this chunk's devices
+          with open(f"chunk_{CHUNK_ID}.json") as f:
+              devices = json.load(f)
+
+          print(f"Chunk {CHUNK_ID}: {len(devices)} devices to scrape")
+
+          BLOCK_PHRASES = ["check the box", "incapsula", "access denied", "error 15"]
+          USER_AGENTS = [
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+          ]
+
+          def random_headers():
+              return {
+                  "User-Agent": random.choice(USER_AGENTS),
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                  "Accept-Language": "en-US,en;q=0.9",
+                  "Accept-Encoding": "gzip, deflate, br",
+                  "Connection": "keep-alive",
+                  "Cache-Control": "max-age=0",
+              }
+
+          def get_html(url, session, retries=3):
+              for attempt in range(retries):
+                  try:
+                      time.sleep(random.uniform(1.5, 3.0))
+                      session.headers.update(random_headers())
+                      r = session.get(url, timeout=15)
+                      if r.status_code == 429:
+                          print(f"429 on {url} — backing off 30s")
+                          time.sleep(30)
+                          continue
+                      if r.status_code != 200:
+                          time.sleep(5)
+                          continue
+                      if any(p in r.text.lower() for p in BLOCK_PHRASES):
+                          print(f"Blocked on {url}")
+                          time.sleep(20)
+                          continue
+                      return r.text
+                  except Exception as e:
+                      print(f"Error attempt {attempt+1}: {e}")
+                      time.sleep(3)
+              return None
+
+          def extract_specs(soup):
+              specs, section = {}, ""
+              for table in soup.select("#specs-list table"):
+                  for row in table.select("tr"):
+                      th = row.find("th")
+                      if th: section = th.get_text(" ", strip=True)
+                      ttl = row.find("td", class_="ttl")
+                      nfo = row.find("td", class_="nfo")
+                      if not ttl or not nfo: continue
+                      label = ttl.get_text(" ", strip=True).rstrip("?").strip()
+                      value = nfo.get_text(" ", strip=True)
+                      col = f"{section}_{label}" if section and label else (section or label)
+                      if not col.strip(): continue
+                      if col in specs:
+                          i = 2
+                          while f"{col}_{i}" in specs: i += 1
+                          col = f"{col}_{i}"
+                      specs[col] = value
+              return specs
+
+          def scrape_one(device, session):
+              url   = device["url"]
+              brand = device["brand"]
+              title = device["title"]
+              html  = get_html(url, session)
+              if not html: return None
+              soup  = BeautifulSoup(html, "html.parser")
+              h1    = soup.find("h1", class_="specs-phone-name-title")
+              model = h1.get_text(strip=True) if h1 else title
+              specs = extract_specs(soup)
+              row   = {
+                  "Brand": brand, "Model": model, "URL": url,
+                  "Scraped At": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+              }
+              row.update(specs)
+              return row
+
+          # Single session per chunk — one IP per chunk
+          session = requests.Session()
+          session.headers.update(random_headers())
+
+          results = []
+          errors  = []
+
+          for i, device in enumerate(devices, 1):
+              row = scrape_one(device, session)
+              if row:
+                  results.append(row)
+                  print(f"[{i}/{len(devices)}] OK  {device['brand']} - {device['title']}")
+              else:
+                  errors.append(device["url"])
+                  print(f"[{i}/{len(devices)}] FAIL {device['url']}")
+
+              # save every 50
+              if i % 50 == 0:
+                  pd.DataFrame(results).to_csv(OUTPUT_CSV, index=False, encoding="utf-8-sig")
+                  print(f"Checkpoint: {len(results)} rows saved")
+
+          pd.DataFrame(results).to_csv(OUTPUT_CSV, index=False, encoding="utf-8-sig")
+          print(f"Chunk {CHUNK_ID} done: {len(results)} scraped, {len(errors)} failed")
+          PYEOF
+
+      - name: Upload chunk result
         if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-chunk-${{ matrix.chunk_id }}
+          path: result_chunk_${{ matrix.chunk_id }}.csv
+          retention-days: 7
+
+  # Job 3: Merge all chunk results into final CSV + Excel
+  merge:
+    needs: scrape
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install pandas openpyxl
+
+      - name: Download all chunk results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: result-chunk-*
+          merge-multiple: true
+
+      - name: Merge into final CSV and Excel
+        run: |
+          python - << 'PYEOF'
+          import pandas as pd
+          import glob
+          from pathlib import Path
+
+          # Load existing data
+          existing = pd.DataFrame()
+          if Path("gsmarena_devices.csv").exists():
+              existing = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig")
+              print(f"Existing rows: {len(existing)}")
+
+          # Load all chunk results
+          chunks = []
+          for f in sorted(glob.glob("result_chunk_*.csv")):
+              try:
+                  df = pd.read_csv(f, encoding="utf-8-sig")
+                  chunks.append(df)
+                  print(f"  {f}: {len(df)} rows")
+              except Exception as e:
+                  print(f"  {f}: error — {e}")
+
+          if chunks:
+              new_data = pd.concat(chunks, ignore_index=True)
+              print(f"New rows from this run: {len(new_data)}")
+
+              # Merge with existing, deduplicate by URL
+              if not existing.empty:
+                  combined = pd.concat([existing, new_data], ignore_index=True)
+                  combined = combined.drop_duplicates(subset=["URL"], keep="last")
+              else:
+                  combined = new_data
+
+              combined.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
+              combined.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
+              print(f"Final dataset: {len(combined)} rows")
+
+              # Update seen_ids.json
+              import json
+              seen = set()
+              from pathlib import Path
+              if Path("seen_ids.json").exists():
+                  with open("seen_ids.json") as f:
+                      seen = set(json.load(f))
+              seen.update(combined["URL"].tolist())
+              with open("seen_ids.json", "w") as f:
+                  json.dump(list(seen), f)
+              print(f"seen_ids.json updated: {len(seen)} total")
+          else:
+              print("No chunk results found")
+          PYEOF
+
+      - name: Commit final results
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add gsmarena_devices.csv gsmarena_devices.xlsx seen_ids.json discovered_devices.json gsmarena_run.log 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Progress $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv 2>/dev/null || echo 0) rows"
+          git add gsmarena_devices.csv gsmarena_devices.xlsx seen_ids.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Complete run $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
           git push
-
-      - name: New IP — trigger fresh job immediately if blocked
-        if: steps.scraper.outcome == 'failure'
-        run: |
-          echo "Blocked — spinning up new job with fresh GitHub IP..."
-          sleep 15
-          curl -s -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/dispatches \
-            -d '{"event_type":"resume_scrape"}'
-          echo "New job triggered"

@@ -15,7 +15,7 @@ Usage:
     python gsmarena_scraper_v5.py --brand samsung    # single brand
 """
 
-import re, sys, json, time, random, logging, threading, itertools, io, argparse
+import re, sys, os, json, time, random, logging, threading, itertools, io, argparse
 from datetime import datetime, timezone
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -393,8 +393,17 @@ def save_outputs(results, base_name):
     dp   = [c for c in DERIVED_COLS if c in df.columns and c not in fp]
     rest = sorted([c for c in df.columns if c not in fp and c not in dp])
     df   = df[fp + dp + rest]
-    df.to_csv(  f"{base_name}.csv",  index=False, encoding="utf-8-sig")
-    df.to_excel(f"{base_name}.xlsx", index=False, engine="openpyxl")
+
+    # CSV — always overwrite with full dataset (fast, safe)
+    df.to_csv(f"{base_name}.csv", index=False, encoding="utf-8-sig")
+
+    # Excel — only write if under 50k rows (Excel has 1M row limit but large files are slow)
+    xlsx_path = f"{base_name}.xlsx"
+    try:
+        df.to_excel(xlsx_path, index=False, engine="openpyxl")
+    except Exception as e:
+        log.warning(f"Excel save failed: {e} — CSV is the primary output")
+
     log.info(f"Saved {len(df)} rows to {base_name}.csv + {base_name}.xlsx")
 
 
@@ -505,8 +514,13 @@ def main():
                 with consec_lock:
                     consec_fails[0] += 1
                     if consec_fails[0] >= FAIL_THRESHOLD and not stop_event.is_set():
-                        stop_event.set()  # signal all threads to stop
+                        stop_event.set()
                         log.warning(f"{FAIL_THRESHOLD} consecutive failures — saving progress, exiting for fresh IP")
+                        # save immediately then hard kill — don't wait for other threads
+                        with results_lock:
+                            save_outputs(results, args.output)
+                        save_seen(seen, seen_path)
+                        os._exit(2)  # hard kill entire process including all threads
         except Exception as e:
             with errors_lock:
                 errors.append(device_url)
