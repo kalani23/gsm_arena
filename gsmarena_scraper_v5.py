@@ -475,8 +475,11 @@ def main():
     consec_lock    = threading.Lock()
     FAIL_THRESHOLD = 10
     total          = len(new_devices)
+    stop_event     = threading.Event()  # signals all threads to stop
 
     def scrape_task(worker_id, brand_name, device_title, device_url):
+        if stop_event.is_set():
+            return  # already stopping — skip
         worker = workers[worker_id]
         try:
             row = scrape_device(worker, brand_name, device_title, device_url)
@@ -501,12 +504,9 @@ def main():
                     errors.append(device_url)
                 with consec_lock:
                     consec_fails[0] += 1
-                    if consec_fails[0] >= FAIL_THRESHOLD:
-                        log.warning(f"{FAIL_THRESHOLD} consecutive failures — saving and exiting for fresh IP")
-                        with results_lock:
-                            save_outputs(results, args.output)
-                        save_seen(seen, seen_path)
-                        sys.exit(2)
+                    if consec_fails[0] >= FAIL_THRESHOLD and not stop_event.is_set():
+                        stop_event.set()  # signal all threads to stop
+                        log.warning(f"{FAIL_THRESHOLD} consecutive failures — saving progress, exiting for fresh IP")
         except Exception as e:
             with errors_lock:
                 errors.append(device_url)
@@ -523,6 +523,11 @@ def main():
 
     save_outputs(results, args.output)
     save_seen(seen, seen_path)
+
+    if stop_event.is_set():
+        log.warning("Exiting with code 2 — GitHub Actions will trigger new job with fresh IP")
+        sys.exit(2)
+
     log.info(f"=== Done === New: {len(results) - len(existing)} | Errors: {len(errors)}")
 
 
