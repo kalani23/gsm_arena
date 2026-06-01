@@ -95,3 +95,58 @@
 2026-06-01 08:28:33,692 [INFO] Saved 3532 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
 2026-06-01 08:28:33,696 [WARNING] 10 consecutive failures — saving and exiting for fresh IP
 2026-06-01 08:28:34,921 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:02,927 [INFO] === GSMArena Scraper v5 | workers=10 | direct connection ===
+2026-06-01 08:31:02,928 [INFO] Already scraped: 3532 | full_refresh=False
+2026-06-01 08:31:03,223 [INFO] Loaded 3532 existing rows
+2026-06-01 08:31:03,223 [INFO] Started 10 workers
+2026-06-01 08:31:03,233 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 08:31:03,236 [INFO] Using cached device list
+2026-06-01 08:31:03,255 [INFO] Total: 14603 | New: 11071
+2026-06-01 08:31:03,255 [INFO] Scraping 11071 devices with 10 workers...
+2026-06-01 08:31:04,305 [INFO] [1/11071] OK  HTC - Freestyle
+2026-06-01 08:31:04,329 [INFO] [2/11071] OK  HTC - Windows Phone 8X CDMA
+2026-06-01 08:31:04,376 [INFO] [3/11071] OK  HTC - Flyer
+2026-06-01 08:31:04,397 [INFO] [4/11071] OK  HTC - Desire HD
+2026-06-01 08:31:04,407 [INFO] [5/11071] OK  HTC - 7 Pro
+2026-06-01 08:31:04,573 [INFO] [6/11071] OK  HTC - HD7
+2026-06-01 08:31:04,615 [INFO] [7/11071] OK  HTC - 7 Trophy
+2026-06-01 08:31:04,626 [INFO] [8/11071] OK  HTC - ThunderBolt 4G
+2026-06-01 08:31:04,647 [INFO] [9/11071] OK  HTC - Gratia
+2026-06-01 08:31:04,674 [INFO] [10/11071] OK  HTC - One mini
+2026-06-01 08:31:05,528 [INFO] [11/11071] OK  HTC - Aria
+2026-06-01 08:31:05,548 [INFO] [12/11071] OK  HTC - Rider
+2026-06-01 08:31:05,800 [INFO] [13/11071] OK  HTC - Evo 4G+
+2026-06-01 08:31:06,566 [INFO] [14/11071] OK  HTC - Google Nexus One
+2026-06-01 08:31:06,998 [INFO] [15/11071] OK  HTC - HD mini
+2026-06-01 08:31:07,563 [INFO] [16/11071] OK  HTC - Wildfire CDMA
+2026-06-01 08:31:08,094 [INFO] [17/11071] OK  HTC - Droid Incredible
+2026-06-01 08:31:08,650 [INFO] [18/11071] OK  HTC - Legend
+2026-06-01 08:31:09,148 [INFO] [19/11071] OK  HTC - Pure
+2026-06-01 08:31:09,672 [INFO] [20/11071] OK  HTC - Desire Z
+2026-06-01 08:31:10,073 [INFO] [21/11071] OK  HTC - Touch2
+2026-06-01 08:31:10,580 [INFO] [22/11071] OK  HTC - Smart
+2026-06-01 08:31:10,710 [INFO] [23/11071] OK  HTC - Evo 4G
+2026-06-01 08:31:11,321 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:11,794 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:12,371 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:12,684 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:13,443 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:13,776 [WARNING] [W4] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:14,731 [WARNING] [W8] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:14,732 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:15,377 [WARNING] [W0] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:16,068 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:16,069 [WARNING] 10 consecutive failures — saving progress, exiting for fresh IP
+2026-06-01 08:31:16,659 [WARNING] [W5] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:17,103 [WARNING] [W9] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:17,688 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:18,132 [WARNING] [W6] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:19,222 [WARNING] [W3] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:19,228 [WARNING] [W2] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:20,141 [WARNING] [W7] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_desire-3077.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7fbea8ed9590>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:31:20,141 [WARNING] [W1] Error attempt 1: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /htc_paradise-3462.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7fbea8ed3d90>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 08:31:21,200 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:22,892 [WARNING] [W1] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:22,949 [WARNING] [W7] 429 — returning None immediately for fresh IP trigger
+2026-06-01 08:31:29,466 [INFO] Saved 3555 rows to gsmarena_devices.csv + gsmarena_devices.xlsx
+2026-06-01 08:31:29,471 [WARNING] Exiting with code 2 — GitHub Actions will trigger new job with fresh IP
