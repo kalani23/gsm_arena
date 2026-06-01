@@ -2336,3 +2336,59 @@
 2026-06-01 10:25:37,712 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:25:39,071 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:25:43,398 [INFO] Saved 4936 rows
+2026-06-01 10:26:19,947 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:26:19,948 [INFO] Already scraped: 4936
+2026-06-01 10:26:20,368 [INFO] Loaded 4936 existing rows
+2026-06-01 10:26:20,378 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:26:20,380 [INFO] Using cached device list
+2026-06-01 10:26:20,399 [INFO] Total: 14603 | New: 9667
+2026-06-01 10:26:21,211 [INFO] [1/9667] OK  Lava - Iris 465
+2026-06-01 10:26:21,245 [INFO] [2/9667] OK  Lava - Iris 470
+2026-06-01 10:26:21,270 [INFO] [3/9667] OK  Lava - Iris X1 Atom S
+2026-06-01 10:26:21,296 [INFO] [4/9667] OK  Lava - Iris 401
+2026-06-01 10:26:21,331 [INFO] [5/9667] OK  Lava - Iris X8
+2026-06-01 10:26:21,704 [INFO] [6/9667] OK  Lava - Iris 350
+2026-06-01 10:26:21,739 [INFO] [7/9667] OK  Lava - Iris 348
+2026-06-01 10:26:21,771 [INFO] [8/9667] OK  Lava - Iris 325 Style
+2026-06-01 10:26:21,801 [INFO] [9/9667] OK  Lava - Iris Fuel 60
+2026-06-01 10:26:22,009 [INFO] [10/9667] OK  Lava - Iris Win1
+2026-06-01 10:26:22,310 [INFO] [11/9667] OK  Lava - Iris 250
+2026-06-01 10:26:22,337 [INFO] [12/9667] OK  Lava - Iris 400s
+2026-06-01 10:26:22,802 [INFO] [13/9667] OK  Lava - Iris 410
+2026-06-01 10:26:23,295 [INFO] [14/9667] OK  Lava - Iris 310 Style
+2026-06-01 10:26:23,854 [INFO] [15/9667] OK  Lava - Iris 360 Music
+2026-06-01 10:26:24,347 [INFO] [16/9667] OK  Lava - Iris 460
+2026-06-01 10:26:24,949 [INFO] [17/9667] OK  Lava - Iris X5
+2026-06-01 10:26:25,446 [INFO] [18/9667] OK  Lava - Iris Pro 30+
+2026-06-01 10:26:25,906 [INFO] [19/9667] OK  Lava - Iris Fuel 50
+2026-06-01 10:26:26,401 [INFO] [20/9667] OK  Lava - Iris 350m
+2026-06-01 10:26:26,904 [INFO] [21/9667] OK  Lava - 3G 412
+2026-06-01 10:26:27,401 [INFO] [22/9667] OK  Lava - Iris X1
+2026-06-01 10:26:27,705 [INFO] [23/9667] OK  Lava - Iris 400Q
+2026-06-01 10:26:28,201 [INFO] [24/9667] OK  Lava - 3G 415
+2026-06-01 10:26:28,691 [INFO] [25/9667] OK  Lava - Iris 504q+
+2026-06-01 10:26:29,261 [INFO] [26/9667] OK  Lava - Iris 356
+2026-06-01 10:26:29,742 [INFO] [27/9667] OK  Lava - Iris 404 Flair
+2026-06-01 10:26:30,247 [INFO] [28/9667] OK  Lava - Iris 406Q
+2026-06-01 10:26:30,782 [INFO] [29/9667] OK  Lava - Iris 450 Colour
+2026-06-01 10:26:31,386 [INFO] [30/9667] OK  Lava - Iris Pro 20
+2026-06-01 10:26:32,160 [INFO] [31/9667] OK  Lava - Iris 550Q
+2026-06-01 10:26:32,368 [INFO] [32/9667] OK  Lava - 3G 354
+2026-06-01 10:26:33,134 [INFO] [33/9667] OK  Lava - Iris 402e
+2026-06-01 10:26:33,196 [INFO] [34/9667] OK  Lava - Iris Pro 30
+2026-06-01 10:26:33,705 [INFO] [35/9667] OK  Lava - Iris 401e
+2026-06-01 10:26:34,261 [INFO] [36/9667] OK  Lava - Iris 503e
+2026-06-01 10:26:34,930 [INFO] [37/9667] OK  Lava - Iris 404e
+2026-06-01 10:26:35,180 [INFO] [38/9667] OK  Lava - Iris 349S
+2026-06-01 10:26:35,987 [INFO] [39/9667] OK  Lava - Iris 349+
+2026-06-01 10:26:36,467 [INFO] [40/9667] OK  Lava - Iris 505
+2026-06-01 10:26:36,669 [INFO] [41/9667] OK  Lava - Iris 504q
+2026-06-01 10:26:37,090 [WARNING] [W2] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /lava_iris_352_flair-6769.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f89abaf3950>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:26:37,091 [WARNING] [42/9667] FAIL https://www.gsmarena.com/lava_iris_352_flair-6769.php
+2026-06-01 10:26:37,448 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:26:37,449 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:26:37,991 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:26:38,286 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:26:39,167 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:26:39,678 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:26:46,801 [INFO] Saved 4977 rows
