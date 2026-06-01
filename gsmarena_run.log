@@ -2525,3 +2525,37 @@
 2026-06-01 10:29:17,349 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:29:17,375 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:29:24,120 [INFO] Saved 5068 rows
+2026-06-01 10:29:54,397 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:29:54,399 [INFO] Already scraped: 5068
+2026-06-01 10:29:54,811 [INFO] Loaded 5068 existing rows
+2026-06-01 10:29:54,820 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:29:54,823 [INFO] Using cached device list
+2026-06-01 10:29:54,852 [INFO] Total: 14603 | New: 9535
+2026-06-01 10:29:55,454 [INFO] [1/9535] OK  Lenovo - K6 Enjoy
+2026-06-01 10:29:55,483 [INFO] [2/9535] OK  Lenovo - S5 Pro
+2026-06-01 10:29:55,528 [INFO] [3/9535] OK  Lenovo - S5 Pro GT
+2026-06-01 10:29:55,574 [INFO] [4/9535] OK  Lenovo - K5 Note (2018)
+2026-06-01 10:29:55,581 [INFO] [5/9535] OK  Lenovo - Z6 Pro
+2026-06-01 10:29:56,074 [INFO] [6/9535] OK  Lenovo - K5 play
+2026-06-01 10:29:56,116 [INFO] [7/9535] OK  Lenovo - K320t
+2026-06-01 10:29:56,125 [INFO] [8/9535] OK  Lenovo - S5
+2026-06-01 10:29:56,172 [INFO] [9/9535] OK  Lenovo - K5
+2026-06-01 10:29:56,196 [INFO] [10/9535] OK  Lenovo - A5
+2026-06-01 10:29:56,518 [INFO] [11/9535] OK  Lenovo - moto tab
+2026-06-01 10:29:56,594 [INFO] [12/9535] OK  Lenovo - Tab 7
+2026-06-01 10:29:57,123 [INFO] [13/9535] OK  Lenovo - Tab 4 10 Plus
+2026-06-01 10:29:57,489 [INFO] [14/9535] OK  Lenovo - Tab 4 10
+2026-06-01 10:29:58,185 [INFO] [15/9535] OK  Lenovo - K8 Note
+2026-06-01 10:29:58,555 [INFO] [16/9535] OK  Lenovo - Tab 4 8
+2026-06-01 10:29:59,103 [INFO] [17/9535] OK  Lenovo - Tab3 8 Plus
+2026-06-01 10:30:00,879 [INFO] [18/9535] OK  Lenovo - Tab 4 8 Plus
+2026-06-01 10:30:01,573 [INFO] [19/9535] OK  Lenovo - Tab 7 Essential
+2026-06-01 10:30:01,616 [INFO] [20/9535] OK  Lenovo - K8
+2026-06-01 10:30:01,624 [INFO] [21/9535] OK  Lenovo - ZUK Edge
+2026-06-01 10:30:01,848 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:30:01,849 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:30:01,940 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:30:03,331 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:30:03,351 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:30:04,402 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:30:11,521 [INFO] Saved 5089 rows
