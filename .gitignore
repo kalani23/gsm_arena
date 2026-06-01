@@ -1,0 +1,3 @@
+*.partial
+__pycache__/
+*.pyc
