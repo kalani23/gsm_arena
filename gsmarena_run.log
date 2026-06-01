@@ -1746,3 +1746,39 @@
 2026-06-01 10:11:38,134 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:11:38,156 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:11:44,158 [INFO] Saved 4567 rows
+2026-06-01 10:12:15,882 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:12:15,883 [INFO] Already scraped: 4567
+2026-06-01 10:12:16,264 [INFO] Loaded 4567 existing rows
+2026-06-01 10:12:16,274 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:12:16,277 [INFO] Using cached device list
+2026-06-01 10:12:16,306 [INFO] Total: 14603 | New: 10036
+2026-06-01 10:12:16,931 [INFO] [1/10036] OK  Infinix - Note 7 Lite
+2026-06-01 10:12:16,958 [INFO] [2/10036] OK  Infinix - Hot 9
+2026-06-01 10:12:16,994 [INFO] [3/10036] OK  Infinix - Hot 9 Play
+2026-06-01 10:12:17,037 [INFO] [4/10036] OK  Infinix - Zero 8
+2026-06-01 10:12:17,046 [INFO] [5/10036] OK  Infinix - S5 Pro (48+40)
+2026-06-01 10:12:17,370 [INFO] [6/10036] OK  Infinix - S5 Pro
+2026-06-01 10:12:17,515 [INFO] [7/10036] OK  Infinix - Smart 4
+2026-06-01 10:12:17,537 [INFO] [8/10036] OK  Infinix - Smart 4c
+2026-06-01 10:12:17,622 [INFO] [9/10036] OK  Infinix - S5 lite
+2026-06-01 10:12:17,645 [INFO] [10/10036] OK  Infinix - Hot 8 Lite
+2026-06-01 10:12:17,762 [INFO] [11/10036] OK  Infinix - S5
+2026-06-01 10:12:18,262 [INFO] [12/10036] OK  Infinix - Hot 8
+2026-06-01 10:12:18,856 [INFO] [13/10036] OK  Infinix - Hot 7
+2026-06-01 10:12:19,265 [INFO] [14/10036] OK  Infinix - Smart3 Plus
+2026-06-01 10:12:19,512 [INFO] [15/10036] OK  Infinix - Zero 6 Pro
+2026-06-01 10:12:20,106 [INFO] [16/10036] OK  Infinix - Smart 2 HD
+2026-06-01 10:12:20,671 [INFO] [17/10036] OK  Infinix - Zero 6
+2026-06-01 10:12:21,231 [INFO] [18/10036] OK  Infinix - Note 5 Stylus
+2026-06-01 10:12:21,580 [INFO] [19/10036] OK  Infinix - S3X
+2026-06-01 10:12:21,950 [INFO] [20/10036] OK  Infinix - Hot 6
+2026-06-01 10:12:22,558 [INFO] [21/10036] OK  Infinix - Note 5
+2026-06-01 10:12:22,915 [INFO] [22/10036] OK  Infinix - Smart 2 Pro
+2026-06-01 10:12:23,404 [INFO] [23/10036] OK  Infinix - Smart 2
+2026-06-01 10:12:24,733 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:12:24,733 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:12:24,734 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:12:25,357 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:12:30,000 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:12:30,071 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:12:33,436 [INFO] Saved 4590 rows
