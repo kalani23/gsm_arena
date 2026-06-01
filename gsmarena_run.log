@@ -1923,3 +1923,38 @@
 2026-06-01 10:15:46,425 [WARNING] [W2] 429 — triggering fresh IP exit
 2026-06-01 10:15:48,361 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:15:53,549 [INFO] Saved 4679 rows
+2026-06-01 10:16:25,260 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:16:25,262 [INFO] Already scraped: 4679
+2026-06-01 10:16:25,647 [INFO] Loaded 4679 existing rows
+2026-06-01 10:16:25,657 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:16:25,659 [INFO] Using cached device list
+2026-06-01 10:16:25,675 [INFO] Total: 14603 | New: 9924
+2026-06-01 10:16:26,169 [INFO] [1/9924] OK  itel - S23+
+2026-06-01 10:16:26,208 [INFO] [2/9924] OK  itel - P55 5G
+2026-06-01 10:16:26,265 [INFO] [3/9924] OK  itel - P55+
+2026-06-01 10:16:26,290 [INFO] [4/9924] OK  itel - A70
+2026-06-01 10:16:26,299 [INFO] [5/9924] OK  itel - Color Pro
+2026-06-01 10:16:26,599 [INFO] [6/9924] OK  itel - S18 Pro
+2026-06-01 10:16:26,652 [INFO] [7/9924] OK  itel - S23
+2026-06-01 10:16:26,682 [INFO] [8/9924] OK  itel - P40+
+2026-06-01 10:16:26,883 [INFO] [9/9924] OK  itel - Pad One
+2026-06-01 10:16:26,943 [INFO] [10/9924] OK  itel - Smartwatch 2ES
+2026-06-01 10:16:26,969 [INFO] [11/9924] OK  itel - Smart Watch 2
+2026-06-01 10:16:27,290 [INFO] [12/9924] OK  itel - A05s
+2026-06-01 10:16:27,741 [INFO] [13/9924] OK  itel - P38
+2026-06-01 10:16:28,183 [INFO] [14/9924] OK  itel - A60
+2026-06-01 10:16:28,780 [INFO] [15/9924] OK  itel - A04
+2026-06-01 10:16:29,213 [INFO] [16/9924] OK  itel - A60s
+2026-06-01 10:16:29,585 [INFO] [17/9924] OK  itel - Vision 3
+2026-06-01 10:16:30,097 [INFO] [18/9924] OK  itel - P40
+2026-06-01 10:16:31,001 [INFO] [19/9924] OK  itel - A23S
+2026-06-01 10:16:31,283 [INFO] [20/9924] OK  itel - Vision 3 Turbo
+2026-06-01 10:16:31,648 [INFO] [21/9924] OK  itel - A48
+2026-06-01 10:16:32,422 [INFO] [22/9924] OK  itel - S18
+2026-06-01 10:16:32,556 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:16:32,556 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:16:33,569 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:16:33,985 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:16:34,523 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:16:35,148 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:16:41,100 [INFO] Saved 4701 rows
