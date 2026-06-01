@@ -93,6 +93,8 @@ jobs:
       matrix:
         chunk_id: ${{ fromJson(needs.prepare.outputs.chunks) }}
 
+    env:
+      PYTHONUNBUFFERED: "1"   # forces live log output
     steps:
       - uses: actions/checkout@v4
         with:
@@ -128,7 +130,7 @@ jobs:
           with open(f"chunk_{CHUNK_ID}.json") as f:
               devices = json.load(f)
 
-          print(f"Chunk {CHUNK_ID}: {len(devices)} devices to scrape")
+          print(f"Chunk {CHUNK_ID}: {len(devices)} devices to scrape", flush=True)
 
           BLOCK_PHRASES = ["check the box", "incapsula", "access denied", "error 15"]
           USER_AGENTS = [
@@ -156,19 +158,19 @@ jobs:
                       session.headers.update(random_headers())
                       r = session.get(url, timeout=15)
                       if r.status_code == 429:
-                          print(f"429 on {url} — backing off 30s")
+                          print(f"429 on {url} — backing off 30s", flush=True)
                           time.sleep(30)
                           continue
                       if r.status_code != 200:
                           time.sleep(5)
                           continue
                       if any(p in r.text.lower() for p in BLOCK_PHRASES):
-                          print(f"Blocked on {url}")
+                          print(f"Blocked on {url}", flush=True)
                           time.sleep(20)
                           continue
                       return r.text
                   except Exception as e:
-                      print(f"Error attempt {attempt+1}: {e}")
+                      print(f"Error attempt {attempt+1}: {e}", flush=True)
                       time.sleep(3)
               return None
 
@@ -220,18 +222,18 @@ jobs:
               row = scrape_one(device, session)
               if row:
                   results.append(row)
-                  print(f"[{i}/{len(devices)}] OK  {device['brand']} - {device['title']}")
+                  print(f"[{i}/{len(devices)}] OK  {device['brand']} - {device['title']}", flush=True)
               else:
                   errors.append(device["url"])
-                  print(f"[{i}/{len(devices)}] FAIL {device['url']}")
+                  print(f"[{i}/{len(devices)}] FAIL {device['url']}", flush=True)
 
               # save every 50
               if i % 50 == 0:
                   pd.DataFrame(results).to_csv(OUTPUT_CSV, index=False, encoding="utf-8-sig")
-                  print(f"Checkpoint: {len(results)} rows saved")
+                  print(f"Checkpoint: {len(results)} rows saved", flush=True)
 
           pd.DataFrame(results).to_csv(OUTPUT_CSV, index=False, encoding="utf-8-sig")
-          print(f"Chunk {CHUNK_ID} done: {len(results)} scraped, {len(errors)} failed")
+          print(f"Chunk {CHUNK_ID} done: {len(results)} scraped, {len(errors)} failed", flush=True)
           PYEOF
 
       - name: Upload chunk result
