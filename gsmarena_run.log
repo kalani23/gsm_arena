@@ -2427,3 +2427,66 @@
 2026-06-01 10:27:28,951 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:27:29,434 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:27:36,034 [INFO] Saved 4999 rows
+2026-06-01 10:28:06,927 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:28:06,929 [INFO] Already scraped: 4999
+2026-06-01 10:28:07,344 [INFO] Loaded 4999 existing rows
+2026-06-01 10:28:07,353 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:28:07,356 [INFO] Using cached device list
+2026-06-01 10:28:07,374 [INFO] Total: 14603 | New: 9604
+2026-06-01 10:28:08,358 [INFO] [1/9604] OK  Lenovo - Idea Tab
+2026-06-01 10:28:08,412 [INFO] [2/9604] OK  LeEco - Le 2
+2026-06-01 10:28:08,425 [INFO] [3/9604] OK  Lenovo - Tab One
+2026-06-01 10:28:08,461 [INFO] [4/9604] OK  Lenovo - ThinkTab X11 Gen 1
+2026-06-01 10:28:08,491 [INFO] [5/9604] OK  Lenovo - Yoga Tab Plus
+2026-06-01 10:28:09,267 [INFO] [6/9604] OK  Lenovo - Tab M11
+2026-06-01 10:28:09,329 [INFO] [7/9604] OK  Lenovo - Legion Tab
+2026-06-01 10:28:09,393 [INFO] [8/9604] OK  Lenovo - Legion Y700 (2025)
+2026-06-01 10:28:09,398 [INFO] [9/9604] OK  Lenovo - Tab K11 Plus
+2026-06-01 10:28:09,462 [INFO] [10/9604] OK  Lenovo - Tab Plus
+2026-06-01 10:28:09,990 [INFO] [11/9604] OK  Lenovo - Tab P12
+2026-06-01 10:28:10,052 [INFO] [12/9604] OK  Lenovo - Tab M10
+2026-06-01 10:28:10,053 [INFO] [13/9604] OK  Lenovo - Tab M9
+2026-06-01 10:28:10,510 [INFO] [14/9604] OK  Lenovo - Tab M8 (4th Gen)
+2026-06-01 10:28:11,017 [INFO] [15/9604] OK  Lenovo - Legion Y700 (2023)
+2026-06-01 10:28:11,518 [INFO] [16/9604] OK  Lenovo - Pad Pro 2022
+2026-06-01 10:28:12,041 [INFO] [17/9604] OK  Lenovo - Tab Extreme
+2026-06-01 10:28:12,342 [INFO] [18/9604] OK  Lenovo - Tab M10 Gen 3
+2026-06-01 10:28:12,871 [INFO] [19/9604] OK  Lenovo - Legion Y700
+2026-06-01 10:28:13,503 [INFO] [20/9604] OK  Lenovo - Legion Y70
+2026-06-01 10:28:13,990 [INFO] [21/9604] OK  Lenovo - Tab P11 Gen 2
+2026-06-01 10:28:14,378 [INFO] [22/9604] OK  Lenovo - K14 Plus
+2026-06-01 10:28:14,847 [INFO] [23/9604] OK  Lenovo - Tab K10
+2026-06-01 10:28:15,275 [INFO] [24/9604] OK  Lenovo - Tab P11 5G
+2026-06-01 10:28:16,001 [INFO] [25/9604] OK  Lenovo - Tab P12 Pro
+2026-06-01 10:28:16,420 [INFO] [26/9604] OK  Lenovo - K13
+2026-06-01 10:28:16,927 [INFO] [27/9604] OK  Lenovo - Yoga Tab 11
+2026-06-01 10:28:17,609 [INFO] [28/9604] OK  Lenovo - Tab P11 Plus
+2026-06-01 10:28:18,149 [INFO] [29/9604] OK  Lenovo - K13 Pro
+2026-06-01 10:28:18,548 [INFO] [30/9604] OK  Lenovo - Tab M8 (3rd Gen)
+2026-06-01 10:28:18,961 [INFO] [31/9604] OK  Lenovo - K13 Note
+2026-06-01 10:28:19,463 [INFO] [32/9604] OK  Lenovo - Yoga Tab 13
+2026-06-01 10:28:19,974 [INFO] [33/9604] OK  Lenovo - Pad Pro
+2026-06-01 10:28:20,380 [INFO] [34/9604] OK  Lenovo - Pad Plus
+2026-06-01 10:28:20,909 [INFO] [35/9604] OK  Lenovo - Pad
+2026-06-01 10:28:21,404 [INFO] [36/9604] OK  Lenovo - Legion 2 Pro
+2026-06-01 10:28:22,208 [INFO] [37/9604] OK  Lenovo - Tab P11 Pro Gen 2
+2026-06-01 10:28:22,727 [INFO] [38/9604] OK  Lenovo - K12 Pro
+2026-06-01 10:28:23,232 [INFO] [39/9604] OK  Lenovo - K12 (China)
+2026-06-01 10:28:23,365 [INFO] [40/9604] OK  Lenovo - Legion Duel 2
+2026-06-01 10:28:23,793 [INFO] [41/9604] OK  Lenovo - Tab P11 Pro
+2026-06-01 10:28:24,746 [INFO] [42/9604] OK  Lenovo - A8 2020
+2026-06-01 10:28:25,249 [INFO] [43/9604] OK  Lenovo - Tab M10 HD Gen 2
+2026-06-01 10:28:25,614 [INFO] [44/9604] OK  Lenovo - Legion Duel
+2026-06-01 10:28:25,753 [INFO] [45/9604] OK  Lenovo - Tab M7 (3rd Gen)
+2026-06-01 10:28:26,363 [INFO] [46/9604] OK  Lenovo - Tab P11
+2026-06-01 10:28:26,861 [INFO] [47/9604] OK  Lenovo - M10 Plus
+2026-06-01 10:28:27,059 [WARNING] [W1] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /lenovo_tab_m10_plus_(3rd_gen)-11711.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f93e95cd190>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:28:27,059 [WARNING] [48/9604] FAIL https://www.gsmarena.com/lenovo_tab_m10_plus_(3rd_gen)-11711.php
+2026-06-01 10:28:27,242 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:28:27,242 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:28:28,095 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:28:28,178 [WARNING] [W3] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /lenovo_legion_y90-11331.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f93ccd49e10>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:28:28,215 [WARNING] [49/9604] FAIL https://www.gsmarena.com/lenovo_legion_y90-11331.php
+2026-06-01 10:28:28,368 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:28:29,532 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:28:36,584 [INFO] Saved 5046 rows
