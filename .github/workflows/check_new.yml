@@ -1,0 +1,108 @@
+name: Check New Devices
+
+on:
+  workflow_dispatch:   # run manually anytime
+  schedule:
+    - cron: '0 0 * * 0'  # every Sunday midnight automatically
+
+jobs:
+  check_new:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests beautifulsoup4
+
+      - name: Find new devices added to GSMArena
+        env:
+          PYTHONUNBUFFERED: "1"
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+        run: |
+          python - << 'PYEOF'
+          import json, re, time, random, os
+          import requests
+          from bs4 import BeautifulSoup
+
+          BASE_URL = "https://www.gsmarena.com"
+          session  = requests.Session()
+          session.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"})
+
+          # Load existing device list
+          with open("discovered_devices.json") as f:
+              existing = json.load(f)
+          existing_urls = {d["url"] for d in existing}
+          print(f"Existing devices: {len(existing)}", flush=True)
+
+          def get_brands():
+              r = session.get(f"{BASE_URL}/makers.php3", timeout=15)
+              soup = BeautifulSoup(r.text, "html.parser")
+              brands = []
+              for a in soup.select("div.st-text td a"):
+                  name = a.get_text(strip=True)
+                  name = re.sub(r"\s*\(.*?\)", "", name).strip()
+                  name = re.sub(r"\d+\s*devices?\s*$", "", name, flags=re.IGNORECASE).strip()
+                  brands.append((name, f"{BASE_URL}/{a['href']}"))
+              return brands
+
+          def get_devices(brand_name, brand_url):
+              devices, url = [], brand_url
+              while url:
+                  try:
+                      time.sleep(random.uniform(0.5, 1.0))
+                      r = session.get(url, timeout=15)
+                      if r.status_code != 200: break
+                      soup = BeautifulSoup(r.text, "html.parser")
+                      for li in soup.select("div.makers ul li"):
+                          a = li.find("a")
+                          if a:
+                              title = a.get("title", "") or a.get_text(strip=True)
+                              devices.append({"brand": brand_name, "title": title, "url": f"{BASE_URL}/{a['href']}"})
+                      next_a = soup.select_one("a.prevnextbutton[title='Next page']")
+                      url = f"{BASE_URL}/{next_a['href']}" if next_a else None
+                  except: break
+              return devices
+
+          # Find new devices
+          new_devices = []
+          for brand_name, brand_url in get_brands():
+              for d in get_devices(brand_name, brand_url):
+                  if d["url"] not in existing_urls:
+                      new_devices.append(d)
+                      print(f"NEW: {d['brand']} - {d['title']}", flush=True)
+
+          print(f"\nFound {len(new_devices)} new devices", flush=True)
+
+          if not new_devices:
+              print("No new devices — nothing to do")
+              exit(0)
+
+          # Add to discovered_devices.json
+          updated = existing + new_devices
+          with open("discovered_devices.json", "w") as f:
+              json.dump(updated, f, indent=2)
+
+          # Trigger Launch All Chunks for new devices only
+          pat  = os.environ["PAT_TOKEN"]
+          repo = os.environ["REPO"]
+          r = requests.post(
+              f"https://api.github.com/repos/{repo}/actions/workflows/launch.yml/dispatches",
+              headers={"Authorization": f"token {pat}", "Accept": "application/vnd.github.v3+json"},
+              json={"ref": "main", "inputs": {"num_chunks": "20"}}
+          )
+          print(f"Launch All Chunks triggered: {r.status_code}", flush=True)
+          PYEOF
+
+      - name: Commit updated discovery cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add discovered_devices.json
+          git diff --staged --quiet || git commit -m "New devices found $(date -u '+%Y-%m-%d')"
+          git push
