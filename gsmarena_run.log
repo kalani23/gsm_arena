@@ -1575,3 +1575,39 @@
 2026-06-01 10:08:09,120 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:08:10,214 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:08:14,383 [INFO] Saved 4449 rows
+2026-06-01 10:08:46,614 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:08:46,615 [INFO] Already scraped: 4449
+2026-06-01 10:08:46,958 [INFO] Loaded 4449 existing rows
+2026-06-01 10:08:46,967 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:08:46,969 [INFO] Using cached device list
+2026-06-01 10:08:46,988 [INFO] Total: 14603 | New: 10154
+2026-06-01 10:08:48,181 [INFO] [1/10154] OK  Infinix - Hot 60
+2026-06-01 10:08:48,314 [INFO] [2/10154] OK  Infinix - Hot 60 Pro+
+2026-06-01 10:08:48,318 [INFO] [3/10154] OK  Infinix - Hot 60 Pro
+2026-06-01 10:08:48,358 [INFO] [4/10154] OK  Infinix - Note 60
+2026-06-01 10:08:48,380 [INFO] [5/10154] OK  Infinix - GT 30
+2026-06-01 10:08:49,032 [INFO] [6/10154] OK  Infinix - Smart 10
+2026-06-01 10:08:49,136 [INFO] [7/10154] OK  Infinix - Hot 60i 4G
+2026-06-01 10:08:49,200 [INFO] [8/10154] OK  Infinix - Smart 10 HD
+2026-06-01 10:08:49,231 [INFO] [9/10154] OK  Infinix - Xpad 20
+2026-06-01 10:08:49,254 [INFO] [10/10154] OK  Infinix - Smart 10 Plus
+2026-06-01 10:08:50,012 [INFO] [11/10154] OK  Infinix - Xpad GT
+2026-06-01 10:08:50,060 [INFO] [12/10154] OK  Infinix - Note 50 Pro+
+2026-06-01 10:08:50,071 [INFO] [13/10154] OK  Infinix - Note 50x
+2026-06-01 10:08:50,923 [INFO] [14/10154] OK  Infinix - Note 50 Pro 4G
+2026-06-01 10:08:50,961 [INFO] [15/10154] OK  Infinix - Note 50 4G
+2026-06-01 10:08:51,448 [INFO] [16/10154] OK  Infinix - Hot 50 Pro 4G
+2026-06-01 10:08:51,943 [INFO] [17/10154] OK  Infinix - Hot 50 Pro+ 4G
+2026-06-01 10:08:52,668 [INFO] [18/10154] OK  Infinix - Hot 50i
+2026-06-01 10:08:52,861 [INFO] [19/10154] OK  Infinix - Smart 9 HD
+2026-06-01 10:08:53,329 [INFO] [20/10154] OK  Infinix - Smart 9
+2026-06-01 10:08:53,698 [INFO] [21/10154] OK  Infinix - Hot 50 4G
+2026-06-01 10:08:54,280 [INFO] [22/10154] OK  Infinix - Zero Flip
+2026-06-01 10:08:54,747 [INFO] [23/10154] OK  Infinix - Zero 40
+2026-06-01 10:08:55,231 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:08:55,231 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:08:56,039 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:08:56,587 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:08:57,036 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:09:01,115 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:09:02,731 [INFO] Saved 4472 rows
