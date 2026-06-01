@@ -2559,3 +2559,62 @@
 2026-06-01 10:30:03,351 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:30:04,402 [WARNING] [W4] 429 — triggering fresh IP exit
 2026-06-01 10:30:11,521 [INFO] Saved 5089 rows
+2026-06-01 10:30:46,960 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:30:46,961 [INFO] Already scraped: 5089
+2026-06-01 10:30:47,373 [INFO] Loaded 5089 existing rows
+2026-06-01 10:30:47,383 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:30:47,385 [INFO] Using cached device list
+2026-06-01 10:30:47,406 [INFO] Total: 14603 | New: 9514
+2026-06-01 10:30:48,103 [INFO] [1/9514] OK  Lenovo - A6600
+2026-06-01 10:30:48,131 [INFO] [2/9514] OK  Lenovo - K8 Plus
+2026-06-01 10:30:48,169 [INFO] [3/9514] OK  Lenovo - A6600 Plus
+2026-06-01 10:30:48,177 [INFO] [4/9514] OK  Lenovo - A Plus
+2026-06-01 10:30:48,201 [INFO] [5/9514] OK  Lenovo - B
+2026-06-01 10:30:48,779 [INFO] [6/9514] OK  Lenovo - Yoga Tab 3 10
+2026-06-01 10:30:48,841 [INFO] [7/9514] OK  Lenovo - K6
+2026-06-01 10:30:48,852 [INFO] [8/9514] OK  Lenovo - K6 Power
+2026-06-01 10:30:48,899 [INFO] [9/9514] OK  Lenovo - K6 Note
+2026-06-01 10:30:48,903 [INFO] [10/9514] OK  Lenovo - P2
+2026-06-01 10:30:49,275 [INFO] [11/9514] OK  Lenovo - Yoga Tab 3 Plus
+2026-06-01 10:30:49,471 [INFO] [12/9514] OK  Lenovo - Vibe A
+2026-06-01 10:30:49,948 [INFO] [13/9514] OK  Lenovo - Phab2
+2026-06-01 10:30:50,448 [INFO] [14/9514] OK  Lenovo - C2
+2026-06-01 10:30:50,966 [INFO] [15/9514] OK  Lenovo - Phab2 Pro
+2026-06-01 10:30:51,167 [INFO] [16/9514] OK  Lenovo - Vibe C
+2026-06-01 10:30:51,661 [INFO] [17/9514] OK  Lenovo - ZUK Z2
+2026-06-01 10:30:52,365 [INFO] [18/9514] OK  Lenovo - ZUK Z2 Pro
+2026-06-01 10:30:52,784 [INFO] [19/9514] OK  Lenovo - Tab3 7
+2026-06-01 10:30:53,210 [INFO] [20/9514] OK  Lenovo - Vibe K5 Plus
+2026-06-01 10:30:53,841 [INFO] [21/9514] OK  Lenovo - Tab3 10
+2026-06-01 10:30:54,160 [INFO] [22/9514] OK  Lenovo - Tab3 8
+2026-06-01 10:30:54,709 [INFO] [23/9514] OK  Lenovo - Vibe P1 Turbo
+2026-06-01 10:30:55,235 [INFO] [24/9514] OK  Lenovo - A7000 Turbo
+2026-06-01 10:30:55,953 [INFO] [25/9514] OK  Lenovo - Vibe K5
+2026-06-01 10:30:56,083 [INFO] [26/9514] OK  Lenovo - K5 Note
+2026-06-01 10:30:57,040 [INFO] [27/9514] OK  Lenovo - Lemon 3
+2026-06-01 10:30:57,465 [INFO] [28/9514] OK  Lenovo - Vibe X3 c78
+2026-06-01 10:30:58,108 [INFO] [29/9514] OK  Lenovo - Vibe X3
+2026-06-01 10:30:58,693 [INFO] [30/9514] OK  Lenovo - Vibe S1 Lite
+2026-06-01 10:30:58,759 [INFO] [31/9514] OK  Lenovo - A3690
+2026-06-01 10:30:59,173 [INFO] [32/9514] OK  Lenovo - Yoga Tab 3 8.0
+2026-06-01 10:30:59,666 [INFO] [33/9514] OK  Lenovo - Vibe K4 Note
+2026-06-01 10:31:00,231 [INFO] [34/9514] OK  Lenovo - Yoga Tab 3 Pro
+2026-06-01 10:31:00,583 [INFO] [35/9514] OK  Lenovo - Phab Plus
+2026-06-01 10:31:01,246 [INFO] [36/9514] OK  Lenovo - Vibe P1
+2026-06-01 10:31:01,573 [INFO] [37/9514] OK  Lenovo - A1000
+2026-06-01 10:31:02,088 [INFO] [38/9514] OK  Lenovo - Phab
+2026-06-01 10:31:02,855 [INFO] [39/9514] OK  Lenovo - A6010 Plus
+2026-06-01 10:31:03,280 [INFO] [40/9514] OK  Lenovo - Vibe S1
+2026-06-01 10:31:03,999 [INFO] [41/9514] OK  Lenovo - ZUK Z1
+2026-06-01 10:31:04,010 [WARNING] [W2] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /lenovo_c2_power-8368.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f548c306dd0>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:31:04,010 [WARNING] [42/9514] FAIL https://www.gsmarena.com/lenovo_c2_power-8368.php
+2026-06-01 10:31:04,023 [WARNING] [W4] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /lenovo_phab2_plus-8147.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f548c302f10>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:31:04,023 [WARNING] [43/9514] FAIL https://www.gsmarena.com/lenovo_phab2_plus-8147.php
+2026-06-01 10:31:04,484 [INFO] [44/9514] OK  Lenovo - Vibe P1m
+2026-06-01 10:31:04,537 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:31:04,538 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:31:05,626 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:31:05,678 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:31:06,908 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:31:07,172 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:31:14,132 [INFO] Saved 5131 rows
