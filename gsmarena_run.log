@@ -1818,3 +1818,37 @@
 2026-06-01 10:13:18,386 [WARNING] [W0] 429 — triggering fresh IP exit
 2026-06-01 10:13:18,403 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:13:21,584 [INFO] Saved 4613 rows
+2026-06-01 10:13:55,302 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:13:55,304 [INFO] Already scraped: 4613
+2026-06-01 10:13:55,681 [INFO] Loaded 4613 existing rows
+2026-06-01 10:13:55,691 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:13:55,694 [INFO] Using cached device list
+2026-06-01 10:13:55,724 [INFO] Total: 14603 | New: 9990
+2026-06-01 10:13:56,370 [INFO] [1/9990] OK  Innostream - INNO A10
+2026-06-01 10:13:56,414 [INFO] [2/9990] OK  Innostream - INNO 50
+2026-06-01 10:13:56,419 [INFO] [3/9990] OK  Innostream - INNO 79
+2026-06-01 10:13:56,440 [INFO] [4/9990] OK  Infinix - Note 4 Pro
+2026-06-01 10:13:56,463 [INFO] [5/9990] OK  Infinix - Zero 4 Plus
+2026-06-01 10:13:56,959 [INFO] [6/9990] OK  Innostream - INNO 70
+2026-06-01 10:13:56,993 [INFO] [7/9990] OK  Innostream - INNO 78
+2026-06-01 10:13:57,011 [INFO] [8/9990] OK  Innostream - INNO 30
+2026-06-01 10:13:57,029 [INFO] [9/9990] OK  Innostream - INNO 99
+2026-06-01 10:13:57,108 [INFO] [10/9990] OK  Innostream - INNO 55
+2026-06-01 10:13:57,457 [INFO] [11/9990] OK  Innostream - INNO 120
+2026-06-01 10:13:57,480 [INFO] [12/9990] OK  Innostream - INNO 90
+2026-06-01 10:13:58,032 [INFO] [13/9990] OK  Innostream - INNO 100
+2026-06-01 10:13:58,461 [INFO] [14/9990] OK  Innostream - INNO 89
+2026-06-01 10:13:58,948 [INFO] [15/9990] OK  iNQ - Chat 3G
+2026-06-01 10:13:59,455 [INFO] [16/9990] OK  iNQ - Mini 3G
+2026-06-01 10:14:00,068 [INFO] [17/9990] OK  iNQ - Cloud Touch
+2026-06-01 10:14:00,512 [INFO] [18/9990] OK  Innostream - INNO 80
+2026-06-01 10:14:00,833 [INFO] [19/9990] OK  iNQ - iNQ1
+2026-06-01 10:14:01,510 [INFO] [20/9990] OK  Intex - Aqua Ace
+2026-06-01 10:14:01,823 [INFO] [21/9990] OK  Intex - Aqua Trend
+2026-06-01 10:14:02,359 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:14:02,360 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:14:03,153 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:14:03,742 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:14:03,867 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:14:04,989 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:14:11,195 [INFO] Saved 4634 rows
