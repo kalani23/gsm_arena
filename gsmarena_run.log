@@ -1712,3 +1712,37 @@
 2026-06-01 10:10:47,448 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:10:48,540 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:10:55,912 [INFO] Saved 4546 rows
+2026-06-01 10:11:28,693 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:11:28,695 [INFO] Already scraped: 4546
+2026-06-01 10:11:29,073 [INFO] Loaded 4546 existing rows
+2026-06-01 10:11:29,083 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:11:29,085 [INFO] Using cached device list
+2026-06-01 10:11:29,103 [INFO] Total: 14603 | New: 10057
+2026-06-01 10:11:29,860 [INFO] [1/10057] OK  Infinix - Note 12 Pro
+2026-06-01 10:11:29,936 [INFO] [2/10057] OK  Infinix - Note 10 Pro NFC
+2026-06-01 10:11:29,948 [INFO] [3/10057] OK  Infinix - Note 10 Pro
+2026-06-01 10:11:29,994 [INFO] [4/10057] OK  Infinix - Hot 10i
+2026-06-01 10:11:30,010 [INFO] [5/10057] OK  Infinix - Zero X Neo
+2026-06-01 10:11:30,667 [INFO] [6/10057] OK  Infinix - Hot 10s
+2026-06-01 10:11:30,698 [INFO] [7/10057] OK  Infinix - Hot 10s NFC
+2026-06-01 10:11:30,726 [INFO] [8/10057] OK  Infinix - Note 10
+2026-06-01 10:11:30,796 [INFO] [9/10057] OK  Infinix - Hot 10T
+2026-06-01 10:11:30,825 [INFO] [10/10057] OK  Infinix - Smart 5 (India)
+2026-06-01 10:11:31,348 [INFO] [11/10057] OK  Infinix - Note 8
+2026-06-01 10:11:31,378 [INFO] [12/10057] OK  Infinix - Note 8i
+2026-06-01 10:11:32,055 [INFO] [13/10057] OK  Infinix - Hot 10
+2026-06-01 10:11:32,085 [INFO] [14/10057] OK  Infinix - Hot 10 Lite
+2026-06-01 10:11:32,287 [INFO] [15/10057] OK  Infinix - Hot 10 Play
+2026-06-01 10:11:33,335 [INFO] [16/10057] OK  Infinix - Zero 8i
+2026-06-01 10:11:33,417 [INFO] [17/10057] OK  Infinix - Smart HD 2021
+2026-06-01 10:11:34,166 [INFO] [18/10057] OK  Infinix - Note 7
+2026-06-01 10:11:34,623 [INFO] [19/10057] OK  Infinix - Hot 9 Pro
+2026-06-01 10:11:34,883 [INFO] [20/10057] OK  Infinix - Smart 5
+2026-06-01 10:11:35,656 [INFO] [21/10057] OK  Infinix - S5 Pro (16+32)
+2026-06-01 10:11:35,759 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:11:35,760 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:11:36,895 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:11:37,128 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:11:38,134 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:11:38,156 [WARNING] [W1] 429 — triggering fresh IP exit
+2026-06-01 10:11:44,158 [INFO] Saved 4567 rows
