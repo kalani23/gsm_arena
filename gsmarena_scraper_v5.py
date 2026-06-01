@@ -26,6 +26,9 @@ import pandas as pd
 
 BASE_URL = "https://www.gsmarena.com"
 
+# Force desktop site — mobile UAs can redirect to m.gsmarena.com with different HTML
+DESKTOP_REFERER = "https://www.gsmarena.com/"
+
 BLOCK_PHRASES = [
     "check the box if you are human", "request unsuccessful",
     "incapsula", "access denied", "verify you are", "error 15",
@@ -39,9 +42,9 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
     "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Mobile/15E148 Safari/604.1",
-    "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 14; SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 ]
 
 REFERERS = [
@@ -109,46 +112,32 @@ class Worker:
         s.headers.update(random_headers())
         return s
 
-    def get(self, url, retries=4):
+    def get(self, url, retries=3):
         for attempt in range(retries):
             try:
                 time.sleep(random.uniform(0.3, 0.8))
                 self.session.headers.update(random_headers())
-
-                # occasional homepage visit to look human
-                self._req_count += 1
-                if self._req_count % random.randint(40, 70) == 0:
-                    try:
-                        self.session.get(BASE_URL, timeout=10)
-                        time.sleep(random.uniform(0.5, 1.0))
-                    except: pass
-
                 r = self.session.get(url, timeout=15)
 
                 if r.status_code == 429:
-                    wait = random.uniform(10, 20) * (attempt + 1)
-                    log.warning(f"[W{self.worker_id}] 429 — backing off {wait:.0f}s (attempt {attempt+1})")
-                    time.sleep(wait)
-                    self.session = self._new_session()  # fresh session
-                    continue
+                    log.warning(f"[W{self.worker_id}] 429 — returning None immediately for fresh IP trigger")
+                    return None  # immediately signal failure — don't retry, let exit logic handle it
 
                 if r.status_code != 200:
                     log.warning(f"[W{self.worker_id}] HTTP {r.status_code} attempt {attempt+1}")
-                    time.sleep(5)
+                    time.sleep(3)
                     continue
 
                 html = r.text
                 if any(p in html.lower() for p in BLOCK_PHRASES):
-                    log.warning(f"[W{self.worker_id}] Block detected attempt {attempt+1}")
-                    time.sleep(15 * (attempt + 1))
-                    self.session = self._new_session()
-                    continue
+                    log.warning(f"[W{self.worker_id}] Block detected — returning None")
+                    return None
 
                 return html
 
             except Exception as e:
                 log.warning(f"[W{self.worker_id}] Error attempt {attempt+1}: {e}")
-                time.sleep(3)
+                time.sleep(2)
 
         log.error(f"[W{self.worker_id}] All retries failed: {url}")
         return None
