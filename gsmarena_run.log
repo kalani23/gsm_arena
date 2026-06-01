@@ -2618,3 +2618,61 @@
 2026-06-01 10:31:06,908 [WARNING] [W3] 429 — triggering fresh IP exit
 2026-06-01 10:31:07,172 [WARNING] [W1] 429 — triggering fresh IP exit
 2026-06-01 10:31:14,132 [INFO] Saved 5131 rows
+2026-06-01 10:31:45,296 [INFO] === GSMArena Scraper v5 | workers=5 ===
+2026-06-01 10:31:45,298 [INFO] Already scraped: 5131
+2026-06-01 10:31:45,733 [INFO] Loaded 5131 existing rows
+2026-06-01 10:31:45,742 [INFO] Loaded discovery cache: 14603 devices
+2026-06-01 10:31:45,745 [INFO] Using cached device list
+2026-06-01 10:31:45,769 [INFO] Total: 14603 | New: 9472
+2026-06-01 10:31:46,224 [INFO] [1/9472] OK  Lenovo - A616
+2026-06-01 10:31:46,256 [INFO] [2/9472] OK  Lenovo - C2 Power
+2026-06-01 10:31:46,309 [INFO] [3/9472] OK  Lenovo - A6010
+2026-06-01 10:31:46,320 [INFO] [4/9472] OK  Lenovo - Phab2 Plus
+2026-06-01 10:31:46,350 [INFO] [5/9472] OK  Lenovo - A2010
+2026-06-01 10:31:46,792 [INFO] [6/9472] OK  Lenovo - K80
+2026-06-01 10:31:46,820 [INFO] [7/9472] OK  Lenovo - A1900
+2026-06-01 10:31:46,874 [INFO] [8/9472] OK  Lenovo - A6000 Plus
+2026-06-01 10:31:46,904 [INFO] [9/9472] OK  Lenovo - A3900
+2026-06-01 10:31:46,934 [INFO] [10/9472] OK  Lenovo - S60
+2026-06-01 10:31:47,520 [INFO] [11/9472] OK  Lenovo - K3 Note
+2026-06-01 10:31:47,549 [INFO] [12/9472] OK  Lenovo - A7000 Plus
+2026-06-01 10:31:48,259 [INFO] [13/9472] OK  Lenovo - Tab 2 A8-50
+2026-06-01 10:31:48,349 [INFO] [14/9472] OK  Lenovo - Tab 2 A10-70
+2026-06-01 10:31:48,764 [INFO] [15/9472] OK  Lenovo - Tab 2 A7-30
+2026-06-01 10:31:49,544 [INFO] [16/9472] OK  Lenovo - Vibe Shot
+2026-06-01 10:31:49,966 [INFO] [17/9472] OK  Lenovo - Tab 2 A7-10
+2026-06-01 10:31:50,388 [INFO] [18/9472] OK  Lenovo - A6000
+2026-06-01 10:31:50,837 [INFO] [19/9472] OK  Lenovo - P70
+2026-06-01 10:31:51,244 [INFO] [20/9472] OK  Lenovo - Tab 2 A7-20
+2026-06-01 10:31:51,894 [INFO] [21/9472] OK  Lenovo - P90
+2026-06-01 10:31:52,261 [INFO] [22/9472] OK  Lenovo - Vibe X2 Pro
+2026-06-01 10:31:53,353 [INFO] [23/9472] OK  Lenovo - Golden Warrior Note 8
+2026-06-01 10:31:53,740 [INFO] [24/9472] OK  Lenovo - K3
+2026-06-01 10:31:53,817 [INFO] [25/9472] OK  Lenovo - A916
+2026-06-01 10:31:54,240 [INFO] [26/9472] OK  Lenovo - S580
+2026-06-01 10:31:54,819 [INFO] [27/9472] OK  Lenovo - A319
+2026-06-01 10:31:55,335 [INFO] [28/9472] OK  Lenovo - A606
+2026-06-01 10:31:55,852 [INFO] [29/9472] OK  Lenovo - Yoga Tablet 2 Pro
+2026-06-01 10:31:56,208 [INFO] [30/9472] OK  Lenovo - S856
+2026-06-01 10:31:56,828 [INFO] [31/9472] OK  Lenovo - S90 Sisley
+2026-06-01 10:31:57,246 [INFO] [32/9472] OK  Lenovo - Tab S8
+2026-06-01 10:31:58,467 [INFO] [33/9472] OK  Lenovo - Yoga Tablet 2 10.1
+2026-06-01 10:31:58,633 [INFO] [34/9472] OK  Lenovo - A5000
+2026-06-01 10:31:58,869 [INFO] [35/9472] OK  Lenovo - Vibe X2
+2026-06-01 10:31:59,381 [INFO] [36/9472] OK  Lenovo - Vibe Z2 Pro
+2026-06-01 10:31:59,883 [INFO] [37/9472] OK  Lenovo - Golden Warrior A8
+2026-06-01 10:32:00,402 [INFO] [38/9472] OK  Lenovo - Golden Warrior S8
+2026-06-01 10:32:00,816 [INFO] [39/9472] OK  Lenovo - S939
+2026-06-01 10:32:01,241 [INFO] [40/9472] OK  Lenovo - S750
+2026-06-01 10:32:01,732 [INFO] [41/9472] OK  Lenovo - Yoga Tablet 2 8.0
+2026-06-01 10:32:01,995 [WARNING] [W3] Error: HTTPSConnectionPool(host='www.gsmarena.com', port=443): Max retries exceeded with url: /lenovo_a7000-7088.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.gsmarena.com', port=443) at 0x7f9764ef0750>, 'Connection to www.gsmarena.com timed out. (connect timeout=15)'))
+2026-06-01 10:32:01,995 [WARNING] [42/9472] FAIL https://www.gsmarena.com/lenovo_a7000-7088.php
+2026-06-01 10:32:02,406 [INFO] [43/9472] OK  Lenovo - A316i
+2026-06-01 10:32:02,774 [INFO] [44/9472] OK  Lenovo - A328
+2026-06-01 10:32:03,676 [WARNING] [W4] 429 — triggering fresh IP exit
+2026-06-01 10:32:03,676 [WARNING] BLOCKED — saving progress and exiting for fresh IP
+2026-06-01 10:32:03,995 [WARNING] [W2] 429 — triggering fresh IP exit
+2026-06-01 10:32:04,252 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:32:05,260 [WARNING] [W0] 429 — triggering fresh IP exit
+2026-06-01 10:32:06,213 [WARNING] [W3] 429 — triggering fresh IP exit
+2026-06-01 10:32:13,340 [INFO] Saved 5174 rows
