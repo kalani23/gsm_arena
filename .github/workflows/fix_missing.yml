@@ -1,0 +1,194 @@
+name: Fix Missing Data
+
+on:
+  workflow_dispatch:   # manual trigger only
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests beautifulsoup4 pandas openpyxl
+
+      - name: Fix missing Release Year rows
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python - << 'PYEOF'
+          import pandas as pd
+          import requests
+          import random
+          import time
+          import re
+          import os
+          from bs4 import BeautifulSoup
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          INPUT_CSV  = "gsmarena_devices.csv"
+
+          USER_AGENTS = [
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+          ]
+
+          def random_headers():
+              return {
+                  "User-Agent":      random.choice(USER_AGENTS),
+                  "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                  "Accept-Language": "en-US,en;q=0.9",
+                  "Accept-Encoding": "gzip, deflate, br",
+                  "Connection":      "keep-alive",
+                  "Cache-Control":   "max-age=0",
+              }
+
+          def extract_specs(soup):
+              specs, section = {}, ""
+              for table in soup.select("#specs-list table"):
+                  for row in table.select("tr"):
+                      th = row.find("th")
+                      if th: section = th.get_text(" ", strip=True)
+                      ttl    = row.find("td", class_="ttl")
+                      nfo_td = row.find("td", class_="nfo")
+                      if not ttl or not nfo_td: continue
+                      label = ttl.get_text(" ", strip=True).rstrip("?").strip()
+                      value = nfo_td.get_text(" ", strip=True)
+                      col   = f"{section}_{label}" if section and label else (section or label)
+                      if not col.strip(): continue
+                      if col in specs:
+                          i = 2
+                          while f"{col}_{i}" in specs: i += 1
+                          col = f"{col}_{i}"
+                      specs[col] = value
+              return specs
+
+          def parse_year(text):
+              if not text: return ""
+              m = re.search(r"\b(20\d{2}|19\d{2})\b", str(text))
+              return m.group(1) if m else ""
+
+          def scrape_url(session, url):
+              for attempt in range(3):
+                  try:
+                      time.sleep(random.uniform(1.0, 2.0))
+                      session.headers.update(random_headers())
+                      r = session.get(url, timeout=15)
+                      if r.status_code == 429:
+                          print(f"  429 — waiting 30s", flush=True)
+                          time.sleep(30)
+                          continue
+                      if r.status_code != 200:
+                          time.sleep(3)
+                          continue
+                      if any(p in r.text.lower() for p in ["incapsula","access denied","check the box"]):
+                          print(f"  Blocked — waiting 20s", flush=True)
+                          time.sleep(20)
+                          continue
+                      return r.text
+                  except Exception as e:
+                      print(f"  Error: {e}", flush=True)
+                      time.sleep(3)
+              return None
+
+          # Load CSV
+          print(f"Loading {INPUT_CSV}...", flush=True)
+          df = pd.read_csv(INPUT_CSV, encoding="utf-8-sig", low_memory=False)
+          print(f"Total rows: {len(df)}", flush=True)
+
+          # Find rows with missing Release Year only
+          release_blank = df["Release Year"].isna() | (df["Release Year"].astype(str).str.strip().isin(["", "nan"]))
+          bad_rows = df[release_blank].copy()
+          print(f"Rows missing Release Year: {len(bad_rows)}", flush=True)
+
+          if len(bad_rows) == 0:
+              print("Nothing to fix — all rows have Release Year!", flush=True)
+              exit(0)
+
+          session = requests.Session()
+          session.headers.update(random_headers())
+          fixed = failed = 0
+
+          for idx, row in bad_rows.iterrows():
+              url = str(row.get("URL", ""))
+              if not url.startswith("http"):
+                  continue
+
+              brand = row.get("Brand", "")
+              model = row.get("Model", "")
+              print(f"[{fixed+failed+1}/{len(bad_rows)}] {brand} - {model}", flush=True)
+
+              html = scrape_url(session, url)
+              if not html:
+                  print(f"  FAIL", flush=True)
+                  failed += 1
+                  continue
+
+              soup  = BeautifulSoup(html, "html.parser")
+              specs = extract_specs(soup)
+
+              if not specs:
+                  print(f"  Empty specs", flush=True)
+                  failed += 1
+                  continue
+
+              # Find year from multiple possible fields
+              year = ""
+              for key in ["Launch_Announced", "Launch_Status"]:
+                  year = parse_year(specs.get(key, ""))
+                  if year: break
+
+              # Also fill ALL other empty columns while we are here
+              for col, val in specs.items():
+                  if col not in df.columns:
+                      df[col] = ""
+                  current = str(df.at[idx, col]) if col in df.columns else ""
+                  if not current or current in ("nan", ""):
+                      df.at[idx, col] = val
+
+              if year:
+                  df.at[idx, "Release Year"] = year
+                  print(f"  Fixed — Year: {year}", flush=True)
+              else:
+                  print(f"  No year found on page", flush=True)
+
+              fixed += 1
+
+              # Checkpoint save every 50
+              if fixed % 50 == 0:
+                  df.to_csv(INPUT_CSV, index=False, encoding="utf-8-sig")
+                  print(f"  Checkpoint: {fixed} fixed so far", flush=True)
+
+          # Final sort and save
+          print(f"\nFixed: {fixed} | Failed: {failed}", flush=True)
+          print("Sorting and saving...", flush=True)
+
+          df = df.sort_values(
+              ["Brand", "Model"],
+              key=lambda x: x.str.lower().fillna(""),
+              na_position="last"
+          ).reset_index(drop=True)
+
+          df.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
+          df.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
+          print(f"Saved {len(df)} rows to gsmarena_devices.csv + gsmarena_devices.xlsx", flush=True)
+          PYEOF
+
+      - name: Commit fixed data
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add gsmarena_devices.csv gsmarena_devices.xlsx
+          git diff --staged --quiet || git commit -m "Fixed missing Release Year $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
+          git push
