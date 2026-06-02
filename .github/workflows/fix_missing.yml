@@ -104,6 +104,12 @@ jobs:
           # Load CSV
           print(f"Loading {INPUT_CSV}...", flush=True)
           df = pd.read_csv(INPUT_CSV, encoding="utf-8-sig", low_memory=False)
+          # convert Release Year to string to avoid dtype conflicts
+          df["Release Year"] = df["Release Year"].astype(str).replace("nan", "")
+          # convert all object columns to string to avoid setitem errors
+          for col in df.columns:
+              if df[col].dtype == object:
+                  df[col] = df[col].fillna("").astype(str)
           print(f"Total rows: {len(df)}", flush=True)
 
           # Find rows with missing Release Year only
@@ -154,10 +160,10 @@ jobs:
                       df[col] = ""
                   current = str(df.at[idx, col]) if col in df.columns else ""
                   if not current or current in ("nan", ""):
-                      df.at[idx, col] = val
+                      df.at[idx, col] = str(val)
 
               if year:
-                  df.at[idx, "Release Year"] = year
+                  df.at[idx, "Release Year"] = str(year)
                   print(f"  Fixed — Year: {year}", flush=True)
               else:
                   print(f"  No year found on page", flush=True)
