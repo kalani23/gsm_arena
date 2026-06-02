@@ -22,6 +22,8 @@ jobs:
       - name: Fix missing Release Year rows
         env:
           PYTHONUNBUFFERED: "1"
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO: ${{ github.repository }}
         run: |
           python - << 'PYEOF'
           import pandas as pd
@@ -136,9 +138,20 @@ jobs:
 
               html = scrape_url(session, url)
               if not html:
-                  print(f"  FAIL", flush=True)
-                  failed += 1
-                  continue
+                  print(f"  FAIL — saving and triggering fresh IP", flush=True)
+                  # save progress then exit for fresh IP
+                  df.to_csv(INPUT_CSV, index=False, encoding="utf-8-sig")
+                  import subprocess, os
+                  subprocess.run(["python3", "-c", f"""
+import requests, os
+r = requests.post(
+    'https://api.github.com/repos/{os.environ.get("REPO","")}/actions/workflows/fix_missing.yml/dispatches',
+    headers={{'Authorization': 'token {os.environ.get("PAT_TOKEN","")}', 'Accept': 'application/vnd.github.v3+json'}},
+    json={{'ref': 'main'}}
+)
+print('Retrigger status:', r.status_code)
+"""])
+                  os._exit(2)
 
               soup  = BeautifulSoup(html, "html.parser")
               specs = extract_specs(soup)
@@ -198,3 +211,10 @@ jobs:
           git add gsmarena_devices.csv gsmarena_devices.xlsx
           git diff --staged --quiet || git commit -m "Fixed missing Release Year $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
           git push
+
+      - name: Trigger fresh IP if blocked
+        if: failure()
+        run: |
+          sleep 10
+          curl -s -X POST             -H "Accept: application/vnd.github.v3+json"             -H "Authorization: token ${{ secrets.PAT_TOKEN }}"             https://api.github.com/repos/${{ github.repository }}/actions/workflows/fix_missing.yml/dispatches             -d '{"ref":"main"}'
+          echo "New fix job triggered with fresh IP"
