@@ -1,7 +1,7 @@
 name: Fix Missing Data
 
 on:
-  workflow_dispatch:   # manual trigger only
+  workflow_dispatch:
 
 jobs:
   fix:
@@ -20,10 +20,9 @@ jobs:
       - run: pip install requests beautifulsoup4 pandas openpyxl
 
       - name: Fix missing Release Year rows
+        id: fixer
         env:
           PYTHONUNBUFFERED: "1"
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-          REPO: ${{ github.repository }}
         run: |
           python - << 'PYEOF'
           import pandas as pd
@@ -32,11 +31,11 @@ jobs:
           import time
           import re
           import os
+          import sys
           from bs4 import BeautifulSoup
-          from datetime import datetime, timezone
           from pathlib import Path
 
-          INPUT_CSV  = "gsmarena_devices.csv"
+          INPUT_CSV = "gsmarena_devices.csv"
 
           USER_AGENTS = [
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -52,7 +51,6 @@ jobs:
                   "Accept-Language": "en-US,en;q=0.9",
                   "Accept-Encoding": "gzip, deflate, br",
                   "Connection":      "keep-alive",
-                  "Cache-Control":   "max-age=0",
               }
 
           def extract_specs(soup):
@@ -87,41 +85,39 @@ jobs:
                       session.headers.update(random_headers())
                       r = session.get(url, timeout=15)
                       if r.status_code == 429:
-                          print(f"  429 — waiting 30s", flush=True)
-                          time.sleep(30)
-                          continue
+                          print("429 — exiting for fresh IP", flush=True)
+                          return "BLOCKED"
                       if r.status_code != 200:
                           time.sleep(3)
                           continue
                       if any(p in r.text.lower() for p in ["incapsula","access denied","check the box"]):
-                          print(f"  Blocked — waiting 20s", flush=True)
-                          time.sleep(20)
-                          continue
+                          print("Blocked — exiting for fresh IP", flush=True)
+                          return "BLOCKED"
                       return r.text
                   except Exception as e:
-                      print(f"  Error: {e}", flush=True)
+                      print(f"Error: {e}", flush=True)
                       time.sleep(3)
               return None
 
           # Load CSV
           print(f"Loading {INPUT_CSV}...", flush=True)
           df = pd.read_csv(INPUT_CSV, encoding="utf-8-sig", low_memory=False)
-          # convert Release Year to string to avoid dtype conflicts
+
+          # Convert all columns to string to avoid dtype errors
           df["Release Year"] = df["Release Year"].astype(str).replace("nan", "")
-          # convert all object columns to string to avoid setitem errors
-          for col in df.columns:
-              if df[col].dtype == object:
-                  df[col] = df[col].fillna("").astype(str)
+          for col in df.select_dtypes(include="object").columns:
+              df[col] = df[col].fillna("").astype(str)
+
           print(f"Total rows: {len(df)}", flush=True)
 
-          # Find rows with missing Release Year only
-          release_blank = df["Release Year"].isna() | (df["Release Year"].astype(str).str.strip().isin(["", "nan"]))
+          # Find rows missing Release Year
+          release_blank = df["Release Year"].str.strip().isin(["", "nan"])
           bad_rows = df[release_blank].copy()
           print(f"Rows missing Release Year: {len(bad_rows)}", flush=True)
 
           if len(bad_rows) == 0:
-              print("Nothing to fix — all rows have Release Year!", flush=True)
-              exit(0)
+              print("Nothing to fix!", flush=True)
+              sys.exit(0)
 
           session = requests.Session()
           session.headers.update(random_headers())
@@ -137,43 +133,39 @@ jobs:
               print(f"[{fixed+failed+1}/{len(bad_rows)}] {brand} - {model}", flush=True)
 
               html = scrape_url(session, url)
-              if not html:
-                  print(f"  FAIL — saving and triggering fresh IP", flush=True)
-                  # save progress then exit for fresh IP
+
+              if html == "BLOCKED":
+                  # save progress and exit with code 2 — workflow triggers new job
                   df.to_csv(INPUT_CSV, index=False, encoding="utf-8-sig")
-                  import subprocess, os
-                  subprocess.run(["python3", "-c", f"""
-import requests, os
-r = requests.post(
-    'https://api.github.com/repos/{os.environ.get("REPO","")}/actions/workflows/fix_missing.yml/dispatches',
-    headers={{'Authorization': 'token {os.environ.get("PAT_TOKEN","")}', 'Accept': 'application/vnd.github.v3+json'}},
-    json={{'ref': 'main'}}
-)
-print('Retrigger status:', r.status_code)
-"""])
-                  os._exit(2)
+                  print("Progress saved — exiting for fresh IP retrigger", flush=True)
+                  sys.exit(2)
+
+              if not html:
+                  print("  FAIL", flush=True)
+                  failed += 1
+                  continue
 
               soup  = BeautifulSoup(html, "html.parser")
               specs = extract_specs(soup)
 
               if not specs:
-                  print(f"  Empty specs", flush=True)
+                  print("  Empty specs", flush=True)
                   failed += 1
                   continue
 
-              # Find year from multiple possible fields
+              # Fill empty columns
+              for col, val in specs.items():
+                  if col not in df.columns:
+                      df[col] = ""
+                  current = str(df.at[idx, col])
+                  if not current or current in ("nan", ""):
+                      df.at[idx, col] = str(val)
+
+              # Fix Release Year
               year = ""
               for key in ["Launch_Announced", "Launch_Status"]:
                   year = parse_year(specs.get(key, ""))
                   if year: break
-
-              # Also fill ALL other empty columns while we are here
-              for col, val in specs.items():
-                  if col not in df.columns:
-                      df[col] = ""
-                  current = str(df.at[idx, col]) if col in df.columns else ""
-                  if not current or current in ("nan", ""):
-                      df.at[idx, col] = str(val)
 
               if year:
                   df.at[idx, "Release Year"] = str(year)
@@ -183,15 +175,13 @@ print('Retrigger status:', r.status_code)
 
               fixed += 1
 
-              # Checkpoint save every 50
               if fixed % 50 == 0:
                   df.to_csv(INPUT_CSV, index=False, encoding="utf-8-sig")
-                  print(f"  Checkpoint: {fixed} fixed so far", flush=True)
+                  print(f"  Checkpoint: {fixed} fixed", flush=True)
 
-          # Final sort and save
           print(f"\nFixed: {fixed} | Failed: {failed}", flush=True)
-          print("Sorting and saving...", flush=True)
 
+          # Sort and save
           df = df.sort_values(
               ["Brand", "Model"],
               key=lambda x: x.str.lower().fillna(""),
@@ -200,7 +190,7 @@ print('Retrigger status:', r.status_code)
 
           df.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
           df.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
-          print(f"Saved {len(df)} rows to gsmarena_devices.csv + gsmarena_devices.xlsx", flush=True)
+          print(f"Saved {len(df)} rows", flush=True)
           PYEOF
 
       - name: Commit fixed data
@@ -209,12 +199,16 @@ print('Retrigger status:', r.status_code)
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add gsmarena_devices.csv gsmarena_devices.xlsx
-          git diff --staged --quiet || git commit -m "Fixed missing Release Year $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
+          git diff --staged --quiet || git commit -m "Fix missing Release Year $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
 
       - name: Trigger fresh IP if blocked
         if: failure()
         run: |
           sleep 10
-          curl -s -X POST             -H "Accept: application/vnd.github.v3+json"             -H "Authorization: token ${{ secrets.PAT_TOKEN }}"             https://api.github.com/repos/${{ github.repository }}/actions/workflows/fix_missing.yml/dispatches             -d '{"ref":"main"}'
+          curl -s -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/fix_missing.yml/dispatches \
+            -d '{"ref":"main"}'
           echo "New fix job triggered with fresh IP"
