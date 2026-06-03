@@ -94,18 +94,29 @@ jobs:
           existing_urls = {d["url"] for d in existing}
           print(f"Existing devices: {len(existing)}", flush=True)
 
-          # Load progress — resume from where we left off if blocked before
+          # Always start fresh — no resume from previous runs
           completed_brands = set()
           new_devices = []
           from pathlib import Path
+          # Clean up any stale progress file
           if Path(PROGRESS_FILE).exists():
-              with open(PROGRESS_FILE) as f:
-                  progress = json.load(f)
-              completed_brands = set(progress.get("completed_brands", []))
-              new_devices = progress.get("new_devices", [])
-              print(f"Resuming — {len(completed_brands)} brands already checked, {len(new_devices)} new found so far", flush=True)
+              Path(PROGRESS_FILE).unlink()
+              print("Cleared stale progress file", flush=True)
 
           # Get all brands
+          # Reset progress file so UI shows fresh state
+          with open("crawl_progress.json", "w") as f:
+              json.dump({
+                  "status": "running",
+                  "brands_checked": 0,
+                  "brands_total": 0,
+                  "current_brand": "Starting...",
+                  "new_devices_found": 0,
+                  "new_device_names": [],
+                  "new_device_urls": [],
+                  "updated_at": __import__("datetime").datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+              }, f, indent=2)
+
           print("Fetching brand list...", flush=True)
           html = fetch(f"{BASE_URL}/makers.php3")
           if html == "BLOCKED" or not html:
@@ -158,10 +169,6 @@ jobs:
               if brand_new > 0:
                   print(f"  {brand_name}: {brand_new} new devices found", flush=True)
               completed_brands.add(brand_name)
-
-              # Save progress after each brand
-              with open(PROGRESS_FILE, "w") as f:
-                  json.dump({"completed_brands": list(completed_brands), "new_devices": new_devices}, f)
 
               # Write UI-readable progress file
               with open("crawl_progress.json", "w") as f:
@@ -229,7 +236,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add discovered_devices.json check_new_progress.json crawl_progress.json seen_ids.json new_devices_to_scrape.json 2>/dev/null || true
+          git add discovered_devices.json crawl_progress.json seen_ids.json new_devices_to_scrape.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Check new devices $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push || true
 
