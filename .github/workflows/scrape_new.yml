@@ -98,10 +98,6 @@ jobs:
               return m.group(1) if m else ""
 
           # Load new devices to scrape
-          if not Path("new_devices_to_scrape.json").exists():
-              print("No new_devices_to_scrape.json found — nothing to do", flush=True)
-              sys.exit(0)
-
           with open("new_devices_to_scrape.json") as f:
               devices = json.load(f)
 
@@ -210,20 +206,23 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git stash || true
           git pull --rebase origin main || true
-          git add gsmarena_devices.xlsx gsmarena_new_*.xlsx seen_ids.json new_devices_progress.json 2>/dev/null || true
+          git stash pop || true
+          git add gsmarena_devices.xlsx gsmarena_new_*.xlsx seen_ids.json 2>/dev/null || true
           git rm new_devices_to_scrape.json new_devices_progress.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "New devices scraped $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git push || true
+          for i in 1 2 3; do
+            git push && break || (git pull --rebase origin main && sleep 3)
+          done || true
 
       - name: Retrigger with fresh IP if blocked
         if: failure()
         run: |
-          # Only retrigger if new_devices_to_scrape.json exists (means blocked, not missing file)
-          if [ -f "new_devices_to_scrape.json" ]; then
-            sleep 10
-            curl -s -X POST               -H "Accept: application/vnd.github.v3+json"               -H "Authorization: token ${{ secrets.PAT_TOKEN }}"               https://api.github.com/repos/${{ github.repository }}/dispatches               -d '{"event_type":"scrape_new_devices"}'
-            echo "Fresh IP triggered"
-          else
-            echo "No devices file — skipping retrigger"
-          fi
+          sleep 10
+          curl -s -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type":"scrape_new_devices"}'
+          echo "Fresh IP triggered"
