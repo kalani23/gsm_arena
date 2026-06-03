@@ -403,31 +403,32 @@ async function refreshStatus() {
   if (!commits) { showMsg('status-msg','Could not load — check token and repo.','error'); return; }
 
   const msg = commits[0]?.commit?.message || '';
-  const total = 14603;
 
-  // Try to get scraped count from seen_ids.json
+  // Read seen_ids.json for scraped count
   let scraped = 0;
+  let total = 0;
   try {
-    const seenResp = await fetch(`https://raw.githubusercontent.com/${repo}/main/seen_ids.json?t=${Date.now()}`, {
-      headers: { 'Authorization': `token ${pat}` }
-    });
-    if (seenResp.ok) {
-      const seen = await seenResp.json();
+    const seenData = await ghFetch('/contents/seen_ids.json');
+    if (seenData?.content) {
+      const seen = JSON.parse(atob(seenData.content.replace(/\n/g, '')));
       scraped = Array.isArray(seen) ? seen.length : 0;
     }
   } catch(e) {}
 
-  // Fallback to commit message
-  if (!scraped) {
-    const rowMatch = msg.match(/(\d[\d,]*)/);
-    scraped = rowMatch ? parseInt(rowMatch[1].replace(',','')) : 0;
-  }
+  // Read discovered_devices.json for total count
+  try {
+    const discData = await ghFetch('/contents/discovered_devices.json');
+    if (discData?.content) {
+      const disc = JSON.parse(atob(discData.content.replace(/\n/g, '')));
+      total = Array.isArray(disc) ? disc.length : 0;
+    }
+  } catch(e) {}
 
   document.getElementById('stat-scraped').textContent = scraped ? scraped.toLocaleString() : '—';
-  document.getElementById('stat-total').textContent = total.toLocaleString();
+  document.getElementById('stat-total').textContent = total ? total.toLocaleString() : '—';
   document.getElementById('stat-runs').textContent = runs?.total_count?.toLocaleString() || '—';
 
-  if (scraped) {
+  if (scraped && total) {
     const pct = Math.min(100, Math.round(scraped / total * 100));
     document.getElementById('progress-wrap').style.display = 'block';
     document.getElementById('progress-bar').style.width = pct + '%';
