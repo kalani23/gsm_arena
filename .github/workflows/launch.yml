@@ -146,4 +146,80 @@ jobs:
               time.sleep(1)
 
           print(f"Launched {launched} chunks", flush=True)
+
+          # Save the run timestamp so merge knows which runs to collect
+          import datetime
+          with open("launch_time.json", "w") as f:
+              json.dump({"launched_at": datetime.datetime.utcnow().isoformat(), "chunks": launched}, f)
+          PYEOF
+
+      - name: Wait for all chunks then trigger merge
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+        run: |
+          python - << 'PYEOF'
+          import os, requests, time, json
+
+          pat  = os.environ["PAT_TOKEN"]
+          repo = os.environ["REPO"]
+          headers = {
+              "Authorization": f"token {pat}",
+              "Accept": "application/vnd.github.v3+json"
+          }
+
+          with open("launch_time.json") as f:
+              info = json.load(f)
+          expected = info["chunks"]
+          print(f"Waiting for {expected} chunks to complete...", flush=True)
+
+          max_wait = 3600  # max 1 hour
+          poll_interval = 30
+          elapsed = 0
+          completed = 0
+
+          while elapsed < max_wait:
+              time.sleep(poll_interval)
+              elapsed += poll_interval
+
+              # Check recent scrape_chunk runs
+              r = requests.get(
+                  f"https://api.github.com/repos/{repo}/actions/runs?event=repository_dispatch&per_page=100",
+                  headers=headers
+              )
+              runs = r.json().get("workflow_runs", [])
+
+              # Count completed scrape runs since launch
+              from datetime import datetime, timezone, timedelta
+              cutoff = datetime.fromisoformat(info["launched_at"]) - timedelta(minutes=2)
+              cutoff = cutoff.replace(tzinfo=timezone.utc)
+
+              done = 0
+              running = 0
+              for run in runs:
+                  created = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
+                  if created >= cutoff and "scrape" in run["name"].lower():
+                      if run["status"] == "completed":
+                          done += 1
+                      elif run["status"] in ("in_progress", "queued"):
+                          running += 1
+
+              print(f"  {elapsed}s elapsed | {done} done | {running} running", flush=True)
+
+              if done >= expected and running == 0:
+                  print(f"All {done} chunks completed!", flush=True)
+                  break
+
+              if running == 0 and elapsed > 300:
+                  print(f"No more running jobs after {elapsed}s — triggering merge anyway", flush=True)
+                  break
+
+          # Trigger merge
+          print("Triggering Merge Chunk Results...", flush=True)
+          r = requests.post(
+              f"https://api.github.com/repos/{repo}/dispatches",
+              headers=headers,
+              json={"event_type": "merge_chunks"}
+          )
+          print(f"Merge triggered: {r.status_code}", flush=True)
           PYEOF
