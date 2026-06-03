@@ -29,7 +29,21 @@ jobs:
           from pathlib import Path
           from datetime import datetime, timezone
 
-          # Load all chunk result files
+          # Step 1: Rebuild seen_ids.json from CSV to remove ghost entries
+          from pathlib import Path
+          import json
+
+          if Path("gsmarena_devices.csv").exists():
+              try:
+                  master = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig", low_memory=False)
+                  csv_urls = set(master["URL"].dropna().tolist())
+                  with open("seen_ids.json", "w") as f:
+                      json.dump(list(csv_urls), f)
+                  print(f"seen_ids.json rebuilt from CSV: {len(csv_urls)} URLs", flush=True)
+              except Exception as e:
+                  print(f"Could not rebuild seen_ids: {e}", flush=True)
+
+          # Step 2: Load all chunk result files
           chunk_files = sorted(glob.glob("chunk_result_*.csv"))
           print(f"Found {len(chunk_files)} chunk files", flush=True)
 
@@ -89,6 +103,12 @@ jobs:
           except: pass
           print(f"Master file updated: {len(combined)} rows", flush=True)
 
+          # Step 3: Rebuild seen_ids.json from final combined data
+          final_urls = list(combined["URL"].dropna().tolist())
+          with open("seen_ids.json", "w") as f:
+              json.dump(final_urls, f)
+          print(f"seen_ids.json final rebuild: {len(final_urls)} URLs", flush=True)
+
           # Delete chunk files
           for f in chunk_files:
               Path(f).unlink()
@@ -100,7 +120,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main || true
-          git add gsmarena_devices.csv gsmarena_devices.xlsx gsmarena_new_*.csv gsmarena_new_*.xlsx
+          git add gsmarena_devices.csv gsmarena_devices.xlsx gsmarena_new_*.csv gsmarena_new_*.xlsx seen_ids.json
           git rm chunk_result_*.csv 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Merged results $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
           git push
