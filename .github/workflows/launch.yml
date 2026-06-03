@@ -176,42 +176,53 @@ jobs:
           # Record launch time
           launch_time = datetime.now(timezone.utc)
 
-          # Give GitHub 10s to spin up the jobs
-          time.sleep(10)
+          # Give GitHub 15s to spin up the jobs
+          time.sleep(15)
 
           max_wait = 3600  # 1 hour max
-          elapsed  = 10
-          poll     = 15   # check every 15 seconds
+          elapsed  = 15
+          poll     = 20   # check every 20 seconds
+          last_artifact_count = 0
+          stable_count = 0  # how many polls with same artifact count
 
           while elapsed < max_wait:
+              # Count artifacts uploaded — each completed chunk uploads one
               r = requests.get(
                   f"https://api.github.com/repos/{repo}/actions/runs?per_page=100",
                   headers=headers
               )
               runs = r.json().get("workflow_runs", [])
 
-              # Count scrape_chunk runs started after launch
-              done    = 0
-              running = 0
+              # Count running scrape jobs (including retriggered ones)
+              running = sum(
+                  1 for run in runs
+                  if "scrape" in run["name"].lower()
+                  and run["status"] in ("in_progress", "queued")
+              )
+
+              # Count artifacts from all recent scrape runs
+              artifacts = 0
               for run in runs:
                   created = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
-                  if created >= launch_time and "scrape" in run["name"].lower():
-                      if run["status"] == "completed":
-                          done += 1
-                      elif run["status"] in ("in_progress", "queued"):
-                          running += 1
+                  if created >= launch_time and "scrape" in run["name"].lower() and run["status"] == "completed":
+                      ar = requests.get(
+                          f"https://api.github.com/repos/{repo}/actions/runs/{run['id']}/artifacts",
+                          headers=headers
+                      )
+                      artifacts += len([a for a in ar.json().get("artifacts", []) if a["name"].startswith("chunk-result-")])
 
-              print(f"  {elapsed}s | {done} done | {running} running", flush=True)
+              print(f"  {elapsed}s | {artifacts} artifacts | {running} running", flush=True)
 
-              # All expected chunks done and nothing running
-              if done >= expected and running == 0 and done > 0:
-                  print(f"All {done} chunks completed!", flush=True)
-                  break
-
-              # Safety: nothing running after 2 mins means all done or failed
-              if running == 0 and elapsed >= 120 and done > 0:
-                  print(f"No running jobs after {elapsed}s — {done} completed, triggering merge", flush=True)
-                  break
+              # Trigger merge when nothing is running and stable for 2 polls
+              if running == 0:
+                  if artifacts == last_artifact_count:
+                      stable_count += 1
+                      if stable_count >= 2:
+                          print(f"Nothing running, {artifacts} artifacts stable — triggering merge", flush=True)
+                          break
+                  else:
+                      stable_count = 0
+                  last_artifact_count = artifacts
 
               time.sleep(poll)
               elapsed += poll

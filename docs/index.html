@@ -144,6 +144,12 @@
     <div id="action-msg" class="status"></div>
   </div>
 
+  <!-- Workflow Status -->
+  <div class="card">
+    <p class="section-title">Workflow status</p>
+    <div id="workflow-status"><p style="font-size:13px;color:#888;">Save settings to load.</p></div>
+  </div>
+
   <!-- Downloads -->
   <div class="card">
     <p class="section-title">Download files</p>
@@ -236,6 +242,41 @@ async function loadCrawlProgress() {
       document.getElementById('cp-list').innerHTML = '<div style="color:#aaa;">No new devices found in this run</div>';
     }
   } catch(e) {}
+}
+
+async function loadWorkflowStatus() {
+  const data = await ghFetch('/actions/runs?per_page=15');
+  if (!data) return;
+
+  const relevant = data.workflow_runs.filter(r =>
+    !r.name.toLowerCase().includes('pages') &&
+    !r.name.toLowerCase().includes('deployment')
+  ).slice(0, 8);
+
+  if (!relevant.length) return;
+
+  const el = document.getElementById('workflow-status');
+
+  el.innerHTML = relevant.map(r => {
+    const dot   = runDot(r.status, r.conclusion);
+    const label = runLabel(r.status, r.conclusion);
+    const time  = timeAgo(r.updated_at);
+
+    let bg = '#f8f8f8';
+    let labelColor = '#666';
+    if (r.status === 'in_progress' || r.status === 'queued') { bg = '#fff8e1'; labelColor = '#e65100'; }
+    else if (r.conclusion === 'success') { bg = '#f1f8f1'; labelColor = '#2e7d32'; }
+    else if (r.conclusion === 'failure') { bg = '#fdecea'; labelColor = '#b71c1c'; }
+
+    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;margin-bottom:6px;background:${bg};border-radius:8px;">
+      <div class="run-dot ${dot}"></div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:500;">${r.name} <span style="font-weight:400;color:#888;font-size:12px;">#${r.run_number}</span></div>
+        <div style="font-size:12px;color:${labelColor};margin-top:2px;">${label} · ${time}</div>
+      </div>
+      <a href="${r.html_url}" target="_blank" style="font-size:12px;color:#1a6fa8;text-decoration:none;white-space:nowrap;">View →</a>
+    </div>`;
+  }).join('');
 }
 
 async function loadRuns() {
@@ -406,6 +447,7 @@ function startPolling() {
   isPolling = true;
   document.getElementById('live-badge').classList.add('on');
   pollTimer = setInterval(async () => {
+    await loadWorkflowStatus();
     await loadCrawlProgress();
     await refreshStatus();
   }, 15000);
@@ -476,7 +518,7 @@ window.addEventListener('load', () => {
   const {pat, repo} = cfg();
   if (pat)  document.getElementById('pat').value  = pat;
   if (repo) document.getElementById('repo').value = repo;
-  if (pat && repo) { refreshStatus(); loadFiles(); loadCrawlProgress(); }
+  if (pat && repo) { refreshStatus(); loadFiles(); loadCrawlProgress(); loadWorkflowStatus(); }
 });
 </script>
 </body>
