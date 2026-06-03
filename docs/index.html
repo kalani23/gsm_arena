@@ -231,7 +231,8 @@ async function loadCrawlProgress() {
   if (!pat || !repo) return;
   try {
     // Use GitHub API to read file contents (avoids CORS issues with raw)
-    const fileData = await ghFetch('/contents/crawl_progress.json');
+    // Add timestamp to bust GitHub's cache
+    const fileData = await ghFetch(`/contents/crawl_progress.json?t=${Date.now()}`);
     if (!fileData || !fileData.content) return;
     const p = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
 
