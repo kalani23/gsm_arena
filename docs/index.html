@@ -97,21 +97,29 @@
     <div id="status-msg" class="status"></div>
   </div>
 
-  <!-- Live runs + log -->
+  <!-- Live crawl progress -->
   <div class="card">
     <p class="section-title">
-      Live progress
+      Crawl progress
       <span class="live-badge" id="live-badge">
         <div class="spinner" style="width:10px;height:10px;border-width:1.5px;"></div>
         live
         <button id="poll-stop" onclick="stopPolling()">stop</button>
       </span>
     </p>
-    <div id="runs-list"><p style="font-size:13px;color:#888;">Save settings to load.</p></div>
-    <div id="log-box" style="display:none;margin-top:12px;">
-      <div style="font-size:11px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Crawl log</div>
-      <div id="log-lines" style="background:#1a1a1a;color:#e5e5e5;border-radius:8px;padding:10px 12px;font-size:12px;font-family:monospace;max-height:300px;overflow-y:auto;line-height:1.6;"></div>
+    <div id="crawl-progress" style="display:none;">
+      <div class="grid2" style="margin-bottom:10px;">
+        <div class="metric"><p class="metric-val" id="cp-brands">—</p><p class="metric-lbl">brands checked</p></div>
+        <div class="metric"><p class="metric-val" id="cp-new">—</p><p class="metric-lbl">new devices found</p></div>
+      </div>
+      <div style="font-size:13px;color:#666;margin-bottom:8px;">
+        Current: <span id="cp-current" style="font-weight:500;color:#1a1a1a;">—</span>
+      </div>
+      <div style="font-size:11px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Recently found</div>
+      <div id="cp-list" style="background:#f8f8f8;border-radius:8px;padding:10px 12px;font-size:13px;max-height:200px;overflow-y:auto;line-height:1.8;"></div>
+      <div style="font-size:12px;color:#aaa;margin-top:6px;" id="cp-updated"></div>
     </div>
+    <div id="crawl-idle" style="font-size:13px;color:#888;">Trigger "Get new devices" to start crawling.</div>
   </div>
 
   <!-- Actions -->
@@ -203,6 +211,34 @@ function runLabel(status, conclusion) {
   return conclusion || status;
 }
 
+async function loadCrawlProgress() {
+  const {pat, repo} = cfg();
+  if (!pat || !repo) return;
+  try {
+    const r = await fetch(`https://raw.githubusercontent.com/${repo}/main/crawl_progress.json?t=${Date.now()}`, {
+      headers: { 'Authorization': `token ${pat}` }
+    });
+    if (!r.ok) return;
+    const p = await r.json();
+
+    document.getElementById('crawl-progress').style.display = 'block';
+    document.getElementById('crawl-idle').style.display = 'none';
+    document.getElementById('cp-brands').textContent = `${p.brands_checked} / ${p.brands_total}`;
+    document.getElementById('cp-new').textContent = p.new_devices_found || '0';
+    document.getElementById('cp-current').textContent = p.status === 'complete' ? 'Done!' : (p.current_brand || '—');
+    document.getElementById('cp-updated').textContent = 'Updated: ' + (p.updated_at || '');
+
+    const names = p.new_device_names || [];
+    if (names.length) {
+      document.getElementById('cp-list').innerHTML = names.slice().reverse().map(n =>
+        `<div>✓ ${n}</div>`
+      ).join('');
+    } else {
+      document.getElementById('cp-list').innerHTML = '<div style="color:#aaa;">No new devices found yet</div>';
+    }
+  } catch(e) {}
+}
+
 async function loadRuns() {
   const {pat, repo} = cfg();
   const data = await ghFetch('/actions/runs?per_page=5');
@@ -216,16 +252,26 @@ async function loadRuns() {
     return false;
   }
 
-  list.innerHTML = data.workflow_runs.map(r => `
-    <div class="run-item">
-      <div class="run-dot ${runDot(r.status, r.conclusion)}"></div>
-      <div class="run-name">${r.name} <span style="font-weight:400;color:#888;font-size:12px;">#${r.run_number}</span></div>
-      <div style="font-size:12px;color:#888;text-align:right;">
-        <div>${runLabel(r.status, r.conclusion)}</div>
-        <div>${timeAgo(r.updated_at)}</div>
+  // Only show scraper-related workflows
+  const scraperRuns = data.workflow_runs.filter(r =>
+    !r.name.toLowerCase().includes('pages') &&
+    !r.name.toLowerCase().includes('deployment')
+  );
+
+  if (!scraperRuns.length) {
+    list.innerHTML = '<p style="font-size:13px;color:#888;">No scraper runs yet.</p>';
+  } else {
+    list.innerHTML = scraperRuns.map(r => `
+      <div class="run-item">
+        <div class="run-dot ${runDot(r.status, r.conclusion)}"></div>
+        <div class="run-name">${r.name} <span style="font-weight:400;color:#888;font-size:12px;">#${r.run_number}</span></div>
+        <div style="font-size:12px;color:#888;text-align:right;">
+          <div>${runLabel(r.status, r.conclusion)}</div>
+          <div>${timeAgo(r.updated_at)}</div>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+  }
 
   // Fetch log from latest active or most recent run
   const activeRun = data.workflow_runs.find(r => r.status === 'in_progress' || r.status === 'queued')
@@ -345,9 +391,8 @@ function startPolling() {
   isPolling = true;
   document.getElementById('live-badge').classList.add('on');
   pollTimer = setInterval(async () => {
-    const hasActive = await loadRuns();
+    await loadCrawlProgress();
     await refreshStatus();
-    if (!hasActive) stopPolling();
   }, 15000);
 }
 
@@ -416,7 +461,7 @@ window.addEventListener('load', () => {
   const {pat, repo} = cfg();
   if (pat)  document.getElementById('pat').value  = pat;
   if (repo) document.getElementById('repo').value = repo;
-  if (pat && repo) { refreshStatus(); loadFiles(); }
+  if (pat && repo) { refreshStatus(); loadFiles(); loadCrawlProgress(); }
 });
 </script>
 </body>

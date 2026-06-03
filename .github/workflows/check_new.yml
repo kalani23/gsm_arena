@@ -144,6 +144,19 @@ jobs:
               with open(PROGRESS_FILE, "w") as f:
                   json.dump({"completed_brands": list(completed_brands), "new_devices": new_devices}, f)
 
+              # Write UI-readable progress file
+              with open("crawl_progress.json", "w") as f:
+                  json.dump({
+                      "status": "running",
+                      "brands_checked": len(completed_brands),
+                      "brands_total": len(brands),
+                      "current_brand": brand_name,
+                      "new_devices_found": len(new_devices),
+                      "new_device_urls": [d["url"] for d in new_devices[-20:]],
+                      "new_device_names": [f"{d['brand']} - {d['title']}" for d in new_devices[-20:]],
+                      "updated_at": __import__("datetime").datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+                  }, f, indent=2)
+
           print(f"\nTotal new devices found: {len(new_devices)}", flush=True)
 
           if blocked:
@@ -151,6 +164,18 @@ jobs:
               sys.exit(2)
 
           # All brands checked — update discovered_devices.json
+          # Write final progress
+          with open("crawl_progress.json", "w") as f:
+              json.dump({
+                  "status": "complete",
+                  "brands_checked": len(completed_brands),
+                  "brands_total": len(brands),
+                  "new_devices_found": len(new_devices),
+                  "new_device_names": [f"{d['brand']} - {d['title']}" for d in new_devices],
+                  "new_device_urls": [d["url"] for d in new_devices],
+                  "updated_at": __import__("datetime").datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+              }, f, indent=2)
+
           if new_devices:
               updated = existing + new_devices
               with open("discovered_devices.json", "w") as f:
@@ -180,7 +205,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add discovered_devices.json check_new_progress.json 2>/dev/null || true
+          git add discovered_devices.json check_new_progress.json crawl_progress.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Check new devices $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push || true
 
