@@ -116,7 +116,7 @@ jobs:
           chunks = []
           for f in chunk_files:
               try:
-                  df = pd.read_csv(f, encoding="utf-8-sig", low_memory=False)
+                  df = pd.read_excel(f, engine="openpyxl")
                   if len(df) > 0:
                       chunks.append(df)
                       print(f"  {Path(f).name}: {len(df)} rows", flush=True)
@@ -131,14 +131,17 @@ jobs:
           new_data = new_data.drop_duplicates(subset=["URL"], keep="last")
           print(f"New rows from chunks: {len(new_data)}", flush=True)
 
-          # Load master CSV
-          master_csv = "gsmarena_devices.csv"
+          # Load master Excel
+          master_xlsx = "gsmarena_devices.xlsx"
           master_df = pd.DataFrame()
-          if Path(master_csv).exists():
-              master_df = pd.read_csv(master_csv, encoding="utf-8-sig", low_memory=False)
-              before = len(master_df)
-              master_df = master_df.drop_duplicates(subset=["URL"], keep="last")
-              print(f"Master: {before} rows -> {len(master_df)} after dedup", flush=True)
+          if Path(master_xlsx).exists():
+              try:
+                  master_df = pd.read_excel(master_xlsx, engine="openpyxl")
+                  before = len(master_df)
+                  master_df = master_df.drop_duplicates(subset=["URL"], keep="last")
+                  print(f"Master: {before} rows -> {len(master_df)} after dedup", flush=True)
+              except Exception as e:
+                  print(f"Master load error: {e}", flush=True)
 
           # Combine and deduplicate
           combined = pd.concat([master_df, new_data], ignore_index=True)
@@ -150,31 +153,27 @@ jobs:
           ).reset_index(drop=True)
           print(f"Final master: {len(combined)} rows", flush=True)
 
-          # Save master
-          combined.to_csv(master_csv, index=False, encoding="utf-8-sig")
-          try:
-              combined.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
-          except Exception as e:
-              print(f"Excel save error: {e}", flush=True)
+          # Save master Excel only
+          combined.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
+          print(f"Saved gsmarena_devices.xlsx", flush=True)
 
-          # Save dated new-devices file
+          # Save dated new-devices Excel only
           date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-          new_csv  = f"gsmarena_new_{date_str}.csv"
           new_xlsx = f"gsmarena_new_{date_str}.xlsx"
 
-          if Path(new_csv).exists():
-              today = pd.read_csv(new_csv, encoding="utf-8-sig", low_memory=False)
-              new_combined = pd.concat([today, new_data], ignore_index=True).drop_duplicates(subset=["URL"], keep="last")
+          if Path(new_xlsx).exists():
+              try:
+                  today = pd.read_excel(new_xlsx, engine="openpyxl")
+                  new_combined = pd.concat([today, new_data], ignore_index=True).drop_duplicates(subset=["URL"], keep="last")
+              except:
+                  new_combined = new_data
           else:
               new_combined = new_data
 
-          new_combined.to_csv(new_csv, index=False, encoding="utf-8-sig")
-          try:
-              new_combined.to_excel(new_xlsx, index=False, engine="openpyxl")
-          except: pass
-          print(f"New devices file: {new_csv} ({len(new_combined)} rows)", flush=True)
+          new_combined.to_excel(new_xlsx, index=False, engine="openpyxl")
+          print(f"New devices file: {new_xlsx} ({len(new_combined)} rows)", flush=True)
 
-          # Rebuild seen_ids from final master only
+          # Rebuild seen_ids from final master
           seen = list(combined["URL"].dropna().tolist())
           with open("seen_ids.json", "w") as f:
               json.dump(seen, f)
@@ -186,6 +185,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main || true
-          git add gsmarena_devices.csv gsmarena_devices.xlsx gsmarena_new_*.csv gsmarena_new_*.xlsx seen_ids.json
-          git diff --staged --quiet || git commit -m "Merged $(date -u '+%Y-%m-%d %H:%M UTC') — $(python3 -c "import pandas as pd; print(len(pd.read_csv('gsmarena_devices.csv')))"  ) rows"
+
+          ls -lh gsmarena_devices.xlsx gsmarena_new_*.xlsx seen_ids.json 2>/dev/null || true
+          git add gsmarena_devices.xlsx gsmarena_new_*.xlsx seen_ids.json
+          git rm gsmarena_new_*.csv gsmarena_devices.csv chunk_result_*.csv chunk_result_*.xlsx 2>/dev/null || true
+          ROW_COUNT=$(python3 -c "import openpyxl; wb=openpyxl.load_workbook('gsmarena_devices.xlsx',read_only=True); ws=wb.active; print(ws.max_row-1)")
+          git diff --staged --quiet || git commit -m "Merged $(date -u '+%Y-%m-%d %H:%M UTC') — ${ROW_COUNT} rows"
           git push

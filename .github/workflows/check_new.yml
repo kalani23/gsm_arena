@@ -73,18 +73,18 @@ jobs:
 
           # Step 1: Deduplicate master CSV and rebuild seen_ids
           from pathlib import Path
-          if Path("gsmarena_devices.csv").exists():
+          if Path("gsmarena_devices.xlsx").exists():
               try:
-                  df = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig", low_memory=False)
+                  df = pd.read_excel("gsmarena_devices.xlsx", engine="openpyxl")
                   before = len(df)
                   df = df.drop_duplicates(subset=["URL"], keep="last")
                   if before != len(df):
-                      df.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
+                      df.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
                       print(f"Deduplicated: {before} -> {len(df)} rows", flush=True)
-                  csv_urls = list(df["URL"].dropna().tolist())
+                  xlsx_urls = list(df["URL"].dropna().tolist())
                   with open("seen_ids.json", "w") as f:
-                      json.dump(csv_urls, f)
-                  print(f"seen_ids rebuilt: {len(csv_urls)} URLs", flush=True)
+                      json.dump(xlsx_urls, f)
+                  print(f"seen_ids rebuilt: {len(xlsx_urls)} URLs", flush=True)
               except Exception as e:
                   print(f"Dedup error: {e}", flush=True)
 
@@ -224,7 +224,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add discovered_devices.json check_new_progress.json crawl_progress.json seen_ids.json gsmarena_devices.csv 2>/dev/null || true
+          git add discovered_devices.json check_new_progress.json crawl_progress.json seen_ids.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Check new devices $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push || true
 

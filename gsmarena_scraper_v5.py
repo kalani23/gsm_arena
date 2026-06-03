@@ -299,19 +299,19 @@ def save_outputs(results, base_name="gsmarena_devices"):
     rest = sorted([c for c in df.columns if c not in fp and c not in dp])
     df   = df[fp + dp + rest]
 
-    # Save to chunk-specific file to avoid git conflicts
-    chunk_id = os.environ.get("CHUNK_ID", "0")
-    chunk_csv = f"chunk_result_{chunk_id}.csv"
+    # Save to chunk-specific xlsx to avoid git conflicts
+    chunk_id  = os.environ.get("CHUNK_ID", "0")
+    chunk_xlsx = f"chunk_result_{chunk_id}.xlsx"
 
-    if Path(chunk_csv).exists():
+    if Path(chunk_xlsx).exists():
         try:
-            existing = pd.read_csv(chunk_csv, encoding="utf-8-sig")
+            existing = pd.read_excel(chunk_xlsx, engine="openpyxl")
             df = pd.concat([existing, df], ignore_index=True)
             df = df.drop_duplicates(subset=["URL"], keep="last")
         except: pass
 
-    df.to_csv(chunk_csv, index=False, encoding="utf-8-sig")
-    log.info(f"Chunk {chunk_id} saved: {len(df)} rows to {chunk_csv}")
+    df.to_excel(chunk_xlsx, index=False, engine="openpyxl")
+    log.info(f"Chunk {chunk_id} saved: {len(df)} rows to {chunk_xlsx}")
 
 
 def main():

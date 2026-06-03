@@ -42,22 +42,21 @@ jobs:
           from pathlib import Path
 
           # Step 1: Deduplicate master CSV and rebuild seen_ids from it
-          if Path("gsmarena_devices.csv").exists():
+          if Path("gsmarena_devices.xlsx").exists():
               try:
-                  df = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig", low_memory=False)
+                  df = pd.read_excel("gsmarena_devices.xlsx", engine="openpyxl")
                   before = len(df)
                   df = df.drop_duplicates(subset=["URL"], keep="last")
                   after = len(df)
                   if before != after:
-                      df.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
-                      print(f"Deduplicated master CSV: {before} -> {after} rows (removed {before-after})", flush=True)
+                      df.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
+                      print(f"Deduplicated: {before} -> {after} rows", flush=True)
                   else:
-                      print(f"Master CSV already clean: {after} rows", flush=True)
-                  # Rebuild seen_ids from actual CSV
-                  csv_urls = list(df["URL"].dropna().tolist())
+                      print(f"Master clean: {after} rows", flush=True)
+                  xlsx_urls = list(df["URL"].dropna().tolist())
                   with open("seen_ids.json", "w") as f:
-                      json.dump(csv_urls, f)
-                  print(f"seen_ids rebuilt from CSV: {len(csv_urls)} URLs", flush=True)
+                      json.dump(xlsx_urls, f)
+                  print(f"seen_ids rebuilt: {len(xlsx_urls)} URLs", flush=True)
               except Exception as e:
                   print(f"Could not deduplicate: {e}", flush=True)
 
@@ -91,7 +90,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add missing_devices.json seen_ids.json gsmarena_devices.csv gsmarena_devices.xlsx 2>/dev/null || true
+          git add missing_devices.json seen_ids.json gsmarena_devices.xlsx 2>/dev/null || true
           git diff --staged --quiet || git commit -m "missing_devices.json — $(python3 -c "import json; d=json.load(open('missing_devices.json')); print(len(d))") devices to scrape"
           git pull --rebase origin main || true
           git push
@@ -146,80 +145,4 @@ jobs:
               time.sleep(1)
 
           print(f"Launched {launched} chunks", flush=True)
-
-          # Save the run timestamp so merge knows which runs to collect
-          import datetime
-          with open("launch_time.json", "w") as f:
-              json.dump({"launched_at": datetime.datetime.utcnow().isoformat(), "chunks": launched}, f)
-          PYEOF
-
-      - name: Wait for all chunks then trigger merge
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-          REPO:      ${{ github.repository }}
-        run: |
-          python - << 'PYEOF'
-          import os, requests, time, json
-
-          pat  = os.environ["PAT_TOKEN"]
-          repo = os.environ["REPO"]
-          headers = {
-              "Authorization": f"token {pat}",
-              "Accept": "application/vnd.github.v3+json"
-          }
-
-          with open("launch_time.json") as f:
-              info = json.load(f)
-          expected = info["chunks"]
-          print(f"Waiting for {expected} chunks to complete...", flush=True)
-
-          max_wait = 3600  # max 1 hour
-          poll_interval = 30
-          elapsed = 0
-          completed = 0
-
-          while elapsed < max_wait:
-              time.sleep(poll_interval)
-              elapsed += poll_interval
-
-              # Check recent scrape_chunk runs
-              r = requests.get(
-                  f"https://api.github.com/repos/{repo}/actions/runs?event=repository_dispatch&per_page=100",
-                  headers=headers
-              )
-              runs = r.json().get("workflow_runs", [])
-
-              # Count completed scrape runs since launch
-              from datetime import datetime, timezone, timedelta
-              cutoff = datetime.fromisoformat(info["launched_at"]) - timedelta(minutes=2)
-              cutoff = cutoff.replace(tzinfo=timezone.utc)
-
-              done = 0
-              running = 0
-              for run in runs:
-                  created = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
-                  if created >= cutoff and "scrape" in run["name"].lower():
-                      if run["status"] == "completed":
-                          done += 1
-                      elif run["status"] in ("in_progress", "queued"):
-                          running += 1
-
-              print(f"  {elapsed}s elapsed | {done} done | {running} running", flush=True)
-
-              if done >= expected and running == 0:
-                  print(f"All {done} chunks completed!", flush=True)
-                  break
-
-              if running == 0 and elapsed > 300:
-                  print(f"No more running jobs after {elapsed}s — triggering merge anyway", flush=True)
-                  break
-
-          # Trigger merge
-          print("Triggering Merge Chunk Results...", flush=True)
-          r = requests.post(
-              f"https://api.github.com/repos/{repo}/dispatches",
-              headers=headers,
-              json={"event_type": "merge_chunks"}
-          )
-          print(f"Merge triggered: {r.status_code}", flush=True)
           PYEOF

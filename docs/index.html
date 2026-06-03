@@ -412,7 +412,7 @@ async function loadFiles() {
   const data = await ghFetch('/contents/');
   if (!data) return;
   const files = data
-    .filter(f => f.name.endsWith('.xlsx') || f.name.endsWith('.csv'))
+    .filter(f => f.name.endsWith('.xlsx'))
     .sort((a,b) => b.name.localeCompare(a.name));
   const list = document.getElementById('file-list');
   if (!files.length) { list.innerHTML = '<p style="font-size:13px;color:#888;">No files yet.</p>'; return; }

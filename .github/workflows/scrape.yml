@@ -51,6 +51,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: chunk-result-${{ github.event.client_payload.chunk_id || '0' }}
-          path: chunk_result_*.csv
+          path: chunk_result_*.xlsx
           retention-days: 1
           if-no-files-found: ignore

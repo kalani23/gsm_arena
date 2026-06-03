@@ -35,7 +35,7 @@ jobs:
           from bs4 import BeautifulSoup
           from pathlib import Path
 
-          INPUT_CSV = "gsmarena_devices.csv"
+          INPUT_FILE = "gsmarena_devices.xlsx"
 
           USER_AGENTS = [
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -100,8 +100,8 @@ jobs:
               return None
 
           # Load CSV
-          print(f"Loading {INPUT_CSV}...", flush=True)
-          df = pd.read_csv(INPUT_CSV, encoding="utf-8-sig", low_memory=False)
+          print(f"Loading {INPUT_FILE}...", flush=True)
+          df = pd.read_excel(INPUT_FILE, engine="openpyxl")
 
           # Convert all columns to string to avoid dtype errors
           df["Release Year"] = df["Release Year"].astype(str).replace("nan", "")
@@ -136,7 +136,7 @@ jobs:
 
               if html == "BLOCKED":
                   # save progress and exit with code 2 — workflow triggers new job
-                  df.to_csv(INPUT_CSV, index=False, encoding="utf-8-sig")
+                  df.to_excel(INPUT_FILE, index=False, engine="openpyxl")
                   print("Progress saved — exiting for fresh IP retrigger", flush=True)
                   sys.exit(2)
 
@@ -176,7 +176,7 @@ jobs:
               fixed += 1
 
               if fixed % 50 == 0:
-                  df.to_csv(INPUT_CSV, index=False, encoding="utf-8-sig")
+                  df.to_excel(INPUT_FILE, index=False, engine="openpyxl")
                   print(f"  Checkpoint: {fixed} fixed", flush=True)
 
           print(f"\nFixed: {fixed} | Failed: {failed}", flush=True)
@@ -198,7 +198,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add gsmarena_devices.csv gsmarena_devices.xlsx
+          git add gsmarena_devices.xlsx
           git diff --staged --quiet || git commit -m "Fix missing Release Year $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
 
