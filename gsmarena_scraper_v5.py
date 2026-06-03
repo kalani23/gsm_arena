@@ -359,7 +359,7 @@ def main():
                 save_seen(seen)
             # trigger new job for this same chunk
             trigger_resume(chunk_id, chunk_start, chunk_end)
-            os._exit(2)
+            sys.exit(2)
 
         if row:
             results.append(row)

@@ -51,7 +51,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main || true
-          git add chunk_result_${{ github.event.client_payload.chunk_id || '0' }}.csv seen_ids.json 2>/dev/null || true
+          for i in 1 2 3; do
+            git pull --rebase origin main && break || sleep 5
+          done
+          git add chunk_result_*.csv seen_ids.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Chunk ${{ github.event.client_payload.chunk_id || '0' }} done $(date -u '+%H:%M UTC')"
-          git push || git pull --rebase && git push || true
+          for i in 1 2 3; do
+            git push && break || (git pull --rebase origin main && sleep 3)
+          done || true
