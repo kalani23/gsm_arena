@@ -46,16 +46,25 @@ jobs:
         run: python gsmarena_scraper_v5.py
         continue-on-error: true
 
-      - name: Commit chunk result
+      - name: Upload chunk result as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chunk-result-${{ github.event.client_payload.chunk_id || '0' }}
+          path: chunk_result_*.csv
+          retention-days: 1
+          if-no-files-found: ignore
+
+      - name: Commit seen_ids only
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           for i in 1 2 3; do
-            git pull --rebase origin main && break || sleep 5
+            git pull --rebase origin main && break || sleep $((i*3))
           done
-          git add chunk_result_*.csv seen_ids.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Chunk ${{ github.event.client_payload.chunk_id || '0' }} done $(date -u '+%H:%M UTC')"
+          git add seen_ids.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Chunk ${{ github.event.client_payload.chunk_id || '0' }} seen_ids $(date -u '+%H:%M UTC')"
           for i in 1 2 3; do
-            git push && break || (git pull --rebase origin main && sleep 3)
+            git push && break || (sleep 5 && git pull --rebase origin main)
           done || true

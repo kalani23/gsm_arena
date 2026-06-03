@@ -17,73 +17,98 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install pandas openpyxl
+      - run: pip install pandas openpyxl requests
 
-      - name: Merge all chunk results
+      - name: Download all chunk artifacts
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+        run: |
+          python - << 'PYEOF'
+          import os, requests, zipfile, io
+          from pathlib import Path
+
+          pat  = os.environ["PAT_TOKEN"]
+          repo = os.environ["REPO"]
+          headers = {
+              "Authorization": f"token {pat}",
+              "Accept": "application/vnd.github.v3+json"
+          }
+
+          # Get all artifacts from recent runs
+          r = requests.get(f"https://api.github.com/repos/{repo}/actions/artifacts?per_page=100", headers=headers)
+          artifacts = r.json().get("artifacts", [])
+
+          chunk_artifacts = [a for a in artifacts if a["name"].startswith("chunk-result-") and not a["expired"]]
+          print(f"Found {len(chunk_artifacts)} chunk artifacts", flush=True)
+
+          Path("artifacts").mkdir(exist_ok=True)
+          for art in chunk_artifacts:
+              print(f"  Downloading {art['name']}...", flush=True)
+              r = requests.get(art["archive_download_url"], headers=headers)
+              z = zipfile.ZipFile(io.BytesIO(r.content))
+              z.extractall("artifacts/")
+
+          import glob
+          files = glob.glob("artifacts/*.csv")
+          print(f"Extracted {len(files)} CSV files", flush=True)
+          PYEOF
+
+      - name: Merge all results
         env:
           PYTHONUNBUFFERED: "1"
         run: |
           python - << 'PYEOF'
           import pandas as pd
-          import glob
+          import glob, json
           from pathlib import Path
           from datetime import datetime, timezone
 
-          # Step 1: Rebuild seen_ids.json from CSV to remove ghost entries
-          from pathlib import Path
-          import json
-
-          if Path("gsmarena_devices.csv").exists():
-              try:
-                  master = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig", low_memory=False)
-                  csv_urls = set(master["URL"].dropna().tolist())
-                  with open("seen_ids.json", "w") as f:
-                      json.dump(list(csv_urls), f)
-                  print(f"seen_ids.json rebuilt from CSV: {len(csv_urls)} URLs", flush=True)
-              except Exception as e:
-                  print(f"Could not rebuild seen_ids: {e}", flush=True)
-
-          # Step 2: Load all chunk result files
-          chunk_files = sorted(glob.glob("chunk_result_*.csv"))
-          print(f"Found {len(chunk_files)} chunk files", flush=True)
+          # Load all chunk CSVs from artifacts
+          chunk_files = glob.glob("artifacts/*.csv") + glob.glob("chunk_result_*.csv")
+          print(f"Found {len(chunk_files)} chunk files to merge", flush=True)
 
           if not chunk_files:
-              print("No chunk files found", flush=True)
+              print("No chunk files found — nothing to merge", flush=True)
               exit(0)
 
           chunks = []
           for f in chunk_files:
               try:
                   df = pd.read_csv(f, encoding="utf-8-sig", low_memory=False)
-                  chunks.append(df)
-                  print(f"  {f}: {len(df)} rows", flush=True)
+                  if len(df) > 0:
+                      chunks.append(df)
+                      print(f"  {f}: {len(df)} rows", flush=True)
               except Exception as e:
                   print(f"  {f}: error — {e}", flush=True)
 
+          if not chunks:
+              print("No valid chunk data found", flush=True)
+              exit(0)
+
           new_data = pd.concat(chunks, ignore_index=True)
           new_data = new_data.drop_duplicates(subset=["URL"], keep="last")
-          print(f"New data from chunks: {len(new_data)} rows", flush=True)
+          print(f"Total new rows: {len(new_data)}", flush=True)
 
-          # Save dated new-devices file
+          # Dated new-devices file
           date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
           new_csv  = f"gsmarena_new_{date_str}.csv"
           new_xlsx = f"gsmarena_new_{date_str}.xlsx"
-
           if Path(new_csv).exists():
               try:
                   today = pd.read_csv(new_csv, encoding="utf-8-sig", low_memory=False)
-                  new_data = pd.concat([today, new_data], ignore_index=True)
-                  new_data = new_data.drop_duplicates(subset=["URL"], keep="last")
-              except: pass
-
-          new_data.to_csv(new_csv, index=False, encoding="utf-8-sig")
-          try: new_data.to_excel(new_xlsx, index=False, engine="openpyxl")
+                  new_data_combined = pd.concat([today, new_data], ignore_index=True).drop_duplicates(subset=["URL"], keep="last")
+              except: new_data_combined = new_data
+          else:
+              new_data_combined = new_data
+          new_data_combined.to_csv(new_csv, index=False, encoding="utf-8-sig")
+          try: new_data_combined.to_excel(new_xlsx, index=False, engine="openpyxl")
           except: pass
-          print(f"New devices file: {new_csv} ({len(new_data)} rows)", flush=True)
+          print(f"New devices file: {new_csv} ({len(new_data_combined)} rows)", flush=True)
 
           # Merge into master
           master_csv = "gsmarena_devices.csv"
-          master_df  = pd.DataFrame()
+          master_df = pd.DataFrame()
           if Path(master_csv).exists():
               try:
                   master_df = pd.read_csv(master_csv, encoding="utf-8-sig", low_memory=False)
@@ -101,26 +126,26 @@ jobs:
           combined.to_csv(master_csv, index=False, encoding="utf-8-sig")
           try: combined.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
           except: pass
-          print(f"Master file updated: {len(combined)} rows", flush=True)
+          print(f"Master updated: {len(combined)} rows", flush=True)
 
-          # Step 3: Rebuild seen_ids.json from final combined data
-          final_urls = list(combined["URL"].dropna().tolist())
+          # Rebuild seen_ids from final master
+          seen = list(combined["URL"].dropna().tolist())
           with open("seen_ids.json", "w") as f:
-              json.dump(final_urls, f)
-          print(f"seen_ids.json final rebuild: {len(final_urls)} URLs", flush=True)
+              json.dump(seen, f)
+          print(f"seen_ids.json rebuilt: {len(seen)} URLs", flush=True)
 
-          # Delete chunk files
-          for f in chunk_files:
+          # Clean up old chunk files in repo
+          for f in glob.glob("chunk_result_*.csv"):
               Path(f).unlink()
           print("Chunk files cleaned up", flush=True)
           PYEOF
 
-      - name: Commit final merged results
+      - name: Commit final results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main || true
           git add gsmarena_devices.csv gsmarena_devices.xlsx gsmarena_new_*.csv gsmarena_new_*.xlsx seen_ids.json
           git rm chunk_result_*.csv 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Merged results $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
+          git diff --staged --quiet || git commit -m "Merged $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
           git push
