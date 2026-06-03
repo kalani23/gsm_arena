@@ -46,12 +46,12 @@ jobs:
         run: python gsmarena_scraper_v5.py
         continue-on-error: true
 
-      - name: Commit progress
+      - name: Commit chunk result
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main || true
-          git add gsmarena_devices.csv gsmarena_devices.xlsx seen_ids.json gsmarena_new_*.csv gsmarena_new_*.xlsx 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Chunk ${{ github.event.client_payload.chunk_id || '0' }} progress $(date -u '+%H:%M UTC')"
-          git push || true
+          git add chunk_result_${{ github.event.client_payload.chunk_id || '0' }}.csv seen_ids.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Chunk ${{ github.event.client_payload.chunk_id || '0' }} done $(date -u '+%H:%M UTC')"
+          git push || git pull --rebase && git push || true

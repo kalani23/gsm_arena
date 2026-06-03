@@ -249,7 +249,7 @@ def scrape_one(session, brand, title, url):
         "URL":                  url,
         "Scraped At":           datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "Announced":            announced,
-        "Release Year":         parse_release_year(status, announced),
+        "Release Year":         parse_release_year(status, announced, soup),
         "Status":               status,
         "Length mm":            dim_l,
         "Width mm":             dim_w,
@@ -287,42 +287,19 @@ def save_outputs(results, base_name="gsmarena_devices"):
     rest = sorted([c for c in df.columns if c not in fp and c not in dp])
     df   = df[fp + dp + rest]
 
-    # save dated new-devices file — only this batch
-    date_str  = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    new_csv   = f"gsmarena_new_{date_str}.csv"
-    new_xlsx  = f"gsmarena_new_{date_str}.xlsx"
+    # Save to chunk-specific file to avoid git conflicts
+    chunk_id = os.environ.get("CHUNK_ID", "0")
+    chunk_csv = f"chunk_result_{chunk_id}.csv"
 
-    # if dated file already exists today, append to it
-    if Path(new_csv).exists():
+    if Path(chunk_csv).exists():
         try:
-            today = pd.read_csv(new_csv, encoding="utf-8-sig")
-            day_df = pd.concat([today, df], ignore_index=True)
-            day_df = day_df.drop_duplicates(subset=["URL"], keep="last")
-        except:
-            day_df = df
-    else:
-        day_df = df
-
-    day_df.to_csv(new_csv, index=False, encoding="utf-8-sig")
-    try:
-        day_df.to_excel(new_xlsx, index=False, engine="openpyxl")
-    except: pass
-    log.info(f"New devices file: {new_csv} ({len(day_df)} rows)")
-
-    # merge into master file
-    csv_path = f"{base_name}.csv"
-    if Path(csv_path).exists():
-        try:
-            existing = pd.read_csv(csv_path, encoding="utf-8-sig")
+            existing = pd.read_csv(chunk_csv, encoding="utf-8-sig")
             df = pd.concat([existing, df], ignore_index=True)
             df = df.drop_duplicates(subset=["URL"], keep="last")
         except: pass
 
-    df.to_csv(csv_path, index=False, encoding="utf-8-sig")
-    try:
-        df.to_excel(f"{base_name}.xlsx", index=False, engine="openpyxl")
-    except: pass
-    log.info(f"Master file: {len(df)} total rows")
+    df.to_csv(chunk_csv, index=False, encoding="utf-8-sig")
+    log.info(f"Chunk {chunk_id} saved: {len(df)} rows to {chunk_csv}")
 
 
 def main():

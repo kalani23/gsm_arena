@@ -1,0 +1,106 @@
+name: Merge Chunk Results
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [merge_chunks]
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install pandas openpyxl
+
+      - name: Merge all chunk results
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python - << 'PYEOF'
+          import pandas as pd
+          import glob
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          # Load all chunk result files
+          chunk_files = sorted(glob.glob("chunk_result_*.csv"))
+          print(f"Found {len(chunk_files)} chunk files", flush=True)
+
+          if not chunk_files:
+              print("No chunk files found", flush=True)
+              exit(0)
+
+          chunks = []
+          for f in chunk_files:
+              try:
+                  df = pd.read_csv(f, encoding="utf-8-sig", low_memory=False)
+                  chunks.append(df)
+                  print(f"  {f}: {len(df)} rows", flush=True)
+              except Exception as e:
+                  print(f"  {f}: error — {e}", flush=True)
+
+          new_data = pd.concat(chunks, ignore_index=True)
+          new_data = new_data.drop_duplicates(subset=["URL"], keep="last")
+          print(f"New data from chunks: {len(new_data)} rows", flush=True)
+
+          # Save dated new-devices file
+          date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+          new_csv  = f"gsmarena_new_{date_str}.csv"
+          new_xlsx = f"gsmarena_new_{date_str}.xlsx"
+
+          if Path(new_csv).exists():
+              try:
+                  today = pd.read_csv(new_csv, encoding="utf-8-sig", low_memory=False)
+                  new_data = pd.concat([today, new_data], ignore_index=True)
+                  new_data = new_data.drop_duplicates(subset=["URL"], keep="last")
+              except: pass
+
+          new_data.to_csv(new_csv, index=False, encoding="utf-8-sig")
+          try: new_data.to_excel(new_xlsx, index=False, engine="openpyxl")
+          except: pass
+          print(f"New devices file: {new_csv} ({len(new_data)} rows)", flush=True)
+
+          # Merge into master
+          master_csv = "gsmarena_devices.csv"
+          master_df  = pd.DataFrame()
+          if Path(master_csv).exists():
+              try:
+                  master_df = pd.read_csv(master_csv, encoding="utf-8-sig", low_memory=False)
+                  print(f"Existing master: {len(master_df)} rows", flush=True)
+              except: pass
+
+          combined = pd.concat([master_df, new_data], ignore_index=True)
+          combined = combined.drop_duplicates(subset=["URL"], keep="last")
+          combined = combined.sort_values(
+              ["Brand", "Model"],
+              key=lambda x: x.str.lower().fillna(""),
+              na_position="last"
+          ).reset_index(drop=True)
+
+          combined.to_csv(master_csv, index=False, encoding="utf-8-sig")
+          try: combined.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
+          except: pass
+          print(f"Master file updated: {len(combined)} rows", flush=True)
+
+          # Delete chunk files
+          for f in chunk_files:
+              Path(f).unlink()
+          print("Chunk files cleaned up", flush=True)
+          PYEOF
+
+      - name: Commit final merged results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add gsmarena_devices.csv gsmarena_devices.xlsx gsmarena_new_*.csv gsmarena_new_*.xlsx
+          git rm chunk_result_*.csv 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Merged results $(date -u '+%Y-%m-%d %H:%M UTC') — $(wc -l < gsmarena_devices.csv) rows"
+          git push
