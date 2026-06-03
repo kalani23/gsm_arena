@@ -1,0 +1,224 @@
+name: Scrape New Devices
+
+on:
+  repository_dispatch:
+    types: [scrape_new_devices]
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests beautifulsoup4 pandas openpyxl
+
+      - name: Scrape only new devices
+        id: scraper
+        env:
+          PYTHONUNBUFFERED: "1"
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+        run: |
+          python - << 'PYEOF'
+          import json, re, time, random, os, sys
+          import requests
+          import pandas as pd
+          from bs4 import BeautifulSoup
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          BASE_URL = "https://www.gsmarena.com"
+
+          USER_AGENTS = [
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+          ]
+
+          def random_headers():
+              return {
+                  "User-Agent": random.choice(USER_AGENTS),
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                  "Accept-Language": "en-US,en;q=0.9",
+                  "Accept-Encoding": "gzip, deflate, br",
+                  "Connection": "keep-alive",
+              }
+
+          def fetch(session, url):
+              for attempt in range(3):
+                  try:
+                      time.sleep(random.uniform(0.5, 1.5))
+                      session.headers.update(random_headers())
+                      r = session.get(url, timeout=15)
+                      if r.status_code == 429:
+                          print(f"429 — blocked, exiting for fresh IP", flush=True)
+                          return "BLOCKED"
+                      if r.status_code != 200:
+                          time.sleep(3)
+                          continue
+                      if any(p in r.text.lower() for p in ["incapsula","access denied","check the box"]):
+                          return "BLOCKED"
+                      return r.text
+                  except Exception as e:
+                      print(f"Error: {e}", flush=True)
+                      time.sleep(3)
+              return None
+
+          def extract_specs(soup):
+              specs, section = {}, ""
+              for table in soup.select("#specs-list table"):
+                  for row in table.select("tr"):
+                      th = row.find("th")
+                      if th: section = th.get_text(" ", strip=True)
+                      ttl    = row.find("td", class_="ttl")
+                      nfo_td = row.find("td", class_="nfo")
+                      if not ttl or not nfo_td: continue
+                      label = ttl.get_text(" ", strip=True).rstrip("?").strip()
+                      value = nfo_td.get_text(" ", strip=True)
+                      col   = f"{section}_{label}" if section and label else (section or label)
+                      if not col.strip(): continue
+                      if col in specs:
+                          i = 2
+                          while f"{col}_{i}" in specs: i += 1
+                          col = f"{col}_{i}"
+                      specs[col] = value
+              return specs
+
+          def parse_year(text):
+              if not text: return ""
+              m = re.search(r"\b(20\d{2}|19\d{2})\b", str(text))
+              return m.group(1) if m else ""
+
+          # Load new devices to scrape
+          with open("new_devices_to_scrape.json") as f:
+              devices = json.load(f)
+
+          # Load progress if resuming
+          progress_file = "new_devices_progress.json"
+          done_urls = set()
+          if Path(progress_file).exists():
+              with open(progress_file) as f:
+                  done_urls = set(json.load(f))
+              print(f"Resuming — {len(done_urls)} already done", flush=True)
+
+          todo = [d for d in devices if d["url"] not in done_urls]
+          print(f"New devices to scrape: {len(todo)}", flush=True)
+
+          if not todo:
+              print("All new devices already scraped!", flush=True)
+              sys.exit(0)
+
+          session = requests.Session()
+          session.headers.update(random_headers())
+          results = []
+
+          for i, device in enumerate(todo, 1):
+              print(f"[{i}/{len(todo)}] {device['brand']} - {device['title']}", flush=True)
+              html = fetch(session, device["url"])
+
+              if html == "BLOCKED":
+                  print("Blocked — saving progress and retriggering with fresh IP", flush=True)
+                  # save progress
+                  done_urls.update([r["URL"] for r in results])
+                  with open(progress_file, "w") as f:
+                      json.dump(list(done_urls), f)
+                  # save partial results
+                  if results:
+                      pd.DataFrame(results).to_excel("new_devices_scraped.xlsx", index=False, engine="openpyxl")
+                  sys.exit(2)
+
+              if not html:
+                  print(f"  FAIL", flush=True)
+                  continue
+
+              soup = BeautifulSoup(html, "html.parser")
+              specs = extract_specs(soup)
+              h1 = soup.find("h1", class_="specs-phone-name-title")
+              model = h1.get_text(strip=True) if h1 else device["title"]
+
+              status    = specs.get("Launch_Status", "")
+              announced = specs.get("Launch_Announced", "")
+              year = parse_year(status) or parse_year(announced)
+
+              row = {
+                  "Brand": device["brand"],
+                  "Model": model,
+                  "URL": device["url"],
+                  "Scraped At": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+                  "Release Year": year,
+                  "Announced": announced,
+                  "Status": status,
+              }
+              row.update({k: v for k, v in specs.items() if k not in row})
+              results.append(row)
+              done_urls.add(device["url"])
+              print(f"  OK — Year: {year or '?'}", flush=True)
+
+          print(f"\nScraped {len(results)} new devices", flush=True)
+
+          if results:
+              df = pd.DataFrame(results)
+
+              # Save dated new devices file
+              date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+              new_xlsx = f"gsmarena_new_{date_str}.xlsx"
+              if Path(new_xlsx).exists():
+                  try:
+                      existing = pd.read_excel(new_xlsx, engine="openpyxl")
+                      df = pd.concat([existing, df], ignore_index=True).drop_duplicates(subset=["URL"], keep="last")
+                  except: pass
+              df.to_excel(new_xlsx, index=False, engine="openpyxl")
+              print(f"Saved {new_xlsx} ({len(df)} rows)", flush=True)
+
+              # Merge into master xlsx
+              master_xlsx = "gsmarena_devices.xlsx"
+              if Path(master_xlsx).exists():
+                  try:
+                      master = pd.read_excel(master_xlsx, engine="openpyxl")
+                      combined = pd.concat([master, df], ignore_index=True).drop_duplicates(subset=["URL"], keep="last")
+                      combined = combined.sort_values(["Brand","Model"], key=lambda x: x.str.lower().fillna(""), na_position="last").reset_index(drop=True)
+                      combined.to_excel(master_xlsx, index=False, engine="openpyxl")
+                      print(f"Master updated: {len(combined)} rows", flush=True)
+
+                      # Rebuild seen_ids
+                      import json as _json
+                      with open("seen_ids.json", "w") as f:
+                          _json.dump(list(combined["URL"].dropna().tolist()), f)
+                  except Exception as e:
+                      print(f"Master update error: {e}", flush=True)
+
+          # Clean up progress and trigger files
+          for f in [progress_file, "new_devices_to_scrape.json"]:
+              if Path(f).exists():
+                  Path(f).unlink()
+          PYEOF
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add gsmarena_devices.xlsx gsmarena_new_*.xlsx seen_ids.json new_devices_progress.json 2>/dev/null || true
+          git rm new_devices_to_scrape.json new_devices_progress.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "New devices scraped $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push || true
+
+      - name: Retrigger with fresh IP if blocked
+        if: failure()
+        run: |
+          sleep 10
+          curl -s -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type":"scrape_new_devices"}'
+          echo "Fresh IP triggered"
