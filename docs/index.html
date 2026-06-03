@@ -125,10 +125,22 @@
   <!-- Actions -->
   <div class="card">
     <p class="section-title">Actions</p>
-    <p class="action-desc">Scans GSMArena for newly added phones, scrapes only those, and updates the master file. A dated new-devices file is also created.</p>
-    <button class="btn btn-dark" id="btn-check-new" onclick="triggerCheckNew()">
-      <i class="ti ti-search"></i> Get new devices
-    </button>
+    <div class="grid2">
+      <div>
+        <p style="font-size:14px;font-weight:500;">Get new devices</p>
+        <p class="action-desc">Scans GSMArena for newly added phones and scrapes only those. Creates a dated file.</p>
+        <button class="btn btn-dark" id="btn-check-new" onclick="triggerCheckNew()">
+          <i class="ti ti-search"></i> Get new devices
+        </button>
+      </div>
+      <div>
+        <p style="font-size:14px;font-weight:500;">Scrape missing</p>
+        <p class="action-desc">Finds devices in discovery list but missing from Excel and scrapes them. Auto-merges when done.</p>
+        <button class="btn btn-outline" id="btn-launch" onclick="triggerLaunch()">
+          <i class="ti ti-player-play"></i> Scrape missing
+        </button>
+      </div>
+    </div>
     <div id="action-msg" class="status"></div>
   </div>
 
@@ -458,6 +470,7 @@ async function triggerWorkflow(workflow, inputs, btnId, msgId) {
 }
 
 function triggerCheckNew() { triggerWorkflow('check_new.yml', {}, 'btn-check-new', 'action-msg'); }
+function triggerLaunch()   { triggerWorkflow('launch.yml', { num_chunks: '20' }, 'btn-launch', 'action-msg'); }
 
 window.addEventListener('load', () => {
   const {pat, repo} = cfg();
