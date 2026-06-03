@@ -79,26 +79,6 @@
     <div id="setup-msg" class="status"></div>
   </div>
 
-  <!-- Status + Progress -->
-  <div class="card">
-    <p class="section-title">Status</p>
-    <div class="grid3">
-      <div class="metric"><p class="metric-val" id="stat-total">—</p><p class="metric-lbl">total devices</p></div>
-      <div class="metric"><p class="metric-val" id="stat-scraped">—</p><p class="metric-lbl">scraped</p></div>
-      <div class="metric"><p class="metric-val" id="stat-runs">—</p><p class="metric-lbl">workflow runs</p></div>
-    </div>
-    <div id="progress-wrap" style="display:none;">
-      <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
-      <div class="progress-label"><span id="progress-text">0 / 14,603</span><span id="progress-pct">0%</span></div>
-    </div>
-    <button class="btn btn-outline" onclick="refreshStatus()" style="margin-top:12px;">
-      <i class="ti ti-refresh"></i> Refresh status
-    </button>
-    <div id="status-msg" class="status"></div>
-  </div>
-
-  <!-- Live crawl progress -->
-  <div class="card">
     <p class="section-title">
       Crawl progress
       <span class="live-badge" id="live-badge">
