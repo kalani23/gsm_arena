@@ -1,9 +1,14 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 16,
   "brands_total": 126,
-  "new_devices_found": 0,
-  "new_device_names": [],
-  "new_device_urls": [],
-  "updated_at": "2026-06-03 04:55 UTC"
+  "current_brand": "BLU",
+  "new_devices_found": 1,
+  "new_device_urls": [
+    "https://www.gsmarena.com/acer_iconia_im11_22m5g-14659.php"
+  ],
+  "new_device_names": [
+    "Acer - Iconia iM11-22M5G"
+  ],
+  "updated_at": "2026-06-03 05:04 UTC"
 }
