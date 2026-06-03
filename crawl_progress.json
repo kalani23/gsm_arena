@@ -1,13 +1,16 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 7,
   "brands_total": 126,
-  "new_devices_found": 1,
-  "new_device_names": [
-    "Acer - Iconia iM11-22M5G"
-  ],
+  "current_brand": "Archos",
+  "new_devices_found": 2,
   "new_device_urls": [
-    "https://www.gsmarena.com/acer_iconia_im11_22m5g-14659.php"
+    "https://www.gsmarena.com/acer_iconia_v12-14298.php",
+    "https://www.gsmarena.com/acer_iconia_v11-14297.php"
   ],
-  "updated_at": "2026-06-03 05:16 UTC"
+  "new_device_names": [
+    "Acer - Iconia V12",
+    "Acer - Iconia V11"
+  ],
+  "updated_at": "2026-06-03 07:06 UTC"
 }
