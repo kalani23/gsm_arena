@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 45,
+  "brands_checked": 65,
   "brands_total": 126,
-  "current_brand": "Icemobile",
+  "current_brand": "Modu",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-06-03 09:00 UTC"
+  "updated_at": "2026-06-03 09:02 UTC"
 }
