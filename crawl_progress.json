@@ -1,9 +1,16 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 13,
   "brands_total": 126,
-  "new_devices_found": 0,
-  "new_device_names": [],
-  "new_device_urls": [],
-  "updated_at": "2026-06-03 09:11 UTC"
+  "current_brand": "Bird",
+  "new_devices_found": 2,
+  "new_device_urls": [
+    "https://www.gsmarena.com/acer_acerone_liquid_s262f5_5g-14250.php",
+    "https://www.gsmarena.com/acer_iconia_a14-14120.php"
+  ],
+  "new_device_names": [
+    "Acer - Acerone Liquid S262F5",
+    "Acer - Iconia A14"
+  ],
+  "updated_at": "2026-06-03 10:41 UTC"
 }
