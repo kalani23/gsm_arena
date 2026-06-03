@@ -215,26 +215,25 @@ async function loadCrawlProgress() {
   const {pat, repo} = cfg();
   if (!pat || !repo) return;
   try {
-    const r = await fetch(`https://raw.githubusercontent.com/${repo}/main/crawl_progress.json?t=${Date.now()}`, {
-      headers: { 'Authorization': `token ${pat}` }
-    });
-    if (!r.ok) return;
-    const p = await r.json();
+    // Use GitHub API to read file contents (avoids CORS issues with raw)
+    const fileData = await ghFetch('/contents/crawl_progress.json');
+    if (!fileData || !fileData.content) return;
+    const p = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
 
     document.getElementById('crawl-progress').style.display = 'block';
     document.getElementById('crawl-idle').style.display = 'none';
     document.getElementById('cp-brands').textContent = `${p.brands_checked} / ${p.brands_total}`;
     document.getElementById('cp-new').textContent = p.new_devices_found || '0';
-    document.getElementById('cp-current').textContent = p.status === 'complete' ? 'Done!' : (p.current_brand || '—');
-    document.getElementById('cp-updated').textContent = 'Updated: ' + (p.updated_at || '');
+    document.getElementById('cp-current').textContent = p.status === 'complete' ? '✓ Complete' : (p.current_brand || '—');
+    document.getElementById('cp-updated').textContent = 'Last run: ' + (p.updated_at || '');
 
     const names = p.new_device_names || [];
     if (names.length) {
       document.getElementById('cp-list').innerHTML = names.slice().reverse().map(n =>
-        `<div>✓ ${n}</div>`
+        `<div style="padding:2px 0;">✓ ${n}</div>`
       ).join('');
     } else {
-      document.getElementById('cp-list').innerHTML = '<div style="color:#aaa;">No new devices found yet</div>';
+      document.getElementById('cp-list').innerHTML = '<div style="color:#aaa;">No new devices found in this run</div>';
     }
   } catch(e) {}
 }
@@ -363,9 +362,25 @@ async function refreshStatus() {
   if (!commits) { showMsg('status-msg','Could not load — check token and repo.','error'); return; }
 
   const msg = commits[0]?.commit?.message || '';
-  const rowMatch = msg.match(/([\d,]+)\s*rows/);
-  const scraped = rowMatch ? parseInt(rowMatch[1].replace(',','')) : 0;
   const total = 14603;
+
+  // Try to get scraped count from seen_ids.json
+  let scraped = 0;
+  try {
+    const seenResp = await fetch(`https://raw.githubusercontent.com/${repo}/main/seen_ids.json?t=${Date.now()}`, {
+      headers: { 'Authorization': `token ${pat}` }
+    });
+    if (seenResp.ok) {
+      const seen = await seenResp.json();
+      scraped = Array.isArray(seen) ? seen.length : 0;
+    }
+  } catch(e) {}
+
+  // Fallback to commit message
+  if (!scraped) {
+    const rowMatch = msg.match(/(\d[\d,]*)/);
+    scraped = rowMatch ? parseInt(rowMatch[1].replace(',','')) : 0;
+  }
 
   document.getElementById('stat-scraped').textContent = scraped ? scraped.toLocaleString() : '—';
   document.getElementById('stat-total').textContent = total.toLocaleString();
