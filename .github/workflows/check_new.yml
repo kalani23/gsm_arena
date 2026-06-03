@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install requests beautifulsoup4
+      - run: pip install requests beautifulsoup4 pandas openpyxl
 
       - name: Crawl for new devices
         id: crawler
@@ -68,6 +68,25 @@ jobs:
               except Exception as e:
                   print(f"Error: {e}", flush=True)
                   return None
+
+          import pandas as pd
+
+          # Step 1: Deduplicate master CSV and rebuild seen_ids
+          from pathlib import Path
+          if Path("gsmarena_devices.csv").exists():
+              try:
+                  df = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig", low_memory=False)
+                  before = len(df)
+                  df = df.drop_duplicates(subset=["URL"], keep="last")
+                  if before != len(df):
+                      df.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
+                      print(f"Deduplicated: {before} -> {len(df)} rows", flush=True)
+                  csv_urls = list(df["URL"].dropna().tolist())
+                  with open("seen_ids.json", "w") as f:
+                      json.dump(csv_urls, f)
+                  print(f"seen_ids rebuilt: {len(csv_urls)} URLs", flush=True)
+              except Exception as e:
+                  print(f"Dedup error: {e}", flush=True)
 
           # Load existing devices
           with open("discovered_devices.json") as f:
@@ -205,7 +224,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add discovered_devices.json check_new_progress.json crawl_progress.json 2>/dev/null || true
+          git add discovered_devices.json check_new_progress.json crawl_progress.json seen_ids.json gsmarena_devices.csv 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Check new devices $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push || true
 
