@@ -1,0 +1,58 @@
+name: Cleanup Workflow Runs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # runs every day at 2am UTC automatically
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old workflow runs
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
+        run: |
+          python - << 'PYEOF'
+          import os, requests, time
+
+          pat  = os.environ["PAT_TOKEN"]
+          repo = os.environ["REPO"]
+          headers = {
+              "Authorization": f"token {pat}",
+              "Accept": "application/vnd.github.v3+json"
+          }
+
+          page = 1
+          deleted = 0
+
+          while True:
+              r = requests.get(
+                  f"https://api.github.com/repos/{repo}/actions/runs?per_page=100&page={page}",
+                  headers=headers
+              )
+              runs = r.json().get("workflow_runs", [])
+              if not runs:
+                  break
+
+              for run in runs:
+                  # Skip runs from last 24 hours
+                  from datetime import datetime, timezone, timedelta
+                  created = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
+                  if created > datetime.now(timezone.utc) - timedelta(hours=24):
+                      continue
+
+                  d = requests.delete(
+                      f"https://api.github.com/repos/{repo}/actions/runs/{run['id']}",
+                      headers=headers
+                  )
+                  if d.status_code == 204:
+                      deleted += 1
+                      print(f"Deleted #{run['run_number']} — {run['name']}", flush=True)
+                  time.sleep(0.2)
+
+              page += 1
+
+          print(f"\nDone — deleted {deleted} runs", flush=True)
+          PYEOF
