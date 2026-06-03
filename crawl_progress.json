@@ -1,15 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 13,
   "brands_total": 126,
-  "new_devices_found": 2,
-  "new_device_names": [
-    "Acer - Iconia X12",
-    "Acer - Iconia Tab P11 (2025)"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/acer_iconia_x12-14118.php",
-    "https://www.gsmarena.com/acer_iconia_tab_p11_(2025)-14299.php"
-  ],
-  "updated_at": "2026-06-03 12:52 UTC"
+  "current_brand": "Bird",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-06-03 12:59 UTC"
 }
