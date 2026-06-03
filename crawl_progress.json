@@ -1,15 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 2,
   "brands_total": 126,
-  "new_devices_found": 2,
-  "new_device_names": [
-    "Acer - Iconia A16",
-    "Acer - Iconia X14"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/acer_iconia_a16-14119.php",
-    "https://www.gsmarena.com/acer_iconia_x14-14117.php"
-  ],
-  "updated_at": "2026-06-03 12:18 UTC"
+  "current_brand": "alcatel",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-06-03 12:24 UTC"
 }
