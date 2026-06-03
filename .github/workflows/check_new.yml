@@ -127,7 +127,9 @@ jobs:
           html = fetch(f"{BASE_URL}/makers.php3")
           if html == "BLOCKED" or not html:
               print("Blocked on brand list — triggering retry with fresh IP", flush=True)
-              sys.exit(2)
+              with open("needs_retrigger.flag", "w") as f:
+                  f.write("1")
+              sys.exit(0)
 
           soup = BeautifulSoup(html, "html.parser")
           brands = []
