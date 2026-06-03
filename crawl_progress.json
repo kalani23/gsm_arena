@@ -1,15 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 20,
   "brands_total": 126,
-  "new_devices_found": 2,
-  "new_device_names": [
-    "Acer - Iconia V12",
-    "Acer - Iconia V11"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/acer_iconia_v12-14298.php",
-    "https://www.gsmarena.com/acer_iconia_v11-14297.php"
-  ],
-  "updated_at": "2026-06-03 07:21 UTC"
+  "current_brand": "Cat",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-06-03 08:58 UTC"
 }
