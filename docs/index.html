@@ -81,14 +81,7 @@
 
   <!-- Status + Progress -->
   <div class="card">
-    <p class="section-title">
-      Status
-      <span class="live-badge" id="live-badge">
-        <div class="spinner" style="width:10px;height:10px;border-width:1.5px;"></div>
-        live
-        <button id="poll-stop" onclick="stopPolling()">stop</button>
-      </span>
-    </p>
+    <p class="section-title">Status</p>
     <div class="grid3">
       <div class="metric"><p class="metric-val" id="stat-total">—</p><p class="metric-lbl">total devices</p></div>
       <div class="metric"><p class="metric-val" id="stat-scraped">—</p><p class="metric-lbl">scraped</p></div>
@@ -104,10 +97,21 @@
     <div id="status-msg" class="status"></div>
   </div>
 
-  <!-- Live runs -->
+  <!-- Live runs + log -->
   <div class="card">
-    <p class="section-title">Live workflow runs</p>
+    <p class="section-title">
+      Live progress
+      <span class="live-badge" id="live-badge">
+        <div class="spinner" style="width:10px;height:10px;border-width:1.5px;"></div>
+        live
+        <button id="poll-stop" onclick="stopPolling()">stop</button>
+      </span>
+    </p>
     <div id="runs-list"><p style="font-size:13px;color:#888;">Save settings to load.</p></div>
+    <div id="log-box" style="display:none;margin-top:12px;">
+      <div style="font-size:11px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Crawl log</div>
+      <div id="log-lines" style="background:#1a1a1a;color:#e5e5e5;border-radius:8px;padding:10px 12px;font-size:12px;font-family:monospace;max-height:300px;overflow-y:auto;line-height:1.6;"></div>
+    </div>
   </div>
 
   <!-- Actions -->
@@ -200,14 +204,18 @@ function runLabel(status, conclusion) {
 }
 
 async function loadRuns() {
-  const data = await ghFetch('/actions/runs?per_page=8');
+  const {pat, repo} = cfg();
+  const data = await ghFetch('/actions/runs?per_page=5');
   if (!data) return false;
+
   const hasActive = data.workflow_runs.some(r => r.status === 'in_progress' || r.status === 'queued');
   const list = document.getElementById('runs-list');
+
   if (!data.workflow_runs.length) {
     list.innerHTML = '<p style="font-size:13px;color:#888;">No runs yet.</p>';
     return false;
   }
+
   list.innerHTML = data.workflow_runs.map(r => `
     <div class="run-item">
       <div class="run-dot ${runDot(r.status, r.conclusion)}"></div>
@@ -218,7 +226,83 @@ async function loadRuns() {
       </div>
     </div>
   `).join('');
+
+  // Fetch log from latest active or most recent run
+  const activeRun = data.workflow_runs.find(r => r.status === 'in_progress' || r.status === 'queued')
+                 || data.workflow_runs[0];
+
+  if (activeRun) {
+    await loadRunLog(activeRun.id, activeRun.status);
+  }
+
   return hasActive;
+}
+
+async function loadRunLog(runId, status) {
+  const {pat, repo} = cfg();
+  try {
+    // Get jobs for this run
+    const jobsData = await ghFetch(`/actions/runs/${runId}/jobs`);
+    if (!jobsData || !jobsData.jobs.length) return;
+
+    // Get the most relevant job
+    const job = jobsData.jobs.find(j => j.status === 'in_progress') || jobsData.jobs[0];
+    if (!job) return;
+
+    // Download the log
+    const logResp = await fetch(`${API}/repos/${repo}/actions/jobs/${job.id}/logs`, {
+      headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+
+    if (!logResp.ok) return;
+    const logText = await logResp.text();
+
+    // Parse and filter relevant lines
+    const lines = logText.split('\n');
+    const relevant = lines.filter(l => {
+      const lower = l.toLowerCase();
+      // Only show success/progress lines — no errors, blocks, or failures
+      return (lower.includes('ok ') ||
+              lower.includes('new:') ||
+              lower.includes('checking ') ||
+              lower.includes('found ') ||
+              lower.includes('existing devices') ||
+              lower.includes('total') ||
+              lower.includes('saved') ||
+              lower.includes('checkpoint') ||
+              lower.includes('chunk') ||
+              lower.includes('fixed') ||
+              lower.includes('devices to scrape') ||
+              lower.includes('resuming') ||
+              lower.includes('launched')) &&
+             !lower.includes('fail') &&
+             !lower.includes('block') &&
+             !lower.includes('429') &&
+             !lower.includes('error') &&
+             !lower.includes('warning');
+    }).map(l => {
+      return l.replace(/^.*?T[\d:.]+Z\s*/, '')
+               .replace(/^\s*[\d-]+ [\d:,]+ \[\w+\]\s*/, '')
+               .trim();
+    }).filter(l => l.length > 2).slice(-60);
+
+    const box = document.getElementById('log-box');
+    const logEl = document.getElementById('log-lines');
+
+    if (relevant.length > 0) {
+      box.style.display = 'block';
+      logEl.innerHTML = relevant.map(l => {
+        let color = '#e5e5e5';
+        if (l.toLowerCase().includes('new:')) color = '#81c784';
+        if (l.toLowerCase().includes('ok ')) color = '#a5d6a7';
+        if (l.toLowerCase().includes('checkpoint') || l.toLowerCase().includes('saved')) color = '#ffcc80';
+        return `<div style="color:${color}">${l.replace(/</g,'&lt;')}</div>`;
+      }).join('');
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+  } catch(e) {
+    // Log fetch failed silently
+  }
 }
 
 async function refreshStatus() {
