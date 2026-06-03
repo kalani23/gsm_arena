@@ -146,3 +146,17 @@ jobs:
 
           print(f"Launched {launched} chunks", flush=True)
           PYEOF
+
+      - name: Wait then auto-trigger merge
+        run: |
+          MISSING=$(python3 -c "import json; print(len(json.load(open('missing_devices.json'))))" 2>/dev/null || echo "100")
+          WAIT=$(python3 -c "m=int('$MISSING'); print(max(180, min(m*2//20, 1800)))")
+          echo "Waiting ${WAIT}s for ${MISSING} devices to finish scraping..."
+          sleep $WAIT
+          echo "Triggering merge..."
+          curl -s -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type":"merge_chunks"}'
+          echo "Merge triggered successfully"

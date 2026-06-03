@@ -127,7 +127,7 @@ jobs:
               except Exception as e:
                   print(f"Master load error: {e}", flush=True)
 
-          # Combine
+          # Combine — new_data overrides master for same URLs
           combined = pd.concat([master_df, new_data], ignore_index=True)
           combined = combined.drop_duplicates(subset=["URL"], keep="last")
           combined = combined.sort_values(
@@ -135,10 +135,13 @@ jobs:
               key=lambda x: x.str.lower().fillna(""),
               na_position="last"
           ).reset_index(drop=True)
-          print(f"Final: {len(combined)} rows", flush=True)
+          print(f"Final: {len(combined)} rows (was {len(master_df)}, added {len(new_data)})", flush=True)
 
-          combined.to_excel("gsmarena_devices.xlsx", index=False, engine="openpyxl")
-          print("Saved gsmarena_devices.xlsx", flush=True)
+          # Save to temp first then rename to avoid corruption
+          combined.to_excel("gsmarena_devices_new.xlsx", index=False, engine="openpyxl")
+          import os
+          os.replace("gsmarena_devices_new.xlsx", "gsmarena_devices.xlsx")
+          print(f"Saved gsmarena_devices.xlsx ({len(combined)} rows)", flush=True)
 
           # Dated new devices file
           date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
