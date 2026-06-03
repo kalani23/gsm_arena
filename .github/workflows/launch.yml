@@ -147,16 +147,81 @@ jobs:
           print(f"Launched {launched} chunks", flush=True)
           PYEOF
 
-      - name: Wait then auto-trigger merge
+      - name: Wait for all chunks to complete then trigger merge
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO:      ${{ github.repository }}
         run: |
-          MISSING=$(python3 -c "import json; print(len(json.load(open('missing_devices.json'))))" 2>/dev/null || echo "100")
-          WAIT=$(python3 -c "m=int('$MISSING'); print(max(180, min(m*2//20, 1800)))")
-          echo "Waiting ${WAIT}s for ${MISSING} devices to finish scraping..."
-          sleep $WAIT
-          echo "Triggering merge..."
-          curl -s -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/dispatches \
-            -d '{"event_type":"merge_chunks"}'
-          echo "Merge triggered successfully"
+          python - << 'PYEOF'
+          import os, requests, time, json
+          from datetime import datetime, timezone, timedelta
+
+          pat  = os.environ["PAT_TOKEN"]
+          repo = os.environ["REPO"]
+          headers = {
+              "Authorization": f"token {pat}",
+              "Accept": "application/vnd.github.v3+json"
+          }
+
+          # How many chunks were launched
+          with open("missing_devices.json") as f:
+              missing = json.load(f)
+          import math
+          n_chunks = min(20, math.ceil(len(missing) / 1)) if missing else 0
+          # actual chunks launched = ceil(missing / chunk_size)
+          chunk_size = math.ceil(len(missing) / 20) if missing else 1
+          expected = min(20, math.ceil(len(missing) / chunk_size)) if missing else 0
+          print(f"Waiting for {expected} chunks ({len(missing)} devices) to complete...", flush=True)
+
+          # Record launch time
+          launch_time = datetime.now(timezone.utc)
+
+          # Give GitHub 10s to spin up the jobs
+          time.sleep(10)
+
+          max_wait = 3600  # 1 hour max
+          elapsed  = 10
+          poll     = 15   # check every 15 seconds
+
+          while elapsed < max_wait:
+              r = requests.get(
+                  f"https://api.github.com/repos/{repo}/actions/runs?per_page=100",
+                  headers=headers
+              )
+              runs = r.json().get("workflow_runs", [])
+
+              # Count scrape_chunk runs started after launch
+              done    = 0
+              running = 0
+              for run in runs:
+                  created = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
+                  if created >= launch_time and "scrape" in run["name"].lower():
+                      if run["status"] == "completed":
+                          done += 1
+                      elif run["status"] in ("in_progress", "queued"):
+                          running += 1
+
+              print(f"  {elapsed}s | {done} done | {running} running", flush=True)
+
+              # All expected chunks done and nothing running
+              if done >= expected and running == 0 and done > 0:
+                  print(f"All {done} chunks completed!", flush=True)
+                  break
+
+              # Safety: nothing running after 2 mins means all done or failed
+              if running == 0 and elapsed >= 120 and done > 0:
+                  print(f"No running jobs after {elapsed}s — {done} completed, triggering merge", flush=True)
+                  break
+
+              time.sleep(poll)
+              elapsed += poll
+
+          # Trigger merge
+          print("Triggering Merge Chunk Results...", flush=True)
+          r = requests.post(
+              f"https://api.github.com/repos/{repo}/dispatches",
+              headers=headers,
+              json={"event_type": "merge_chunks"}
+          )
+          print(f"Merge triggered: HTTP {r.status_code}", flush=True)
+          PYEOF
