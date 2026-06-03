@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 49,
+  "brands_checked": 68,
   "brands_total": 126,
-  "current_brand": "Intex",
+  "current_brand": "NEC",
   "new_devices_found": 2,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_iconia_v12-14298.php",
@@ -12,5 +12,5 @@
     "Acer - Iconia V12",
     "Acer - Iconia V11"
   ],
-  "updated_at": "2026-06-03 07:10 UTC"
+  "updated_at": "2026-06-03 07:12 UTC"
 }
