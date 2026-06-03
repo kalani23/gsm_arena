@@ -1,5 +1,4 @@
 [
-
   {
     "brand": "Acer",
     "title": "Iconia V12",
@@ -73049,5 +73048,10 @@
     "brand": "Wiko",
     "title": "X70",
     "url": "https://www.gsmarena.com/wiko_x70_5g-14704.php"
+  },
+  {
+    "brand": "Acer",
+    "title": "Iconia iM11-22M5G",
+    "url": "https://www.gsmarena.com/acer_iconia_im11_22m5g-14659.php"
   }
 ]
