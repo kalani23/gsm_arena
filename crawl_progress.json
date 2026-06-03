@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 50,
+  "brands_checked": 65,
   "brands_total": 126,
-  "current_brand": "itel",
+  "current_brand": "Modu",
   "new_devices_found": 2,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_acerone_liquid_s262f5_5g-14250.php",
@@ -12,5 +12,5 @@
     "Acer - Acerone Liquid S262F5",
     "Acer - Iconia A14"
   ],
-  "updated_at": "2026-06-03 10:46 UTC"
+  "updated_at": "2026-06-03 10:48 UTC"
 }
