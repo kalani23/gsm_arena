@@ -1,18 +1,17 @@
 {
-  "status": "running",
-  "brands_checked": 116,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "VK Mobile",
   "new_devices_found": 3,
-  "new_device_urls": [
-    "https://www.gsmarena.com/ulefone_tab_a7-10994.php",
-    "https://www.gsmarena.com/ulefone_armor_11t_5g-10974.php",
-    "https://www.gsmarena.com/ulefone_armor_8_pro-10898.php"
-  ],
   "new_device_names": [
     "Ulefone - Tab A7",
     "Ulefone - Armor 11T 5G",
     "Ulefone - Armor 8 Pro"
   ],
-  "updated_at": "2026-06-03 14:31 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/ulefone_tab_a7-10994.php",
+    "https://www.gsmarena.com/ulefone_armor_11t_5g-10974.php",
+    "https://www.gsmarena.com/ulefone_armor_8_pro-10898.php"
+  ],
+  "updated_at": "2026-06-03 14:33 UTC"
 }
