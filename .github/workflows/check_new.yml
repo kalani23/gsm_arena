@@ -94,14 +94,20 @@ jobs:
           existing_urls = {d["url"] for d in existing}
           print(f"Existing devices: {len(existing)}", flush=True)
 
-          # Always start fresh — no resume from previous runs
+          # Resume from where we left off if blocked before
           completed_brands = set()
           new_devices = []
           from pathlib import Path
-          # Clean up any stale progress file
           if Path(PROGRESS_FILE).exists():
-              Path(PROGRESS_FILE).unlink()
-              print("Cleared stale progress file", flush=True)
+              try:
+                  with open(PROGRESS_FILE) as f:
+                      progress = json.load(f)
+                  completed_brands = set(progress.get("completed_brands", []))
+                  new_devices = progress.get("new_devices", [])
+                  print(f"Resuming from brand {len(completed_brands)+1}/126 — {len(new_devices)} new found so far", flush=True)
+              except:
+                  completed_brands = set()
+                  new_devices = []
 
           # Get all brands
           # Reset progress file so UI shows fresh state
@@ -170,6 +176,10 @@ jobs:
                   print(f"  {brand_name}: {brand_new} new devices found", flush=True)
               completed_brands.add(brand_name)
 
+              # Save progress for resume on block
+              with open(PROGRESS_FILE, "w") as f:
+                  json.dump({"completed_brands": list(completed_brands), "new_devices": new_devices}, f)
+
               # Write UI-readable progress file
               with open("crawl_progress.json", "w") as f:
                   json.dump({
@@ -186,8 +196,11 @@ jobs:
           print(f"\nTotal new devices found: {len(new_devices)}", flush=True)
 
           if blocked:
-              print("Blocked — will retrigger with fresh IP...", flush=True)
-              # Write flag so retrigger step knows to continue
+              print(f"Blocked at brand {len(completed_brands)}/126 — saving progress and retriggering", flush=True)
+              # Save progress so next run resumes from here
+              with open(PROGRESS_FILE, "w") as f:
+                  json.dump({"completed_brands": list(completed_brands), "new_devices": new_devices}, f)
+              # Write flag so retrigger step fires
               with open("needs_retrigger.flag", "w") as f:
                   f.write("1")
               sys.exit(0)
@@ -228,9 +241,10 @@ jobs:
           else:
               print("No new devices found — dataset is up to date", flush=True)
 
-          # Clean up progress file
+          # Clean up progress file on successful completion
           if Path(PROGRESS_FILE).exists():
               Path(PROGRESS_FILE).unlink()
+              print("Progress file cleaned up", flush=True)
 
           PYEOF
 
@@ -239,7 +253,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add discovered_devices.json crawl_progress.json seen_ids.json new_devices_to_scrape.json 2>/dev/null || true
+          git add discovered_devices.json crawl_progress.json seen_ids.json new_devices_to_scrape.json check_new_progress.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Check new devices $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push || true
 
