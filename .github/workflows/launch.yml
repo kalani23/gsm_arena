@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install requests
+      - run: pip install requests pandas openpyxl
 
       - name: Build missing device chunks and commit
         env:
@@ -38,11 +38,34 @@ jobs:
           repo     = os.environ["REPO"]
           n_chunks = int(os.environ["NUM_CHUNKS"])
 
+          import pandas as pd
+          from pathlib import Path
+
+          # Step 1: Deduplicate master CSV and rebuild seen_ids from it
+          if Path("gsmarena_devices.csv").exists():
+              try:
+                  df = pd.read_csv("gsmarena_devices.csv", encoding="utf-8-sig", low_memory=False)
+                  before = len(df)
+                  df = df.drop_duplicates(subset=["URL"], keep="last")
+                  after = len(df)
+                  if before != after:
+                      df.to_csv("gsmarena_devices.csv", index=False, encoding="utf-8-sig")
+                      print(f"Deduplicated master CSV: {before} -> {after} rows (removed {before-after})", flush=True)
+                  else:
+                      print(f"Master CSV already clean: {after} rows", flush=True)
+                  # Rebuild seen_ids from actual CSV
+                  csv_urls = list(df["URL"].dropna().tolist())
+                  with open("seen_ids.json", "w") as f:
+                      json.dump(csv_urls, f)
+                  print(f"seen_ids rebuilt from CSV: {len(csv_urls)} URLs", flush=True)
+              except Exception as e:
+                  print(f"Could not deduplicate: {e}", flush=True)
+
           # Load all discovered devices
           with open("discovered_devices.json") as f:
               all_devices = json.load(f)
 
-          # Load seen ids
+          # Load seen ids (just rebuilt from CSV)
           seen = set()
           try:
               with open("seen_ids.json") as f:
@@ -64,15 +87,15 @@ jobs:
 
           PYEOF
 
-      - name: Commit missing_devices.json FIRST before launching chunks
+      - name: Commit deduped CSV and missing_devices.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add missing_devices.json
+          git add missing_devices.json seen_ids.json gsmarena_devices.csv gsmarena_devices.xlsx 2>/dev/null || true
           git diff --staged --quiet || git commit -m "missing_devices.json — $(python3 -c "import json; d=json.load(open('missing_devices.json')); print(len(d))") devices to scrape"
           git pull --rebase origin main || true
           git push
-          echo "Committed missing_devices.json"
+          echo "Committed"
 
       - name: Launch chunk jobs
         env:
