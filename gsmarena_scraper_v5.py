@@ -171,10 +171,22 @@ def parse_price(raw, symbol):
     m = re.search(re.escape(symbol) + r"\s*[\u202f\u00a0 ]?([\d,]+(?:\.\d+)?)", raw)
     return m.group(1).replace(",", "") if m else ""
 
-def parse_release_year(status, announced):
+def parse_release_year(status, announced, soup=None):
     for raw in [status, announced]:
-        m = re.search(r"\b(20\d{2})\b", raw)
+        if not raw: continue
+        m = re.search(r"\b(20\d{2}|19\d{2})\b", str(raw))
         if m: return m.group(1)
+    if soup:
+        for spec in ["year", "released-hl"]:
+            el = soup.find(attrs={"data-spec": spec})
+            if el:
+                m = re.search(r"\b(20\d{2}|19\d{2})\b", el.get_text())
+                if m: return m.group(1)
+        for table in soup.select("#specs-list table"):
+            th = table.find("th")
+            if th and "launch" in th.get_text("", strip=True).lower():
+                m = re.search(r"\b(20\d{2}|19\d{2})\b", table.get_text())
+                if m: return m.group(1)
     return ""
 
 def classify_device(model_name, display_size_str):
