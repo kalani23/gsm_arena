@@ -1,16 +1,15 @@
 {
-  "status": "running",
-  "brands_checked": 122,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "XOLO",
   "new_devices_found": 2,
-  "new_device_urls": [
-    "https://www.gsmarena.com/acer_iconia_v12-14298.php",
-    "https://www.gsmarena.com/acer_iconia_v11-14297.php"
-  ],
   "new_device_names": [
     "Acer - Iconia V12",
     "Acer - Iconia V11"
   ],
-  "updated_at": "2026-06-03 07:20 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/acer_iconia_v12-14298.php",
+    "https://www.gsmarena.com/acer_iconia_v11-14297.php"
+  ],
+  "updated_at": "2026-06-03 07:21 UTC"
 }
