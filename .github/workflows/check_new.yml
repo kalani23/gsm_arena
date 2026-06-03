@@ -229,15 +229,10 @@ jobs:
                   json.dump(new_devices, f, indent=2)
               print(f"Saved {len(new_devices)} new devices to new_devices_to_scrape.json", flush=True)
 
-              # Trigger scrape for new devices only
-              pat  = os.environ["PAT_TOKEN"]
-              repo = os.environ["REPO"]
-              r = requests.post(
-                  f"https://api.github.com/repos/{repo}/dispatches",
-                  headers={"Authorization": f"token {pat}", "Accept": "application/vnd.github.v3+json"},
-                  json={"event_type": "scrape_new_devices"}
-              )
-              print(f"New devices scrape triggered: {r.status_code}", flush=True)
+              # Mark that we need to trigger scrape after commit
+              with open("trigger_scrape_new.flag", "w") as f:
+                  f.write("1")
+              print(f"Marked for scrape trigger after commit", flush=True)
           else:
               print("No new devices found — dataset is up to date", flush=True)
 
@@ -261,6 +256,15 @@ jobs:
           for i in 1 2 3; do
             git push && echo "Pushed" && break || (git pull --rebase origin main && sleep 3)
           done
+
+      - name: Trigger scrape for new devices after commit
+        if: always()
+        run: |
+          if [ -f "trigger_scrape_new.flag" ]; then
+            echo "Triggering scrape for new devices..."
+            curl -s -X POST               -H "Accept: application/vnd.github.v3+json"               -H "Authorization: token ${{ secrets.PAT_TOKEN }}"               https://api.github.com/repos/${{ github.repository }}/dispatches               -d '{"event_type":"scrape_new_devices"}'
+            echo "Scrape New Devices triggered"
+          fi
 
       - name: Retrigger with fresh IP if blocked
         if: always()
