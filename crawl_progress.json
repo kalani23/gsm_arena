@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 65,
+  "brands_checked": 82,
   "brands_total": 126,
-  "current_brand": "Modu",
+  "current_brand": "Pantech",
   "new_devices_found": 1,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_iconia_im11_22m5g-14659.php"
@@ -10,5 +10,5 @@
   "new_device_names": [
     "Acer - Iconia iM11-22M5G"
   ],
-  "updated_at": "2026-06-03 05:08 UTC"
+  "updated_at": "2026-06-03 05:11 UTC"
 }
