@@ -12,7 +12,7 @@
   h1 { font-size: 22px; font-weight: 500; margin-bottom: 0.25rem; }
   .subtitle { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
   .card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
-  .section-title { font-size: 11px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+  .section-title { font-size: 11px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .metric { background: #f8f8f8; border-radius: 8px; padding: 1rem; text-align: center; }
@@ -28,10 +28,9 @@
   .btn-outline:hover { background: #f5f5f5; }
   .btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .status { font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-top: 10px; display: none; }
-  .status.info { background: #e8f4fd; color: #1a6fa8; display: block; }
+  .status.info    { background: #e8f4fd; color: #1a6fa8; display: block; }
   .status.success { background: #e8f5e9; color: #2e7d32; display: block; }
-  .status.error { background: #fdecea; color: #b71c1c; display: block; }
-  .status.warning { background: #fff8e1; color: #e65100; display: block; }
+  .status.error   { background: #fdecea; color: #b71c1c; display: block; }
   .spinner { width: 14px; height: 14px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; flex-shrink: 0; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .dl-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
@@ -41,7 +40,7 @@
   .dl-btn { background: transparent; border: 1px solid #ddd; border-radius: 8px; padding: 5px 12px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .dl-btn:hover { background: #f5f5f5; }
   .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
-  .tag-new { background: #e8f5e9; color: #2e7d32; }
+  .tag-new    { background: #e8f5e9; color: #2e7d32; }
   .tag-master { background: #fff3e0; color: #e65100; }
   .notice { font-size: 13px; color: #888; background: #f8f8f8; border-radius: 8px; padding: 10px 12px; margin-top: 8px; line-height: 1.5; }
   .action-desc { font-size: 13px; color: #666; margin: 4px 0 8px; line-height: 1.4; }
@@ -53,13 +52,12 @@
   .dot-failed  { background: #e53935; }
   .dot-queued  { background: #90a4ae; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  .run-name { font-weight: 500; flex: 1; }
-  .run-time { color: #888; font-size: 12px; white-space: nowrap; }
-  .progress-bar-wrap { background: #f0f0f0; border-radius: 999px; height: 6px; margin: 8px 0 4px; overflow: hidden; }
+  .progress-bar-wrap { background: #f0f0f0; border-radius: 999px; height: 6px; margin: 10px 0 4px; overflow: hidden; }
   .progress-bar { background: #1a1a1a; height: 6px; border-radius: 999px; transition: width 0.5s; }
   .progress-label { font-size: 12px; color: #666; display: flex; justify-content: space-between; }
-  .poll-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: #888; margin-left: 8px; }
-  #poll-toggle { background: none; border: none; font-size: 12px; color: #1a6fa8; cursor: pointer; padding: 0; margin-left: 4px; }
+  .live-badge { display: none; align-items: center; gap: 5px; font-size: 12px; color: #888; }
+  .live-badge.on { display: inline-flex; }
+  #poll-stop { background: none; border: none; font-size: 12px; color: #1a6fa8; cursor: pointer; padding: 0; margin-left: 2px; }
 </style>
 </head>
 <body>
@@ -67,7 +65,8 @@
   <h1>GSMArena Data Updater</h1>
   <p class="subtitle">Click a button to update your device data. Files download automatically when ready.</p>
 
-  <div class="card" id="setup-card">
+  <!-- Setup -->
+  <div class="card">
     <p class="section-title">Setup — one time only</p>
     <label>GitHub token</label>
     <input type="password" id="pat" placeholder="ghp_xxxxxxxxxxxx" />
@@ -76,17 +75,42 @@
     <button class="btn btn-dark" onclick="saveConfig()" style="margin-top:14px;">
       <i class="ti ti-check"></i> Save settings
     </button>
-    <p class="notice">Your token is saved in your browser only. Never sent anywhere except GitHub.</p>
+    <p class="notice">Token saved in your browser only. Never shared anywhere except GitHub.</p>
     <div id="setup-msg" class="status"></div>
   </div>
 
+  <!-- Status + Progress -->
+  <div class="card">
+    <p class="section-title">
+      Status
+      <span class="live-badge" id="live-badge">
+        <div class="spinner" style="width:10px;height:10px;border-width:1.5px;"></div>
+        live
+        <button id="poll-stop" onclick="stopPolling()">stop</button>
+      </span>
+    </p>
+    <div class="grid3">
+      <div class="metric"><p class="metric-val" id="stat-total">—</p><p class="metric-lbl">total devices</p></div>
+      <div class="metric"><p class="metric-val" id="stat-scraped">—</p><p class="metric-lbl">scraped</p></div>
+      <div class="metric"><p class="metric-val" id="stat-runs">—</p><p class="metric-lbl">workflow runs</p></div>
+    </div>
+    <div id="progress-wrap" style="display:none;">
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+      <div class="progress-label"><span id="progress-text">0 / 14,603</span><span id="progress-pct">0%</span></div>
+    </div>
+    <button class="btn btn-outline" onclick="refreshStatus()" style="margin-top:12px;">
+      <i class="ti ti-refresh"></i> Refresh status
+    </button>
+    <div id="status-msg" class="status"></div>
+  </div>
 
-
+  <!-- Live runs -->
   <div class="card">
     <p class="section-title">Live workflow runs</p>
     <div id="runs-list"><p style="font-size:13px;color:#888;">Save settings to load.</p></div>
   </div>
 
+  <!-- Actions -->
   <div class="card">
     <p class="section-title">Actions</p>
     <div class="grid2">
@@ -108,6 +132,7 @@
     <div id="action-msg" class="status"></div>
   </div>
 
+  <!-- Downloads -->
   <div class="card">
     <p class="section-title">Download files</p>
     <div id="file-list"><p style="font-size:13px;color:#888;">Save settings above to load files.</p></div>
@@ -130,11 +155,13 @@ function saveConfig() {
   localStorage.setItem('gsm_pat', pat);
   localStorage.setItem('gsm_repo', repo);
   showMsg('setup-msg','Settings saved!','success');
-  refreshStatus(); loadFiles();
+  refreshStatus();
+  loadFiles();
 }
 
 function showMsg(id, text, type) {
   const el = document.getElementById(id);
+  if (!el) return;
   el.className = 'status ' + type;
   el.textContent = text;
 }
@@ -175,15 +202,12 @@ function runLabel(status, conclusion) {
 async function loadRuns() {
   const data = await ghFetch('/actions/runs?per_page=8');
   if (!data) return false;
-
   const hasActive = data.workflow_runs.some(r => r.status === 'in_progress' || r.status === 'queued');
-
   const list = document.getElementById('runs-list');
   if (!data.workflow_runs.length) {
     list.innerHTML = '<p style="font-size:13px;color:#888;">No runs yet.</p>';
     return false;
   }
-
   list.innerHTML = data.workflow_runs.map(r => `
     <div class="run-item">
       <div class="run-dot ${runDot(r.status, r.conclusion)}"></div>
@@ -194,14 +218,12 @@ async function loadRuns() {
       </div>
     </div>
   `).join('');
-
   return hasActive;
 }
 
 async function refreshStatus() {
-  showMsg('status-msg','Loading...','info');
   const {pat} = cfg();
-  if (!pat) { showMsg('status-msg','Save settings first.','error'); return; }
+  if (!pat) return;
 
   const [commits, runs] = await Promise.all([
     ghFetch('/commits?per_page=1'),
@@ -227,9 +249,8 @@ async function refreshStatus() {
     document.getElementById('progress-pct').textContent = pct + '%';
   }
 
-  const lastMsg = commits[0]?.commit?.message || '—';
   const timeStr = commits[0]?.commit?.committer?.date ? timeAgo(commits[0].commit.committer.date) : '';
-  showMsg('status-msg', `Last update: ${lastMsg.substring(0,60)} (${timeStr})`, 'info');
+  showMsg('status-msg', `Last update: ${msg.substring(0,60)} (${timeStr})`, 'info');
 
   await loadRuns();
   loadFiles();
@@ -238,7 +259,7 @@ async function refreshStatus() {
 function startPolling() {
   if (isPolling) return;
   isPolling = true;
-  document.getElementById('poll-badge').style.display = 'inline-flex';
+  document.getElementById('live-badge').classList.add('on');
   pollTimer = setInterval(async () => {
     const hasActive = await loadRuns();
     await refreshStatus();
@@ -250,7 +271,7 @@ function stopPolling() {
   isPolling = false;
   clearInterval(pollTimer);
   pollTimer = null;
-  document.getElementById('poll-badge').style.display = 'none';
+  document.getElementById('live-badge').classList.remove('on');
 }
 
 async function loadFiles() {
@@ -258,16 +279,23 @@ async function loadFiles() {
   if (!pat || !repo) return;
   const data = await ghFetch('/contents/');
   if (!data) return;
-  const files = data.filter(f => f.name.endsWith('.xlsx') || f.name.endsWith('.csv')).sort((a,b) => b.name.localeCompare(a.name));
+  const files = data
+    .filter(f => f.name.endsWith('.xlsx') || f.name.endsWith('.csv'))
+    .sort((a,b) => b.name.localeCompare(a.name));
   const list = document.getElementById('file-list');
   if (!files.length) { list.innerHTML = '<p style="font-size:13px;color:#888;">No files yet.</p>'; return; }
   list.innerHTML = files.map(f => {
-    const isNew = f.name.includes('new_');
+    const isNew    = f.name.includes('new_');
     const isMaster = f.name === 'gsmarena_devices.xlsx' || f.name === 'gsmarena_devices.csv';
     const tag = isNew ? '<span class="tag tag-new">new devices</span>' : isMaster ? '<span class="tag tag-master">master</span>' : '';
     return `<div class="dl-row">
-      <div><p class="dl-name"><i class="ti ti-file" style="font-size:15px;vertical-align:-2px;margin-right:6px;"></i>${f.name}${tag}</p><p class="dl-meta">${(f.size/1024).toFixed(0)} KB</p></div>
-      <button class="dl-btn" onclick="window.open('${f.download_url}','_blank')"><i class="ti ti-download"></i> Download</button>
+      <div>
+        <p class="dl-name"><i class="ti ti-file" style="font-size:15px;vertical-align:-2px;margin-right:6px;"></i>${f.name}${tag}</p>
+        <p class="dl-meta">${(f.size/1024).toFixed(0)} KB</p>
+      </div>
+      <button class="dl-btn" onclick="window.open('${f.download_url}','_blank')">
+        <i class="ti ti-download"></i> Download
+      </button>
     </div>`;
   }).join('');
 }
@@ -286,7 +314,7 @@ async function triggerWorkflow(workflow, inputs, btnId, msgId) {
       body: JSON.stringify({ ref: 'main', inputs })
     });
     if (r.status === 204) {
-      showMsg(msgId, 'Started! Checking progress every 15 seconds...', 'success');
+      showMsg(msgId, 'Started! Live progress updates every 15 seconds...', 'success');
       setTimeout(() => startPolling(), 3000);
     } else {
       showMsg(msgId, 'Failed — check your token has "workflow" permission.', 'error');
@@ -298,11 +326,11 @@ async function triggerWorkflow(workflow, inputs, btnId, msgId) {
 }
 
 function triggerCheckNew() { triggerWorkflow('check_new.yml', {}, 'btn-check-new', 'action-msg'); }
-function triggerLaunch() { triggerWorkflow('launch.yml', { num_chunks: '20' }, 'btn-launch', 'action-msg'); }
+function triggerLaunch()   { triggerWorkflow('launch.yml', { num_chunks: '20' }, 'btn-launch', 'action-msg'); }
 
 window.addEventListener('load', () => {
   const {pat, repo} = cfg();
-  if (pat) document.getElementById('pat').value = pat;
+  if (pat)  document.getElementById('pat').value  = pat;
   if (repo) document.getElementById('repo').value = repo;
   if (pat && repo) { refreshStatus(); loadFiles(); }
 });
