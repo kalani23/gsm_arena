@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 11,
+  "brands_checked": 38,
   "brands_total": 126,
-  "current_brand": "BenQ",
+  "current_brand": "HMD",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-06-04 01:15 UTC"
+  "updated_at": "2026-06-04 01:17 UTC"
 }
