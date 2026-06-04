@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 54,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "Lava",
+  "current_brand": "NIU",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-06-04 01:19 UTC"
+  "updated_at": "2026-06-04 01:21 UTC"
 }
