@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 85,
+  "brands_checked": 113,
   "brands_total": 126,
-  "current_brand": "Plum",
+  "current_brand": "Vertu",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-06-04 01:23 UTC"
+  "updated_at": "2026-06-04 01:27 UTC"
 }
