@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 38,
+  "brands_checked": 54,
   "brands_total": 126,
-  "current_brand": "HMD",
+  "current_brand": "Lava",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-06-04 01:17 UTC"
+  "updated_at": "2026-06-04 01:19 UTC"
 }
