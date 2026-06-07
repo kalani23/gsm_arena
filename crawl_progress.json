@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 41,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "HTC",
+  "current_brand": "Lenovo",
   "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_iconia_duo_s14-14707.php",
@@ -16,5 +16,5 @@
     "Acer - Iconia Duo D12",
     "Honor - Play10"
   ],
-  "updated_at": "2026-06-07 02:08 UTC"
+  "updated_at": "2026-06-07 02:10 UTC"
 }
