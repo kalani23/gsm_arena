@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 87,
+  "brands_checked": 100,
   "brands_total": 126,
-  "current_brand": "Prestigio",
+  "current_brand": "Sony",
   "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_iconia_duo_s14-14707.php",
@@ -16,5 +16,5 @@
     "Acer - Iconia Duo D12",
     "Honor - Play10"
   ],
-  "updated_at": "2026-06-07 02:15 UTC"
+  "updated_at": "2026-06-07 02:17 UTC"
 }
