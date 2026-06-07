@@ -1,9 +1,18 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 20,
   "brands_total": 126,
-  "new_devices_found": 0,
-  "new_device_names": [],
-  "new_device_urls": [],
-  "updated_at": "2026-06-04 01:30 UTC"
+  "current_brand": "Cat",
+  "new_devices_found": 3,
+  "new_device_urls": [
+    "https://www.gsmarena.com/acer_iconia_duo_s14-14707.php",
+    "https://www.gsmarena.com/acer_iconia_duo_s12-14708.php",
+    "https://www.gsmarena.com/acer_iconia_duo_d12-14709.php"
+  ],
+  "new_device_names": [
+    "Acer - Iconia Duo S14",
+    "Acer - Iconia Duo S12",
+    "Acer - Iconia Duo D12"
+  ],
+  "updated_at": "2026-06-07 02:06 UTC"
 }
