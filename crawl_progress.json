@@ -1,20 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 100,
+  "brands_checked": 121,
   "brands_total": 126,
-  "current_brand": "Sony",
-  "new_devices_found": 4,
+  "current_brand": "Xiaomi",
+  "new_devices_found": 5,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_iconia_duo_s14-14707.php",
     "https://www.gsmarena.com/acer_iconia_duo_s12-14708.php",
     "https://www.gsmarena.com/acer_iconia_duo_d12-14709.php",
-    "https://www.gsmarena.com/honor_play10_5g-14713.php"
+    "https://www.gsmarena.com/honor_play10_5g-14713.php",
+    "https://www.gsmarena.com/vivo_v70_lite_5g-14710.php"
   ],
   "new_device_names": [
     "Acer - Iconia Duo S14",
     "Acer - Iconia Duo S12",
     "Acer - Iconia Duo D12",
-    "Honor - Play10"
+    "Honor - Play10",
+    "vivo - V70 Lite"
   ],
-  "updated_at": "2026-06-07 02:17 UTC"
+  "updated_at": "2026-06-07 02:19 UTC"
 }
