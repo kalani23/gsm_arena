@@ -1,18 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 20,
+  "brands_checked": 41,
   "brands_total": 126,
-  "current_brand": "Cat",
-  "new_devices_found": 3,
+  "current_brand": "HTC",
+  "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/acer_iconia_duo_s14-14707.php",
     "https://www.gsmarena.com/acer_iconia_duo_s12-14708.php",
-    "https://www.gsmarena.com/acer_iconia_duo_d12-14709.php"
+    "https://www.gsmarena.com/acer_iconia_duo_d12-14709.php",
+    "https://www.gsmarena.com/honor_play10_5g-14713.php"
   ],
   "new_device_names": [
     "Acer - Iconia Duo S14",
     "Acer - Iconia Duo S12",
-    "Acer - Iconia Duo D12"
+    "Acer - Iconia Duo D12",
+    "Honor - Play10"
   ],
-  "updated_at": "2026-06-07 02:06 UTC"
+  "updated_at": "2026-06-07 02:08 UTC"
 }
