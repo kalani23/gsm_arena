@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 42,
+  "brands_checked": 60,
   "brands_total": 126,
-  "current_brand": "Huawei",
+  "current_brand": "Meizu",
   "new_devices_found": 1,
   "new_device_urls": [
     "https://www.gsmarena.com/htc_wildfire_e7_plus-14717.php"
@@ -10,5 +10,5 @@
   "new_device_names": [
     "HTC - Wildfire E7 Plus"
   ],
-  "updated_at": "2026-06-11 23:52 UTC"
+  "updated_at": "2026-06-11 23:54 UTC"
 }
