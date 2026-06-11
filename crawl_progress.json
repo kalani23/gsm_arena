@@ -1,14 +1,18 @@
 {
   "status": "running",
-  "brands_checked": 60,
+  "brands_checked": 76,
   "brands_total": 126,
-  "current_brand": "Meizu",
-  "new_devices_found": 1,
+  "current_brand": "Oppo",
+  "new_devices_found": 3,
   "new_device_urls": [
-    "https://www.gsmarena.com/htc_wildfire_e7_plus-14717.php"
+    "https://www.gsmarena.com/htc_wildfire_e7_plus-14717.php",
+    "https://www.gsmarena.com/oneplus_turbo_6x_pro_5g-14711.php",
+    "https://www.gsmarena.com/oneplus_turbo_6x_5g-14712.php"
   ],
   "new_device_names": [
-    "HTC - Wildfire E7 Plus"
+    "HTC - Wildfire E7 Plus",
+    "OnePlus - Turbo 6X Pro",
+    "OnePlus - Turbo 6X"
   ],
-  "updated_at": "2026-06-11 23:54 UTC"
+  "updated_at": "2026-06-11 23:56 UTC"
 }
