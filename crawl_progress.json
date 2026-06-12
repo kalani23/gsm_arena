@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 104,
+  "brands_checked": 120,
   "brands_total": 126,
-  "current_brand": "TCL",
-  "new_devices_found": 9,
+  "current_brand": "XCute",
+  "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/htc_wildfire_e7_plus-14717.php",
     "https://www.gsmarena.com/oneplus_turbo_6x_pro_5g-14711.php",
@@ -13,7 +13,9 @@
     "https://www.gsmarena.com/oukitel_g6-14721.php",
     "https://www.gsmarena.com/oukitel_g7-14722.php",
     "https://www.gsmarena.com/oukitel_wp23s-14723.php",
-    "https://www.gsmarena.com/realme_p4r_5g-14706.php"
+    "https://www.gsmarena.com/realme_p4r_5g-14706.php",
+    "https://www.gsmarena.com/tecno_pova_8_5g-14714.php",
+    "https://www.gsmarena.com/tecno_pova_8_5g-14714.php"
   ],
   "new_device_names": [
     "HTC - Wildfire E7 Plus",
@@ -24,7 +26,9 @@
     "Oukitel - G6",
     "Oukitel - G7",
     "Oukitel - WP23S",
-    "Realme - P4R"
+    "Realme - P4R",
+    "Tecno - Pova 8",
+    "Tecno - Pova 8"
   ],
-  "updated_at": "2026-06-12 00:00 UTC"
+  "updated_at": "2026-06-12 00:02 UTC"
 }
