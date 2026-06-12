@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 104,
   "brands_total": 126,
-  "current_brand": "Sagem",
+  "current_brand": "TCL",
   "new_devices_found": 9,
   "new_device_urls": [
     "https://www.gsmarena.com/htc_wildfire_e7_plus-14717.php",
@@ -26,5 +26,5 @@
     "Oukitel - WP23S",
     "Realme - P4R"
   ],
-  "updated_at": "2026-06-11 23:58 UTC"
+  "updated_at": "2026-06-12 00:00 UTC"
 }
