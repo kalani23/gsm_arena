@@ -1,33 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 15,
   "brands_total": 126,
-  "new_devices_found": 11,
-  "new_device_names": [
-    "HTC - Wildfire E7 Plus",
-    "OnePlus - Turbo 6X Pro",
-    "OnePlus - Turbo 6X",
-    "Oukitel - C26",
-    "Oukitel - C62 GT",
-    "Oukitel - G6",
-    "Oukitel - G7",
-    "Oukitel - WP23S",
-    "Realme - P4R",
-    "Tecno - Pova 8",
-    "Tecno - Pova 8"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/htc_wildfire_e7_plus-14717.php",
-    "https://www.gsmarena.com/oneplus_turbo_6x_pro_5g-14711.php",
-    "https://www.gsmarena.com/oneplus_turbo_6x_5g-14712.php",
-    "https://www.gsmarena.com/oukitel_c26-14719.php",
-    "https://www.gsmarena.com/oukitel_c62_gt-14720.php",
-    "https://www.gsmarena.com/oukitel_g6-14721.php",
-    "https://www.gsmarena.com/oukitel_g7-14722.php",
-    "https://www.gsmarena.com/oukitel_wp23s-14723.php",
-    "https://www.gsmarena.com/realme_p4r_5g-14706.php",
-    "https://www.gsmarena.com/tecno_pova_8_5g-14714.php",
-    "https://www.gsmarena.com/tecno_pova_8_5g-14714.php"
-  ],
-  "updated_at": "2026-06-12 00:04 UTC"
+  "current_brand": "Blackview",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-06-14 02:10 UTC"
 }
