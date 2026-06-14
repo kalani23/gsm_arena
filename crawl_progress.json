@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 106,
+  "brands_checked": 125,
   "brands_total": 126,
-  "current_brand": "Tel.Me.",
+  "current_brand": "YU",
   "new_devices_found": 6,
   "new_device_urls": [
     "https://www.gsmarena.com/motorola_moto_g_max_5g-14724.php",
@@ -20,5 +20,5 @@
     "Samsung - Galaxy A27",
     "Samsung - Galaxy A27"
   ],
-  "updated_at": "2026-06-14 02:23 UTC"
+  "updated_at": "2026-06-14 02:25 UTC"
 }
