@@ -2,6 +2,8 @@ name: Fix Missing Derived Fields
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [fix_missing_resume]
 
 jobs:
   fix:
@@ -22,6 +24,8 @@ jobs:
       - name: Fix derived fields
         env:
           PYTHONUNBUFFERED: "1"
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO: ${{ github.repository }}
         run: |
           python - << 'PYEOF'
           import pandas as pd
@@ -29,9 +33,14 @@ jobs:
           import random
           import time
           import re
+          import os
+          import json
+          import sys
+          import urllib.request
           from bs4 import BeautifulSoup
 
-          INPUT_XLSX = "gsmarena_devices.xlsx"
+          INPUT_XLSX    = "gsmarena_devices.xlsx"
+          PROGRESS_FILE = "fix_missing_progress.json"
 
           USER_AGENTS = [
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -50,42 +59,33 @@ jobs:
                   "Cache-Control":   "max-age=0",
               }
 
-          # ── dtype map — tells us how to cast each derived column ─────────────
-          # float64: numeric columns that may have decimals
-          # int64:   whole numbers only
-          # str:     text columns
+          # ── dtype map ────────────────────────────────────────────────────────
           DERIVED_DTYPES = {
-              "Weight g":             "float64",
-              "Length mm":            "float64",
-              "Width mm":             "float64",
-              "Height mm":            "float64",
-              "Display Size inches":  "float64",
-              "Resolution Width px":  "float64",
-              "Resolution Height px": "float64",
-              "PPI":                  "float64",
-              "Battery mAh":          "float64",
-              "Main Camera MP":       "float64",
-              "Selfie Camera MP":     "float64",
-              "SAR US Head W/kg":     "float64",
-              "SAR US Body W/kg":     "float64",
-              "SAR EU Head W/kg":     "float64",
-              "SAR EU Body W/kg":     "float64",
-              "Release Year":         "float64",  # store as float to avoid int/NaN conflict
-              "Storage Options":      "str",
-              "RAM Options":          "str",
+              "Weight g": "float64", "Length mm": "float64", "Width mm": "float64",
+              "Height mm": "float64", "Display Size inches": "float64",
+              "Resolution Width px": "float64", "Resolution Height px": "float64",
+              "PPI": "float64", "Battery mAh": "float64",
+              "Main Camera MP": "float64", "Selfie Camera MP": "float64",
+              "SAR US Head W/kg": "float64", "SAR US Body W/kg": "float64",
+              "SAR EU Head W/kg": "float64", "SAR EU Body W/kg": "float64",
+              "Release Year": "float64", "Storage Options": "str", "RAM Options": "str",
           }
 
           def cast(col, val):
-              """Cast val to the correct type for col. Returns None if conversion fails."""
-              if val is None or str(val).strip() == "":
-                  return None
+              if val is None or str(val).strip() == "": return None
               dtype = DERIVED_DTYPES.get(col, "str")
               if dtype == "float64":
-                  try:
-                      return float(val)
-                  except (ValueError, TypeError):
-                      return None
+                  try: return float(val)
+                  except: return None
               return str(val)
+
+          def set_cell(df, idx, col, val):
+              casted = cast(col, val)
+              if casted is None: return False
+              if col not in df.columns:
+                  df[col] = pd.array([pd.NA] * len(df), dtype="object")
+              df.at[idx, col] = casted
+              return True
 
           # ── parsers ──────────────────────────────────────────────────────────
           def parse_dimensions(raw):
@@ -98,6 +98,11 @@ jobs:
               if m: return m.group(1)
               m = re.search(r"([\d.]+)\s*lb\b", raw)
               if m: return str(round(float(m.group(1)) * 453.592))
+              m = re.search(r"([\d.]+)\s*oz\b", raw)
+              if m: return str(round(float(m.group(1)) * 28.3495))
+              # Old GSMArena format: "122 (4.30 oz)" — leading number IS grams
+              m = re.match(r"^([\d.]+)\s*\(", raw)
+              if m: return m.group(1)
               return ""
 
           def parse_display_size(raw):
@@ -139,78 +144,52 @@ jobs:
           def is_blank(val):
               return pd.isna(val) or str(val).strip() in ("", "nan", "-")
 
-          # ── re-parse from raw columns ────────────────────────────────────────
+          # ── re-parse derived fields from raw columns ──────────────────────────
           def reparse_from_raw(row):
               out = {}
-
               wt = parse_weight(row.get("Body_Weight", ""))
               if wt: out["Weight g"] = wt
-
               dl, dw, dh = parse_dimensions(row.get("Body_Dimensions", ""))
               if dl: out["Length mm"] = dl
               if dw: out["Width mm"]  = dw
               if dh: out["Height mm"] = dh
-
               ds = parse_display_size(row.get("Display_Size", ""))
               if ds: out["Display Size inches"] = ds
-
               rw, rh, ppi = parse_resolution(row.get("Display_Resolution", ""))
               if rw:  out["Resolution Width px"]  = rw
               if rh:  out["Resolution Height px"] = rh
               if ppi: out["PPI"]                  = ppi
-
               stor, ram = parse_memory(
-                  row.get("Memory_Internal", "") or row.get("Memory_Built-in", "") or row.get("Memory_", "") or ""
-              )
+                  row.get("Memory_Internal", "") or row.get("Memory_Built-in", "") or row.get("Memory_", "") or "")
               if stor: out["Storage Options"] = stor
               if ram:  out["RAM Options"]     = ram
-
               bat = parse_battery(
-                  row.get("Battery_Type", "") or row.get("Battery_Capacity", "") or row.get("Battery_", "") or ""
-              )
+                  row.get("Battery_Type", "") or row.get("Battery_Capacity", "") or row.get("Battery_", "") or "")
               if bat: out["Battery mAh"] = bat
-
               c1 = (row.get("Main Camera_Triple") or row.get("Main Camera_Quad") or
                     row.get("Main Camera_Penta") or row.get("Main Camera_Dual") or
                     row.get("Main Camera_Single") or row.get("Main Camera_") or
                     row.get("Main Camera_Five") or row.get("Main Camera_No") or "")
               mp1 = parse_camera_mp(str(c1))
               if mp1: out["Main Camera MP"] = mp1
-
               c2 = (row.get("Selfie camera_Single") or row.get("Selfie camera_Dual") or
                     row.get("Selfie camera_Triple") or row.get("Selfie camera_") or
                     row.get("Selfie camera_No") or "")
               mp2 = parse_camera_mp(str(c2))
               if mp2: out["Selfie Camera MP"] = mp2
-
               sar_us = str(row.get("Misc_SAR", "") or row.get("Misc_SAR US", "") or "")
               sar_eu = str(row.get("Misc_SAR EU", "") or "")
-              sh = parse_sar(sar_us, "head")
-              sb = parse_sar(sar_us, "body")
-              eh = parse_sar(sar_eu, "head")
-              eb = parse_sar(sar_eu, "body")
+              sh = parse_sar(sar_us, "head"); sb = parse_sar(sar_us, "body")
+              eh = parse_sar(sar_eu, "head"); eb = parse_sar(sar_eu, "body")
               if sh: out["SAR US Head W/kg"] = sh
               if sb: out["SAR US Body W/kg"] = sb
               if eh: out["SAR EU Head W/kg"] = eh
               if eb: out["SAR EU Body W/kg"] = eb
-
               yr = parse_year(row.get("Launch_Status", "") or "") or parse_year(row.get("Launch_Announced", "") or "")
               if yr: out["Release Year"] = yr
-
               return out
 
-          def set_cell(df, idx, col, val):
-              """Write val into df at (idx, col), casting to the column's actual dtype."""
-              casted = cast(col, val)
-              if casted is None:
-                  return False
-              # If column doesn't exist yet, create it as object to avoid dtype issues
-              if col not in df.columns:
-                  df[col] = pd.array([pd.NA] * len(df), dtype="object")
-              df.at[idx, col] = casted
-              return True
-
-          # ── scraper ──────────────────────────────────────────────────────────
+          # ── raw spec extractor ───────────────────────────────────────────────
           def extract_specs(soup):
               specs, section = {}, ""
               for table in soup.select("#specs-list table"):
@@ -231,6 +210,7 @@ jobs:
                       specs[col] = value
               return specs
 
+          # ── HTTP ─────────────────────────────────────────────────────────────
           def scrape_url(session, url):
               for attempt in range(3):
                   try:
@@ -238,28 +218,76 @@ jobs:
                       session.headers.update(random_headers())
                       r = session.get(url, timeout=15)
                       if r.status_code == 429:
-                          print(f"  429 — waiting 60s", flush=True)
-                          time.sleep(60)
-                          continue
+                          return "BLOCKED"
                       if r.status_code != 200:
                           time.sleep(5)
                           continue
                       if any(p in r.text.lower() for p in ["incapsula","access denied","check the box"]):
-                          print(f"  Blocked — waiting 30s", flush=True)
-                          time.sleep(30)
-                          continue
+                          return "BLOCKED"
                       return r.text
                   except Exception as e:
                       print(f"  Error: {e}", flush=True)
                       time.sleep(5)
               return None
 
+          # ── trigger new run with fresh IP ────────────────────────────────────
+          def trigger_resume():
+              pat  = os.environ.get("PAT_TOKEN", "")
+              repo = os.environ.get("REPO", "")
+              if not pat or not repo:
+                  print("No PAT_TOKEN/REPO — cannot trigger resume", flush=True)
+                  return
+              try:
+                  payload = json.dumps({"event_type": "fix_missing_resume"}).encode()
+                  req = urllib.request.Request(
+                      f"https://api.github.com/repos/{repo}/dispatches",
+                      data=payload,
+                      headers={
+                          "Accept":        "application/vnd.github.v3+json",
+                          "Authorization": f"token {pat}",
+                          "Content-Type":  "application/json",
+                      },
+                      method="POST"
+                  )
+                  urllib.request.urlopen(req)
+                  print("Triggered new run with fresh IP.", flush=True)
+              except Exception as e:
+                  print(f"Could not trigger resume: {e}", flush=True)
+
+          # ── progress file: tracks which URLs have been processed ─────────────
+          def load_done_urls():
+              if not __import__("pathlib").Path(PROGRESS_FILE).exists():
+                  return set()
+              with open(PROGRESS_FILE, encoding="utf-8") as f:
+                  return set(json.load(f))
+
+          def save_done_urls(done_urls, df):
+              with open(PROGRESS_FILE, "w", encoding="utf-8") as f:
+                  json.dump(list(done_urls), f)
+              # Also save xlsx at every checkpoint
+              df.to_excel(INPUT_XLSX, index=False, engine="openpyxl")
+
+          # ── helpers ──────────────────────────────────────────────────────────
           KEY_COLS = ["Weight g", "Display Size inches", "Battery mAh", "Resolution Width px", "Release Year"]
 
-          def row_needs_fix(row):
+          def raw_cols_blank(row):
+              """True if the raw spec columns are genuinely missing — needs a web scrape."""
+              checks = [
+                  row.get("Body_Weight", ""),
+                  row.get("Body_Dimensions", ""),
+                  row.get("Display_Size", ""),
+                  row.get("Battery_Type", "") or row.get("Battery_Capacity", "") or row.get("Battery_", ""),
+                  row.get("Memory_Internal", "") or row.get("Memory_Built-in", "") or row.get("Memory_", ""),
+              ]
+              return all(is_blank(v) for v in checks)
+
+          def derived_cols_blank(row):
+              """True if any key derived column is still blank."""
               return any(is_blank(row.get(col)) for col in KEY_COLS)
 
-          # ── MAIN ─────────────────────────────────────────────────────────────
+          # ════════════════════════════════════════════════════════════════════
+          # MAIN
+          # ════════════════════════════════════════════════════════════════════
           print(f"Loading {INPUT_XLSX}...", flush=True)
           df = pd.read_excel(INPUT_XLSX, engine="openpyxl")
           print(f"Total rows: {len(df)}", flush=True)
@@ -272,11 +300,12 @@ jobs:
           print("\n=== PHASE 1: Re-parsing from existing raw columns ===", flush=True)
           phase1_cells = 0
           for idx, row in df.iterrows():
-              if not row_needs_fix(row):
+              if not derived_cols_blank(row):
                   continue
               derived = reparse_from_raw(row.to_dict())
               for col, val in derived.items():
-                  if is_blank(df.at[idx, col] if col in df.columns else None):
+                  current = df.at[idx, col] if col in df.columns else None
+                  if is_blank(current):
                       if set_cell(df, idx, col, val):
                           phase1_cells += 1
 
@@ -288,27 +317,53 @@ jobs:
           df.to_excel(INPUT_XLSX, index=False, engine="openpyxl")
           print("Phase 1 saved.", flush=True)
 
-          # ── PHASE 2: re-scrape rows still missing ────────────────────────────
-          still_bad = df[df.apply(row_needs_fix, axis=1)]
-          print(f"\n=== PHASE 2: Re-scraping {len(still_bad)} rows still missing data ===", flush=True)
+          # ── PHASE 2: scrape only rows where raw data is genuinely missing ────
+          # Target = rows where derived fields are STILL blank AND raw cols are empty
+          # (meaning Phase 1 had nothing to work with — needs fresh web scrape)
+          needs_scrape = df[
+              df.apply(derived_cols_blank, axis=1) &
+              df.apply(raw_cols_blank, axis=1)
+          ]
+          print(f"\n=== PHASE 2: Re-scraping {len(needs_scrape)} rows with no raw data ===", flush=True)
 
-          if len(still_bad) == 0:
-              print("Nothing left to scrape!", flush=True)
+          if len(needs_scrape) == 0:
+              print("Nothing to scrape!", flush=True)
           else:
-              session = requests.Session()
+              done_urls = load_done_urls()
+              todo = needs_scrape[~needs_scrape["URL"].isin(done_urls)]
+              print(f"Already done in previous runs: {len(needs_scrape) - len(todo)}", flush=True)
+              print(f"Remaining this run: {len(todo)}", flush=True)
+
+              session  = requests.Session()
               session.headers.update(random_headers())
               scraped = failed = 0
 
-              for idx, row in still_bad.iterrows():
+              for idx, row in todo.iterrows():
                   url = str(row.get("URL", ""))
                   if not url.startswith("http"):
                       continue
 
                   brand = row.get("Brand", "")
                   model = row.get("Model", "")
-                  print(f"[{scraped+failed+1}/{len(still_bad)}] {brand} - {model}", flush=True)
+                  n     = scraped + failed + 1
+                  print(f"[{n}/{len(todo)}] {brand} - {model}", flush=True)
 
                   html = scrape_url(session, url)
+
+                  if html == "BLOCKED":
+                      print(f"  BLOCKED — saving progress and triggering new run", flush=True)
+                      done_urls.add(url)  # skip this one next time, move forward
+                      save_done_urls(done_urls, df)
+                      # Commit progress before triggering
+                      import subprocess
+                      subprocess.run(["git","config","user.name","github-actions[bot]"])
+                      subprocess.run(["git","config","user.email","github-actions[bot]@users.noreply.github.com"])
+                      subprocess.run(["git","add", INPUT_XLSX, PROGRESS_FILE])
+                      subprocess.run(["git","commit","-m",f"Fix progress checkpoint — {scraped} scraped"])
+                      subprocess.run(["git","push"])
+                      trigger_resume()
+                      sys.exit(0)
+
                   if not html:
                       print(f"  FAIL", flush=True)
                       failed += 1
@@ -316,36 +371,48 @@ jobs:
 
                   soup    = BeautifulSoup(html, "html.parser")
                   dynamic = extract_specs(soup)
+
                   if not dynamic:
                       print(f"  Empty specs", flush=True)
+                      done_urls.add(url)
                       failed += 1
                       continue
 
-                  # Write raw spec columns (all string, so no dtype issue)
+                  # Write raw spec columns
                   for col, val in dynamic.items():
                       if col not in df.columns:
                           df[col] = pd.array([pd.NA] * len(df), dtype="object")
                       if val and is_blank(df.at[idx, col]):
                           df.at[idx, col] = str(val)
 
-                  # Re-parse derived from freshly written raw
+                  # Re-parse derived from fresh raw data
                   derived = reparse_from_raw(df.loc[idx].to_dict())
                   filled = []
                   for col, val in derived.items():
-                      if is_blank(df.at[idx, col] if col in df.columns else None):
+                      current = df.at[idx, col] if col in df.columns else None
+                      if is_blank(current):
                           if set_cell(df, idx, col, val):
                               filled.append(col)
 
                   print(f"  Fixed: {', '.join(filled) if filled else 'nothing new'}", flush=True)
+                  done_urls.add(url)
                   scraped += 1
 
+                  # Checkpoint every 50
                   if scraped % 50 == 0:
-                      df.to_excel(INPUT_XLSX, index=False, engine="openpyxl")
-                      print(f"  Checkpoint: {scraped} scraped", flush=True)
+                      save_done_urls(done_urls, df)
+                      import subprocess
+                      subprocess.run(["git","config","user.name","github-actions[bot]"])
+                      subprocess.run(["git","config","user.email","github-actions[bot]@users.noreply.github.com"])
+                      subprocess.run(["git","add", INPUT_XLSX, PROGRESS_FILE])
+                      subprocess.run(["git","commit","-m",f"Fix checkpoint — {scraped} scraped"])
+                      subprocess.run(["git","push"])
+                      print(f"  Checkpoint saved at {scraped}", flush=True)
 
               print(f"Phase 2 complete — scraped: {scraped} | failed: {failed}", flush=True)
+              save_done_urls(done_urls, df)
 
-          # ── Final save ───────────────────────────────────────────────────────
+          # ── Final sort and save ───────────────────────────────────────────────
           print("\nSorting and saving...", flush=True)
           df = df.sort_values(
               ["Brand", "Model"],
@@ -357,11 +424,11 @@ jobs:
           print(f"Done — {len(df)} rows saved to {INPUT_XLSX}", flush=True)
           PYEOF
 
-      - name: Commit fixed data
+      - name: Commit final data
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add gsmarena_devices.xlsx
+          git add gsmarena_devices.xlsx fix_missing_progress.json || true
           git diff --staged --quiet || git commit -m "Fixed missing derived fields $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
