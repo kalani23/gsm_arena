@@ -1,14 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 67,
+  "brands_checked": 83,
   "brands_total": 126,
-  "current_brand": "MWg",
-  "new_devices_found": 1,
+  "current_brand": "Parla",
+  "new_devices_found": 4,
   "new_device_urls": [
-    "https://www.gsmarena.com/motorola_moto_g_max_5g-14724.php"
+    "https://www.gsmarena.com/motorola_moto_g_max_5g-14724.php",
+    "https://www.gsmarena.com/oukitel_wp61_5g-14725.php",
+    "https://www.gsmarena.com/oukitel_wp61_plus_5g-14726.php",
+    "https://www.gsmarena.com/oukitel_wp61_ultra_5g-14727.php"
   ],
   "new_device_names": [
-    "Motorola - Moto G Max"
+    "Motorola - Moto G Max",
+    "Oukitel - WP61",
+    "Oukitel - WP61 Plus",
+    "Oukitel - WP61 Ultra"
   ],
-  "updated_at": "2026-06-14 02:16 UTC"
+  "updated_at": "2026-06-14 02:18 UTC"
 }
