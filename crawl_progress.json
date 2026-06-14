@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 15,
+  "brands_checked": 40,
   "brands_total": 126,
-  "current_brand": "Blackview",
+  "current_brand": "HP",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-06-14 02:10 UTC"
+  "updated_at": "2026-06-14 02:12 UTC"
 }
