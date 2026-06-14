@@ -30,7 +30,6 @@ jobs:
           import time
           import re
           from bs4 import BeautifulSoup
-          from pathlib import Path
 
           INPUT_XLSX = "gsmarena_devices.xlsx"
 
@@ -50,6 +49,43 @@ jobs:
                   "Connection":      "keep-alive",
                   "Cache-Control":   "max-age=0",
               }
+
+          # ── dtype map — tells us how to cast each derived column ─────────────
+          # float64: numeric columns that may have decimals
+          # int64:   whole numbers only
+          # str:     text columns
+          DERIVED_DTYPES = {
+              "Weight g":             "float64",
+              "Length mm":            "float64",
+              "Width mm":             "float64",
+              "Height mm":            "float64",
+              "Display Size inches":  "float64",
+              "Resolution Width px":  "float64",
+              "Resolution Height px": "float64",
+              "PPI":                  "float64",
+              "Battery mAh":          "float64",
+              "Main Camera MP":       "float64",
+              "Selfie Camera MP":     "float64",
+              "SAR US Head W/kg":     "float64",
+              "SAR US Body W/kg":     "float64",
+              "SAR EU Head W/kg":     "float64",
+              "SAR EU Body W/kg":     "float64",
+              "Release Year":         "float64",  # store as float to avoid int/NaN conflict
+              "Storage Options":      "str",
+              "RAM Options":          "str",
+          }
+
+          def cast(col, val):
+              """Cast val to the correct type for col. Returns None if conversion fails."""
+              if val is None or str(val).strip() == "":
+                  return None
+              dtype = DERIVED_DTYPES.get(col, "str")
+              if dtype == "float64":
+                  try:
+                      return float(val)
+                  except (ValueError, TypeError):
+                      return None
+              return str(val)
 
           # ── parsers ──────────────────────────────────────────────────────────
           def parse_dimensions(raw):
@@ -103,42 +139,37 @@ jobs:
           def is_blank(val):
               return pd.isna(val) or str(val).strip() in ("", "nan", "-")
 
-          # ── re-parse derived fields from raw columns already in the xlsx ─────
+          # ── re-parse from raw columns ────────────────────────────────────────
           def reparse_from_raw(row):
-              """Return dict of derived values parsed from raw spec columns.
-              Only returns a value if it can actually be extracted."""
               out = {}
 
-              # Weight
               wt = parse_weight(row.get("Body_Weight", ""))
               if wt: out["Weight g"] = wt
 
-              # Dimensions
               dl, dw, dh = parse_dimensions(row.get("Body_Dimensions", ""))
               if dl: out["Length mm"] = dl
               if dw: out["Width mm"]  = dw
               if dh: out["Height mm"] = dh
 
-              # Display size
               ds = parse_display_size(row.get("Display_Size", ""))
               if ds: out["Display Size inches"] = ds
 
-              # Resolution
               rw, rh, ppi = parse_resolution(row.get("Display_Resolution", ""))
               if rw:  out["Resolution Width px"]  = rw
               if rh:  out["Resolution Height px"] = rh
               if ppi: out["PPI"]                  = ppi
 
-              # Memory
-              stor, ram = parse_memory(row.get("Memory_Internal", "") or row.get("Memory_Built-in", "") or row.get("Memory_", ""))
+              stor, ram = parse_memory(
+                  row.get("Memory_Internal", "") or row.get("Memory_Built-in", "") or row.get("Memory_", "") or ""
+              )
               if stor: out["Storage Options"] = stor
               if ram:  out["RAM Options"]     = ram
 
-              # Battery
-              bat = parse_battery(row.get("Battery_Type", "") or row.get("Battery_Capacity", "") or row.get("Battery_", ""))
+              bat = parse_battery(
+                  row.get("Battery_Type", "") or row.get("Battery_Capacity", "") or row.get("Battery_", "") or ""
+              )
               if bat: out["Battery mAh"] = bat
 
-              # Main camera (try all known key variants)
               c1 = (row.get("Main Camera_Triple") or row.get("Main Camera_Quad") or
                     row.get("Main Camera_Penta") or row.get("Main Camera_Dual") or
                     row.get("Main Camera_Single") or row.get("Main Camera_") or
@@ -146,14 +177,12 @@ jobs:
               mp1 = parse_camera_mp(str(c1))
               if mp1: out["Main Camera MP"] = mp1
 
-              # Selfie camera
               c2 = (row.get("Selfie camera_Single") or row.get("Selfie camera_Dual") or
                     row.get("Selfie camera_Triple") or row.get("Selfie camera_") or
                     row.get("Selfie camera_No") or "")
               mp2 = parse_camera_mp(str(c2))
               if mp2: out["Selfie Camera MP"] = mp2
 
-              # SAR
               sar_us = str(row.get("Misc_SAR", "") or row.get("Misc_SAR US", "") or "")
               sar_eu = str(row.get("Misc_SAR EU", "") or "")
               sh = parse_sar(sar_us, "head")
@@ -165,13 +194,23 @@ jobs:
               if eh: out["SAR EU Head W/kg"] = eh
               if eb: out["SAR EU Body W/kg"] = eb
 
-              # Release year
               yr = parse_year(row.get("Launch_Status", "") or "") or parse_year(row.get("Launch_Announced", "") or "")
               if yr: out["Release Year"] = yr
 
               return out
 
-          # ── scraper (for rows where raw data is genuinely missing) ───────────
+          def set_cell(df, idx, col, val):
+              """Write val into df at (idx, col), casting to the column's actual dtype."""
+              casted = cast(col, val)
+              if casted is None:
+                  return False
+              # If column doesn't exist yet, create it as object to avoid dtype issues
+              if col not in df.columns:
+                  df[col] = pd.array([pd.NA] * len(df), dtype="object")
+              df.at[idx, col] = casted
+              return True
+
+          # ── scraper ──────────────────────────────────────────────────────────
           def extract_specs(soup):
               specs, section = {}, ""
               for table in soup.select("#specs-list table"):
@@ -227,32 +266,29 @@ jobs:
 
           for col in KEY_COLS:
               if col not in df.columns:
-                  df[col] = ""
+                  df[col] = pd.array([pd.NA] * len(df), dtype="object")
 
           # ── PHASE 1: re-parse from raw columns already in xlsx ───────────────
           print("\n=== PHASE 1: Re-parsing from existing raw columns ===", flush=True)
-          phase1_fixed = 0
+          phase1_cells = 0
           for idx, row in df.iterrows():
               if not row_needs_fix(row):
                   continue
-              derived = reparse_from_raw(row)
+              derived = reparse_from_raw(row.to_dict())
               for col, val in derived.items():
-                  if col not in df.columns:
-                      df[col] = ""
-                  if val and is_blank(df.at[idx, col]):
-                      df.at[idx, col] = val
-                      phase1_fixed += 1
+                  if is_blank(df.at[idx, col] if col in df.columns else None):
+                      if set_cell(df, idx, col, val):
+                          phase1_cells += 1
 
-          print(f"Phase 1 complete — filled {phase1_fixed} cells", flush=True)
+          print(f"Phase 1 complete — filled {phase1_cells} cells", flush=True)
           for col in KEY_COLS:
               n = df[col].apply(is_blank).sum()
               print(f"  Still missing {col}: {n}", flush=True)
 
-          # Save phase 1 result immediately
           df.to_excel(INPUT_XLSX, index=False, engine="openpyxl")
           print("Phase 1 saved.", flush=True)
 
-          # ── PHASE 2: re-scrape rows still missing after phase 1 ─────────────
+          # ── PHASE 2: re-scrape rows still missing ────────────────────────────
           still_bad = df[df.apply(row_needs_fix, axis=1)]
           print(f"\n=== PHASE 2: Re-scraping {len(still_bad)} rows still missing data ===", flush=True)
 
@@ -285,22 +321,20 @@ jobs:
                       failed += 1
                       continue
 
-                  # Write raw spec columns first
+                  # Write raw spec columns (all string, so no dtype issue)
                   for col, val in dynamic.items():
                       if col not in df.columns:
-                          df[col] = ""
+                          df[col] = pd.array([pd.NA] * len(df), dtype="object")
                       if val and is_blank(df.at[idx, col]):
-                          df.at[idx, col] = val
+                          df.at[idx, col] = str(val)
 
-                  # Then re-parse derived from freshly written raw
+                  # Re-parse derived from freshly written raw
                   derived = reparse_from_raw(df.loc[idx].to_dict())
                   filled = []
                   for col, val in derived.items():
-                      if col not in df.columns:
-                          df[col] = ""
-                      if val and is_blank(df.at[idx, col]):
-                          df.at[idx, col] = val
-                          filled.append(col)
+                      if is_blank(df.at[idx, col] if col in df.columns else None):
+                          if set_cell(df, idx, col, val):
+                              filled.append(col)
 
                   print(f"  Fixed: {', '.join(filled) if filled else 'nothing new'}", flush=True)
                   scraped += 1
@@ -315,7 +349,7 @@ jobs:
           print("\nSorting and saving...", flush=True)
           df = df.sort_values(
               ["Brand", "Model"],
-              key=lambda x: x.str.lower().fillna(""),
+              key=lambda x: x.astype(str).str.lower(),
               na_position="last"
           ).reset_index(drop=True)
 
