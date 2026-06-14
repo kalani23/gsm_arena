@@ -1,20 +1,24 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 106,
   "brands_total": 126,
-  "current_brand": "Sagem",
-  "new_devices_found": 4,
+  "current_brand": "Tel.Me.",
+  "new_devices_found": 6,
   "new_device_urls": [
     "https://www.gsmarena.com/motorola_moto_g_max_5g-14724.php",
     "https://www.gsmarena.com/oukitel_wp61_5g-14725.php",
     "https://www.gsmarena.com/oukitel_wp61_plus_5g-14726.php",
-    "https://www.gsmarena.com/oukitel_wp61_ultra_5g-14727.php"
+    "https://www.gsmarena.com/oukitel_wp61_ultra_5g-14727.php",
+    "https://www.gsmarena.com/samsung_galaxy_a27_5g-14606.php",
+    "https://www.gsmarena.com/samsung_galaxy_a27_5g-14606.php"
   ],
   "new_device_names": [
     "Motorola - Moto G Max",
     "Oukitel - WP61",
     "Oukitel - WP61 Plus",
-    "Oukitel - WP61 Ultra"
+    "Oukitel - WP61 Ultra",
+    "Samsung - Galaxy A27",
+    "Samsung - Galaxy A27"
   ],
-  "updated_at": "2026-06-14 02:20 UTC"
+  "updated_at": "2026-06-14 02:23 UTC"
 }
