@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 81,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "Panasonic",
+  "current_brand": "Sagem",
   "new_devices_found": 13,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_kingkong_es5-14732.php",
@@ -34,5 +34,5 @@
     "Oukitel - WP66",
     "Oukitel - RT10"
   ],
-  "updated_at": "2026-06-21 02:21 UTC"
+  "updated_at": "2026-06-21 02:22 UTC"
 }
