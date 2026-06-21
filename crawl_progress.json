@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 50,
+  "brands_checked": 65,
   "brands_total": 126,
-  "current_brand": "itel",
-  "new_devices_found": 9,
+  "current_brand": "Modu",
+  "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_kingkong_es5-14732.php",
     "https://www.gsmarena.com/doogee_s300_pro_5g-14741.php",
@@ -13,7 +13,8 @@
     "https://www.gsmarena.com/doogee_v_max_2_5g-14735.php",
     "https://www.gsmarena.com/honor_600_smart_5g-14738.php",
     "https://www.gsmarena.com/honor_watch_6-14737.php",
-    "https://www.gsmarena.com/honor_x70_pro_max_5g-14729.php"
+    "https://www.gsmarena.com/honor_x70_pro_max_5g-14729.php",
+    "https://www.gsmarena.com/lenovo_tab_plus_gen_2-14733.php"
   ],
   "new_device_names": [
     "Cubot - KingKong ES5",
@@ -24,7 +25,8 @@
     "Doogee - V Max 2",
     "Honor - 600 Smart",
     "Honor - Watch 6",
-    "Honor - X70 Pro Max"
+    "Honor - X70 Pro Max",
+    "Lenovo - Tab Plus Gen 2"
   ],
-  "updated_at": "2026-06-21 02:17 UTC"
+  "updated_at": "2026-06-21 02:18 UTC"
 }
