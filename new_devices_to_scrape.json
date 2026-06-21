@@ -1,32 +1,77 @@
 [
   {
-    "brand": "Motorola",
-    "title": "Moto G Max",
-    "url": "https://www.gsmarena.com/motorola_moto_g_max_5g-14724.php"
+    "brand": "Cubot",
+    "title": "KingKong ES5",
+    "url": "https://www.gsmarena.com/cubot_kingkong_es5-14732.php"
+  },
+  {
+    "brand": "Doogee",
+    "title": "S300 Pro",
+    "url": "https://www.gsmarena.com/doogee_s300_pro_5g-14741.php"
+  },
+  {
+    "brand": "Doogee",
+    "title": "S300 Plus",
+    "url": "https://www.gsmarena.com/doogee_s300_plus_5g-14742.php"
+  },
+  {
+    "brand": "Doogee",
+    "title": "S300 Plus Thermal",
+    "url": "https://www.gsmarena.com/doogee_s300_plus_thermal_5g-14743.php"
+  },
+  {
+    "brand": "Doogee",
+    "title": "V Max 2 Pro",
+    "url": "https://www.gsmarena.com/doogee_v_max_2_pro_5g-14736.php"
+  },
+  {
+    "brand": "Doogee",
+    "title": "V Max 2",
+    "url": "https://www.gsmarena.com/doogee_v_max_2_5g-14735.php"
+  },
+  {
+    "brand": "Honor",
+    "title": "600 Smart",
+    "url": "https://www.gsmarena.com/honor_600_smart_5g-14738.php"
+  },
+  {
+    "brand": "Honor",
+    "title": "Watch 6",
+    "url": "https://www.gsmarena.com/honor_watch_6-14737.php"
+  },
+  {
+    "brand": "Honor",
+    "title": "X70 Pro Max",
+    "url": "https://www.gsmarena.com/honor_x70_pro_max_5g-14729.php"
+  },
+  {
+    "brand": "Lenovo",
+    "title": "Tab Plus Gen 2",
+    "url": "https://www.gsmarena.com/lenovo_tab_plus_gen_2-14733.php"
+  },
+  {
+    "brand": "OnePlus",
+    "title": "Pad 3 Pro",
+    "url": "https://www.gsmarena.com/oneplus_pad_3_pro-14739.php"
   },
   {
     "brand": "Oukitel",
-    "title": "WP61",
-    "url": "https://www.gsmarena.com/oukitel_wp61_5g-14725.php"
+    "title": "WP66",
+    "url": "https://www.gsmarena.com/oukitel_wp66_5g-14730.php"
   },
   {
     "brand": "Oukitel",
-    "title": "WP61 Plus",
-    "url": "https://www.gsmarena.com/oukitel_wp61_plus_5g-14726.php"
+    "title": "RT10",
+    "url": "https://www.gsmarena.com/oukitel_rt10_5g-14731.php"
   },
   {
-    "brand": "Oukitel",
-    "title": "WP61 Ultra",
-    "url": "https://www.gsmarena.com/oukitel_wp61_ultra_5g-14727.php"
+    "brand": "Sharp",
+    "title": "Aquos R11",
+    "url": "https://www.gsmarena.com/sharp_aquos_r11_5g-14740.php"
   },
   {
-    "brand": "Samsung",
-    "title": "Galaxy A27",
-    "url": "https://www.gsmarena.com/samsung_galaxy_a27_5g-14606.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy A27",
-    "url": "https://www.gsmarena.com/samsung_galaxy_a27_5g-14606.php"
+    "brand": "Tecno",
+    "title": "Spark 50 Pro",
+    "url": "https://www.gsmarena.com/tecno_spark_50_pro-14728.php"
   }
 ]
