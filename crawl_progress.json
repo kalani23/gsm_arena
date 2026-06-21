@@ -1,10 +1,24 @@
 {
   "status": "running",
-  "brands_checked": 6,
+  "brands_checked": 29,
   "brands_total": 126,
-  "current_brand": "Apple",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-06-21 02:12 UTC"
+  "current_brand": "Ericsson",
+  "new_devices_found": 6,
+  "new_device_urls": [
+    "https://www.gsmarena.com/cubot_kingkong_es5-14732.php",
+    "https://www.gsmarena.com/doogee_s300_pro_5g-14741.php",
+    "https://www.gsmarena.com/doogee_s300_plus_5g-14742.php",
+    "https://www.gsmarena.com/doogee_s300_plus_thermal_5g-14743.php",
+    "https://www.gsmarena.com/doogee_v_max_2_pro_5g-14736.php",
+    "https://www.gsmarena.com/doogee_v_max_2_5g-14735.php"
+  ],
+  "new_device_names": [
+    "Cubot - KingKong ES5",
+    "Doogee - S300 Pro",
+    "Doogee - S300 Plus",
+    "Doogee - S300 Plus Thermal",
+    "Doogee - V Max 2 Pro",
+    "Doogee - V Max 2"
+  ],
+  "updated_at": "2026-06-21 02:15 UTC"
 }
