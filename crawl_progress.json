@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 106,
   "brands_total": 126,
-  "current_brand": "Sagem",
-  "new_devices_found": 13,
+  "current_brand": "Tel.Me.",
+  "new_devices_found": 15,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_kingkong_es5-14732.php",
     "https://www.gsmarena.com/doogee_s300_pro_5g-14741.php",
@@ -17,7 +17,9 @@
     "https://www.gsmarena.com/lenovo_tab_plus_gen_2-14733.php",
     "https://www.gsmarena.com/oneplus_pad_3_pro-14739.php",
     "https://www.gsmarena.com/oukitel_wp66_5g-14730.php",
-    "https://www.gsmarena.com/oukitel_rt10_5g-14731.php"
+    "https://www.gsmarena.com/oukitel_rt10_5g-14731.php",
+    "https://www.gsmarena.com/sharp_aquos_r11_5g-14740.php",
+    "https://www.gsmarena.com/tecno_spark_50_pro-14728.php"
   ],
   "new_device_names": [
     "Cubot - KingKong ES5",
@@ -32,7 +34,9 @@
     "Lenovo - Tab Plus Gen 2",
     "OnePlus - Pad 3 Pro",
     "Oukitel - WP66",
-    "Oukitel - RT10"
+    "Oukitel - RT10",
+    "Sharp - Aquos R11",
+    "Tecno - Spark 50 Pro"
   ],
-  "updated_at": "2026-06-21 02:22 UTC"
+  "updated_at": "2026-06-21 02:25 UTC"
 }
