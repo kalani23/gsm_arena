@@ -1,23 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 6,
   "brands_total": 126,
-  "new_devices_found": 6,
-  "new_device_names": [
-    "Motorola - Moto G Max",
-    "Oukitel - WP61",
-    "Oukitel - WP61 Plus",
-    "Oukitel - WP61 Ultra",
-    "Samsung - Galaxy A27",
-    "Samsung - Galaxy A27"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/motorola_moto_g_max_5g-14724.php",
-    "https://www.gsmarena.com/oukitel_wp61_5g-14725.php",
-    "https://www.gsmarena.com/oukitel_wp61_plus_5g-14726.php",
-    "https://www.gsmarena.com/oukitel_wp61_ultra_5g-14727.php",
-    "https://www.gsmarena.com/samsung_galaxy_a27_5g-14606.php",
-    "https://www.gsmarena.com/samsung_galaxy_a27_5g-14606.php"
-  ],
-  "updated_at": "2026-06-14 02:26 UTC"
+  "current_brand": "Apple",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-06-21 02:12 UTC"
 }
