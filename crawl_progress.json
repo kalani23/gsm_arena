@@ -1,41 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 14,
   "brands_total": 126,
-  "new_devices_found": 15,
-  "new_device_names": [
-    "Cubot - KingKong ES5",
-    "Doogee - S300 Pro",
-    "Doogee - S300 Plus",
-    "Doogee - S300 Plus Thermal",
-    "Doogee - V Max 2 Pro",
-    "Doogee - V Max 2",
-    "Honor - 600 Smart",
-    "Honor - Watch 6",
-    "Honor - X70 Pro Max",
-    "Lenovo - Tab Plus Gen 2",
-    "OnePlus - Pad 3 Pro",
-    "Oukitel - WP66",
-    "Oukitel - RT10",
-    "Sharp - Aquos R11",
-    "Tecno - Spark 50 Pro"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/cubot_kingkong_es5-14732.php",
-    "https://www.gsmarena.com/doogee_s300_pro_5g-14741.php",
-    "https://www.gsmarena.com/doogee_s300_plus_5g-14742.php",
-    "https://www.gsmarena.com/doogee_s300_plus_thermal_5g-14743.php",
-    "https://www.gsmarena.com/doogee_v_max_2_pro_5g-14736.php",
-    "https://www.gsmarena.com/doogee_v_max_2_5g-14735.php",
-    "https://www.gsmarena.com/honor_600_smart_5g-14738.php",
-    "https://www.gsmarena.com/honor_watch_6-14737.php",
-    "https://www.gsmarena.com/honor_x70_pro_max_5g-14729.php",
-    "https://www.gsmarena.com/lenovo_tab_plus_gen_2-14733.php",
-    "https://www.gsmarena.com/oneplus_pad_3_pro-14739.php",
-    "https://www.gsmarena.com/oukitel_wp66_5g-14730.php",
-    "https://www.gsmarena.com/oukitel_rt10_5g-14731.php",
-    "https://www.gsmarena.com/sharp_aquos_r11_5g-14740.php",
-    "https://www.gsmarena.com/tecno_spark_50_pro-14728.php"
-  ],
-  "updated_at": "2026-06-21 02:28 UTC"
+  "current_brand": "BlackBerry",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-06-28 02:03 UTC"
 }
