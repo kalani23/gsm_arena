@@ -1,18 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "Lenovo",
-  "new_devices_found": 3,
+  "current_brand": "NIU",
+  "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_wave_7c-14755.php",
     "https://www.gsmarena.com/honor_x80_pro_max_5g-14718.php",
-    "https://www.gsmarena.com/lava_smart_4_plus-14753.php"
+    "https://www.gsmarena.com/lava_smart_4_plus-14753.php",
+    "https://www.gsmarena.com/motorola_edge_70_ultra_5g-14362.php"
   ],
   "new_device_names": [
     "Blackview - Wave 7C",
     "Honor - X80 Pro Max",
-    "Lava - Smart 4 Plus"
+    "Lava - Smart 4 Plus",
+    "Motorola - Edge 70 Ultra"
   ],
-  "updated_at": "2026-06-28 02:07 UTC"
+  "updated_at": "2026-06-28 02:09 UTC"
 }
