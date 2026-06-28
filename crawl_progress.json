@@ -1,20 +1,34 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 90,
   "brands_total": 126,
-  "current_brand": "NIU",
-  "new_devices_found": 4,
+  "current_brand": "Razer",
+  "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_wave_7c-14755.php",
     "https://www.gsmarena.com/honor_x80_pro_max_5g-14718.php",
     "https://www.gsmarena.com/lava_smart_4_plus-14753.php",
-    "https://www.gsmarena.com/motorola_edge_70_ultra_5g-14362.php"
+    "https://www.gsmarena.com/motorola_edge_70_ultra_5g-14362.php",
+    "https://www.gsmarena.com/oppo_reno16_pro_5g-14746.php",
+    "https://www.gsmarena.com/oppo_reno16_5g-14747.php",
+    "https://www.gsmarena.com/oppo_reno16_fs_5g-14752.php",
+    "https://www.gsmarena.com/oppo_reno16_f_5g-14751.php",
+    "https://www.gsmarena.com/oppo_k14_turbo_5g-14560.php",
+    "https://www.gsmarena.com/oppo_k14_turbo_pro_5g-14559.php",
+    "https://www.gsmarena.com/oppo_find_x9+_5g-14101.php"
   ],
   "new_device_names": [
     "Blackview - Wave 7C",
     "Honor - X80 Pro Max",
     "Lava - Smart 4 Plus",
-    "Motorola - Edge 70 Ultra"
+    "Motorola - Edge 70 Ultra",
+    "Oppo - Reno16 Pro",
+    "Oppo - Reno16",
+    "Oppo - Reno16 FS",
+    "Oppo - Reno16 F",
+    "Oppo - K14 Turbo",
+    "Oppo - K14 Turbo Pro",
+    "Oppo - Find X9+"
   ],
-  "updated_at": "2026-06-28 02:09 UTC"
+  "updated_at": "2026-06-28 02:11 UTC"
 }
