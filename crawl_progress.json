@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 100,
+  "brands_checked": 117,
   "brands_total": 126,
-  "current_brand": "Sony",
-  "new_devices_found": 13,
+  "current_brand": "Vodafone",
+  "new_devices_found": 15,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_wave_7c-14755.php",
     "https://www.gsmarena.com/honor_x80_pro_max_5g-14718.php",
@@ -17,7 +17,9 @@
     "https://www.gsmarena.com/oppo_k14_turbo_pro_5g-14559.php",
     "https://www.gsmarena.com/oppo_find_x9+_5g-14101.php",
     "https://www.gsmarena.com/realme_p4x-14744.php",
-    "https://www.gsmarena.com/realme_p4x-14744.php"
+    "https://www.gsmarena.com/realme_p4x-14744.php",
+    "https://www.gsmarena.com/tecno_camon_slim-14745.php",
+    "https://www.gsmarena.com/vivo_x_fold6_5g-14748.php"
   ],
   "new_device_names": [
     "Blackview - Wave 7C",
@@ -32,7 +34,9 @@
     "Oppo - K14 Turbo Pro",
     "Oppo - Find X9+",
     "Realme - P4x 4G",
-    "Realme - P4x 4G"
+    "Realme - P4x 4G",
+    "Tecno - Camon Slim",
+    "vivo - X Fold6"
   ],
-  "updated_at": "2026-06-28 02:13 UTC"
+  "updated_at": "2026-06-28 02:15 UTC"
 }
