@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 75,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "OnePlus",
-  "new_devices_found": 11,
+  "current_brand": "Sagem",
+  "new_devices_found": 16,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_rock_1_pro-14770.php",
     "https://www.gsmarena.com/blackview_rock_1-14769.php",
@@ -15,7 +15,12 @@
     "https://www.gsmarena.com/nokia_215_4g_2nd_edition-14774.php",
     "https://www.gsmarena.com/nokia_210_4g-14775.php",
     "https://www.gsmarena.com/nokia_200_4g-14776.php",
-    "https://www.gsmarena.com/oneplus_n6-14760.php"
+    "https://www.gsmarena.com/oneplus_n6-14760.php",
+    "https://www.gsmarena.com/oppo_reno16c_5g-14768.php",
+    "https://www.gsmarena.com/oukitel_wp500_ultra_5g-14764.php",
+    "https://www.gsmarena.com/oukitel_wp500_5g-14761.php",
+    "https://www.gsmarena.com/oukitel_c67-14758.php",
+    "https://www.gsmarena.com/oukitel_c72-14759.php"
   ],
   "new_device_names": [
     "Blackview - Rock 1 Pro",
@@ -28,7 +33,12 @@
     "Nokia - 215 4G (2026)",
     "Nokia - 210 4G",
     "Nokia - 200 4G",
-    "OnePlus - N6"
+    "OnePlus - N6",
+    "Oppo - Reno16c",
+    "Oukitel - WP500 Ultra",
+    "Oukitel - WP500",
+    "Oukitel - C67",
+    "Oukitel - C72"
   ],
-  "updated_at": "2026-07-04 21:52 UTC"
+  "updated_at": "2026-07-04 21:54 UTC"
 }
