@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 21,
+  "brands_checked": 44,
   "brands_total": 126,
-  "current_brand": "Celkon",
+  "current_brand": "i-mobile",
   "new_devices_found": 5,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_rock_1_pro-14770.php",
@@ -18,5 +18,5 @@
     "Blackview - Fort 100",
     "Blackview - Fort 5"
   ],
-  "updated_at": "2026-07-04 21:46 UTC"
+  "updated_at": "2026-07-04 21:48 UTC"
 }
