@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 101,
+  "brands_checked": 120,
   "brands_total": 126,
-  "current_brand": "Sony Ericsson",
-  "new_devices_found": 18,
+  "current_brand": "XCute",
+  "new_devices_found": 20,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_rock_1_pro-14770.php",
     "https://www.gsmarena.com/blackview_rock_1-14769.php",
@@ -22,7 +22,9 @@
     "https://www.gsmarena.com/oukitel_c67-14758.php",
     "https://www.gsmarena.com/oukitel_c72-14759.php",
     "https://www.gsmarena.com/samsung_galaxy_m47_5g-14749.php",
-    "https://www.gsmarena.com/samsung_galaxy_m47_5g-14749.php"
+    "https://www.gsmarena.com/samsung_galaxy_m47_5g-14749.php",
+    "https://www.gsmarena.com/vivo_iqoo_z11i_5g-14771.php",
+    "https://www.gsmarena.com/vivo_iqoo_pad5c-14763.php"
   ],
   "new_device_names": [
     "Blackview - Rock 1 Pro",
@@ -42,7 +44,9 @@
     "Oukitel - C67",
     "Oukitel - C72",
     "Samsung - Galaxy M47",
-    "Samsung - Galaxy M47"
+    "Samsung - Galaxy M47",
+    "vivo - iQOO Z11i",
+    "vivo - IQOO Pad5c"
   ],
-  "updated_at": "2026-07-04 21:56 UTC"
+  "updated_at": "2026-07-04 21:58 UTC"
 }
