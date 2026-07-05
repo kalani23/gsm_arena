@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 78,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "Oscal",
+  "current_brand": "Sagem",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-07-05 01:49 UTC"
+  "updated_at": "2026-07-05 01:51 UTC"
 }
