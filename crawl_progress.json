@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 104,
+  "brands_checked": 120,
   "brands_total": 126,
-  "current_brand": "TCL",
-  "new_devices_found": 14,
+  "current_brand": "XCute",
+  "new_devices_found": 15,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_5-14793.php",
     "https://www.gsmarena.com/blackview_mega_5-14792.php",
@@ -18,7 +18,8 @@
     "https://www.gsmarena.com/lenovo_legion_y900_11-14779.php",
     "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
     "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
-    "https://www.gsmarena.com/nothing_phone_(4b)_5g-14781.php"
+    "https://www.gsmarena.com/nothing_phone_(4b)_5g-14781.php",
+    "https://www.gsmarena.com/vivo_y500-14780.php"
   ],
   "new_device_names": [
     "Blackview - Zeno 5",
@@ -34,7 +35,8 @@
     "Lenovo - Legion Y900 11",
     "Motorola - Moto G77 Power",
     "Motorola - Moto G77 Power",
-    "Nothing - Phone (4b)"
+    "Nothing - Phone (4b)",
+    "vivo - Y500"
   ],
-  "updated_at": "2026-07-12 01:31 UTC"
+  "updated_at": "2026-07-12 01:33 UTC"
 }
