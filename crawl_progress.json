@@ -1,10 +1,28 @@
 {
   "status": "running",
-  "brands_checked": 7,
+  "brands_checked": 33,
   "brands_total": 126,
-  "current_brand": "Archos",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-07-12 01:18 UTC"
+  "current_brand": "Garmin-Asus",
+  "new_devices_found": 8,
+  "new_device_urls": [
+    "https://www.gsmarena.com/blackview_zeno_5-14793.php",
+    "https://www.gsmarena.com/blackview_mega_5-14792.php",
+    "https://www.gsmarena.com/blackview_wave_10c-14791.php",
+    "https://www.gsmarena.com/blackview_wave_10-14790.php",
+    "https://www.gsmarena.com/blackview_rock_5-14786.php",
+    "https://www.gsmarena.com/blackview_rock_3-14785.php",
+    "https://www.gsmarena.com/blackview_rock_2_pro_5g-14784.php",
+    "https://www.gsmarena.com/blackview_rock_2_5g-14783.php"
+  ],
+  "new_device_names": [
+    "Blackview - Zeno 5",
+    "Blackview - Mega 5",
+    "Blackview - Wave 10C",
+    "Blackview - Wave 10",
+    "Blackview - Rock 5",
+    "Blackview - Rock 3",
+    "Blackview - Rock 2 Pro",
+    "Blackview - Rock 2"
+  ],
+  "updated_at": "2026-07-12 01:21 UTC"
 }
