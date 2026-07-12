@@ -1,9 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 7,
   "brands_total": 126,
+  "current_brand": "Archos",
   "new_devices_found": 0,
-  "new_device_names": [],
   "new_device_urls": [],
-  "updated_at": "2026-07-05 01:57 UTC"
+  "new_device_names": [],
+  "updated_at": "2026-07-12 01:18 UTC"
 }
