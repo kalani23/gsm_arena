@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 76,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "Oppo",
+  "current_brand": "Sagem",
   "new_devices_found": 14,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_5-14793.php",
@@ -36,5 +36,5 @@
     "Motorola - Moto G77 Power",
     "Nothing - Phone (4b)"
   ],
-  "updated_at": "2026-07-12 01:27 UTC"
+  "updated_at": "2026-07-12 01:28 UTC"
 }
