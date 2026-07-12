@@ -1,26 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 120,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "XCute",
-  "new_devices_found": 15,
-  "new_device_urls": [
-    "https://www.gsmarena.com/blackview_zeno_5-14793.php",
-    "https://www.gsmarena.com/blackview_mega_5-14792.php",
-    "https://www.gsmarena.com/blackview_wave_10c-14791.php",
-    "https://www.gsmarena.com/blackview_wave_10-14790.php",
-    "https://www.gsmarena.com/blackview_rock_5-14786.php",
-    "https://www.gsmarena.com/blackview_rock_3-14785.php",
-    "https://www.gsmarena.com/blackview_rock_2_pro_5g-14784.php",
-    "https://www.gsmarena.com/blackview_rock_2_5g-14783.php",
-    "https://www.gsmarena.com/hmd_arc_2-14788.php",
-    "https://www.gsmarena.com/lenovo_legion_y900_13-14778.php",
-    "https://www.gsmarena.com/lenovo_legion_y900_11-14779.php",
-    "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
-    "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
-    "https://www.gsmarena.com/nothing_phone_(4b)_5g-14781.php",
-    "https://www.gsmarena.com/vivo_y500-14780.php"
-  ],
+  "new_devices_found": 17,
   "new_device_names": [
     "Blackview - Zeno 5",
     "Blackview - Mega 5",
@@ -36,7 +18,28 @@
     "Motorola - Moto G77 Power",
     "Motorola - Moto G77 Power",
     "Nothing - Phone (4b)",
-    "vivo - Y500"
+    "vivo - Y500",
+    "Xiaomi - Black Shark Pad SE",
+    "Xiaomi - Black Shark Pad SE"
   ],
-  "updated_at": "2026-07-12 01:33 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/blackview_zeno_5-14793.php",
+    "https://www.gsmarena.com/blackview_mega_5-14792.php",
+    "https://www.gsmarena.com/blackview_wave_10c-14791.php",
+    "https://www.gsmarena.com/blackview_wave_10-14790.php",
+    "https://www.gsmarena.com/blackview_rock_5-14786.php",
+    "https://www.gsmarena.com/blackview_rock_3-14785.php",
+    "https://www.gsmarena.com/blackview_rock_2_pro_5g-14784.php",
+    "https://www.gsmarena.com/blackview_rock_2_5g-14783.php",
+    "https://www.gsmarena.com/hmd_arc_2-14788.php",
+    "https://www.gsmarena.com/lenovo_legion_y900_13-14778.php",
+    "https://www.gsmarena.com/lenovo_legion_y900_11-14779.php",
+    "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
+    "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
+    "https://www.gsmarena.com/nothing_phone_(4b)_5g-14781.php",
+    "https://www.gsmarena.com/vivo_y500-14780.php",
+    "https://www.gsmarena.com/xiaomi_black_shark_pad_se-14777.php",
+    "https://www.gsmarena.com/xiaomi_black_shark_pad_se-14777.php"
+  ],
+  "updated_at": "2026-07-12 01:34 UTC"
 }

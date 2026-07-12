@@ -1,117 +1,87 @@
 [
   {
     "brand": "Blackview",
-    "title": "Rock 1 Pro",
-    "url": "https://www.gsmarena.com/blackview_rock_1_pro-14770.php"
+    "title": "Zeno 5",
+    "url": "https://www.gsmarena.com/blackview_zeno_5-14793.php"
   },
   {
     "brand": "Blackview",
-    "title": "Rock 1",
-    "url": "https://www.gsmarena.com/blackview_rock_1-14769.php"
+    "title": "Mega 5",
+    "url": "https://www.gsmarena.com/blackview_mega_5-14792.php"
   },
   {
     "brand": "Blackview",
-    "title": "Fort 200",
-    "url": "https://www.gsmarena.com/blackview_fort_200-14767.php"
+    "title": "Wave 10C",
+    "url": "https://www.gsmarena.com/blackview_wave_10c-14791.php"
   },
   {
     "brand": "Blackview",
-    "title": "Fort 100",
-    "url": "https://www.gsmarena.com/blackview_fort_100-14766.php"
+    "title": "Wave 10",
+    "url": "https://www.gsmarena.com/blackview_wave_10-14790.php"
   },
   {
     "brand": "Blackview",
-    "title": "Fort 5",
-    "url": "https://www.gsmarena.com/blackview_fort_5-14765.php"
+    "title": "Rock 5",
+    "url": "https://www.gsmarena.com/blackview_rock_5-14786.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Rock 3",
+    "url": "https://www.gsmarena.com/blackview_rock_3-14785.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Rock 2 Pro",
+    "url": "https://www.gsmarena.com/blackview_rock_2_pro_5g-14784.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Rock 2",
+    "url": "https://www.gsmarena.com/blackview_rock_2_5g-14783.php"
+  },
+  {
+    "brand": "HMD",
+    "title": "Arc 2",
+    "url": "https://www.gsmarena.com/hmd_arc_2-14788.php"
+  },
+  {
+    "brand": "Lenovo",
+    "title": "Legion Y900 13",
+    "url": "https://www.gsmarena.com/lenovo_legion_y900_13-14778.php"
+  },
+  {
+    "brand": "Lenovo",
+    "title": "Legion Y900 11",
+    "url": "https://www.gsmarena.com/lenovo_legion_y900_11-14779.php"
   },
   {
     "brand": "Motorola",
-    "title": "Moto Pad 70 Pro",
-    "url": "https://www.gsmarena.com/motorola_moto_pad_70_pro-14756.php"
+    "title": "Moto G77 Power",
+    "url": "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php"
   },
   {
-    "brand": "Nokia",
-    "title": "235 4G (2026)",
-    "url": "https://www.gsmarena.com/nokia_235_4g_2nd_edition-14773.php"
+    "brand": "Motorola",
+    "title": "Moto G77 Power",
+    "url": "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php"
   },
   {
-    "brand": "Nokia",
-    "title": "215 4G (2026)",
-    "url": "https://www.gsmarena.com/nokia_215_4g_2nd_edition-14774.php"
-  },
-  {
-    "brand": "Nokia",
-    "title": "210 4G",
-    "url": "https://www.gsmarena.com/nokia_210_4g-14775.php"
-  },
-  {
-    "brand": "Nokia",
-    "title": "200 4G",
-    "url": "https://www.gsmarena.com/nokia_200_4g-14776.php"
-  },
-  {
-    "brand": "OnePlus",
-    "title": "N6",
-    "url": "https://www.gsmarena.com/oneplus_n6-14760.php"
-  },
-  {
-    "brand": "Oppo",
-    "title": "Reno16c",
-    "url": "https://www.gsmarena.com/oppo_reno16c_5g-14768.php"
-  },
-  {
-    "brand": "Oukitel",
-    "title": "WP500 Ultra",
-    "url": "https://www.gsmarena.com/oukitel_wp500_ultra_5g-14764.php"
-  },
-  {
-    "brand": "Oukitel",
-    "title": "WP500",
-    "url": "https://www.gsmarena.com/oukitel_wp500_5g-14761.php"
-  },
-  {
-    "brand": "Oukitel",
-    "title": "C67",
-    "url": "https://www.gsmarena.com/oukitel_c67-14758.php"
-  },
-  {
-    "brand": "Oukitel",
-    "title": "C72",
-    "url": "https://www.gsmarena.com/oukitel_c72-14759.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy M47",
-    "url": "https://www.gsmarena.com/samsung_galaxy_m47_5g-14749.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy M47",
-    "url": "https://www.gsmarena.com/samsung_galaxy_m47_5g-14749.php"
+    "brand": "Nothing",
+    "title": "Phone (4b)",
+    "url": "https://www.gsmarena.com/nothing_phone_(4b)_5g-14781.php"
   },
   {
     "brand": "vivo",
-    "title": "iQOO Z11i",
-    "url": "https://www.gsmarena.com/vivo_iqoo_z11i_5g-14771.php"
-  },
-  {
-    "brand": "vivo",
-    "title": "IQOO Pad5c",
-    "url": "https://www.gsmarena.com/vivo_iqoo_pad5c-14763.php"
+    "title": "Y500",
+    "url": "https://www.gsmarena.com/vivo_y500-14780.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi K90 Ultra",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_k90_ultra_5g-14757.php"
+    "title": "Black Shark Pad SE",
+    "url": "https://www.gsmarena.com/xiaomi_black_shark_pad_se-14777.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi K90 Ultra",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_k90_ultra_5g-14757.php"
-  },
-  {
-    "brand": "ZTE",
-    "title": "RedMagic Astra 2",
-    "url": "https://www.gsmarena.com/zte_redmagic_gaming_tablet_5_pro-14762.php"
+    "title": "Black Shark Pad SE",
+    "url": "https://www.gsmarena.com/xiaomi_black_shark_pad_se-14777.php"
   }
 ]
