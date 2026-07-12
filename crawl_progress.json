@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 65,
+  "brands_checked": 76,
   "brands_total": 126,
-  "current_brand": "Modu",
-  "new_devices_found": 11,
+  "current_brand": "Oppo",
+  "new_devices_found": 14,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_5-14793.php",
     "https://www.gsmarena.com/blackview_mega_5-14792.php",
@@ -15,7 +15,10 @@
     "https://www.gsmarena.com/blackview_rock_2_5g-14783.php",
     "https://www.gsmarena.com/hmd_arc_2-14788.php",
     "https://www.gsmarena.com/lenovo_legion_y900_13-14778.php",
-    "https://www.gsmarena.com/lenovo_legion_y900_11-14779.php"
+    "https://www.gsmarena.com/lenovo_legion_y900_11-14779.php",
+    "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
+    "https://www.gsmarena.com/motorola_moto_g77_power_5g-14772.php",
+    "https://www.gsmarena.com/nothing_phone_(4b)_5g-14781.php"
   ],
   "new_device_names": [
     "Blackview - Zeno 5",
@@ -28,7 +31,10 @@
     "Blackview - Rock 2",
     "HMD - Arc 2",
     "Lenovo - Legion Y900 13",
-    "Lenovo - Legion Y900 11"
+    "Lenovo - Legion Y900 11",
+    "Motorola - Moto G77 Power",
+    "Motorola - Moto G77 Power",
+    "Nothing - Phone (4b)"
   ],
-  "updated_at": "2026-07-12 01:25 UTC"
+  "updated_at": "2026-07-12 01:27 UTC"
 }
