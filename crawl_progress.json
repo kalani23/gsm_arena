@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 104,
+  "brands_checked": 123,
   "brands_total": 126,
-  "current_brand": "TCL",
-  "new_devices_found": 8,
+  "current_brand": "Yezz",
+  "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/asus_pad_(t3201)-14812.php",
     "https://www.gsmarena.com/huawei_pura_90s_pro_max_5g-14794.php",
@@ -12,7 +12,10 @@
     "https://www.gsmarena.com/infinix_hot_70_pro_5g-14806.php",
     "https://www.gsmarena.com/motorola_edge_70_max_5g-14789.php",
     "https://www.gsmarena.com/motorola_moto_pad_60_lite-14808.php",
-    "https://www.gsmarena.com/realme_narzo_100x_5g-14787.php"
+    "https://www.gsmarena.com/realme_narzo_100x_5g-14787.php",
+    "https://www.gsmarena.com/vivo_t5_lite_5g-14734.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_5g_(china)-14797.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17_5g_(china)-14798.php"
   ],
   "new_device_names": [
     "Asus - Pad (T3201)",
@@ -22,7 +25,10 @@
     "Infinix - Hot 70 Pro",
     "Motorola - Edge 70 Max",
     "Motorola - Moto Pad 60 Lite",
-    "Realme - Narzo 100x"
+    "Realme - Narzo 100x",
+    "vivo - T5 Lite",
+    "Xiaomi - Redmi Note 17 Pro (China)",
+    "Xiaomi - Redmi Note 17 (China)"
   ],
-  "updated_at": "2026-07-19 01:29 UTC"
+  "updated_at": "2026-07-19 01:31 UTC"
 }
