@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 67,
+  "brands_checked": 75,
   "brands_total": 126,
-  "current_brand": "MWg",
+  "current_brand": "OnePlus",
   "new_devices_found": 7,
   "new_device_urls": [
     "https://www.gsmarena.com/asus_pad_(t3201)-14812.php",
@@ -22,5 +22,5 @@
     "Motorola - Edge 70 Max",
     "Motorola - Moto Pad 60 Lite"
   ],
-  "updated_at": "2026-07-19 01:23 UTC"
+  "updated_at": "2026-07-19 01:25 UTC"
 }
