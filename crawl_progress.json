@@ -1,14 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 34,
+  "brands_checked": 54,
   "brands_total": 126,
-  "current_brand": "Gigabyte",
-  "new_devices_found": 1,
+  "current_brand": "Lava",
+  "new_devices_found": 5,
   "new_device_urls": [
-    "https://www.gsmarena.com/asus_pad_(t3201)-14812.php"
+    "https://www.gsmarena.com/asus_pad_(t3201)-14812.php",
+    "https://www.gsmarena.com/huawei_pura_90s_pro_max_5g-14794.php",
+    "https://www.gsmarena.com/huawei_pura_90s_pro_5g-14795.php",
+    "https://www.gsmarena.com/huawei_matepad_air_(2026)-14796.php",
+    "https://www.gsmarena.com/infinix_hot_70_pro_5g-14806.php"
   ],
   "new_device_names": [
-    "Asus - Pad (T3201)"
+    "Asus - Pad (T3201)",
+    "Huawei - Pura 90s Pro Max",
+    "Huawei - Pura 90s Pro",
+    "Huawei - MatePad Air (2026)",
+    "Infinix - Hot 70 Pro"
   ],
-  "updated_at": "2026-07-19 01:19 UTC"
+  "updated_at": "2026-07-19 01:21 UTC"
 }
