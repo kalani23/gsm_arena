@@ -1,10 +1,14 @@
 {
   "status": "running",
-  "brands_checked": 7,
+  "brands_checked": 34,
   "brands_total": 126,
-  "current_brand": "Archos",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-07-19 01:17 UTC"
+  "current_brand": "Gigabyte",
+  "new_devices_found": 1,
+  "new_device_urls": [
+    "https://www.gsmarena.com/asus_pad_(t3201)-14812.php"
+  ],
+  "new_device_names": [
+    "Asus - Pad (T3201)"
+  ],
+  "updated_at": "2026-07-19 01:19 UTC"
 }
