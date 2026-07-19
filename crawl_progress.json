@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 75,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "OnePlus",
-  "new_devices_found": 7,
+  "current_brand": "Sagem",
+  "new_devices_found": 8,
   "new_device_urls": [
     "https://www.gsmarena.com/asus_pad_(t3201)-14812.php",
     "https://www.gsmarena.com/huawei_pura_90s_pro_max_5g-14794.php",
@@ -11,7 +11,8 @@
     "https://www.gsmarena.com/huawei_matepad_air_(2026)-14796.php",
     "https://www.gsmarena.com/infinix_hot_70_pro_5g-14806.php",
     "https://www.gsmarena.com/motorola_edge_70_max_5g-14789.php",
-    "https://www.gsmarena.com/motorola_moto_pad_60_lite-14808.php"
+    "https://www.gsmarena.com/motorola_moto_pad_60_lite-14808.php",
+    "https://www.gsmarena.com/realme_narzo_100x_5g-14787.php"
   ],
   "new_device_names": [
     "Asus - Pad (T3201)",
@@ -20,7 +21,8 @@
     "Huawei - MatePad Air (2026)",
     "Infinix - Hot 70 Pro",
     "Motorola - Edge 70 Max",
-    "Motorola - Moto Pad 60 Lite"
+    "Motorola - Moto Pad 60 Lite",
+    "Realme - Narzo 100x"
   ],
-  "updated_at": "2026-07-19 01:25 UTC"
+  "updated_at": "2026-07-19 01:27 UTC"
 }
