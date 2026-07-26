@@ -1,57 +1,112 @@
 [
   {
-    "brand": "Asus",
-    "title": "Pad (T3201)",
-    "url": "https://www.gsmarena.com/asus_pad_(t3201)-14812.php"
+    "brand": "Honor",
+    "title": "Watch 6 Plus",
+    "url": "https://www.gsmarena.com/honor_watch_6_plus-14817.php"
   },
   {
-    "brand": "Huawei",
-    "title": "Pura 90s Pro Max",
-    "url": "https://www.gsmarena.com/huawei_pura_90s_pro_max_5g-14794.php"
+    "brand": "itel",
+    "title": "A100Cs",
+    "url": "https://www.gsmarena.com/itel_a100cs-14816.php"
   },
   {
-    "brand": "Huawei",
-    "title": "Pura 90s Pro",
-    "url": "https://www.gsmarena.com/huawei_pura_90s_pro_5g-14795.php"
+    "brand": "itel",
+    "title": "City 200s",
+    "url": "https://www.gsmarena.com/itel_city_200s-14815.php"
   },
   {
-    "brand": "Huawei",
-    "title": "MatePad Air (2026)",
-    "url": "https://www.gsmarena.com/huawei_matepad_air_(2026)-14796.php"
+    "brand": "itel",
+    "title": "Power 80",
+    "url": "https://www.gsmarena.com/itel_power_80-14814.php"
   },
   {
-    "brand": "Infinix",
-    "title": "Hot 70 Pro",
-    "url": "https://www.gsmarena.com/infinix_hot_70_pro_5g-14806.php"
+    "brand": "Nokia",
+    "title": "123 Shield",
+    "url": "https://www.gsmarena.com/nokia_123_shield-14818.php"
   },
   {
-    "brand": "Motorola",
-    "title": "Edge 70 Max",
-    "url": "https://www.gsmarena.com/motorola_edge_70_max_5g-14789.php"
+    "brand": "Oppo",
+    "title": "K15",
+    "url": "https://www.gsmarena.com/oppo_k15_5g-14810.php"
   },
   {
-    "brand": "Motorola",
-    "title": "Moto Pad 60 Lite",
-    "url": "https://www.gsmarena.com/motorola_moto_pad_60_lite-14808.php"
+    "brand": "Oppo",
+    "title": "K15",
+    "url": "https://www.gsmarena.com/oppo_k15_5g-14810.php"
   },
   {
-    "brand": "Realme",
-    "title": "Narzo 100x",
-    "url": "https://www.gsmarena.com/realme_narzo_100x_5g-14787.php"
+    "brand": "Oscal",
+    "title": "Pilot8",
+    "url": "https://www.gsmarena.com/oscal_pilot8_5g-14822.php"
+  },
+  {
+    "brand": "Oukitel",
+    "title": "WP68 Air",
+    "url": "https://www.gsmarena.com/oukitel_wp68_air_5g-14824.php"
+  },
+  {
+    "brand": "Oukitel",
+    "title": "C17 Plus",
+    "url": "https://www.gsmarena.com/oukitel_c17_plus-14823.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Z Fold8 Ultra",
+    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold8_ultra_5g-14802.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Z Fold8",
+    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold_wide_5g-14673.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Z Flip8",
+    "url": "https://www.gsmarena.com/samsung_galaxy_z_flip8_5g-14803.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Watch Ultra2",
+    "url": "https://www.gsmarena.com/samsung_galaxy_watch_ultra2-14805.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Watch9",
+    "url": "https://www.gsmarena.com/samsung_galaxy_watch9-14813.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Z Fold8 Ultra",
+    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold8_ultra_5g-14802.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Z Fold8",
+    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold_wide_5g-14673.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Z Flip8",
+    "url": "https://www.gsmarena.com/samsung_galaxy_z_flip8_5g-14803.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Watch Ultra2",
+    "url": "https://www.gsmarena.com/samsung_galaxy_watch_ultra2-14805.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy Watch9",
+    "url": "https://www.gsmarena.com/samsung_galaxy_watch9-14813.php"
+  },
+  {
+    "brand": "Ulefone",
+    "title": "Note 23",
+    "url": "https://www.gsmarena.com/ulefone_note_23-14825.php"
   },
   {
     "brand": "vivo",
-    "title": "T5 Lite",
-    "url": "https://www.gsmarena.com/vivo_t5_lite_5g-14734.php"
-  },
-  {
-    "brand": "Xiaomi",
-    "title": "Redmi Note 17 Pro (China)",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_5g_(china)-14797.php"
-  },
-  {
-    "brand": "Xiaomi",
-    "title": "Redmi Note 17 (China)",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_note_17_5g_(china)-14798.php"
+    "title": "iQOO Z11 Lite 44W",
+    "url": "https://www.gsmarena.com/vivo_iqoo_z11_lite_5g-14809.php"
   }
 ]
