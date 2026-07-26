@@ -1,22 +1,32 @@
 {
   "status": "running",
-  "brands_checked": 75,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "OnePlus",
-  "new_devices_found": 5,
+  "current_brand": "Sagem",
+  "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_watch_6_plus-14817.php",
     "https://www.gsmarena.com/itel_a100cs-14816.php",
     "https://www.gsmarena.com/itel_city_200s-14815.php",
     "https://www.gsmarena.com/itel_power_80-14814.php",
-    "https://www.gsmarena.com/nokia_123_shield-14818.php"
+    "https://www.gsmarena.com/nokia_123_shield-14818.php",
+    "https://www.gsmarena.com/oppo_k15_5g-14810.php",
+    "https://www.gsmarena.com/oppo_k15_5g-14810.php",
+    "https://www.gsmarena.com/oscal_pilot8_5g-14822.php",
+    "https://www.gsmarena.com/oukitel_wp68_air_5g-14824.php",
+    "https://www.gsmarena.com/oukitel_c17_plus-14823.php"
   ],
   "new_device_names": [
     "Honor - Watch 6 Plus",
     "itel - A100Cs",
     "itel - City 200s",
     "itel - Power 80",
-    "Nokia - 123 Shield"
+    "Nokia - 123 Shield",
+    "Oppo - K15",
+    "Oppo - K15",
+    "Oscal - Pilot8",
+    "Oukitel - WP68 Air",
+    "Oukitel - C17 Plus"
   ],
-  "updated_at": "2026-07-26 01:31 UTC"
+  "updated_at": "2026-07-26 01:33 UTC"
 }
