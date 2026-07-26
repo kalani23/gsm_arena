@@ -1,10 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 15,
+  "brands_checked": 38,
   "brands_total": 126,
-  "current_brand": "Blackview",
+  "current_brand": "HMD",
   "new_devices_found": 0,
   "new_device_urls": [],
   "new_device_names": [],
-  "updated_at": "2026-07-26 20:24 UTC"
+  "updated_at": "2026-07-26 20:26 UTC"
 }
