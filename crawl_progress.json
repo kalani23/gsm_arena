@@ -1,10 +1,14 @@
 {
   "status": "running",
-  "brands_checked": 19,
+  "brands_checked": 41,
   "brands_total": 126,
-  "current_brand": "Casio",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-07-26 01:23 UTC"
+  "current_brand": "HTC",
+  "new_devices_found": 1,
+  "new_device_urls": [
+    "https://www.gsmarena.com/honor_watch_6_plus-14817.php"
+  ],
+  "new_device_names": [
+    "Honor - Watch 6 Plus"
+  ],
+  "updated_at": "2026-07-26 01:26 UTC"
 }
