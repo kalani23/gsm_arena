@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 53,
+  "brands_checked": 65,
   "brands_total": 126,
-  "current_brand": "Kyocera",
+  "current_brand": "Modu",
   "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_watch_6_plus-14817.php",
@@ -16,5 +16,5 @@
     "itel - City 200s",
     "itel - Power 80"
   ],
-  "updated_at": "2026-07-26 01:27 UTC"
+  "updated_at": "2026-07-26 01:29 UTC"
 }
