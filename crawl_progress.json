@@ -1,20 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 65,
+  "brands_checked": 75,
   "brands_total": 126,
-  "current_brand": "Modu",
-  "new_devices_found": 4,
+  "current_brand": "OnePlus",
+  "new_devices_found": 5,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_watch_6_plus-14817.php",
     "https://www.gsmarena.com/itel_a100cs-14816.php",
     "https://www.gsmarena.com/itel_city_200s-14815.php",
-    "https://www.gsmarena.com/itel_power_80-14814.php"
+    "https://www.gsmarena.com/itel_power_80-14814.php",
+    "https://www.gsmarena.com/nokia_123_shield-14818.php"
   ],
   "new_device_names": [
     "Honor - Watch 6 Plus",
     "itel - A100Cs",
     "itel - City 200s",
-    "itel - Power 80"
+    "itel - Power 80",
+    "Nokia - 123 Shield"
   ],
-  "updated_at": "2026-07-26 01:29 UTC"
+  "updated_at": "2026-07-26 01:31 UTC"
 }
