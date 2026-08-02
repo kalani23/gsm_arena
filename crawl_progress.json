@@ -1,9 +1,30 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 16,
   "brands_total": 126,
-  "new_devices_found": 0,
-  "new_device_names": [],
-  "new_device_urls": [],
-  "updated_at": "2026-07-26 20:39 UTC"
+  "current_brand": "BLU",
+  "new_devices_found": 9,
+  "new_device_urls": [
+    "https://www.gsmarena.com/blackview_bl7000_pro_5g-14852.php",
+    "https://www.gsmarena.com/blackview_active_7-14851.php",
+    "https://www.gsmarena.com/blackview_active_5-14850.php",
+    "https://www.gsmarena.com/blackview_link_mini_kids-14842.php",
+    "https://www.gsmarena.com/blackview_link_1_kids-14841.php",
+    "https://www.gsmarena.com/blackview_wave_2c-14840.php",
+    "https://www.gsmarena.com/blackview_xplore_2_satellite_5g-14838.php",
+    "https://www.gsmarena.com/blackview_xplore_2_projector_5g-14837.php",
+    "https://www.gsmarena.com/blackview_xplore_1_pro_5g-14836.php"
+  ],
+  "new_device_names": [
+    "Blackview - BL7000 Pro",
+    "Blackview - Active 7",
+    "Blackview - Active 5",
+    "Blackview - Link Mini Kids",
+    "Blackview - Link 1 Kids",
+    "Blackview - Wave 2C",
+    "Blackview - Xplore 2 Satellite",
+    "Blackview - Xplore 2 Projector",
+    "Blackview - Xplore 1 Pro"
+  ],
+  "updated_at": "2026-08-02 01:22 UTC"
 }
