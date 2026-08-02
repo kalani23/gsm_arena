@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 71,
   "brands_total": 126,
-  "current_brand": "Lenovo",
-  "new_devices_found": 17,
+  "current_brand": "Nokia",
+  "new_devices_found": 18,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_bl7000_pro_5g-14852.php",
     "https://www.gsmarena.com/blackview_active_7-14851.php",
@@ -21,7 +21,8 @@
     "https://www.gsmarena.com/honor_x6e-14843.php",
     "https://www.gsmarena.com/honor_x7e_plus_5g-14834.php",
     "https://www.gsmarena.com/lava_virat_v1_5g-14831.php",
-    "https://www.gsmarena.com/lava_virat_v1-14830.php"
+    "https://www.gsmarena.com/lava_virat_v1-14830.php",
+    "https://www.gsmarena.com/motorola_moto_pad_70_groove-14853.php"
   ],
   "new_device_names": [
     "Blackview - BL7000 Pro",
@@ -40,7 +41,8 @@
     "Honor - X6e",
     "Honor - X7e Plus",
     "Lava - Virat V1",
-    "Lava - Virat V1 4G"
+    "Lava - Virat V1 4G",
+    "Motorola - Moto Pad 70 Groove"
   ],
-  "updated_at": "2026-08-02 01:26 UTC"
+  "updated_at": "2026-08-02 01:29 UTC"
 }
