@@ -1,112 +1,132 @@
 [
   {
+    "brand": "Blackview",
+    "title": "BL7000 Pro",
+    "url": "https://www.gsmarena.com/blackview_bl7000_pro_5g-14852.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Active 7",
+    "url": "https://www.gsmarena.com/blackview_active_7-14851.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Active 5",
+    "url": "https://www.gsmarena.com/blackview_active_5-14850.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Link Mini Kids",
+    "url": "https://www.gsmarena.com/blackview_link_mini_kids-14842.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Link 1 Kids",
+    "url": "https://www.gsmarena.com/blackview_link_1_kids-14841.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Wave 2C",
+    "url": "https://www.gsmarena.com/blackview_wave_2c-14840.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Xplore 2 Satellite",
+    "url": "https://www.gsmarena.com/blackview_xplore_2_satellite_5g-14838.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Xplore 2 Projector",
+    "url": "https://www.gsmarena.com/blackview_xplore_2_projector_5g-14837.php"
+  },
+  {
+    "brand": "Blackview",
+    "title": "Xplore 1 Pro",
+    "url": "https://www.gsmarena.com/blackview_xplore_1_pro_5g-14836.php"
+  },
+  {
+    "brand": "Coolpad",
+    "title": "C35c",
+    "url": "https://www.gsmarena.com/coolpad_c35c-14833.php"
+  },
+  {
+    "brand": "Cubot",
+    "title": "KingKong ES Pro",
+    "url": "https://www.gsmarena.com/cubot_kingkong_es_pro-14855.php"
+  },
+  {
+    "brand": "Cubot",
+    "title": "KingKong Dura",
+    "url": "https://www.gsmarena.com/cubot_kingkong_dura-14854.php"
+  },
+  {
+    "brand": "HMD",
+    "title": "Asha 305 Lite",
+    "url": "https://www.gsmarena.com/hmd_asha_305_lite-14832.php"
+  },
+  {
     "brand": "Honor",
-    "title": "Watch 6 Plus",
-    "url": "https://www.gsmarena.com/honor_watch_6_plus-14817.php"
+    "title": "X6e",
+    "url": "https://www.gsmarena.com/honor_x6e-14843.php"
   },
   {
-    "brand": "itel",
-    "title": "A100Cs",
-    "url": "https://www.gsmarena.com/itel_a100cs-14816.php"
+    "brand": "Honor",
+    "title": "X7e Plus",
+    "url": "https://www.gsmarena.com/honor_x7e_plus_5g-14834.php"
   },
   {
-    "brand": "itel",
-    "title": "City 200s",
-    "url": "https://www.gsmarena.com/itel_city_200s-14815.php"
+    "brand": "Lava",
+    "title": "Virat V1",
+    "url": "https://www.gsmarena.com/lava_virat_v1_5g-14831.php"
   },
   {
-    "brand": "itel",
-    "title": "Power 80",
-    "url": "https://www.gsmarena.com/itel_power_80-14814.php"
+    "brand": "Lava",
+    "title": "Virat V1 4G",
+    "url": "https://www.gsmarena.com/lava_virat_v1-14830.php"
   },
   {
-    "brand": "Nokia",
-    "title": "123 Shield",
-    "url": "https://www.gsmarena.com/nokia_123_shield-14818.php"
+    "brand": "Motorola",
+    "title": "Moto Pad 70 Groove",
+    "url": "https://www.gsmarena.com/motorola_moto_pad_70_groove-14853.php"
   },
   {
-    "brand": "Oppo",
-    "title": "K15",
-    "url": "https://www.gsmarena.com/oppo_k15_5g-14810.php"
-  },
-  {
-    "brand": "Oppo",
-    "title": "K15",
-    "url": "https://www.gsmarena.com/oppo_k15_5g-14810.php"
+    "brand": "OnePlus",
+    "title": "N6x",
+    "url": "https://www.gsmarena.com/oneplus_n6x-14849.php"
   },
   {
     "brand": "Oscal",
-    "title": "Pilot8",
-    "url": "https://www.gsmarena.com/oscal_pilot8_5g-14822.php"
+    "title": "Pilot 6",
+    "url": "https://www.gsmarena.com/oscal_pilot_6-14835.php"
+  },
+  {
+    "brand": "Oscal",
+    "title": "Pilot 8",
+    "url": "https://www.gsmarena.com/oscal_pilot_8_5g-14822.php"
   },
   {
     "brand": "Oukitel",
-    "title": "WP68 Air",
-    "url": "https://www.gsmarena.com/oukitel_wp68_air_5g-14824.php"
-  },
-  {
-    "brand": "Oukitel",
-    "title": "C17 Plus",
-    "url": "https://www.gsmarena.com/oukitel_c17_plus-14823.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Z Fold8 Ultra",
-    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold8_ultra_5g-14802.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Z Fold8",
-    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold_wide_5g-14673.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Z Flip8",
-    "url": "https://www.gsmarena.com/samsung_galaxy_z_flip8_5g-14803.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Watch Ultra2",
-    "url": "https://www.gsmarena.com/samsung_galaxy_watch_ultra2-14805.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Watch9",
-    "url": "https://www.gsmarena.com/samsung_galaxy_watch9-14813.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Z Fold8 Ultra",
-    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold8_ultra_5g-14802.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Z Fold8",
-    "url": "https://www.gsmarena.com/samsung_galaxy_z_fold_wide_5g-14673.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Z Flip8",
-    "url": "https://www.gsmarena.com/samsung_galaxy_z_flip8_5g-14803.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Watch Ultra2",
-    "url": "https://www.gsmarena.com/samsung_galaxy_watch_ultra2-14805.php"
-  },
-  {
-    "brand": "Samsung",
-    "title": "Galaxy Watch9",
-    "url": "https://www.gsmarena.com/samsung_galaxy_watch9-14813.php"
-  },
-  {
-    "brand": "Ulefone",
-    "title": "Note 23",
-    "url": "https://www.gsmarena.com/ulefone_note_23-14825.php"
+    "title": "WP100 Plus",
+    "url": "https://www.gsmarena.com/oukitel_wp100_plus-14848.php"
   },
   {
     "brand": "vivo",
-    "title": "iQOO Z11 Lite 44W",
-    "url": "https://www.gsmarena.com/vivo_iqoo_z11_lite_5g-14809.php"
+    "title": "T5e",
+    "url": "https://www.gsmarena.com/vivo_t5e-14829.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "X300 E",
+    "url": "https://www.gsmarena.com/vivo_x300_e_5g-14826.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "T5e",
+    "url": "https://www.gsmarena.com/vivo_t5e-14829.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "X300 E",
+    "url": "https://www.gsmarena.com/vivo_x300_e_5g-14826.php"
   }
 ]
