@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 40,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "HP",
-  "new_devices_found": 15,
+  "current_brand": "Lenovo",
+  "new_devices_found": 17,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_bl7000_pro_5g-14852.php",
     "https://www.gsmarena.com/blackview_active_7-14851.php",
@@ -19,7 +19,9 @@
     "https://www.gsmarena.com/cubot_kingkong_dura-14854.php",
     "https://www.gsmarena.com/hmd_asha_305_lite-14832.php",
     "https://www.gsmarena.com/honor_x6e-14843.php",
-    "https://www.gsmarena.com/honor_x7e_plus_5g-14834.php"
+    "https://www.gsmarena.com/honor_x7e_plus_5g-14834.php",
+    "https://www.gsmarena.com/lava_virat_v1_5g-14831.php",
+    "https://www.gsmarena.com/lava_virat_v1-14830.php"
   ],
   "new_device_names": [
     "Blackview - BL7000 Pro",
@@ -36,7 +38,9 @@
     "Cubot - KingKong Dura",
     "HMD - Asha 305 Lite",
     "Honor - X6e",
-    "Honor - X7e Plus"
+    "Honor - X7e Plus",
+    "Lava - Virat V1",
+    "Lava - Virat V1 4G"
   ],
-  "updated_at": "2026-08-02 01:24 UTC"
+  "updated_at": "2026-08-02 01:26 UTC"
 }
