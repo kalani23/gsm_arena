@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 16,
+  "brands_checked": 40,
   "brands_total": 126,
-  "current_brand": "BLU",
-  "new_devices_found": 9,
+  "current_brand": "HP",
+  "new_devices_found": 15,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_bl7000_pro_5g-14852.php",
     "https://www.gsmarena.com/blackview_active_7-14851.php",
@@ -13,7 +13,13 @@
     "https://www.gsmarena.com/blackview_wave_2c-14840.php",
     "https://www.gsmarena.com/blackview_xplore_2_satellite_5g-14838.php",
     "https://www.gsmarena.com/blackview_xplore_2_projector_5g-14837.php",
-    "https://www.gsmarena.com/blackview_xplore_1_pro_5g-14836.php"
+    "https://www.gsmarena.com/blackview_xplore_1_pro_5g-14836.php",
+    "https://www.gsmarena.com/coolpad_c35c-14833.php",
+    "https://www.gsmarena.com/cubot_kingkong_es_pro-14855.php",
+    "https://www.gsmarena.com/cubot_kingkong_dura-14854.php",
+    "https://www.gsmarena.com/hmd_asha_305_lite-14832.php",
+    "https://www.gsmarena.com/honor_x6e-14843.php",
+    "https://www.gsmarena.com/honor_x7e_plus_5g-14834.php"
   ],
   "new_device_names": [
     "Blackview - BL7000 Pro",
@@ -24,7 +30,13 @@
     "Blackview - Wave 2C",
     "Blackview - Xplore 2 Satellite",
     "Blackview - Xplore 2 Projector",
-    "Blackview - Xplore 1 Pro"
+    "Blackview - Xplore 1 Pro",
+    "Coolpad - C35c",
+    "Cubot - KingKong ES Pro",
+    "Cubot - KingKong Dura",
+    "HMD - Asha 305 Lite",
+    "Honor - X6e",
+    "Honor - X7e Plus"
   ],
-  "updated_at": "2026-08-02 01:22 UTC"
+  "updated_at": "2026-08-02 01:24 UTC"
 }
