@@ -1,16 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 31,
+  "brands_checked": 52,
   "brands_total": 126,
-  "current_brand": "Fairphone",
-  "new_devices_found": 2,
+  "current_brand": "Karbonn",
+  "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_xplore_6_5g-14857.php",
-    "https://www.gsmarena.com/blackview_xplore_x1_pro_5g-14858.php"
+    "https://www.gsmarena.com/blackview_xplore_x1_pro_5g-14858.php",
+    "https://www.gsmarena.com/huawei_matepad_pro_12_(2026)-14864.php",
+    "https://www.gsmarena.com/huawei_nova_16_se-14861.php"
   ],
   "new_device_names": [
     "Blackview - Xplore 6",
-    "Blackview - Xplore X1 Pro"
+    "Blackview - Xplore X1 Pro",
+    "Huawei - MatePad Pro 12 (2026)",
+    "Huawei - nova 16 SE"
   ],
-  "updated_at": "2026-08-09 00:43 UTC"
+  "updated_at": "2026-08-09 00:45 UTC"
 }
