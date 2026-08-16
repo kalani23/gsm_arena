@@ -1,27 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 121,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "Xiaomi",
   "new_devices_found": 16,
-  "new_device_urls": [
-    "https://www.gsmarena.com/google_pixel_11_pro_fold-14874.php",
-    "https://www.gsmarena.com/google_pixel_11_pro_xl_5g-14800.php",
-    "https://www.gsmarena.com/google_pixel_11_pro_5g-14801.php",
-    "https://www.gsmarena.com/google_pixel_11_5g-14799.php",
-    "https://www.gsmarena.com/google_pixel_watch_5-14860.php",
-    "https://www.gsmarena.com/honor_robot_phone_5g-14827.php",
-    "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php",
-    "https://www.gsmarena.com/huawei_watch_gt_7-14873.php",
-    "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php",
-    "https://www.gsmarena.com/huawei_watch_gt_7-14873.php",
-    "https://www.gsmarena.com/realme_16x_5g-14871.php",
-    "https://www.gsmarena.com/tecno_pova_8_pro_5g-14875.php",
-    "https://www.gsmarena.com/xiaomi_redmi_k100_pro_max_5g-14865.php",
-    "https://www.gsmarena.com/xiaomi_redmi_k100_pro_5g-14715.php",
-    "https://www.gsmarena.com/xiaomi_redmi_17_5g-14869.php",
-    "https://www.gsmarena.com/xiaomi_redmi_17-14807.php"
-  ],
   "new_device_names": [
     "Google - Pixel 11 Pro Fold",
     "Google - Pixel 11 Pro XL",
@@ -40,5 +21,23 @@
     "Xiaomi - Redmi 17",
     "Xiaomi - Redmi 17 4G"
   ],
-  "updated_at": "2026-08-16 00:44 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/google_pixel_11_pro_fold-14874.php",
+    "https://www.gsmarena.com/google_pixel_11_pro_xl_5g-14800.php",
+    "https://www.gsmarena.com/google_pixel_11_pro_5g-14801.php",
+    "https://www.gsmarena.com/google_pixel_11_5g-14799.php",
+    "https://www.gsmarena.com/google_pixel_watch_5-14860.php",
+    "https://www.gsmarena.com/honor_robot_phone_5g-14827.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7-14873.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7-14873.php",
+    "https://www.gsmarena.com/realme_16x_5g-14871.php",
+    "https://www.gsmarena.com/tecno_pova_8_pro_5g-14875.php",
+    "https://www.gsmarena.com/xiaomi_redmi_k100_pro_max_5g-14865.php",
+    "https://www.gsmarena.com/xiaomi_redmi_k100_pro_5g-14715.php",
+    "https://www.gsmarena.com/xiaomi_redmi_17_5g-14869.php",
+    "https://www.gsmarena.com/xiaomi_redmi_17-14807.php"
+  ],
+  "updated_at": "2026-08-16 00:46 UTC"
 }
