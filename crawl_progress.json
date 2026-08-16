@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "Lenovo",
+  "current_brand": "NIU",
   "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/google_pixel_11_pro_fold-14874.php",
@@ -28,5 +28,5 @@
     "Huawei - Watch GT 7 Pro",
     "Huawei - Watch GT 7"
   ],
-  "updated_at": "2026-08-16 00:34 UTC"
+  "updated_at": "2026-08-16 00:36 UTC"
 }
