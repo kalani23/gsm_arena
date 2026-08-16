@@ -1,16 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 41,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "HTC",
-  "new_devices_found": 6,
+  "current_brand": "Lenovo",
+  "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/google_pixel_11_pro_fold-14874.php",
     "https://www.gsmarena.com/google_pixel_11_pro_xl_5g-14800.php",
     "https://www.gsmarena.com/google_pixel_11_pro_5g-14801.php",
     "https://www.gsmarena.com/google_pixel_11_5g-14799.php",
     "https://www.gsmarena.com/google_pixel_watch_5-14860.php",
-    "https://www.gsmarena.com/honor_robot_phone_5g-14827.php"
+    "https://www.gsmarena.com/honor_robot_phone_5g-14827.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7-14873.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php",
+    "https://www.gsmarena.com/huawei_watch_gt_7-14873.php"
   ],
   "new_device_names": [
     "Google - Pixel 11 Pro Fold",
@@ -18,7 +22,11 @@
     "Google - Pixel 11 Pro",
     "Google - Pixel 11",
     "Google - Pixel Watch 5",
-    "Honor - Robot Phone"
+    "Honor - Robot Phone",
+    "Huawei - Watch GT 7 Pro",
+    "Huawei - Watch GT 7",
+    "Huawei - Watch GT 7 Pro",
+    "Huawei - Watch GT 7"
   ],
-  "updated_at": "2026-08-16 00:32 UTC"
+  "updated_at": "2026-08-16 00:34 UTC"
 }
