@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 83,
   "brands_total": 126,
-  "current_brand": "NIU",
+  "current_brand": "Parla",
   "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/google_pixel_11_pro_fold-14874.php",
@@ -28,5 +28,5 @@
     "Huawei - Watch GT 7 Pro",
     "Huawei - Watch GT 7"
   ],
-  "updated_at": "2026-08-16 00:36 UTC"
+  "updated_at": "2026-08-16 00:38 UTC"
 }
