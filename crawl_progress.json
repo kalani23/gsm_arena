@@ -1,33 +1,10 @@
 {
-  "status": "complete",
-  "brands_checked": 126,
+  "status": "running",
+  "brands_checked": 16,
   "brands_total": 126,
-  "new_devices_found": 11,
-  "new_device_names": [
-    "Blackview - Xplore 6",
-    "Blackview - Xplore X1 Pro",
-    "Huawei - MatePad Pro 12 (2026)",
-    "Huawei - nova 16 SE",
-    "Oppo - A7 Pro Max",
-    "Oppo - A7 Pro Max",
-    "Samsung - Galaxy F70 Pro",
-    "Samsung - Galaxy F70 Pro",
-    "TCL - Tab A1 Plus NxtPaper",
-    "vivo - S2",
-    "Xiaomi - Poco M8 Power"
-  ],
-  "new_device_urls": [
-    "https://www.gsmarena.com/blackview_xplore_6_5g-14857.php",
-    "https://www.gsmarena.com/blackview_xplore_x1_pro_5g-14858.php",
-    "https://www.gsmarena.com/huawei_matepad_pro_12_(2026)-14864.php",
-    "https://www.gsmarena.com/huawei_nova_16_se-14861.php",
-    "https://www.gsmarena.com/oppo_a7_pro_max_5g-14828.php",
-    "https://www.gsmarena.com/oppo_a7_pro_max_5g-14828.php",
-    "https://www.gsmarena.com/samsung_galaxy_f70_pro_5g-14856.php",
-    "https://www.gsmarena.com/samsung_galaxy_f70_pro_5g-14856.php",
-    "https://www.gsmarena.com/tcl_tab_a1_plus_nxtpaper-14862.php",
-    "https://www.gsmarena.com/vivo_s2_5g-14839.php",
-    "https://www.gsmarena.com/xiaomi_poco_m8_power_5g-14804.php"
-  ],
-  "updated_at": "2026-08-09 00:57 UTC"
+  "current_brand": "BLU",
+  "new_devices_found": 0,
+  "new_device_urls": [],
+  "new_device_names": [],
+  "updated_at": "2026-08-16 00:30 UTC"
 }
