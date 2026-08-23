@@ -1,82 +1,87 @@
 [
   {
-    "brand": "Google",
-    "title": "Pixel 11 Pro Fold",
-    "url": "https://www.gsmarena.com/google_pixel_11_pro_fold-14874.php"
+    "brand": "Cubot",
+    "title": "A50",
+    "url": "https://www.gsmarena.com/cubot_a50-14893.php"
   },
   {
-    "brand": "Google",
-    "title": "Pixel 11 Pro XL",
-    "url": "https://www.gsmarena.com/google_pixel_11_pro_xl_5g-14800.php"
-  },
-  {
-    "brand": "Google",
-    "title": "Pixel 11 Pro",
-    "url": "https://www.gsmarena.com/google_pixel_11_pro_5g-14801.php"
-  },
-  {
-    "brand": "Google",
-    "title": "Pixel 11",
-    "url": "https://www.gsmarena.com/google_pixel_11_5g-14799.php"
-  },
-  {
-    "brand": "Google",
-    "title": "Pixel Watch 5",
-    "url": "https://www.gsmarena.com/google_pixel_watch_5-14860.php"
+    "brand": "Fairphone",
+    "title": "6+",
+    "url": "https://www.gsmarena.com/fairphone_6+_5g-14883.php"
   },
   {
     "brand": "Honor",
-    "title": "Robot Phone",
-    "url": "https://www.gsmarena.com/honor_robot_phone_5g-14827.php"
+    "title": "Turbo",
+    "url": "https://www.gsmarena.com/honor_turbo_5g-14881.php"
   },
   {
-    "brand": "Huawei",
-    "title": "Watch GT 7 Pro",
-    "url": "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php"
+    "brand": "Honor",
+    "title": "Pad 20 Pro",
+    "url": "https://www.gsmarena.com/honor_pad_20_pro-14889.php"
   },
   {
-    "brand": "Huawei",
-    "title": "Watch GT 7",
-    "url": "https://www.gsmarena.com/huawei_watch_gt_7-14873.php"
+    "brand": "Motorola",
+    "title": "Moto Pad 70",
+    "url": "https://www.gsmarena.com/motorola_moto_pad_70-14888.php"
   },
   {
-    "brand": "Huawei",
-    "title": "Watch GT 7 Pro",
-    "url": "https://www.gsmarena.com/huawei_watch_gt_7_pro-14872.php"
+    "brand": "Motorola",
+    "title": "Moto Pad 70",
+    "url": "https://www.gsmarena.com/motorola_moto_pad_70-14888.php"
   },
   {
-    "brand": "Huawei",
-    "title": "Watch GT 7",
-    "url": "https://www.gsmarena.com/huawei_watch_gt_7-14873.php"
+    "brand": "Nokia",
+    "title": "300 Charge",
+    "url": "https://www.gsmarena.com/nokia_300_charge-14895.php"
   },
   {
-    "brand": "Realme",
-    "title": "16x",
-    "url": "https://www.gsmarena.com/realme_16x_5g-14871.php"
+    "brand": "Ulefone",
+    "title": "Armor 24 Pro",
+    "url": "https://www.gsmarena.com/ulefone_armor_24_pro-14891.php"
   },
   {
-    "brand": "Tecno",
-    "title": "Pova 8 Pro",
-    "url": "https://www.gsmarena.com/tecno_pova_8_pro_5g-14875.php"
+    "brand": "Ulefone",
+    "title": "Armor 22 Pro",
+    "url": "https://www.gsmarena.com/ulefone_armor_22_pro-14890.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "iQOO Z11 (India)",
+    "url": "https://www.gsmarena.com/vivo_iqoo_z11_5g_(india)-14886.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "Y31t",
+    "url": "https://www.gsmarena.com/vivo_y31t_5g-14884.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "iQOO Neo11 Ultra",
+    "url": "https://www.gsmarena.com/vivo_iqoo_neo11_ultra_5g-14878.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "iQOO Z11S",
+    "url": "https://www.gsmarena.com/vivo_iqoo_z11s_5g_(china)-14880.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi K100 Pro Max",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_k100_pro_max_5g-14865.php"
+    "title": "Redmi Watch 6 Lite",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_watch_6_lite-14821.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi K100 Pro",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_k100_pro_5g-14715.php"
+    "title": "Redmi Watch 6 Active",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_watch_6_active-14820.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi 17",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_17_5g-14869.php"
+    "title": "Poco M8x",
+    "url": "https://www.gsmarena.com/xiaomi_poco_m8x_5g-14879.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi 17 4G",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_17-14807.php"
+    "title": "Redmi M100",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_m100_5g-14882.php"
   }
 ]
