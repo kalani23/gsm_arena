@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 51,
+  "brands_checked": 65,
   "brands_total": 126,
-  "current_brand": "Jolla",
+  "current_brand": "Modu",
   "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_a50-14893.php",
@@ -16,5 +16,5 @@
     "Honor - Turbo",
     "Honor - Pad 20 Pro"
   ],
-  "updated_at": "2026-08-23 00:34 UTC"
+  "updated_at": "2026-08-23 00:36 UTC"
 }
