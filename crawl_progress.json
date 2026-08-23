@@ -1,16 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 31,
+  "brands_checked": 51,
   "brands_total": 126,
-  "current_brand": "Fairphone",
-  "new_devices_found": 2,
+  "current_brand": "Jolla",
+  "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_a50-14893.php",
-    "https://www.gsmarena.com/fairphone_6+_5g-14883.php"
+    "https://www.gsmarena.com/fairphone_6+_5g-14883.php",
+    "https://www.gsmarena.com/honor_turbo_5g-14881.php",
+    "https://www.gsmarena.com/honor_pad_20_pro-14889.php"
   ],
   "new_device_names": [
     "Cubot - A50",
-    "Fairphone - 6+"
+    "Fairphone - 6+",
+    "Honor - Turbo",
+    "Honor - Pad 20 Pro"
   ],
-  "updated_at": "2026-08-23 00:32 UTC"
+  "updated_at": "2026-08-23 00:34 UTC"
 }
