@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 108,
   "brands_total": 126,
-  "current_brand": "Sagem",
+  "current_brand": "Thuraya",
   "new_devices_found": 7,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_a50-14893.php",
@@ -22,5 +22,5 @@
     "Motorola - Moto Pad 70",
     "Nokia - 300 Charge"
   ],
-  "updated_at": "2026-08-23 00:40 UTC"
+  "updated_at": "2026-08-23 00:42 UTC"
 }
