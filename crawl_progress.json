@@ -1,10 +1,16 @@
 {
   "status": "running",
-  "brands_checked": 6,
+  "brands_checked": 31,
   "brands_total": 126,
-  "current_brand": "Apple",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-08-23 00:30 UTC"
+  "current_brand": "Fairphone",
+  "new_devices_found": 2,
+  "new_device_urls": [
+    "https://www.gsmarena.com/cubot_a50-14893.php",
+    "https://www.gsmarena.com/fairphone_6+_5g-14883.php"
+  ],
+  "new_device_names": [
+    "Cubot - A50",
+    "Fairphone - 6+"
+  ],
+  "updated_at": "2026-08-23 00:32 UTC"
 }
