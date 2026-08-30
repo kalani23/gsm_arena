@@ -1,22 +1,26 @@
 {
   "status": "running",
-  "brands_checked": 75,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "OnePlus",
-  "new_devices_found": 5,
+  "current_brand": "Sagem",
+  "new_devices_found": 7,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play20a-14897.php",
     "https://www.gsmarena.com/honor_x7e_plus-14896.php",
     "https://www.gsmarena.com/lava_virat_v1_pro_5g-14901.php",
     "https://www.gsmarena.com/lava_smart_4-14902.php",
-    "https://www.gsmarena.com/lenovo_legion_y700_ai_5g-14904.php"
+    "https://www.gsmarena.com/lenovo_legion_y700_ai_5g-14904.php",
+    "https://www.gsmarena.com/realme_c100i_(india)-14900.php",
+    "https://www.gsmarena.com/realme_p4s_5g-14885.php"
   ],
   "new_device_names": [
     "Honor - Play20A",
     "Honor - X7e Plus 4G",
     "Lava - Virat V1 Pro",
     "Lava - Smart 4",
-    "Lenovo - Legion Y700 AI"
+    "Lenovo - Legion Y700 AI",
+    "Realme - C100i (India)",
+    "Realme - P4s"
   ],
-  "updated_at": "2026-08-30 02:00 UTC"
+  "updated_at": "2026-08-30 02:02 UTC"
 }
