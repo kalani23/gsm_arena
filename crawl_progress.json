@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 105,
+  "brands_checked": 125,
   "brands_total": 126,
-  "current_brand": "Tecno",
-  "new_devices_found": 11,
+  "current_brand": "YU",
+  "new_devices_found": 18,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play20a-14897.php",
     "https://www.gsmarena.com/honor_x7e_plus-14896.php",
@@ -15,7 +15,14 @@
     "https://www.gsmarena.com/samsung_galaxy_s26_fe_5g-14870.php",
     "https://www.gsmarena.com/samsung_galaxy_s26_fe_5g-14870.php",
     "https://www.gsmarena.com/sony_xperia_10_viii_5g-14894.php",
-    "https://www.gsmarena.com/tecno_spark_go_3_pro-14905.php"
+    "https://www.gsmarena.com/tecno_spark_go_3_pro-14905.php",
+    "https://www.gsmarena.com/vivo_v80_lite_5g_(india)-14863.php",
+    "https://www.gsmarena.com/vivo_v70_lite-14898.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_max_5g-14845.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_5g-14844.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17_5g-14846.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17-14847.php",
+    "https://www.gsmarena.com/xiaomi_redmi_17c_5g-14866.php"
   ],
   "new_device_names": [
     "Honor - Play20A",
@@ -28,7 +35,14 @@
     "Samsung - Galaxy S26 FE",
     "Samsung - Galaxy S26 FE",
     "Sony - Xperia 10 VIII",
-    "Tecno - Spark Go 3 Pro"
+    "Tecno - Spark Go 3 Pro",
+    "vivo - V80 Lite (IN/PK)",
+    "vivo - V70 Lite 4G",
+    "Xiaomi - Redmi Note 17 Pro Max",
+    "Xiaomi - Redmi Note 17 Pro",
+    "Xiaomi - Redmi Note 17",
+    "Xiaomi - Redmi Note 17 4G",
+    "Xiaomi - Redmi 17C"
   ],
-  "updated_at": "2026-08-30 02:04 UTC"
+  "updated_at": "2026-08-30 02:06 UTC"
 }
