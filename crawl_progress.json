@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 105,
   "brands_total": 126,
-  "current_brand": "Sagem",
-  "new_devices_found": 7,
+  "current_brand": "Tecno",
+  "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play20a-14897.php",
     "https://www.gsmarena.com/honor_x7e_plus-14896.php",
@@ -11,7 +11,11 @@
     "https://www.gsmarena.com/lava_smart_4-14902.php",
     "https://www.gsmarena.com/lenovo_legion_y700_ai_5g-14904.php",
     "https://www.gsmarena.com/realme_c100i_(india)-14900.php",
-    "https://www.gsmarena.com/realme_p4s_5g-14885.php"
+    "https://www.gsmarena.com/realme_p4s_5g-14885.php",
+    "https://www.gsmarena.com/samsung_galaxy_s26_fe_5g-14870.php",
+    "https://www.gsmarena.com/samsung_galaxy_s26_fe_5g-14870.php",
+    "https://www.gsmarena.com/sony_xperia_10_viii_5g-14894.php",
+    "https://www.gsmarena.com/tecno_spark_go_3_pro-14905.php"
   ],
   "new_device_names": [
     "Honor - Play20A",
@@ -20,7 +24,11 @@
     "Lava - Smart 4",
     "Lenovo - Legion Y700 AI",
     "Realme - C100i (India)",
-    "Realme - P4s"
+    "Realme - P4s",
+    "Samsung - Galaxy S26 FE",
+    "Samsung - Galaxy S26 FE",
+    "Sony - Xperia 10 VIII",
+    "Tecno - Spark Go 3 Pro"
   ],
-  "updated_at": "2026-08-30 02:02 UTC"
+  "updated_at": "2026-08-30 02:04 UTC"
 }
