@@ -1,16 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 45,
+  "brands_checked": 61,
   "brands_total": 126,
-  "current_brand": "Icemobile",
-  "new_devices_found": 2,
+  "current_brand": "Micromax",
+  "new_devices_found": 5,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play20a-14897.php",
-    "https://www.gsmarena.com/honor_x7e_plus-14896.php"
+    "https://www.gsmarena.com/honor_x7e_plus-14896.php",
+    "https://www.gsmarena.com/lava_virat_v1_pro_5g-14901.php",
+    "https://www.gsmarena.com/lava_smart_4-14902.php",
+    "https://www.gsmarena.com/lenovo_legion_y700_ai_5g-14904.php"
   ],
   "new_device_names": [
     "Honor - Play20A",
-    "Honor - X7e Plus 4G"
+    "Honor - X7e Plus 4G",
+    "Lava - Virat V1 Pro",
+    "Lava - Smart 4",
+    "Lenovo - Legion Y700 AI"
   ],
-  "updated_at": "2026-08-30 01:56 UTC"
+  "updated_at": "2026-08-30 01:58 UTC"
 }
