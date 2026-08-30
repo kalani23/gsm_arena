@@ -1,87 +1,122 @@
 [
   {
-    "brand": "Cubot",
-    "title": "A50",
-    "url": "https://www.gsmarena.com/cubot_a50-14893.php"
-  },
-  {
-    "brand": "Fairphone",
-    "title": "6+",
-    "url": "https://www.gsmarena.com/fairphone_6+_5g-14883.php"
+    "brand": "Honor",
+    "title": "Play20A",
+    "url": "https://www.gsmarena.com/honor_play20a-14897.php"
   },
   {
     "brand": "Honor",
-    "title": "Turbo",
-    "url": "https://www.gsmarena.com/honor_turbo_5g-14881.php"
+    "title": "X7e Plus 4G",
+    "url": "https://www.gsmarena.com/honor_x7e_plus-14896.php"
   },
   {
-    "brand": "Honor",
-    "title": "Pad 20 Pro",
-    "url": "https://www.gsmarena.com/honor_pad_20_pro-14889.php"
+    "brand": "Lava",
+    "title": "Virat V1 Pro",
+    "url": "https://www.gsmarena.com/lava_virat_v1_pro_5g-14901.php"
   },
   {
-    "brand": "Motorola",
-    "title": "Moto Pad 70",
-    "url": "https://www.gsmarena.com/motorola_moto_pad_70-14888.php"
+    "brand": "Lava",
+    "title": "Smart 4",
+    "url": "https://www.gsmarena.com/lava_smart_4-14902.php"
   },
   {
-    "brand": "Motorola",
-    "title": "Moto Pad 70",
-    "url": "https://www.gsmarena.com/motorola_moto_pad_70-14888.php"
+    "brand": "Lenovo",
+    "title": "Legion Y700 AI",
+    "url": "https://www.gsmarena.com/lenovo_legion_y700_ai_5g-14904.php"
   },
   {
-    "brand": "Nokia",
-    "title": "300 Charge",
-    "url": "https://www.gsmarena.com/nokia_300_charge-14895.php"
+    "brand": "Realme",
+    "title": "C100i (India)",
+    "url": "https://www.gsmarena.com/realme_c100i_(india)-14900.php"
   },
   {
-    "brand": "Ulefone",
-    "title": "Armor 24 Pro",
-    "url": "https://www.gsmarena.com/ulefone_armor_24_pro-14891.php"
+    "brand": "Realme",
+    "title": "P4s",
+    "url": "https://www.gsmarena.com/realme_p4s_5g-14885.php"
   },
   {
-    "brand": "Ulefone",
-    "title": "Armor 22 Pro",
-    "url": "https://www.gsmarena.com/ulefone_armor_22_pro-14890.php"
+    "brand": "Samsung",
+    "title": "Galaxy S26 FE",
+    "url": "https://www.gsmarena.com/samsung_galaxy_s26_fe_5g-14870.php"
+  },
+  {
+    "brand": "Samsung",
+    "title": "Galaxy S26 FE",
+    "url": "https://www.gsmarena.com/samsung_galaxy_s26_fe_5g-14870.php"
+  },
+  {
+    "brand": "Sony",
+    "title": "Xperia 10 VIII",
+    "url": "https://www.gsmarena.com/sony_xperia_10_viii_5g-14894.php"
+  },
+  {
+    "brand": "Tecno",
+    "title": "Spark Go 3 Pro",
+    "url": "https://www.gsmarena.com/tecno_spark_go_3_pro-14905.php"
   },
   {
     "brand": "vivo",
-    "title": "iQOO Z11 (India)",
-    "url": "https://www.gsmarena.com/vivo_iqoo_z11_5g_(india)-14886.php"
+    "title": "V80 Lite (IN/PK)",
+    "url": "https://www.gsmarena.com/vivo_v80_lite_5g_(india)-14863.php"
   },
   {
     "brand": "vivo",
-    "title": "Y31t",
-    "url": "https://www.gsmarena.com/vivo_y31t_5g-14884.php"
-  },
-  {
-    "brand": "vivo",
-    "title": "iQOO Neo11 Ultra",
-    "url": "https://www.gsmarena.com/vivo_iqoo_neo11_ultra_5g-14878.php"
-  },
-  {
-    "brand": "vivo",
-    "title": "iQOO Z11S",
-    "url": "https://www.gsmarena.com/vivo_iqoo_z11s_5g_(china)-14880.php"
+    "title": "V70 Lite 4G",
+    "url": "https://www.gsmarena.com/vivo_v70_lite-14898.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi Watch 6 Lite",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_watch_6_lite-14821.php"
+    "title": "Redmi Note 17 Pro Max",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_max_5g-14845.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi Watch 6 Active",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_watch_6_active-14820.php"
+    "title": "Redmi Note 17 Pro",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_5g-14844.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Poco M8x",
-    "url": "https://www.gsmarena.com/xiaomi_poco_m8x_5g-14879.php"
+    "title": "Redmi Note 17",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_note_17_5g-14846.php"
   },
   {
     "brand": "Xiaomi",
-    "title": "Redmi M100",
-    "url": "https://www.gsmarena.com/xiaomi_redmi_m100_5g-14882.php"
+    "title": "Redmi Note 17 4G",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_note_17-14847.php"
+  },
+  {
+    "brand": "Xiaomi",
+    "title": "Redmi 17C",
+    "url": "https://www.gsmarena.com/xiaomi_redmi_17c_5g-14866.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia Neo 5 Max",
+    "url": "https://www.gsmarena.com/zte_nubia_neo_5_max_5g-14903.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia A76",
+    "url": "https://www.gsmarena.com/zte_nubia_a76-14906.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia A75",
+    "url": "https://www.gsmarena.com/zte_nubia_a75-14907.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia Neo 5 Max",
+    "url": "https://www.gsmarena.com/zte_nubia_neo_5_max_5g-14903.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia A76",
+    "url": "https://www.gsmarena.com/zte_nubia_a76-14906.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia A75",
+    "url": "https://www.gsmarena.com/zte_nubia_a75-14907.php"
   }
 ]
