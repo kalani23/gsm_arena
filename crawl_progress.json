@@ -1,10 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 20,
+  "brands_checked": 41,
   "brands_total": 126,
-  "current_brand": "Cat",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-09-06 01:28 UTC"
+  "current_brand": "HTC",
+  "new_devices_found": 4,
+  "new_device_urls": [
+    "https://www.gsmarena.com/cubot_x5-14915.php",
+    "https://www.gsmarena.com/cubot_u3-14916.php",
+    "https://www.gsmarena.com/cubot_u2-14917.php",
+    "https://www.gsmarena.com/hmd_102-14914.php"
+  ],
+  "new_device_names": [
+    "Cubot - X5",
+    "Cubot - U3",
+    "Cubot - U2",
+    "HMD - 102"
+  ],
+  "updated_at": "2026-09-06 01:30 UTC"
 }
