@@ -1,13 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 99,
+  "brands_checked": 117,
   "brands_total": 126,
-  "current_brand": "Sonim",
-  "new_devices_found": 16,
+  "current_brand": "Vodafone",
+  "new_devices_found": 23,
   "new_device_urls": [
-    "https://www.gsmarena.com/cubot_x5-14915.php",
-    "https://www.gsmarena.com/cubot_u3-14916.php",
-    "https://www.gsmarena.com/cubot_u2-14917.php",
     "https://www.gsmarena.com/hmd_102-14914.php",
     "https://www.gsmarena.com/huawei_watch_6_pro-14925.php",
     "https://www.gsmarena.com/huawei_watch_6-14924.php",
@@ -20,12 +17,16 @@
     "https://www.gsmarena.com/huawei_nova_16s_pro_5g-14922.php",
     "https://www.gsmarena.com/huawei_nova_16s_5g-14923.php",
     "https://www.gsmarena.com/motorola_edge_70_plus_5g-14920.php",
-    "https://www.gsmarena.com/motorola_watch_ultra-14921.php"
+    "https://www.gsmarena.com/motorola_watch_ultra-14921.php",
+    "https://www.gsmarena.com/tcl_p80_ultra_5g-14927.php",
+    "https://www.gsmarena.com/tcl_p80_pro_5g-14867.php",
+    "https://www.gsmarena.com/tcl_p80_5g-14868.php",
+    "https://www.gsmarena.com/tecno_camon_air-14919.php",
+    "https://www.gsmarena.com/tecno_camon_slim_5g-14918.php",
+    "https://www.gsmarena.com/vivo_v80_lite_5g-14892.php",
+    "https://www.gsmarena.com/vivo_t5_5g-14899.php"
   ],
   "new_device_names": [
-    "Cubot - X5",
-    "Cubot - U3",
-    "Cubot - U2",
     "HMD - 102",
     "Huawei - Watch 6 Pro",
     "Huawei - Watch 6",
@@ -38,7 +39,14 @@
     "Huawei - nova 16s Pro",
     "Huawei - nova 16s",
     "Motorola - Edge 70 Plus",
-    "Motorola - Watch Ultra"
+    "Motorola - Watch Ultra",
+    "TCL - P80 Ultra",
+    "TCL - P80 Pro",
+    "TCL - P80",
+    "Tecno - Camon Air",
+    "Tecno - Camon Slim",
+    "vivo - V80 Lite",
+    "vivo - T5"
   ],
-  "updated_at": "2026-09-06 01:39 UTC"
+  "updated_at": "2026-09-06 01:41 UTC"
 }
