@@ -1,20 +1,40 @@
 {
   "status": "running",
-  "brands_checked": 41,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "HTC",
-  "new_devices_found": 4,
+  "current_brand": "Lenovo",
+  "new_devices_found": 14,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_x5-14915.php",
     "https://www.gsmarena.com/cubot_u3-14916.php",
     "https://www.gsmarena.com/cubot_u2-14917.php",
-    "https://www.gsmarena.com/hmd_102-14914.php"
+    "https://www.gsmarena.com/hmd_102-14914.php",
+    "https://www.gsmarena.com/huawei_watch_6_pro-14925.php",
+    "https://www.gsmarena.com/huawei_watch_6-14924.php",
+    "https://www.gsmarena.com/huawei_watch_d3-14926.php",
+    "https://www.gsmarena.com/huawei_nova_16s_pro_5g-14922.php",
+    "https://www.gsmarena.com/huawei_nova_16s_5g-14923.php",
+    "https://www.gsmarena.com/huawei_watch_6_pro-14925.php",
+    "https://www.gsmarena.com/huawei_watch_6-14924.php",
+    "https://www.gsmarena.com/huawei_watch_d3-14926.php",
+    "https://www.gsmarena.com/huawei_nova_16s_pro_5g-14922.php",
+    "https://www.gsmarena.com/huawei_nova_16s_5g-14923.php"
   ],
   "new_device_names": [
     "Cubot - X5",
     "Cubot - U3",
     "Cubot - U2",
-    "HMD - 102"
+    "HMD - 102",
+    "Huawei - Watch 6 Pro",
+    "Huawei - Watch 6",
+    "Huawei - Watch D3",
+    "Huawei - nova 16s Pro",
+    "Huawei - nova 16s",
+    "Huawei - Watch 6 Pro",
+    "Huawei - Watch 6",
+    "Huawei - Watch D3",
+    "Huawei - nova 16s Pro",
+    "Huawei - nova 16s"
   ],
-  "updated_at": "2026-09-06 01:30 UTC"
+  "updated_at": "2026-09-06 01:32 UTC"
 }
