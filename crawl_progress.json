@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 88,
+  "brands_checked": 99,
   "brands_total": 126,
-  "current_brand": "QMobile",
+  "current_brand": "Sonim",
   "new_devices_found": 16,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_x5-14915.php",
@@ -40,5 +40,5 @@
     "Motorola - Edge 70 Plus",
     "Motorola - Watch Ultra"
   ],
-  "updated_at": "2026-09-06 01:37 UTC"
+  "updated_at": "2026-09-06 01:39 UTC"
 }
