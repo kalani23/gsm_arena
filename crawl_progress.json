@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 103,
   "brands_total": 126,
-  "current_brand": "Sagem",
-  "new_devices_found": 10,
+  "current_brand": "T-Mobile",
+  "new_devices_found": 12,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_iphone_duo_fold-13804.php",
     "https://www.gsmarena.com/apple_iphone_18_pro_max-14716.php",
@@ -14,7 +14,9 @@
     "https://www.gsmarena.com/huawei_mate_xt_2_ultimate_5g-14929.php",
     "https://www.gsmarena.com/huawei_pura_x_view-14887.php",
     "https://www.gsmarena.com/infinix_xpad_30_pro-14913.php",
-    "https://www.gsmarena.com/oppo_a7_pro_5g-14928.php"
+    "https://www.gsmarena.com/oppo_a7_pro_5g-14928.php",
+    "https://www.gsmarena.com/samsung_galaxy_a07s-14930.php",
+    "https://www.gsmarena.com/samsung_galaxy_a07s-14930.php"
   ],
   "new_device_names": [
     "Apple - iPhone Duo",
@@ -26,7 +28,9 @@
     "Huawei - Mate XT 2 Ultimate",
     "Huawei - Pura X View",
     "Infinix - Xpad 30 Pro",
-    "Oppo - A7 Pro"
+    "Oppo - A7 Pro",
+    "Samsung - Galaxy A07s",
+    "Samsung - Galaxy A07s"
   ],
-  "updated_at": "2026-09-13 01:43 UTC"
+  "updated_at": "2026-09-13 01:46 UTC"
 }
