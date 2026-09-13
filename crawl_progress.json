@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 65,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "Modu",
+  "current_brand": "NIU",
   "new_devices_found": 9,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_iphone_duo_fold-13804.php",
@@ -26,5 +26,5 @@
     "Huawei - Pura X View",
     "Infinix - Xpad 30 Pro"
   ],
-  "updated_at": "2026-09-13 01:38 UTC"
+  "updated_at": "2026-09-13 01:40 UTC"
 }
