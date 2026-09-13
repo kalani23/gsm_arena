@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 103,
+  "brands_checked": 120,
   "brands_total": 126,
-  "current_brand": "T-Mobile",
+  "current_brand": "XCute",
   "new_devices_found": 12,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_iphone_duo_fold-13804.php",
@@ -32,5 +32,5 @@
     "Samsung - Galaxy A07s",
     "Samsung - Galaxy A07s"
   ],
-  "updated_at": "2026-09-13 01:46 UTC"
+  "updated_at": "2026-09-13 01:48 UTC"
 }
