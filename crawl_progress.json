@@ -1,23 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 120,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "XCute",
-  "new_devices_found": 12,
-  "new_device_urls": [
-    "https://www.gsmarena.com/apple_iphone_duo_fold-13804.php",
-    "https://www.gsmarena.com/apple_iphone_18_pro_max-14716.php",
-    "https://www.gsmarena.com/apple_iphone_18_pro-14934.php",
-    "https://www.gsmarena.com/apple_watch_ultra_4-14935.php",
-    "https://www.gsmarena.com/apple_watch_series_12-14937.php",
-    "https://www.gsmarena.com/apple_watch_series_12_aluminum-14936.php",
-    "https://www.gsmarena.com/huawei_mate_xt_2_ultimate_5g-14929.php",
-    "https://www.gsmarena.com/huawei_pura_x_view-14887.php",
-    "https://www.gsmarena.com/infinix_xpad_30_pro-14913.php",
-    "https://www.gsmarena.com/oppo_a7_pro_5g-14928.php",
-    "https://www.gsmarena.com/samsung_galaxy_a07s-14930.php",
-    "https://www.gsmarena.com/samsung_galaxy_a07s-14930.php"
-  ],
+  "new_devices_found": 16,
   "new_device_names": [
     "Apple - iPhone Duo",
     "Apple - iPhone 18 Pro Max",
@@ -30,7 +15,29 @@
     "Infinix - Xpad 30 Pro",
     "Oppo - A7 Pro",
     "Samsung - Galaxy A07s",
-    "Samsung - Galaxy A07s"
+    "Samsung - Galaxy A07s",
+    "Xiaomi - 18 Fold",
+    "Xiaomi - Pad 9 Pro Max",
+    "Xiaomi - 18 Fold",
+    "Xiaomi - Pad 9 Pro Max"
   ],
-  "updated_at": "2026-09-13 01:48 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/apple_iphone_duo_fold-13804.php",
+    "https://www.gsmarena.com/apple_iphone_18_pro_max-14716.php",
+    "https://www.gsmarena.com/apple_iphone_18_pro-14934.php",
+    "https://www.gsmarena.com/apple_watch_ultra_4-14935.php",
+    "https://www.gsmarena.com/apple_watch_series_12-14937.php",
+    "https://www.gsmarena.com/apple_watch_series_12_aluminum-14936.php",
+    "https://www.gsmarena.com/huawei_mate_xt_2_ultimate_5g-14929.php",
+    "https://www.gsmarena.com/huawei_pura_x_view-14887.php",
+    "https://www.gsmarena.com/infinix_xpad_30_pro-14913.php",
+    "https://www.gsmarena.com/oppo_a7_pro_5g-14928.php",
+    "https://www.gsmarena.com/samsung_galaxy_a07s-14930.php",
+    "https://www.gsmarena.com/samsung_galaxy_a07s-14930.php",
+    "https://www.gsmarena.com/xiaomi_18_fold_5g-14931.php",
+    "https://www.gsmarena.com/xiaomi_pad_9_pro_max-14932.php",
+    "https://www.gsmarena.com/xiaomi_18_fold_5g-14931.php",
+    "https://www.gsmarena.com/xiaomi_pad_9_pro_max-14932.php"
+  ],
+  "updated_at": "2026-09-13 01:49 UTC"
 }
