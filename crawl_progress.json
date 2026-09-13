@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 82,
   "brands_total": 126,
-  "current_brand": "NIU",
-  "new_devices_found": 9,
+  "current_brand": "Pantech",
+  "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_iphone_duo_fold-13804.php",
     "https://www.gsmarena.com/apple_iphone_18_pro_max-14716.php",
@@ -13,7 +13,8 @@
     "https://www.gsmarena.com/apple_watch_series_12_aluminum-14936.php",
     "https://www.gsmarena.com/huawei_mate_xt_2_ultimate_5g-14929.php",
     "https://www.gsmarena.com/huawei_pura_x_view-14887.php",
-    "https://www.gsmarena.com/infinix_xpad_30_pro-14913.php"
+    "https://www.gsmarena.com/infinix_xpad_30_pro-14913.php",
+    "https://www.gsmarena.com/oppo_a7_pro_5g-14928.php"
   ],
   "new_device_names": [
     "Apple - iPhone Duo",
@@ -24,7 +25,8 @@
     "Apple - Watch Series 12 Aluminum",
     "Huawei - Mate XT 2 Ultimate",
     "Huawei - Pura X View",
-    "Infinix - Xpad 30 Pro"
+    "Infinix - Xpad 30 Pro",
+    "Oppo - A7 Pro"
   ],
-  "updated_at": "2026-09-13 01:40 UTC"
+  "updated_at": "2026-09-13 01:42 UTC"
 }
