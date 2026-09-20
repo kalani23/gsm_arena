@@ -1,20 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 117,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "Vodafone",
-  "new_devices_found": 9,
-  "new_device_urls": [
-    "https://www.gsmarena.com/honor_play11_5g-14944.php",
-    "https://www.gsmarena.com/honor_play11_5g-14944.php",
-    "https://www.gsmarena.com/oppo_k14_lite-14942.php",
-    "https://www.gsmarena.com/oukitel_wp63_5g-14943.php",
-    "https://www.gsmarena.com/samsung_galaxy_a18-14941.php",
-    "https://www.gsmarena.com/samsung_galaxy_a08-14938.php",
-    "https://www.gsmarena.com/tcl_tab_a1_nxtpaper-14947.php",
-    "https://www.gsmarena.com/tcl_tab_a1-14948.php",
-    "https://www.gsmarena.com/vivo_y11d-14945.php"
-  ],
+  "new_devices_found": 11,
   "new_device_names": [
     "Honor - Play11",
     "Honor - Play11",
@@ -24,7 +12,22 @@
     "Samsung - Galaxy A08 4G",
     "TCL - Tab A1 NxtPaper",
     "TCL - Tab A1",
-    "vivo - Y11d"
+    "vivo - Y11d",
+    "Xiaomi - Poco C95 Pro",
+    "ZTE - nubia NaviX Ultra"
   ],
-  "updated_at": "2026-09-20 02:03 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/honor_play11_5g-14944.php",
+    "https://www.gsmarena.com/honor_play11_5g-14944.php",
+    "https://www.gsmarena.com/oppo_k14_lite-14942.php",
+    "https://www.gsmarena.com/oukitel_wp63_5g-14943.php",
+    "https://www.gsmarena.com/samsung_galaxy_a18-14941.php",
+    "https://www.gsmarena.com/samsung_galaxy_a08-14938.php",
+    "https://www.gsmarena.com/tcl_tab_a1_nxtpaper-14947.php",
+    "https://www.gsmarena.com/tcl_tab_a1-14948.php",
+    "https://www.gsmarena.com/vivo_y11d-14945.php",
+    "https://www.gsmarena.com/xiaomi_poco_c95_pro-14933.php",
+    "https://www.gsmarena.com/zte_nubia_navix_ultra_5g-14946.php"
+  ],
+  "updated_at": "2026-09-20 02:05 UTC"
 }
