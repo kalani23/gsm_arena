@@ -1,16 +1,20 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 87,
   "brands_total": 126,
-  "current_brand": "NIU",
-  "new_devices_found": 2,
+  "current_brand": "Prestigio",
+  "new_devices_found": 4,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play11_5g-14944.php",
-    "https://www.gsmarena.com/honor_play11_5g-14944.php"
+    "https://www.gsmarena.com/honor_play11_5g-14944.php",
+    "https://www.gsmarena.com/oppo_k14_lite-14942.php",
+    "https://www.gsmarena.com/oukitel_wp63_5g-14943.php"
   ],
   "new_device_names": [
     "Honor - Play11",
-    "Honor - Play11"
+    "Honor - Play11",
+    "Oppo - K14 Lite",
+    "Oukitel - WP63"
   ],
-  "updated_at": "2026-09-20 01:57 UTC"
+  "updated_at": "2026-09-20 01:59 UTC"
 }
