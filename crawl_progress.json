@@ -1,10 +1,16 @@
 {
   "status": "running",
-  "brands_checked": 38,
+  "brands_checked": 55,
   "brands_total": 126,
-  "current_brand": "HMD",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-09-20 01:53 UTC"
+  "current_brand": "LeEco",
+  "new_devices_found": 2,
+  "new_device_urls": [
+    "https://www.gsmarena.com/honor_play11_5g-14944.php",
+    "https://www.gsmarena.com/honor_play11_5g-14944.php"
+  ],
+  "new_device_names": [
+    "Honor - Play11",
+    "Honor - Play11"
+  ],
+  "updated_at": "2026-09-20 01:55 UTC"
 }
