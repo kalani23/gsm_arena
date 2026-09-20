@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 55,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "LeEco",
+  "current_brand": "NIU",
   "new_devices_found": 2,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play11_5g-14944.php",
@@ -12,5 +12,5 @@
     "Honor - Play11",
     "Honor - Play11"
   ],
-  "updated_at": "2026-09-20 01:55 UTC"
+  "updated_at": "2026-09-20 01:57 UTC"
 }
