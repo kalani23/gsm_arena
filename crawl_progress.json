@@ -1,20 +1,24 @@
 {
   "status": "running",
-  "brands_checked": 87,
+  "brands_checked": 99,
   "brands_total": 126,
-  "current_brand": "Prestigio",
-  "new_devices_found": 4,
+  "current_brand": "Sonim",
+  "new_devices_found": 6,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_play11_5g-14944.php",
     "https://www.gsmarena.com/honor_play11_5g-14944.php",
     "https://www.gsmarena.com/oppo_k14_lite-14942.php",
-    "https://www.gsmarena.com/oukitel_wp63_5g-14943.php"
+    "https://www.gsmarena.com/oukitel_wp63_5g-14943.php",
+    "https://www.gsmarena.com/samsung_galaxy_a18-14941.php",
+    "https://www.gsmarena.com/samsung_galaxy_a08-14938.php"
   ],
   "new_device_names": [
     "Honor - Play11",
     "Honor - Play11",
     "Oppo - K14 Lite",
-    "Oukitel - WP63"
+    "Oukitel - WP63",
+    "Samsung - Galaxy A18 4G",
+    "Samsung - Galaxy A08 4G"
   ],
-  "updated_at": "2026-09-20 01:59 UTC"
+  "updated_at": "2026-09-20 02:01 UTC"
 }
