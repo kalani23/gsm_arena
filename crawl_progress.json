@@ -1,20 +1,36 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 83,
   "brands_total": 126,
-  "current_brand": "NIU",
-  "new_devices_found": 4,
+  "current_brand": "Parla",
+  "new_devices_found": 12,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php",
     "https://www.gsmarena.com/itel_a300c-14956.php",
     "https://www.gsmarena.com/lava_virat_curve_5g-14957.php",
-    "https://www.gsmarena.com/motorola_signature_27_5g-14955.php"
+    "https://www.gsmarena.com/motorola_signature_27_5g-14955.php",
+    "https://www.gsmarena.com/oneplus_n6_lite-14952.php",
+    "https://www.gsmarena.com/oppo_find_x10_pro_max-14939.php",
+    "https://www.gsmarena.com/oppo_find_x10-14953.php",
+    "https://www.gsmarena.com/oppo_find_x10_e-14954.php",
+    "https://www.gsmarena.com/oukitel_c26_mini-14968.php",
+    "https://www.gsmarena.com/oukitel_c17_mini-14967.php",
+    "https://www.gsmarena.com/oukitel_p2_plus_5g-14966.php",
+    "https://www.gsmarena.com/oukitel_rt11_5g-14965.php"
   ],
   "new_device_names": [
     "Honor - X9e Pro",
     "itel - A300C",
     "Lava - Virat Curve",
-    "Motorola - Signature 27"
+    "Motorola - Signature 27",
+    "OnePlus - N6 Lite",
+    "Oppo - Find X10 Pro Max",
+    "Oppo - Find X10",
+    "Oppo - Find X10 E",
+    "Oukitel - C26 Mini",
+    "Oukitel - C17 Mini",
+    "Oukitel - P2 Plus",
+    "Oukitel - RT11"
   ],
-  "updated_at": "2026-09-27 02:08 UTC"
+  "updated_at": "2026-09-27 02:10 UTC"
 }
