@@ -1,10 +1,14 @@
 {
   "status": "running",
-  "brands_checked": 22,
+  "brands_checked": 41,
   "brands_total": 126,
-  "current_brand": "Chea",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-09-27 02:02 UTC"
+  "current_brand": "HTC",
+  "new_devices_found": 1,
+  "new_device_urls": [
+    "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php"
+  ],
+  "new_device_names": [
+    "Honor - X9e Pro"
+  ],
+  "updated_at": "2026-09-27 02:04 UTC"
 }
