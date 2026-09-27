@@ -1,27 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 118,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "Wiko",
-  "new_devices_found": 16,
-  "new_device_urls": [
-    "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php",
-    "https://www.gsmarena.com/itel_a300c-14956.php",
-    "https://www.gsmarena.com/lava_virat_curve_5g-14957.php",
-    "https://www.gsmarena.com/motorola_signature_27_5g-14955.php",
-    "https://www.gsmarena.com/oneplus_n6_lite-14952.php",
-    "https://www.gsmarena.com/oppo_find_x10_pro_max-14939.php",
-    "https://www.gsmarena.com/oppo_find_x10-14953.php",
-    "https://www.gsmarena.com/oppo_find_x10_e-14954.php",
-    "https://www.gsmarena.com/oukitel_c26_mini-14968.php",
-    "https://www.gsmarena.com/oukitel_c17_mini-14967.php",
-    "https://www.gsmarena.com/oukitel_p2_plus_5g-14966.php",
-    "https://www.gsmarena.com/oukitel_rt11_5g-14965.php",
-    "https://www.gsmarena.com/vivo_y600i_5g-14964.php",
-    "https://www.gsmarena.com/vivo_x500_pro_max_5g-14782.php",
-    "https://www.gsmarena.com/vivo_x500_pro_5g-14950.php",
-    "https://www.gsmarena.com/vivo_x500_5g-14951.php"
-  ],
+  "new_devices_found": 20,
   "new_device_names": [
     "Honor - X9e Pro",
     "itel - A300C",
@@ -38,7 +19,33 @@
     "vivo - Y600i",
     "vivo - X500 Pro Max",
     "vivo - X500 Pro",
-    "vivo - X500"
+    "vivo - X500",
+    "Xiaomi - 18 Pro Max",
+    "Xiaomi - 18 Pro",
+    "Xiaomi - Pad 9 Pro",
+    "Xiaomi - Pad 9"
   ],
-  "updated_at": "2026-09-27 02:16 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php",
+    "https://www.gsmarena.com/itel_a300c-14956.php",
+    "https://www.gsmarena.com/lava_virat_curve_5g-14957.php",
+    "https://www.gsmarena.com/motorola_signature_27_5g-14955.php",
+    "https://www.gsmarena.com/oneplus_n6_lite-14952.php",
+    "https://www.gsmarena.com/oppo_find_x10_pro_max-14939.php",
+    "https://www.gsmarena.com/oppo_find_x10-14953.php",
+    "https://www.gsmarena.com/oppo_find_x10_e-14954.php",
+    "https://www.gsmarena.com/oukitel_c26_mini-14968.php",
+    "https://www.gsmarena.com/oukitel_c17_mini-14967.php",
+    "https://www.gsmarena.com/oukitel_p2_plus_5g-14966.php",
+    "https://www.gsmarena.com/oukitel_rt11_5g-14965.php",
+    "https://www.gsmarena.com/vivo_y600i_5g-14964.php",
+    "https://www.gsmarena.com/vivo_x500_pro_max_5g-14782.php",
+    "https://www.gsmarena.com/vivo_x500_pro_5g-14950.php",
+    "https://www.gsmarena.com/vivo_x500_5g-14951.php",
+    "https://www.gsmarena.com/xiaomi_18_pro_max_5g-14958.php",
+    "https://www.gsmarena.com/xiaomi_18_pro_5g-14959.php",
+    "https://www.gsmarena.com/xiaomi_pad_9_pro-14960.php",
+    "https://www.gsmarena.com/xiaomi_pad_9-14961.php"
+  ],
+  "updated_at": "2026-09-27 02:18 UTC"
 }
