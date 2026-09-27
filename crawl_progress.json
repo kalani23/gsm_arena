@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 101,
   "brands_total": 126,
-  "current_brand": "Sagem",
+  "current_brand": "Sony Ericsson",
   "new_devices_found": 12,
   "new_device_urls": [
     "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php",
@@ -32,5 +32,5 @@
     "Oukitel - P2 Plus",
     "Oukitel - RT11"
   ],
-  "updated_at": "2026-09-27 02:11 UTC"
+  "updated_at": "2026-09-27 02:14 UTC"
 }
