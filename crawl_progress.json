@@ -1,14 +1,18 @@
 {
   "status": "running",
-  "brands_checked": 41,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "HTC",
-  "new_devices_found": 1,
+  "current_brand": "Lenovo",
+  "new_devices_found": 3,
   "new_device_urls": [
-    "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php"
+    "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php",
+    "https://www.gsmarena.com/itel_a300c-14956.php",
+    "https://www.gsmarena.com/lava_virat_curve_5g-14957.php"
   ],
   "new_device_names": [
-    "Honor - X9e Pro"
+    "Honor - X9e Pro",
+    "itel - A300C",
+    "Lava - Virat Curve"
   ],
-  "updated_at": "2026-09-27 02:04 UTC"
+  "updated_at": "2026-09-27 02:06 UTC"
 }
