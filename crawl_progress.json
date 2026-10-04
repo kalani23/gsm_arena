@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 83,
   "brands_total": 126,
-  "current_brand": "NIU",
-  "new_devices_found": 13,
+  "current_brand": "Parla",
+  "new_devices_found": 14,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php",
     "https://www.gsmarena.com/honor_magic9_pro_max_5g-14940.php",
@@ -17,7 +17,8 @@
     "https://www.gsmarena.com/huawei_mate_90_pro_5g-14983.php",
     "https://www.gsmarena.com/huawei_mate_90_5g-14984.php",
     "https://www.gsmarena.com/huawei_matepad_air_z_enjoy-14980.php",
-    "https://www.gsmarena.com/huawei_matepad_air_z-14979.php"
+    "https://www.gsmarena.com/huawei_matepad_air_z-14979.php",
+    "https://www.gsmarena.com/oppo_k14_plus_5g-14963.php"
   ],
   "new_device_names": [
     "HMD - Vibe2 Pro",
@@ -32,7 +33,8 @@
     "Huawei - Mate 90 Pro",
     "Huawei - Mate 90",
     "Huawei - MatePad Air Z Enjoy",
-    "Huawei - MatePad Air Z"
+    "Huawei - MatePad Air Z",
+    "Oppo - K14 Plus"
   ],
-  "updated_at": "2026-10-04 03:05 UTC"
+  "updated_at": "2026-10-04 03:07 UTC"
 }
