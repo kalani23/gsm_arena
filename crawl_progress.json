@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 83,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "Parla",
+  "current_brand": "Sagem",
   "new_devices_found": 14,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php",
@@ -36,5 +36,5 @@
     "Huawei - MatePad Air Z",
     "Oppo - K14 Plus"
   ],
-  "updated_at": "2026-10-04 03:07 UTC"
+  "updated_at": "2026-10-04 03:09 UTC"
 }
