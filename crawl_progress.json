@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "Lenovo",
+  "current_brand": "NIU",
   "new_devices_found": 13,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php",
@@ -34,5 +34,5 @@
     "Huawei - MatePad Air Z Enjoy",
     "Huawei - MatePad Air Z"
   ],
-  "updated_at": "2026-10-04 03:03 UTC"
+  "updated_at": "2026-10-04 03:05 UTC"
 }
