@@ -1,12 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 101,
+  "brands_checked": 120,
   "brands_total": 126,
-  "current_brand": "Sony Ericsson",
-  "new_devices_found": 22,
+  "current_brand": "XCute",
+  "new_devices_found": 24,
   "new_device_urls": [
-    "https://www.gsmarena.com/honor_magic9_super_5g-14969.php",
-    "https://www.gsmarena.com/honor_magic9_5g-14970.php",
     "https://www.gsmarena.com/honor_watch_6_pro-14971.php",
     "https://www.gsmarena.com/honor_pad_x10_pro_max-14972.php",
     "https://www.gsmarena.com/honor_magicpad_4_12_1-14973.php",
@@ -24,11 +22,11 @@
     "https://www.gsmarena.com/samsung_galaxy_tab_s12_ultra_5g-14811.php",
     "https://www.gsmarena.com/samsung_galaxy_tab_s12+_5g-14981.php",
     "https://www.gsmarena.com/samsung_galaxy_f08-14988.php",
-    "https://www.gsmarena.com/samsung_galaxy_m08-14987.php"
+    "https://www.gsmarena.com/samsung_galaxy_m08-14987.php",
+    "https://www.gsmarena.com/vivo_iqoo_pad_ultra-14978.php",
+    "https://www.gsmarena.com/vivo_iqoo_16_5g-14976.php"
   ],
   "new_device_names": [
-    "Honor - Magic9 Super",
-    "Honor - Magic9",
     "Honor - Watch 6 Pro",
     "Honor - Pad X10 Pro Max",
     "Honor - MagicPad 4 12.1",
@@ -46,7 +44,9 @@
     "Samsung - Galaxy Tab S12 Ultra",
     "Samsung - Galaxy Tab S12+",
     "Samsung - Galaxy F08",
-    "Samsung - Galaxy M08"
+    "Samsung - Galaxy M08",
+    "vivo - iQOO Pad Ultra",
+    "vivo - iQOO 16"
   ],
-  "updated_at": "2026-10-04 03:11 UTC"
+  "updated_at": "2026-10-04 03:13 UTC"
 }
