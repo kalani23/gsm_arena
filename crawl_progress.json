@@ -1,10 +1,26 @@
 {
   "status": "running",
-  "brands_checked": 17,
+  "brands_checked": 39,
   "brands_total": 126,
-  "current_brand": "Bosch",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-10-04 02:59 UTC"
+  "current_brand": "Honor",
+  "new_devices_found": 7,
+  "new_device_urls": [
+    "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php",
+    "https://www.gsmarena.com/honor_magic9_pro_max_5g-14940.php",
+    "https://www.gsmarena.com/honor_magic9_super_5g-14969.php",
+    "https://www.gsmarena.com/honor_magic9_5g-14970.php",
+    "https://www.gsmarena.com/honor_watch_6_pro-14971.php",
+    "https://www.gsmarena.com/honor_pad_x10_pro_max-14972.php",
+    "https://www.gsmarena.com/honor_magicpad_4_12_1-14973.php"
+  ],
+  "new_device_names": [
+    "HMD - Vibe2 Pro",
+    "Honor - Magic9 Pro Max",
+    "Honor - Magic9 Super",
+    "Honor - Magic9",
+    "Honor - Watch 6 Pro",
+    "Honor - Pad X10 Pro Max",
+    "Honor - MagicPad 4 12.1"
+  ],
+  "updated_at": "2026-10-04 03:01 UTC"
 }
