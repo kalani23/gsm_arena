@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 39,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "Honor",
-  "new_devices_found": 7,
+  "current_brand": "Lenovo",
+  "new_devices_found": 13,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php",
     "https://www.gsmarena.com/honor_magic9_pro_max_5g-14940.php",
@@ -11,7 +11,13 @@
     "https://www.gsmarena.com/honor_magic9_5g-14970.php",
     "https://www.gsmarena.com/honor_watch_6_pro-14971.php",
     "https://www.gsmarena.com/honor_pad_x10_pro_max-14972.php",
-    "https://www.gsmarena.com/honor_magicpad_4_12_1-14973.php"
+    "https://www.gsmarena.com/honor_magicpad_4_12_1-14973.php",
+    "https://www.gsmarena.com/huawei_mate_90_rs_ultimate_5g-14985.php",
+    "https://www.gsmarena.com/huawei_mate_90_pro_max_5g-14982.php",
+    "https://www.gsmarena.com/huawei_mate_90_pro_5g-14983.php",
+    "https://www.gsmarena.com/huawei_mate_90_5g-14984.php",
+    "https://www.gsmarena.com/huawei_matepad_air_z_enjoy-14980.php",
+    "https://www.gsmarena.com/huawei_matepad_air_z-14979.php"
   ],
   "new_device_names": [
     "HMD - Vibe2 Pro",
@@ -20,7 +26,13 @@
     "Honor - Magic9",
     "Honor - Watch 6 Pro",
     "Honor - Pad X10 Pro Max",
-    "Honor - MagicPad 4 12.1"
+    "Honor - MagicPad 4 12.1",
+    "Huawei - Mate 90 RS Ultimate",
+    "Huawei - Mate 90 Pro Max",
+    "Huawei - Mate 90 Pro",
+    "Huawei - Mate 90",
+    "Huawei - MatePad Air Z Enjoy",
+    "Huawei - MatePad Air Z"
   ],
-  "updated_at": "2026-10-04 03:01 UTC"
+  "updated_at": "2026-10-04 03:03 UTC"
 }
