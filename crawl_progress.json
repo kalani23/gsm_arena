@@ -1,12 +1,10 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 101,
   "brands_total": 126,
-  "current_brand": "Sagem",
-  "new_devices_found": 14,
+  "current_brand": "Sony Ericsson",
+  "new_devices_found": 22,
   "new_device_urls": [
-    "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php",
-    "https://www.gsmarena.com/honor_magic9_pro_max_5g-14940.php",
     "https://www.gsmarena.com/honor_magic9_super_5g-14969.php",
     "https://www.gsmarena.com/honor_magic9_5g-14970.php",
     "https://www.gsmarena.com/honor_watch_6_pro-14971.php",
@@ -18,11 +16,17 @@
     "https://www.gsmarena.com/huawei_mate_90_5g-14984.php",
     "https://www.gsmarena.com/huawei_matepad_air_z_enjoy-14980.php",
     "https://www.gsmarena.com/huawei_matepad_air_z-14979.php",
-    "https://www.gsmarena.com/oppo_k14_plus_5g-14963.php"
+    "https://www.gsmarena.com/oppo_k14_plus_5g-14963.php",
+    "https://www.gsmarena.com/samsung_galaxy_tab_s12_ultra_5g-14811.php",
+    "https://www.gsmarena.com/samsung_galaxy_tab_s12+_5g-14981.php",
+    "https://www.gsmarena.com/samsung_galaxy_f08-14988.php",
+    "https://www.gsmarena.com/samsung_galaxy_m08-14987.php",
+    "https://www.gsmarena.com/samsung_galaxy_tab_s12_ultra_5g-14811.php",
+    "https://www.gsmarena.com/samsung_galaxy_tab_s12+_5g-14981.php",
+    "https://www.gsmarena.com/samsung_galaxy_f08-14988.php",
+    "https://www.gsmarena.com/samsung_galaxy_m08-14987.php"
   ],
   "new_device_names": [
-    "HMD - Vibe2 Pro",
-    "Honor - Magic9 Pro Max",
     "Honor - Magic9 Super",
     "Honor - Magic9",
     "Honor - Watch 6 Pro",
@@ -34,7 +38,15 @@
     "Huawei - Mate 90",
     "Huawei - MatePad Air Z Enjoy",
     "Huawei - MatePad Air Z",
-    "Oppo - K14 Plus"
+    "Oppo - K14 Plus",
+    "Samsung - Galaxy Tab S12 Ultra",
+    "Samsung - Galaxy Tab S12+",
+    "Samsung - Galaxy F08",
+    "Samsung - Galaxy M08",
+    "Samsung - Galaxy Tab S12 Ultra",
+    "Samsung - Galaxy Tab S12+",
+    "Samsung - Galaxy F08",
+    "Samsung - Galaxy M08"
   ],
-  "updated_at": "2026-10-04 03:09 UTC"
+  "updated_at": "2026-10-04 03:11 UTC"
 }
