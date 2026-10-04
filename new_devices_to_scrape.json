@@ -1,102 +1,122 @@
 [
   {
+    "brand": "HMD",
+    "title": "Vibe2 Pro",
+    "url": "https://www.gsmarena.com/hmd_vibe_2_pro_5g-14977.php"
+  },
+  {
     "brand": "Honor",
-    "title": "X9e Pro",
-    "url": "https://www.gsmarena.com/honor_x9e_pro_5g-14949.php"
+    "title": "Magic9 Pro Max",
+    "url": "https://www.gsmarena.com/honor_magic9_pro_max_5g-14940.php"
   },
   {
-    "brand": "itel",
-    "title": "A300C",
-    "url": "https://www.gsmarena.com/itel_a300c-14956.php"
+    "brand": "Honor",
+    "title": "Magic9 Super",
+    "url": "https://www.gsmarena.com/honor_magic9_super_5g-14969.php"
   },
   {
-    "brand": "Lava",
-    "title": "Virat Curve",
-    "url": "https://www.gsmarena.com/lava_virat_curve_5g-14957.php"
+    "brand": "Honor",
+    "title": "Magic9",
+    "url": "https://www.gsmarena.com/honor_magic9_5g-14970.php"
   },
   {
-    "brand": "Motorola",
-    "title": "Signature 27",
-    "url": "https://www.gsmarena.com/motorola_signature_27_5g-14955.php"
+    "brand": "Honor",
+    "title": "Watch 6 Pro",
+    "url": "https://www.gsmarena.com/honor_watch_6_pro-14971.php"
   },
   {
-    "brand": "OnePlus",
-    "title": "N6 Lite",
-    "url": "https://www.gsmarena.com/oneplus_n6_lite-14952.php"
+    "brand": "Honor",
+    "title": "Pad X10 Pro Max",
+    "url": "https://www.gsmarena.com/honor_pad_x10_pro_max-14972.php"
+  },
+  {
+    "brand": "Honor",
+    "title": "MagicPad 4 12.1",
+    "url": "https://www.gsmarena.com/honor_magicpad_4_12_1-14973.php"
+  },
+  {
+    "brand": "Huawei",
+    "title": "Mate 90 RS Ultimate",
+    "url": "https://www.gsmarena.com/huawei_mate_90_rs_ultimate_5g-14985.php"
+  },
+  {
+    "brand": "Huawei",
+    "title": "Mate 90 Pro Max",
+    "url": "https://www.gsmarena.com/huawei_mate_90_pro_max_5g-14982.php"
+  },
+  {
+    "brand": "Huawei",
+    "title": "Mate 90 Pro",
+    "url": "https://www.gsmarena.com/huawei_mate_90_pro_5g-14983.php"
+  },
+  {
+    "brand": "Huawei",
+    "title": "Mate 90",
+    "url": "https://www.gsmarena.com/huawei_mate_90_5g-14984.php"
+  },
+  {
+    "brand": "Huawei",
+    "title": "MatePad Air Z Enjoy",
+    "url": "https://www.gsmarena.com/huawei_matepad_air_z_enjoy-14980.php"
+  },
+  {
+    "brand": "Huawei",
+    "title": "MatePad Air Z",
+    "url": "https://www.gsmarena.com/huawei_matepad_air_z-14979.php"
   },
   {
     "brand": "Oppo",
-    "title": "Find X10 Pro Max",
-    "url": "https://www.gsmarena.com/oppo_find_x10_pro_max-14939.php"
+    "title": "K14 Plus",
+    "url": "https://www.gsmarena.com/oppo_k14_plus_5g-14963.php"
   },
   {
-    "brand": "Oppo",
-    "title": "Find X10",
-    "url": "https://www.gsmarena.com/oppo_find_x10-14953.php"
+    "brand": "Samsung",
+    "title": "Galaxy Tab S12 Ultra",
+    "url": "https://www.gsmarena.com/samsung_galaxy_tab_s12_ultra_5g-14811.php"
   },
   {
-    "brand": "Oppo",
-    "title": "Find X10 E",
-    "url": "https://www.gsmarena.com/oppo_find_x10_e-14954.php"
+    "brand": "Samsung",
+    "title": "Galaxy Tab S12+",
+    "url": "https://www.gsmarena.com/samsung_galaxy_tab_s12+_5g-14981.php"
   },
   {
-    "brand": "Oukitel",
-    "title": "C26 Mini",
-    "url": "https://www.gsmarena.com/oukitel_c26_mini-14968.php"
+    "brand": "Samsung",
+    "title": "Galaxy F08",
+    "url": "https://www.gsmarena.com/samsung_galaxy_f08-14988.php"
   },
   {
-    "brand": "Oukitel",
-    "title": "C17 Mini",
-    "url": "https://www.gsmarena.com/oukitel_c17_mini-14967.php"
+    "brand": "Samsung",
+    "title": "Galaxy M08",
+    "url": "https://www.gsmarena.com/samsung_galaxy_m08-14987.php"
   },
   {
-    "brand": "Oukitel",
-    "title": "P2 Plus",
-    "url": "https://www.gsmarena.com/oukitel_p2_plus_5g-14966.php"
+    "brand": "Samsung",
+    "title": "Galaxy Tab S12 Ultra",
+    "url": "https://www.gsmarena.com/samsung_galaxy_tab_s12_ultra_5g-14811.php"
   },
   {
-    "brand": "Oukitel",
-    "title": "RT11",
-    "url": "https://www.gsmarena.com/oukitel_rt11_5g-14965.php"
+    "brand": "Samsung",
+    "title": "Galaxy Tab S12+",
+    "url": "https://www.gsmarena.com/samsung_galaxy_tab_s12+_5g-14981.php"
   },
   {
-    "brand": "vivo",
-    "title": "Y600i",
-    "url": "https://www.gsmarena.com/vivo_y600i_5g-14964.php"
+    "brand": "Samsung",
+    "title": "Galaxy F08",
+    "url": "https://www.gsmarena.com/samsung_galaxy_f08-14988.php"
   },
   {
-    "brand": "vivo",
-    "title": "X500 Pro Max",
-    "url": "https://www.gsmarena.com/vivo_x500_pro_max_5g-14782.php"
-  },
-  {
-    "brand": "vivo",
-    "title": "X500 Pro",
-    "url": "https://www.gsmarena.com/vivo_x500_pro_5g-14950.php"
+    "brand": "Samsung",
+    "title": "Galaxy M08",
+    "url": "https://www.gsmarena.com/samsung_galaxy_m08-14987.php"
   },
   {
     "brand": "vivo",
-    "title": "X500",
-    "url": "https://www.gsmarena.com/vivo_x500_5g-14951.php"
+    "title": "iQOO Pad Ultra",
+    "url": "https://www.gsmarena.com/vivo_iqoo_pad_ultra-14978.php"
   },
   {
-    "brand": "Xiaomi",
-    "title": "18 Pro Max",
-    "url": "https://www.gsmarena.com/xiaomi_18_pro_max_5g-14958.php"
-  },
-  {
-    "brand": "Xiaomi",
-    "title": "18 Pro",
-    "url": "https://www.gsmarena.com/xiaomi_18_pro_5g-14959.php"
-  },
-  {
-    "brand": "Xiaomi",
-    "title": "Pad 9 Pro",
-    "url": "https://www.gsmarena.com/xiaomi_pad_9_pro-14960.php"
-  },
-  {
-    "brand": "Xiaomi",
-    "title": "Pad 9",
-    "url": "https://www.gsmarena.com/xiaomi_pad_9-14961.php"
+    "brand": "vivo",
+    "title": "iQOO 16",
+    "url": "https://www.gsmarena.com/vivo_iqoo_16_5g-14976.php"
   }
 ]
