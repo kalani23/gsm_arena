@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 7,
+  "brands_checked": 26,
   "brands_total": 126,
-  "current_brand": "Archos",
+  "current_brand": "Doogee",
   "new_devices_found": 3,
   "new_device_urls": [
     "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
@@ -14,5 +14,5 @@
     "Amazon - Alexa Tablet 11 (2026)",
     "Amazon - Alexa Tablet 8 (2026)"
   ],
-  "updated_at": "2026-10-11 02:23 UTC"
+  "updated_at": "2026-10-11 02:25 UTC"
 }
