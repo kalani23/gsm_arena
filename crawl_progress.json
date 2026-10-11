@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 77,
+  "brands_checked": 93,
   "brands_total": 126,
-  "current_brand": "Orange",
-  "new_devices_found": 12,
+  "current_brand": "Sagem",
+  "new_devices_found": 13,
   "new_device_urls": [
     "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
     "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php",
@@ -16,7 +16,8 @@
     "https://www.gsmarena.com/oppo_k15s_5g-14995.php",
     "https://www.gsmarena.com/oppo_k15x_5g-14996.php",
     "https://www.gsmarena.com/oppo_f35_pro_5g-14859.php",
-    "https://www.gsmarena.com/oppo_f35_5g-14990.php"
+    "https://www.gsmarena.com/oppo_f35_5g-14990.php",
+    "https://www.gsmarena.com/realme_p4s_lite-14991.php"
   ],
   "new_device_names": [
     "Amazon - Alexa Tablet 12 Pro (2026)",
@@ -30,7 +31,8 @@
     "Oppo - K15s",
     "Oppo - K15x",
     "Oppo - F35 Pro",
-    "Oppo - F35"
+    "Oppo - F35",
+    "Realme - P4s Lite"
   ],
-  "updated_at": "2026-10-11 02:31 UTC"
+  "updated_at": "2026-10-11 02:33 UTC"
 }
