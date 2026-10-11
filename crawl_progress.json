@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 101,
   "brands_total": 126,
-  "current_brand": "Sagem",
+  "current_brand": "Sony Ericsson",
   "new_devices_found": 13,
   "new_device_urls": [
     "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
@@ -34,5 +34,5 @@
     "Oppo - F35",
     "Realme - P4s Lite"
   ],
-  "updated_at": "2026-10-11 02:33 UTC"
+  "updated_at": "2026-10-11 02:36 UTC"
 }
