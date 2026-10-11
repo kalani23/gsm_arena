@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 61,
+  "brands_checked": 77,
   "brands_total": 126,
-  "current_brand": "Micromax",
-  "new_devices_found": 8,
+  "current_brand": "Orange",
+  "new_devices_found": 12,
   "new_device_urls": [
     "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
     "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php",
@@ -12,7 +12,11 @@
     "https://www.gsmarena.com/honor_x5d_s-14993.php",
     "https://www.gsmarena.com/itel_zeno_300-14997.php",
     "https://www.gsmarena.com/itel_zeno_200-14998.php",
-    "https://www.gsmarena.com/itel_zeno_100_pro-14999.php"
+    "https://www.gsmarena.com/itel_zeno_100_pro-14999.php",
+    "https://www.gsmarena.com/oppo_k15s_5g-14995.php",
+    "https://www.gsmarena.com/oppo_k15x_5g-14996.php",
+    "https://www.gsmarena.com/oppo_f35_pro_5g-14859.php",
+    "https://www.gsmarena.com/oppo_f35_5g-14990.php"
   ],
   "new_device_names": [
     "Amazon - Alexa Tablet 12 Pro (2026)",
@@ -22,7 +26,11 @@
     "Honor - X5d s",
     "itel - Zeno 300",
     "itel - Zeno 200",
-    "itel - Zeno 100 Pro"
+    "itel - Zeno 100 Pro",
+    "Oppo - K15s",
+    "Oppo - K15x",
+    "Oppo - F35 Pro",
+    "Oppo - F35"
   ],
-  "updated_at": "2026-10-11 02:29 UTC"
+  "updated_at": "2026-10-11 02:31 UTC"
 }
