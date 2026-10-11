@@ -1,27 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 117,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "Vodafone",
   "new_devices_found": 16,
-  "new_device_urls": [
-    "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
-    "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php",
-    "https://www.gsmarena.com/amazon_alexa_tablet_8_(2026)-15003.php",
-    "https://www.gsmarena.com/honor_play20c-14994.php",
-    "https://www.gsmarena.com/honor_x5d_s-14993.php",
-    "https://www.gsmarena.com/itel_zeno_300-14997.php",
-    "https://www.gsmarena.com/itel_zeno_200-14998.php",
-    "https://www.gsmarena.com/itel_zeno_100_pro-14999.php",
-    "https://www.gsmarena.com/oppo_k15s_5g-14995.php",
-    "https://www.gsmarena.com/oppo_k15x_5g-14996.php",
-    "https://www.gsmarena.com/oppo_f35_pro_5g-14859.php",
-    "https://www.gsmarena.com/oppo_f35_5g-14990.php",
-    "https://www.gsmarena.com/realme_p4s_lite-14991.php",
-    "https://www.gsmarena.com/vivo_y32_(2026)-14992.php",
-    "https://www.gsmarena.com/vivo_v80_5g-14989.php",
-    "https://www.gsmarena.com/vivo_s2_fe_5g-14962.php"
-  ],
   "new_device_names": [
     "Amazon - Alexa Tablet 12 Pro (2026)",
     "Amazon - Alexa Tablet 11 (2026)",
@@ -40,5 +21,23 @@
     "vivo - V80",
     "vivo - S2 FE"
   ],
-  "updated_at": "2026-10-11 02:38 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
+    "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php",
+    "https://www.gsmarena.com/amazon_alexa_tablet_8_(2026)-15003.php",
+    "https://www.gsmarena.com/honor_play20c-14994.php",
+    "https://www.gsmarena.com/honor_x5d_s-14993.php",
+    "https://www.gsmarena.com/itel_zeno_300-14997.php",
+    "https://www.gsmarena.com/itel_zeno_200-14998.php",
+    "https://www.gsmarena.com/itel_zeno_100_pro-14999.php",
+    "https://www.gsmarena.com/oppo_k15s_5g-14995.php",
+    "https://www.gsmarena.com/oppo_k15x_5g-14996.php",
+    "https://www.gsmarena.com/oppo_f35_pro_5g-14859.php",
+    "https://www.gsmarena.com/oppo_f35_5g-14990.php",
+    "https://www.gsmarena.com/realme_p4s_lite-14991.php",
+    "https://www.gsmarena.com/vivo_y32_(2026)-14992.php",
+    "https://www.gsmarena.com/vivo_v80_5g-14989.php",
+    "https://www.gsmarena.com/vivo_s2_fe_5g-14962.php"
+  ],
+  "updated_at": "2026-10-11 02:39 UTC"
 }
