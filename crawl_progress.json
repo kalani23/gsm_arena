@@ -1,18 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 26,
+  "brands_checked": 43,
   "brands_total": 126,
-  "current_brand": "Doogee",
-  "new_devices_found": 3,
+  "current_brand": "i-mate",
+  "new_devices_found": 5,
   "new_device_urls": [
     "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
     "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php",
-    "https://www.gsmarena.com/amazon_alexa_tablet_8_(2026)-15003.php"
+    "https://www.gsmarena.com/amazon_alexa_tablet_8_(2026)-15003.php",
+    "https://www.gsmarena.com/honor_play20c-14994.php",
+    "https://www.gsmarena.com/honor_x5d_s-14993.php"
   ],
   "new_device_names": [
     "Amazon - Alexa Tablet 12 Pro (2026)",
     "Amazon - Alexa Tablet 11 (2026)",
-    "Amazon - Alexa Tablet 8 (2026)"
+    "Amazon - Alexa Tablet 8 (2026)",
+    "Honor - Play20C",
+    "Honor - X5d s"
   ],
-  "updated_at": "2026-10-11 02:25 UTC"
+  "updated_at": "2026-10-11 02:27 UTC"
 }
