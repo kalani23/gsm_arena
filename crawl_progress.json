@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 101,
+  "brands_checked": 117,
   "brands_total": 126,
-  "current_brand": "Sony Ericsson",
-  "new_devices_found": 13,
+  "current_brand": "Vodafone",
+  "new_devices_found": 16,
   "new_device_urls": [
     "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php",
     "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php",
@@ -17,7 +17,10 @@
     "https://www.gsmarena.com/oppo_k15x_5g-14996.php",
     "https://www.gsmarena.com/oppo_f35_pro_5g-14859.php",
     "https://www.gsmarena.com/oppo_f35_5g-14990.php",
-    "https://www.gsmarena.com/realme_p4s_lite-14991.php"
+    "https://www.gsmarena.com/realme_p4s_lite-14991.php",
+    "https://www.gsmarena.com/vivo_y32_(2026)-14992.php",
+    "https://www.gsmarena.com/vivo_v80_5g-14989.php",
+    "https://www.gsmarena.com/vivo_s2_fe_5g-14962.php"
   ],
   "new_device_names": [
     "Amazon - Alexa Tablet 12 Pro (2026)",
@@ -32,7 +35,10 @@
     "Oppo - K15x",
     "Oppo - F35 Pro",
     "Oppo - F35",
-    "Realme - P4s Lite"
+    "Realme - P4s Lite",
+    "vivo - Y32",
+    "vivo - V80",
+    "vivo - S2 FE"
   ],
-  "updated_at": "2026-10-11 02:36 UTC"
+  "updated_at": "2026-10-11 02:38 UTC"
 }
