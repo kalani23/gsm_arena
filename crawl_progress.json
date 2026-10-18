@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 87,
+  "brands_checked": 95,
   "brands_total": 126,
-  "current_brand": "Prestigio",
+  "current_brand": "Sendo",
   "new_devices_found": 8,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_106-15010.php",
@@ -24,5 +24,5 @@
     "Lenovo - Yoga Tab Plus Gen 2",
     "OnePlus - 16"
   ],
-  "updated_at": "2026-10-18 01:50 UTC"
+  "updated_at": "2026-10-18 01:52 UTC"
 }
