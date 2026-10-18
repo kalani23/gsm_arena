@@ -1,21 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 114,
+  "status": "complete",
+  "brands_checked": 126,
   "brands_total": 126,
-  "current_brand": "verykool",
-  "new_devices_found": 10,
-  "new_device_urls": [
-    "https://www.gsmarena.com/hmd_106-15010.php",
-    "https://www.gsmarena.com/itel_a300+-15008.php",
-    "https://www.gsmarena.com/itel_vistatab_12-15006.php",
-    "https://www.gsmarena.com/itel_vistatab_11-15005.php",
-    "https://www.gsmarena.com/itel_vistatab_go-15007.php",
-    "https://www.gsmarena.com/lenovo_yoga_tab_gen_2-15017.php",
-    "https://www.gsmarena.com/lenovo_yoga_tab_plus_gen_2-15011.php",
-    "https://www.gsmarena.com/oneplus_16_5g-14974.php",
-    "https://www.gsmarena.com/tecno_spark_50s_5g-15015.php",
-    "https://www.gsmarena.com/tecno_spark_50c-15016.php"
-  ],
+  "new_devices_found": 14,
   "new_device_names": [
     "HMD - 106",
     "itel - A300+",
@@ -26,7 +13,27 @@
     "Lenovo - Yoga Tab Plus Gen 2",
     "OnePlus - 16",
     "Tecno - Spark 50s",
-    "Tecno - Spark 50c"
+    "Tecno - Spark 50c",
+    "vivo - Y05e",
+    "vivo - Y05e",
+    "ZTE - nubia RedMagic 12 Pro+",
+    "ZTE - nubia RedMagic 12 Pro"
   ],
-  "updated_at": "2026-10-18 01:54 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/hmd_106-15010.php",
+    "https://www.gsmarena.com/itel_a300+-15008.php",
+    "https://www.gsmarena.com/itel_vistatab_12-15006.php",
+    "https://www.gsmarena.com/itel_vistatab_11-15005.php",
+    "https://www.gsmarena.com/itel_vistatab_go-15007.php",
+    "https://www.gsmarena.com/lenovo_yoga_tab_gen_2-15017.php",
+    "https://www.gsmarena.com/lenovo_yoga_tab_plus_gen_2-15011.php",
+    "https://www.gsmarena.com/oneplus_16_5g-14974.php",
+    "https://www.gsmarena.com/tecno_spark_50s_5g-15015.php",
+    "https://www.gsmarena.com/tecno_spark_50c-15016.php",
+    "https://www.gsmarena.com/vivo_y05e-15004.php",
+    "https://www.gsmarena.com/vivo_y05e-15004.php",
+    "https://www.gsmarena.com/zte_nubia_redmagic_12_pro+_5g_(china)-15013.php",
+    "https://www.gsmarena.com/zte_nubia_redmagic_12_pro_5g-15012.php"
+  ],
+  "updated_at": "2026-10-18 01:56 UTC"
 }

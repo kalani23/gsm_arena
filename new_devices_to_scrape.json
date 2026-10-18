@@ -1,82 +1,72 @@
 [
   {
-    "brand": "Amazon",
-    "title": "Alexa Tablet 12 Pro (2026)",
-    "url": "https://www.gsmarena.com/amazon_alexa_tablet_12_pro_(2026)-15001.php"
-  },
-  {
-    "brand": "Amazon",
-    "title": "Alexa Tablet 11 (2026)",
-    "url": "https://www.gsmarena.com/amazon_alexa_tablet_11_(2026)-15002.php"
-  },
-  {
-    "brand": "Amazon",
-    "title": "Alexa Tablet 8 (2026)",
-    "url": "https://www.gsmarena.com/amazon_alexa_tablet_8_(2026)-15003.php"
-  },
-  {
-    "brand": "Honor",
-    "title": "Play20C",
-    "url": "https://www.gsmarena.com/honor_play20c-14994.php"
-  },
-  {
-    "brand": "Honor",
-    "title": "X5d s",
-    "url": "https://www.gsmarena.com/honor_x5d_s-14993.php"
+    "brand": "HMD",
+    "title": "106",
+    "url": "https://www.gsmarena.com/hmd_106-15010.php"
   },
   {
     "brand": "itel",
-    "title": "Zeno 300",
-    "url": "https://www.gsmarena.com/itel_zeno_300-14997.php"
+    "title": "A300+",
+    "url": "https://www.gsmarena.com/itel_a300+-15008.php"
   },
   {
     "brand": "itel",
-    "title": "Zeno 200",
-    "url": "https://www.gsmarena.com/itel_zeno_200-14998.php"
+    "title": "VistaTab 12",
+    "url": "https://www.gsmarena.com/itel_vistatab_12-15006.php"
   },
   {
     "brand": "itel",
-    "title": "Zeno 100 Pro",
-    "url": "https://www.gsmarena.com/itel_zeno_100_pro-14999.php"
+    "title": "VistaTab 11",
+    "url": "https://www.gsmarena.com/itel_vistatab_11-15005.php"
   },
   {
-    "brand": "Oppo",
-    "title": "K15s",
-    "url": "https://www.gsmarena.com/oppo_k15s_5g-14995.php"
+    "brand": "itel",
+    "title": "VistaTab Go",
+    "url": "https://www.gsmarena.com/itel_vistatab_go-15007.php"
   },
   {
-    "brand": "Oppo",
-    "title": "K15x",
-    "url": "https://www.gsmarena.com/oppo_k15x_5g-14996.php"
+    "brand": "Lenovo",
+    "title": "Yoga Tab Gen 2",
+    "url": "https://www.gsmarena.com/lenovo_yoga_tab_gen_2-15017.php"
   },
   {
-    "brand": "Oppo",
-    "title": "F35 Pro",
-    "url": "https://www.gsmarena.com/oppo_f35_pro_5g-14859.php"
+    "brand": "Lenovo",
+    "title": "Yoga Tab Plus Gen 2",
+    "url": "https://www.gsmarena.com/lenovo_yoga_tab_plus_gen_2-15011.php"
   },
   {
-    "brand": "Oppo",
-    "title": "F35",
-    "url": "https://www.gsmarena.com/oppo_f35_5g-14990.php"
+    "brand": "OnePlus",
+    "title": "16",
+    "url": "https://www.gsmarena.com/oneplus_16_5g-14974.php"
   },
   {
-    "brand": "Realme",
-    "title": "P4s Lite",
-    "url": "https://www.gsmarena.com/realme_p4s_lite-14991.php"
+    "brand": "Tecno",
+    "title": "Spark 50s",
+    "url": "https://www.gsmarena.com/tecno_spark_50s_5g-15015.php"
   },
   {
-    "brand": "vivo",
-    "title": "Y32",
-    "url": "https://www.gsmarena.com/vivo_y32_(2026)-14992.php"
-  },
-  {
-    "brand": "vivo",
-    "title": "V80",
-    "url": "https://www.gsmarena.com/vivo_v80_5g-14989.php"
+    "brand": "Tecno",
+    "title": "Spark 50c",
+    "url": "https://www.gsmarena.com/tecno_spark_50c-15016.php"
   },
   {
     "brand": "vivo",
-    "title": "S2 FE",
-    "url": "https://www.gsmarena.com/vivo_s2_fe_5g-14962.php"
+    "title": "Y05e",
+    "url": "https://www.gsmarena.com/vivo_y05e-15004.php"
+  },
+  {
+    "brand": "vivo",
+    "title": "Y05e",
+    "url": "https://www.gsmarena.com/vivo_y05e-15004.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia RedMagic 12 Pro+",
+    "url": "https://www.gsmarena.com/zte_nubia_redmagic_12_pro+_5g_(china)-15013.php"
+  },
+  {
+    "brand": "ZTE",
+    "title": "nubia RedMagic 12 Pro",
+    "url": "https://www.gsmarena.com/zte_nubia_redmagic_12_pro_5g-15012.php"
   }
 ]
