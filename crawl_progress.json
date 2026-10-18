@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 70,
   "brands_total": 126,
-  "current_brand": "Lenovo",
+  "current_brand": "NIU",
   "new_devices_found": 7,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_106-15010.php",
@@ -22,5 +22,5 @@
     "Lenovo - Yoga Tab Gen 2",
     "Lenovo - Yoga Tab Plus Gen 2"
   ],
-  "updated_at": "2026-10-18 01:45 UTC"
+  "updated_at": "2026-10-18 01:48 UTC"
 }
