@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 95,
+  "brands_checked": 114,
   "brands_total": 126,
-  "current_brand": "Sendo",
-  "new_devices_found": 8,
+  "current_brand": "verykool",
+  "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/hmd_106-15010.php",
     "https://www.gsmarena.com/itel_a300+-15008.php",
@@ -12,7 +12,9 @@
     "https://www.gsmarena.com/itel_vistatab_go-15007.php",
     "https://www.gsmarena.com/lenovo_yoga_tab_gen_2-15017.php",
     "https://www.gsmarena.com/lenovo_yoga_tab_plus_gen_2-15011.php",
-    "https://www.gsmarena.com/oneplus_16_5g-14974.php"
+    "https://www.gsmarena.com/oneplus_16_5g-14974.php",
+    "https://www.gsmarena.com/tecno_spark_50s_5g-15015.php",
+    "https://www.gsmarena.com/tecno_spark_50c-15016.php"
   ],
   "new_device_names": [
     "HMD - 106",
@@ -22,7 +24,9 @@
     "itel - VistaTab Go",
     "Lenovo - Yoga Tab Gen 2",
     "Lenovo - Yoga Tab Plus Gen 2",
-    "OnePlus - 16"
+    "OnePlus - 16",
+    "Tecno - Spark 50s",
+    "Tecno - Spark 50c"
   ],
-  "updated_at": "2026-10-18 01:52 UTC"
+  "updated_at": "2026-10-18 01:54 UTC"
 }
