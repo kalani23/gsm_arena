@@ -1,10 +1,14 @@
 {
   "status": "running",
-  "brands_checked": 26,
+  "brands_checked": 41,
   "brands_total": 126,
-  "current_brand": "Doogee",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-10-18 01:42 UTC"
+  "current_brand": "HTC",
+  "new_devices_found": 1,
+  "new_device_urls": [
+    "https://www.gsmarena.com/hmd_106-15010.php"
+  ],
+  "new_device_names": [
+    "HMD - 106"
+  ],
+  "updated_at": "2026-10-18 01:43 UTC"
 }
