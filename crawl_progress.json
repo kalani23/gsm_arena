@@ -1,14 +1,26 @@
 {
   "status": "running",
-  "brands_checked": 41,
+  "brands_checked": 56,
   "brands_total": 126,
-  "current_brand": "HTC",
-  "new_devices_found": 1,
+  "current_brand": "Lenovo",
+  "new_devices_found": 7,
   "new_device_urls": [
-    "https://www.gsmarena.com/hmd_106-15010.php"
+    "https://www.gsmarena.com/hmd_106-15010.php",
+    "https://www.gsmarena.com/itel_a300+-15008.php",
+    "https://www.gsmarena.com/itel_vistatab_12-15006.php",
+    "https://www.gsmarena.com/itel_vistatab_11-15005.php",
+    "https://www.gsmarena.com/itel_vistatab_go-15007.php",
+    "https://www.gsmarena.com/lenovo_yoga_tab_gen_2-15017.php",
+    "https://www.gsmarena.com/lenovo_yoga_tab_plus_gen_2-15011.php"
   ],
   "new_device_names": [
-    "HMD - 106"
+    "HMD - 106",
+    "itel - A300+",
+    "itel - VistaTab 12",
+    "itel - VistaTab 11",
+    "itel - VistaTab Go",
+    "Lenovo - Yoga Tab Gen 2",
+    "Lenovo - Yoga Tab Plus Gen 2"
   ],
-  "updated_at": "2026-10-18 01:43 UTC"
+  "updated_at": "2026-10-18 01:45 UTC"
 }
