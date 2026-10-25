@@ -1,10 +1,14 @@
 {
   "status": "running",
-  "brands_checked": 7,
+  "brands_checked": 31,
   "brands_total": 126,
-  "current_brand": "Archos",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-10-25 01:53 UTC"
+  "current_brand": "Fairphone",
+  "new_devices_found": 1,
+  "new_device_urls": [
+    "https://www.gsmarena.com/coolpad_cool_x_wide-15034.php"
+  ],
+  "new_device_names": [
+    "Coolpad - Cool X Wide"
+  ],
+  "updated_at": "2026-10-25 01:55 UTC"
 }
