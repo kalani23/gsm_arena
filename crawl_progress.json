@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 94,
+  "brands_checked": 114,
   "brands_total": 126,
-  "current_brand": "Samsung",
+  "current_brand": "verykool",
   "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/coolpad_cool_x_wide-15034.php",
@@ -30,5 +30,5 @@
     "Realme - C01",
     "Samsung - Galaxy F70"
   ],
-  "updated_at": "2026-10-25 02:04 UTC"
+  "updated_at": "2026-10-25 02:06 UTC"
 }
