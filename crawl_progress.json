@@ -1,14 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 31,
+  "brands_checked": 53,
   "brands_total": 126,
-  "current_brand": "Fairphone",
-  "new_devices_found": 1,
+  "current_brand": "Kyocera",
+  "new_devices_found": 5,
   "new_device_urls": [
-    "https://www.gsmarena.com/coolpad_cool_x_wide-15034.php"
+    "https://www.gsmarena.com/coolpad_cool_x_wide-15034.php",
+    "https://www.gsmarena.com/honor_win_turbo2_5g-15019.php",
+    "https://www.gsmarena.com/honor_win2_5g-15020.php",
+    "https://www.gsmarena.com/honor_win2_rt_5g-15021.php",
+    "https://www.gsmarena.com/honor_win_tablet-15027.php"
   ],
   "new_device_names": [
-    "Coolpad - Cool X Wide"
+    "Coolpad - Cool X Wide",
+    "Honor - Win Turbo2",
+    "Honor - Win2",
+    "Honor - Win2 RT",
+    "Honor - Win Tablet"
   ],
-  "updated_at": "2026-10-25 01:55 UTC"
+  "updated_at": "2026-10-25 01:57 UTC"
 }
