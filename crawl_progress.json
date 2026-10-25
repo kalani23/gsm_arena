@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 86,
+  "brands_checked": 94,
   "brands_total": 126,
-  "current_brand": "Posh",
-  "new_devices_found": 9,
+  "current_brand": "Samsung",
+  "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/coolpad_cool_x_wide-15034.php",
     "https://www.gsmarena.com/honor_win_turbo2_5g-15019.php",
@@ -13,7 +13,9 @@
     "https://www.gsmarena.com/oscal_flat_3c-15028.php",
     "https://www.gsmarena.com/oscal_flat_3c_mini-15029.php",
     "https://www.gsmarena.com/oukitel_c18_pro_max-15031.php",
-    "https://www.gsmarena.com/oukitel_c18-15032.php"
+    "https://www.gsmarena.com/oukitel_c18-15032.php",
+    "https://www.gsmarena.com/realme_c01-15025.php",
+    "https://www.gsmarena.com/samsung_galaxy_f70_5g-15014.php"
   ],
   "new_device_names": [
     "Coolpad - Cool X Wide",
@@ -24,7 +26,9 @@
     "Oscal - Flat 3C",
     "Oscal - Flat 3C Mini",
     "Oukitel - C18 Pro Max",
-    "Oukitel - C18"
+    "Oukitel - C18",
+    "Realme - C01",
+    "Samsung - Galaxy F70"
   ],
-  "updated_at": "2026-10-25 02:02 UTC"
+  "updated_at": "2026-10-25 02:04 UTC"
 }
