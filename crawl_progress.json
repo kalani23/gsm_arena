@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 55,
+  "brands_checked": 65,
   "brands_total": 127,
-  "current_brand": "LeEco",
+  "current_brand": "Modu",
   "new_devices_found": 8,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_ipad_mini_(2026)-15039.php",
@@ -24,5 +24,5 @@
     "Huawei - Enjoy 100 Pro",
     "Huawei - Enjoy 100"
   ],
-  "updated_at": "2026-11-01 02:49 UTC"
+  "updated_at": "2026-11-01 02:51 UTC"
 }
