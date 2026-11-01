@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 105,
+  "brands_checked": 122,
   "brands_total": 127,
-  "current_brand": "Tecno",
-  "new_devices_found": 13,
+  "current_brand": "XOLO",
+  "new_devices_found": 19,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_ipad_mini_(2026)-15039.php",
     "https://www.gsmarena.com/honor_600s_5g-15047.php",
@@ -17,7 +17,13 @@
     "https://www.gsmarena.com/motorola_moto_g47_power-15023.php",
     "https://www.gsmarena.com/nokia_2360_flip-15048.php",
     "https://www.gsmarena.com/oneplus_ace_7_pro_5g-15045.php",
-    "https://www.gsmarena.com/oneplus_ace_7_5g-14672.php"
+    "https://www.gsmarena.com/oneplus_ace_7_5g-14672.php",
+    "https://www.gsmarena.com/vivo_iqoo_neo12_5g_(china)-15041.php",
+    "https://www.gsmarena.com/vivo_iqoo_pad_pro_8_8-15043.php",
+    "https://www.gsmarena.com/vivo_y600_5g-15030.php",
+    "https://www.gsmarena.com/xiaomi_redmi_k100_5g-15018.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_17_pro_refresh_5g_(china-15042.php",
+    "https://www.gsmarena.com/xiaomi_poco_x8s_5g-15038.php"
   ],
   "new_device_names": [
     "Apple - iPad mini (2026)",
@@ -32,7 +38,13 @@
     "Motorola - Moto G47 Power",
     "Nokia - 2360 Flip",
     "OnePlus - Ace 7 Pro",
-    "OnePlus - Ace 7"
+    "OnePlus - Ace 7",
+    "vivo - iQOO Neo12",
+    "vivo - iQOO Pad Pro 8.8",
+    "vivo - Y600",
+    "Xiaomi - Redmi K100",
+    "Xiaomi - Redmi Note 17 Pro Refresh (China)",
+    "Xiaomi - Poco X8s"
   ],
-  "updated_at": "2026-11-01 02:57 UTC"
+  "updated_at": "2026-11-01 02:59 UTC"
 }
