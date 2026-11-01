@@ -1,14 +1,28 @@
 {
   "status": "running",
-  "brands_checked": 33,
+  "brands_checked": 55,
   "brands_total": 127,
-  "current_brand": "Garmin-Asus",
-  "new_devices_found": 1,
+  "current_brand": "LeEco",
+  "new_devices_found": 8,
   "new_device_urls": [
-    "https://www.gsmarena.com/apple_ipad_mini_(2026)-15039.php"
+    "https://www.gsmarena.com/apple_ipad_mini_(2026)-15039.php",
+    "https://www.gsmarena.com/honor_600s_5g-15047.php",
+    "https://www.gsmarena.com/honor_x9e_s_5g-15046.php",
+    "https://www.gsmarena.com/honor_x8e-15044.php",
+    "https://www.gsmarena.com/huawei_pura_90_plus_5g-15033.php",
+    "https://www.gsmarena.com/huawei_enjoy_100_pro_max-15035.php",
+    "https://www.gsmarena.com/huawei_enjoy_100_pro-15036.php",
+    "https://www.gsmarena.com/huawei_enjoy_100-15037.php"
   ],
   "new_device_names": [
-    "Apple - iPad mini (2026)"
+    "Apple - iPad mini (2026)",
+    "Honor - 600s",
+    "Honor - X9e s",
+    "Honor - X8e",
+    "Huawei - Pura 90 Plus",
+    "Huawei - Enjoy 100 Pro Max",
+    "Huawei - Enjoy 100 Pro",
+    "Huawei - Enjoy 100"
   ],
-  "updated_at": "2026-11-01 02:47 UTC"
+  "updated_at": "2026-11-01 02:49 UTC"
 }
