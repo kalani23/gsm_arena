@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 6,
+  "brands_checked": 33,
   "brands_total": 127,
-  "current_brand": "Apple",
+  "current_brand": "Garmin-Asus",
   "new_devices_found": 1,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_ipad_mini_(2026)-15039.php"
@@ -10,5 +10,5 @@
   "new_device_names": [
     "Apple - iPad mini (2026)"
   ],
-  "updated_at": "2026-11-01 02:45 UTC"
+  "updated_at": "2026-11-01 02:47 UTC"
 }
