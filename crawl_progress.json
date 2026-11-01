@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 65,
+  "brands_checked": 81,
   "brands_total": 127,
-  "current_brand": "Modu",
-  "new_devices_found": 8,
+  "current_brand": "Panasonic",
+  "new_devices_found": 13,
   "new_device_urls": [
     "https://www.gsmarena.com/apple_ipad_mini_(2026)-15039.php",
     "https://www.gsmarena.com/honor_600s_5g-15047.php",
@@ -12,7 +12,12 @@
     "https://www.gsmarena.com/huawei_pura_90_plus_5g-15033.php",
     "https://www.gsmarena.com/huawei_enjoy_100_pro_max-15035.php",
     "https://www.gsmarena.com/huawei_enjoy_100_pro-15036.php",
-    "https://www.gsmarena.com/huawei_enjoy_100-15037.php"
+    "https://www.gsmarena.com/huawei_enjoy_100-15037.php",
+    "https://www.gsmarena.com/motorola_moto_g47_power-15023.php",
+    "https://www.gsmarena.com/motorola_moto_g47_power-15023.php",
+    "https://www.gsmarena.com/nokia_2360_flip-15048.php",
+    "https://www.gsmarena.com/oneplus_ace_7_pro_5g-15045.php",
+    "https://www.gsmarena.com/oneplus_ace_7_5g-14672.php"
   ],
   "new_device_names": [
     "Apple - iPad mini (2026)",
@@ -22,7 +27,12 @@
     "Huawei - Pura 90 Plus",
     "Huawei - Enjoy 100 Pro Max",
     "Huawei - Enjoy 100 Pro",
-    "Huawei - Enjoy 100"
+    "Huawei - Enjoy 100",
+    "Motorola - Moto G47 Power",
+    "Motorola - Moto G47 Power",
+    "Nokia - 2360 Flip",
+    "OnePlus - Ace 7 Pro",
+    "OnePlus - Ace 7"
   ],
-  "updated_at": "2026-11-01 02:51 UTC"
+  "updated_at": "2026-11-01 02:53 UTC"
 }
