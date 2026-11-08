@@ -1,16 +1,24 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 87,
   "brands_total": 127,
-  "current_brand": "NIU",
-  "new_devices_found": 2,
+  "current_brand": "Prestigio",
+  "new_devices_found": 6,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_megapad-15063.php",
-    "https://www.gsmarena.com/motorola_moto_watch_2_fit-15067.php"
+    "https://www.gsmarena.com/motorola_moto_watch_2_fit-15067.php",
+    "https://www.gsmarena.com/philips_t8010-15070.php",
+    "https://www.gsmarena.com/philips_s7221_5g-15066.php",
+    "https://www.gsmarena.com/philips_s7220_5g-15065.php",
+    "https://www.gsmarena.com/philips_s7210_5g-15068.php"
   ],
   "new_device_names": [
     "Cubot - MegaPad",
-    "Motorola - Moto Watch 2 Fit"
+    "Motorola - Moto Watch 2 Fit",
+    "Philips - T8010",
+    "Philips - S7221",
+    "Philips - S7220",
+    "Philips - S7210"
   ],
-  "updated_at": "2026-11-08 02:58 UTC"
+  "updated_at": "2026-11-08 03:00 UTC"
 }
