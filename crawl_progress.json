@@ -1,18 +1,8 @@
 {
-  "status": "running",
-  "brands_checked": 114,
+  "status": "complete",
+  "brands_checked": 127,
   "brands_total": 127,
-  "current_brand": "verykool",
-  "new_devices_found": 7,
-  "new_device_urls": [
-    "https://www.gsmarena.com/cubot_megapad-15063.php",
-    "https://www.gsmarena.com/motorola_moto_watch_2_fit-15067.php",
-    "https://www.gsmarena.com/philips_t8010-15070.php",
-    "https://www.gsmarena.com/philips_s7221_5g-15066.php",
-    "https://www.gsmarena.com/philips_s7220_5g-15065.php",
-    "https://www.gsmarena.com/philips_s7210_5g-15068.php",
-    "https://www.gsmarena.com/rugone_xsnap_7_pro-15064.php"
-  ],
+  "new_devices_found": 17,
   "new_device_names": [
     "Cubot - MegaPad",
     "Motorola - Moto Watch 2 Fit",
@@ -20,7 +10,36 @@
     "Philips - S7221",
     "Philips - S7220",
     "Philips - S7210",
-    "RugOne - Xsnap 7 Pro"
+    "RugOne - Xsnap 7 Pro",
+    "vivo - V80 FE",
+    "vivo - V80 FE",
+    "Xiaomi - Watch S5 41mm",
+    "Xiaomi - Redmi M100 Pro",
+    "ZEED - Z-Watch Active",
+    "ZEED - Z-Pro",
+    "ZEED - Z-One",
+    "ZEED - Z-Pad Ultra",
+    "ZEED - Z-Pad Pro",
+    "ZEED - Z-Pad SE"
   ],
-  "updated_at": "2026-11-08 03:04 UTC"
+  "new_device_urls": [
+    "https://www.gsmarena.com/cubot_megapad-15063.php",
+    "https://www.gsmarena.com/motorola_moto_watch_2_fit-15067.php",
+    "https://www.gsmarena.com/philips_t8010-15070.php",
+    "https://www.gsmarena.com/philips_s7221_5g-15066.php",
+    "https://www.gsmarena.com/philips_s7220_5g-15065.php",
+    "https://www.gsmarena.com/philips_s7210_5g-15068.php",
+    "https://www.gsmarena.com/rugone_xsnap_7_pro-15064.php",
+    "https://www.gsmarena.com/vivo_v80_fe_5g-15061.php",
+    "https://www.gsmarena.com/vivo_v80_fe_5g-15061.php",
+    "https://www.gsmarena.com/xiaomi_watch_s5_41mm-15062.php",
+    "https://www.gsmarena.com/xiaomi_redmi_m100_pro_5g-15054.php",
+    "https://www.gsmarena.com/zeed_z_watch_active-15060.php",
+    "https://www.gsmarena.com/zeed_z_pro_5g-15055.php",
+    "https://www.gsmarena.com/zeed_z_one-15056.php",
+    "https://www.gsmarena.com/zeed_z_pad_ultra-15057.php",
+    "https://www.gsmarena.com/zeed_z_pad_pro-15058.php",
+    "https://www.gsmarena.com/zeed_z_pad_se-15059.php"
+  ],
+  "updated_at": "2026-11-08 03:06 UTC"
 }
