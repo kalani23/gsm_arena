@@ -1,16 +1,17 @@
 {
   "status": "running",
-  "brands_checked": 87,
+  "brands_checked": 98,
   "brands_total": 127,
-  "current_brand": "Prestigio",
-  "new_devices_found": 6,
+  "current_brand": "Siemens",
+  "new_devices_found": 7,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_megapad-15063.php",
     "https://www.gsmarena.com/motorola_moto_watch_2_fit-15067.php",
     "https://www.gsmarena.com/philips_t8010-15070.php",
     "https://www.gsmarena.com/philips_s7221_5g-15066.php",
     "https://www.gsmarena.com/philips_s7220_5g-15065.php",
-    "https://www.gsmarena.com/philips_s7210_5g-15068.php"
+    "https://www.gsmarena.com/philips_s7210_5g-15068.php",
+    "https://www.gsmarena.com/rugone_xsnap_7_pro-15064.php"
   ],
   "new_device_names": [
     "Cubot - MegaPad",
@@ -18,7 +19,8 @@
     "Philips - T8010",
     "Philips - S7221",
     "Philips - S7220",
-    "Philips - S7210"
+    "Philips - S7210",
+    "RugOne - Xsnap 7 Pro"
   ],
-  "updated_at": "2026-11-08 03:00 UTC"
+  "updated_at": "2026-11-08 03:02 UTC"
 }
