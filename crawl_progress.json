@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 98,
+  "brands_checked": 114,
   "brands_total": 127,
-  "current_brand": "Siemens",
+  "current_brand": "verykool",
   "new_devices_found": 7,
   "new_device_urls": [
     "https://www.gsmarena.com/cubot_megapad-15063.php",
@@ -22,5 +22,5 @@
     "Philips - S7210",
     "RugOne - Xsnap 7 Pro"
   ],
-  "updated_at": "2026-11-08 03:02 UTC"
+  "updated_at": "2026-11-08 03:04 UTC"
 }
