@@ -1,14 +1,16 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 70,
   "brands_total": 127,
-  "current_brand": "Lenovo",
-  "new_devices_found": 1,
+  "current_brand": "NIU",
+  "new_devices_found": 2,
   "new_device_urls": [
-    "https://www.gsmarena.com/cubot_megapad-15063.php"
+    "https://www.gsmarena.com/cubot_megapad-15063.php",
+    "https://www.gsmarena.com/motorola_moto_watch_2_fit-15067.php"
   ],
   "new_device_names": [
-    "Cubot - MegaPad"
+    "Cubot - MegaPad",
+    "Motorola - Moto Watch 2 Fit"
   ],
-  "updated_at": "2026-11-08 02:56 UTC"
+  "updated_at": "2026-11-08 02:58 UTC"
 }
