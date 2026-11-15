@@ -1,10 +1,18 @@
 {
   "status": "running",
-  "brands_checked": 8,
+  "brands_checked": 20,
   "brands_total": 127,
-  "current_brand": "Asus",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-11-15 03:20 UTC"
+  "current_brand": "Cat",
+  "new_devices_found": 3,
+  "new_device_urls": [
+    "https://www.gsmarena.com/blackview_zeno_6_pro-15082.php",
+    "https://www.gsmarena.com/blackview_zeno_6-15081.php",
+    "https://www.gsmarena.com/blackview_link_5-15083.php"
+  ],
+  "new_device_names": [
+    "Blackview - Zeno 6 Pro",
+    "Blackview - Zeno 6",
+    "Blackview - Link 5"
+  ],
+  "updated_at": "2026-11-15 03:22 UTC"
 }
