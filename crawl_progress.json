@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 70,
+  "brands_checked": 82,
   "brands_total": 127,
-  "current_brand": "NIU",
-  "new_devices_found": 8,
+  "current_brand": "Pantech",
+  "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_6_pro-15082.php",
     "https://www.gsmarena.com/blackview_zeno_6-15081.php",
@@ -12,7 +12,9 @@
     "https://www.gsmarena.com/infinix_smart_20e-15074.php",
     "https://www.gsmarena.com/infinix_smart_20_hd-15079.php",
     "https://www.gsmarena.com/infinix_xpad_30e-15077.php",
-    "https://www.gsmarena.com/infinix_xpad_edge-15076.php"
+    "https://www.gsmarena.com/infinix_xpad_edge-15076.php",
+    "https://www.gsmarena.com/oppo_pad_air6-15072.php",
+    "https://www.gsmarena.com/oscal_bolt_2-15084.php"
   ],
   "new_device_names": [
     "Blackview - Zeno 6 Pro",
@@ -22,7 +24,9 @@
     "Infinix - Smart 20e",
     "Infinix - Smart 20 HD",
     "Infinix - Xpad 30E",
-    "Infinix - Xpad Edge"
+    "Infinix - Xpad Edge",
+    "Oppo - Pad Air6",
+    "Oscal - Bolt 2"
   ],
-  "updated_at": "2026-11-15 03:28 UTC"
+  "updated_at": "2026-11-15 03:30 UTC"
 }
