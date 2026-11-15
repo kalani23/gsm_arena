@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 56,
+  "brands_checked": 70,
   "brands_total": 127,
-  "current_brand": "Lenovo",
+  "current_brand": "NIU",
   "new_devices_found": 8,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_6_pro-15082.php",
@@ -24,5 +24,5 @@
     "Infinix - Xpad 30E",
     "Infinix - Xpad Edge"
   ],
-  "updated_at": "2026-11-15 03:26 UTC"
+  "updated_at": "2026-11-15 03:28 UTC"
 }
