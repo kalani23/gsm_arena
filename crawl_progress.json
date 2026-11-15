@@ -1,8 +1,8 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 102,
   "brands_total": 127,
-  "current_brand": "Sagem",
+  "current_brand": "Spice",
   "new_devices_found": 10,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_6_pro-15082.php",
@@ -28,5 +28,5 @@
     "Oppo - Pad Air6",
     "Oscal - Bolt 2"
   ],
-  "updated_at": "2026-11-15 03:32 UTC"
+  "updated_at": "2026-11-15 03:34 UTC"
 }
