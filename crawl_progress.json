@@ -1,20 +1,28 @@
 {
   "status": "running",
-  "brands_checked": 40,
+  "brands_checked": 56,
   "brands_total": 127,
-  "current_brand": "HP",
-  "new_devices_found": 4,
+  "current_brand": "Lenovo",
+  "new_devices_found": 8,
   "new_device_urls": [
     "https://www.gsmarena.com/blackview_zeno_6_pro-15082.php",
     "https://www.gsmarena.com/blackview_zeno_6-15081.php",
     "https://www.gsmarena.com/blackview_link_5-15083.php",
-    "https://www.gsmarena.com/honor_choice_t10-15080.php"
+    "https://www.gsmarena.com/honor_choice_t10-15080.php",
+    "https://www.gsmarena.com/infinix_smart_20e-15074.php",
+    "https://www.gsmarena.com/infinix_smart_20_hd-15079.php",
+    "https://www.gsmarena.com/infinix_xpad_30e-15077.php",
+    "https://www.gsmarena.com/infinix_xpad_edge-15076.php"
   ],
   "new_device_names": [
     "Blackview - Zeno 6 Pro",
     "Blackview - Zeno 6",
     "Blackview - Link 5",
-    "Honor - Choice T10"
+    "Honor - Choice T10",
+    "Infinix - Smart 20e",
+    "Infinix - Smart 20 HD",
+    "Infinix - Xpad 30E",
+    "Infinix - Xpad Edge"
   ],
-  "updated_at": "2026-11-15 03:24 UTC"
+  "updated_at": "2026-11-15 03:26 UTC"
 }
