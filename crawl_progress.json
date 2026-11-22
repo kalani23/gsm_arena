@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 101,
+  "brands_checked": 120,
   "brands_total": 127,
-  "current_brand": "Sony Ericsson",
-  "new_devices_found": 9,
+  "current_brand": "XCute",
+  "new_devices_found": 11,
   "new_device_urls": [
     "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
     "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
@@ -13,7 +13,9 @@
     "https://www.gsmarena.com/oppo_reno17_pro_5g_(china)-15024.php",
     "https://www.gsmarena.com/oppo_reno17_5g_(china)-15071.php",
     "https://www.gsmarena.com/oppo_watch_5-15073.php",
-    "https://www.gsmarena.com/sharp_aquos_sense11_5g-15087.php"
+    "https://www.gsmarena.com/sharp_aquos_sense11_5g-15087.php",
+    "https://www.gsmarena.com/vivo_y21e_(2026)-15090.php",
+    "https://www.gsmarena.com/vivo_y29t_5g-15089.php"
   ],
   "new_device_names": [
     "Huawei - Osta O1 Pro",
@@ -24,7 +26,9 @@
     "Oppo - Reno17 Pro (China)",
     "Oppo - Reno17 (China)",
     "Oppo - Watch 5",
-    "Sharp - Aquos sense11"
+    "Sharp - Aquos sense11",
+    "vivo - Y21e",
+    "vivo - Y29t"
   ],
-  "updated_at": "2026-11-22 04:02 UTC"
+  "updated_at": "2026-11-22 04:03 UTC"
 }
