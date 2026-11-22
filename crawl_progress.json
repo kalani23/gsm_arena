@@ -1,22 +1,28 @@
 {
   "status": "running",
-  "brands_checked": 75,
+  "brands_checked": 93,
   "brands_total": 127,
-  "current_brand": "OnePlus",
-  "new_devices_found": 5,
+  "current_brand": "Sagem",
+  "new_devices_found": 8,
   "new_device_urls": [
     "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
     "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
     "https://www.gsmarena.com/itel_city_300_5g-15092.php",
     "https://www.gsmarena.com/itel_vistatab_32-15093.php",
-    "https://www.gsmarena.com/lava_smart_4_pro-15091.php"
+    "https://www.gsmarena.com/lava_smart_4_pro-15091.php",
+    "https://www.gsmarena.com/oppo_reno17_pro_5g_(china)-15024.php",
+    "https://www.gsmarena.com/oppo_reno17_5g_(china)-15071.php",
+    "https://www.gsmarena.com/oppo_watch_5-15073.php"
   ],
   "new_device_names": [
     "Huawei - Osta O1 Pro",
     "Huawei - Osta O1 Pro",
     "itel - City 300",
     "itel - VistaTab 32",
-    "Lava - Smart 4 Pro"
+    "Lava - Smart 4 Pro",
+    "Oppo - Reno17 Pro (China)",
+    "Oppo - Reno17 (China)",
+    "Oppo - Watch 5"
   ],
-  "updated_at": "2026-11-22 03:55 UTC"
+  "updated_at": "2026-11-22 03:57 UTC"
 }
