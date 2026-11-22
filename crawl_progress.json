@@ -1,9 +1,9 @@
 {
   "status": "running",
-  "brands_checked": 93,
+  "brands_checked": 101,
   "brands_total": 127,
-  "current_brand": "Sagem",
-  "new_devices_found": 8,
+  "current_brand": "Sony Ericsson",
+  "new_devices_found": 9,
   "new_device_urls": [
     "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
     "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
@@ -12,7 +12,8 @@
     "https://www.gsmarena.com/lava_smart_4_pro-15091.php",
     "https://www.gsmarena.com/oppo_reno17_pro_5g_(china)-15024.php",
     "https://www.gsmarena.com/oppo_reno17_5g_(china)-15071.php",
-    "https://www.gsmarena.com/oppo_watch_5-15073.php"
+    "https://www.gsmarena.com/oppo_watch_5-15073.php",
+    "https://www.gsmarena.com/sharp_aquos_sense11_5g-15087.php"
   ],
   "new_device_names": [
     "Huawei - Osta O1 Pro",
@@ -22,7 +23,8 @@
     "Lava - Smart 4 Pro",
     "Oppo - Reno17 Pro (China)",
     "Oppo - Reno17 (China)",
-    "Oppo - Watch 5"
+    "Oppo - Watch 5",
+    "Sharp - Aquos sense11"
   ],
-  "updated_at": "2026-11-22 03:57 UTC"
+  "updated_at": "2026-11-22 04:02 UTC"
 }
