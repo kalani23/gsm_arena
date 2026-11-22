@@ -1,10 +1,22 @@
 {
   "status": "running",
-  "brands_checked": 41,
+  "brands_checked": 56,
   "brands_total": 127,
-  "current_brand": "HTC",
-  "new_devices_found": 0,
-  "new_device_urls": [],
-  "new_device_names": [],
-  "updated_at": "2026-11-22 03:47 UTC"
+  "current_brand": "Lenovo",
+  "new_devices_found": 5,
+  "new_device_urls": [
+    "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
+    "https://www.gsmarena.com/huawei_osta_o1_pro-15088.php",
+    "https://www.gsmarena.com/itel_city_300_5g-15092.php",
+    "https://www.gsmarena.com/itel_vistatab_32-15093.php",
+    "https://www.gsmarena.com/lava_smart_4_pro-15091.php"
+  ],
+  "new_device_names": [
+    "Huawei - Osta O1 Pro",
+    "Huawei - Osta O1 Pro",
+    "itel - City 300",
+    "itel - VistaTab 32",
+    "Lava - Smart 4 Pro"
+  ],
+  "updated_at": "2026-11-22 03:51 UTC"
 }
